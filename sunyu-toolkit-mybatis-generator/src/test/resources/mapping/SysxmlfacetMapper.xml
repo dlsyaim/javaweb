@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysxmlfacetMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysxmlfacet">
+    <result column="compid" jdbcType="INTEGER" property="compid" />
+    <result column="ord" jdbcType="INTEGER" property="ord" />
+    <result column="kind" jdbcType="CHAR" property="kind" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="dflt" jdbcType="VARCHAR" property="dflt" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysxmlfacet">
+    insert into sysxmlfacet (compid, ord, kind, 
+      status, dflt)
+    values (#{compid,jdbcType=INTEGER}, #{ord,jdbcType=INTEGER}, #{kind,jdbcType=CHAR}, 
+      #{status,jdbcType=SMALLINT}, #{dflt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysxmlfacet">
+    insert into sysxmlfacet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="compid != null">
+        compid,
+      </if>
+      <if test="ord != null">
+        ord,
+      </if>
+      <if test="kind != null">
+        kind,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="dflt != null">
+        dflt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="compid != null">
+        #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="ord != null">
+        #{ord,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null">
+        #{kind,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="dflt != null">
+        #{dflt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

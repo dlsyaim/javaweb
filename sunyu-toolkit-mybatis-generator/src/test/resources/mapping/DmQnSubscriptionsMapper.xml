@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmQnSubscriptionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmQnSubscriptions">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="timeout" jdbcType="INTEGER" property="timeout" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmQnSubscriptions">
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sid
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmQnSubscriptions">
+    insert into dm_qn_subscriptions (id, database_id, object_id, 
+      created, timeout, status, 
+      sid)
+    values (#{id,jdbcType=INTEGER}, #{database_id,jdbcType=INTEGER}, #{object_id,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{timeout,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{sid,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmQnSubscriptions">
+    insert into dm_qn_subscriptions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="timeout != null">
+        timeout,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeout != null">
+        #{timeout,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

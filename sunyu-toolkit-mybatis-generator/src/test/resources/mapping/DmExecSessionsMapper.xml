@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecSessionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecSessions">
+    <result column="session_id" jdbcType="SMALLINT" property="session_id" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="login_time" />
+    <result column="host_name" jdbcType="VARCHAR" property="host_name" />
+    <result column="program_name" jdbcType="VARCHAR" property="program_name" />
+    <result column="host_process_id" jdbcType="INTEGER" property="host_process_id" />
+    <result column="client_version" jdbcType="INTEGER" property="client_version" />
+    <result column="client_interface_name" jdbcType="VARCHAR" property="client_interface_name" />
+    <result column="login_name" jdbcType="VARCHAR" property="login_name" />
+    <result column="nt_domain" jdbcType="VARCHAR" property="nt_domain" />
+    <result column="nt_user_name" jdbcType="VARCHAR" property="nt_user_name" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="cpu_time" jdbcType="INTEGER" property="cpu_time" />
+    <result column="memory_usage" jdbcType="INTEGER" property="memory_usage" />
+    <result column="total_scheduled_time" jdbcType="INTEGER" property="total_scheduled_time" />
+    <result column="total_elapsed_time" jdbcType="INTEGER" property="total_elapsed_time" />
+    <result column="endpoint_id" jdbcType="INTEGER" property="endpoint_id" />
+    <result column="last_request_start_time" jdbcType="TIMESTAMP" property="last_request_start_time" />
+    <result column="last_request_end_time" jdbcType="TIMESTAMP" property="last_request_end_time" />
+    <result column="reads" jdbcType="BIGINT" property="reads" />
+    <result column="writes" jdbcType="BIGINT" property="writes" />
+    <result column="logical_reads" jdbcType="BIGINT" property="logical_reads" />
+    <result column="is_user_process" jdbcType="BIT" property="is_user_process" />
+    <result column="text_size" jdbcType="INTEGER" property="text_size" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="date_format" jdbcType="VARCHAR" property="date_format" />
+    <result column="date_first" jdbcType="SMALLINT" property="date_first" />
+    <result column="quoted_identifier" jdbcType="BIT" property="quoted_identifier" />
+    <result column="arithabort" jdbcType="BIT" property="arithabort" />
+    <result column="ansi_null_dflt_on" jdbcType="BIT" property="ansi_null_dflt_on" />
+    <result column="ansi_defaults" jdbcType="BIT" property="ansi_defaults" />
+    <result column="ansi_warnings" jdbcType="BIT" property="ansi_warnings" />
+    <result column="ansi_padding" jdbcType="BIT" property="ansi_padding" />
+    <result column="ansi_nulls" jdbcType="BIT" property="ansi_nulls" />
+    <result column="concat_null_yields_null" jdbcType="BIT" property="concat_null_yields_null" />
+    <result column="transaction_isolation_level" jdbcType="SMALLINT" property="transaction_isolation_level" />
+    <result column="lock_timeout" jdbcType="INTEGER" property="lock_timeout" />
+    <result column="deadlock_priority" jdbcType="INTEGER" property="deadlock_priority" />
+    <result column="row_count" jdbcType="BIGINT" property="row_count" />
+    <result column="prev_error" jdbcType="INTEGER" property="prev_error" />
+    <result column="original_login_name" jdbcType="VARCHAR" property="original_login_name" />
+    <result column="last_successful_logon" jdbcType="TIMESTAMP" property="last_successful_logon" />
+    <result column="last_unsuccessful_logon" jdbcType="TIMESTAMP" property="last_unsuccessful_logon" />
+    <result column="unsuccessful_logons" jdbcType="BIGINT" property="unsuccessful_logons" />
+    <result column="group_id" jdbcType="INTEGER" property="group_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecSessionsWithBLOBs">
+    <result column="security_id" jdbcType="VARBINARY" property="security_id" />
+    <result column="context_info" jdbcType="VARBINARY" property="context_info" />
+    <result column="original_security_id" jdbcType="VARBINARY" property="original_security_id" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    security_id, context_info, original_security_id
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecSessionsWithBLOBs">
+    insert into dm_exec_sessions (session_id, login_time, host_name, 
+      program_name, host_process_id, client_version, 
+      client_interface_name, login_name, nt_domain, 
+      nt_user_name, status, cpu_time, 
+      memory_usage, total_scheduled_time, total_elapsed_time, 
+      endpoint_id, last_request_start_time, 
+      last_request_end_time, reads, writes, 
+      logical_reads, is_user_process, text_size, 
+      language, date_format, date_first, 
+      quoted_identifier, arithabort, ansi_null_dflt_on, 
+      ansi_defaults, ansi_warnings, ansi_padding, 
+      ansi_nulls, concat_null_yields_null, transaction_isolation_level, 
+      lock_timeout, deadlock_priority, row_count, 
+      prev_error, original_login_name, last_successful_logon, 
+      last_unsuccessful_logon, unsuccessful_logons, 
+      group_id, security_id, context_info, 
+      original_security_id)
+    values (#{session_id,jdbcType=SMALLINT}, #{login_time,jdbcType=TIMESTAMP}, #{host_name,jdbcType=VARCHAR}, 
+      #{program_name,jdbcType=VARCHAR}, #{host_process_id,jdbcType=INTEGER}, #{client_version,jdbcType=INTEGER}, 
+      #{client_interface_name,jdbcType=VARCHAR}, #{login_name,jdbcType=VARCHAR}, #{nt_domain,jdbcType=VARCHAR}, 
+      #{nt_user_name,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{cpu_time,jdbcType=INTEGER}, 
+      #{memory_usage,jdbcType=INTEGER}, #{total_scheduled_time,jdbcType=INTEGER}, #{total_elapsed_time,jdbcType=INTEGER}, 
+      #{endpoint_id,jdbcType=INTEGER}, #{last_request_start_time,jdbcType=TIMESTAMP}, 
+      #{last_request_end_time,jdbcType=TIMESTAMP}, #{reads,jdbcType=BIGINT}, #{writes,jdbcType=BIGINT}, 
+      #{logical_reads,jdbcType=BIGINT}, #{is_user_process,jdbcType=BIT}, #{text_size,jdbcType=INTEGER}, 
+      #{language,jdbcType=VARCHAR}, #{date_format,jdbcType=VARCHAR}, #{date_first,jdbcType=SMALLINT}, 
+      #{quoted_identifier,jdbcType=BIT}, #{arithabort,jdbcType=BIT}, #{ansi_null_dflt_on,jdbcType=BIT}, 
+      #{ansi_defaults,jdbcType=BIT}, #{ansi_warnings,jdbcType=BIT}, #{ansi_padding,jdbcType=BIT}, 
+      #{ansi_nulls,jdbcType=BIT}, #{concat_null_yields_null,jdbcType=BIT}, #{transaction_isolation_level,jdbcType=SMALLINT}, 
+      #{lock_timeout,jdbcType=INTEGER}, #{deadlock_priority,jdbcType=INTEGER}, #{row_count,jdbcType=BIGINT}, 
+      #{prev_error,jdbcType=INTEGER}, #{original_login_name,jdbcType=VARCHAR}, #{last_successful_logon,jdbcType=TIMESTAMP}, 
+      #{last_unsuccessful_logon,jdbcType=TIMESTAMP}, #{unsuccessful_logons,jdbcType=BIGINT}, 
+      #{group_id,jdbcType=INTEGER}, #{security_id,jdbcType=VARBINARY}, #{context_info,jdbcType=VARBINARY}, 
+      #{original_security_id,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecSessionsWithBLOBs">
+    insert into dm_exec_sessions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="login_time != null">
+        login_time,
+      </if>
+      <if test="host_name != null">
+        host_name,
+      </if>
+      <if test="program_name != null">
+        program_name,
+      </if>
+      <if test="host_process_id != null">
+        host_process_id,
+      </if>
+      <if test="client_version != null">
+        client_version,
+      </if>
+      <if test="client_interface_name != null">
+        client_interface_name,
+      </if>
+      <if test="login_name != null">
+        login_name,
+      </if>
+      <if test="nt_domain != null">
+        nt_domain,
+      </if>
+      <if test="nt_user_name != null">
+        nt_user_name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="cpu_time != null">
+        cpu_time,
+      </if>
+      <if test="memory_usage != null">
+        memory_usage,
+      </if>
+      <if test="total_scheduled_time != null">
+        total_scheduled_time,
+      </if>
+      <if test="total_elapsed_time != null">
+        total_elapsed_time,
+      </if>
+      <if test="endpoint_id != null">
+        endpoint_id,
+      </if>
+      <if test="last_request_start_time != null">
+        last_request_start_time,
+      </if>
+      <if test="last_request_end_time != null">
+        last_request_end_time,
+      </if>
+      <if test="reads != null">
+        reads,
+      </if>
+      <if test="writes != null">
+        writes,
+      </if>
+      <if test="logical_reads != null">
+        logical_reads,
+      </if>
+      <if test="is_user_process != null">
+        is_user_process,
+      </if>
+      <if test="text_size != null">
+        text_size,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="date_format != null">
+        date_format,
+      </if>
+      <if test="date_first != null">
+        date_first,
+      </if>
+      <if test="quoted_identifier != null">
+        quoted_identifier,
+      </if>
+      <if test="arithabort != null">
+        arithabort,
+      </if>
+      <if test="ansi_null_dflt_on != null">
+        ansi_null_dflt_on,
+      </if>
+      <if test="ansi_defaults != null">
+        ansi_defaults,
+      </if>
+      <if test="ansi_warnings != null">
+        ansi_warnings,
+      </if>
+      <if test="ansi_padding != null">
+        ansi_padding,
+      </if>
+      <if test="ansi_nulls != null">
+        ansi_nulls,
+      </if>
+      <if test="concat_null_yields_null != null">
+        concat_null_yields_null,
+      </if>
+      <if test="transaction_isolation_level != null">
+        transaction_isolation_level,
+      </if>
+      <if test="lock_timeout != null">
+        lock_timeout,
+      </if>
+      <if test="deadlock_priority != null">
+        deadlock_priority,
+      </if>
+      <if test="row_count != null">
+        row_count,
+      </if>
+      <if test="prev_error != null">
+        prev_error,
+      </if>
+      <if test="original_login_name != null">
+        original_login_name,
+      </if>
+      <if test="last_successful_logon != null">
+        last_successful_logon,
+      </if>
+      <if test="last_unsuccessful_logon != null">
+        last_unsuccessful_logon,
+      </if>
+      <if test="unsuccessful_logons != null">
+        unsuccessful_logons,
+      </if>
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="security_id != null">
+        security_id,
+      </if>
+      <if test="context_info != null">
+        context_info,
+      </if>
+      <if test="original_security_id != null">
+        original_security_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=SMALLINT},
+      </if>
+      <if test="login_time != null">
+        #{login_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="host_name != null">
+        #{host_name,jdbcType=VARCHAR},
+      </if>
+      <if test="program_name != null">
+        #{program_name,jdbcType=VARCHAR},
+      </if>
+      <if test="host_process_id != null">
+        #{host_process_id,jdbcType=INTEGER},
+      </if>
+      <if test="client_version != null">
+        #{client_version,jdbcType=INTEGER},
+      </if>
+      <if test="client_interface_name != null">
+        #{client_interface_name,jdbcType=VARCHAR},
+      </if>
+      <if test="login_name != null">
+        #{login_name,jdbcType=VARCHAR},
+      </if>
+      <if test="nt_domain != null">
+        #{nt_domain,jdbcType=VARCHAR},
+      </if>
+      <if test="nt_user_name != null">
+        #{nt_user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="cpu_time != null">
+        #{cpu_time,jdbcType=INTEGER},
+      </if>
+      <if test="memory_usage != null">
+        #{memory_usage,jdbcType=INTEGER},
+      </if>
+      <if test="total_scheduled_time != null">
+        #{total_scheduled_time,jdbcType=INTEGER},
+      </if>
+      <if test="total_elapsed_time != null">
+        #{total_elapsed_time,jdbcType=INTEGER},
+      </if>
+      <if test="endpoint_id != null">
+        #{endpoint_id,jdbcType=INTEGER},
+      </if>
+      <if test="last_request_start_time != null">
+        #{last_request_start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_request_end_time != null">
+        #{last_request_end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reads != null">
+        #{reads,jdbcType=BIGINT},
+      </if>
+      <if test="writes != null">
+        #{writes,jdbcType=BIGINT},
+      </if>
+      <if test="logical_reads != null">
+        #{logical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="is_user_process != null">
+        #{is_user_process,jdbcType=BIT},
+      </if>
+      <if test="text_size != null">
+        #{text_size,jdbcType=INTEGER},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="date_format != null">
+        #{date_format,jdbcType=VARCHAR},
+      </if>
+      <if test="date_first != null">
+        #{date_first,jdbcType=SMALLINT},
+      </if>
+      <if test="quoted_identifier != null">
+        #{quoted_identifier,jdbcType=BIT},
+      </if>
+      <if test="arithabort != null">
+        #{arithabort,jdbcType=BIT},
+      </if>
+      <if test="ansi_null_dflt_on != null">
+        #{ansi_null_dflt_on,jdbcType=BIT},
+      </if>
+      <if test="ansi_defaults != null">
+        #{ansi_defaults,jdbcType=BIT},
+      </if>
+      <if test="ansi_warnings != null">
+        #{ansi_warnings,jdbcType=BIT},
+      </if>
+      <if test="ansi_padding != null">
+        #{ansi_padding,jdbcType=BIT},
+      </if>
+      <if test="ansi_nulls != null">
+        #{ansi_nulls,jdbcType=BIT},
+      </if>
+      <if test="concat_null_yields_null != null">
+        #{concat_null_yields_null,jdbcType=BIT},
+      </if>
+      <if test="transaction_isolation_level != null">
+        #{transaction_isolation_level,jdbcType=SMALLINT},
+      </if>
+      <if test="lock_timeout != null">
+        #{lock_timeout,jdbcType=INTEGER},
+      </if>
+      <if test="deadlock_priority != null">
+        #{deadlock_priority,jdbcType=INTEGER},
+      </if>
+      <if test="row_count != null">
+        #{row_count,jdbcType=BIGINT},
+      </if>
+      <if test="prev_error != null">
+        #{prev_error,jdbcType=INTEGER},
+      </if>
+      <if test="original_login_name != null">
+        #{original_login_name,jdbcType=VARCHAR},
+      </if>
+      <if test="last_successful_logon != null">
+        #{last_successful_logon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_unsuccessful_logon != null">
+        #{last_unsuccessful_logon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unsuccessful_logons != null">
+        #{unsuccessful_logons,jdbcType=BIGINT},
+      </if>
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+      <if test="security_id != null">
+        #{security_id,jdbcType=VARBINARY},
+      </if>
+      <if test="context_info != null">
+        #{context_info,jdbcType=VARBINARY},
+      </if>
+      <if test="original_security_id != null">
+        #{original_security_id,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

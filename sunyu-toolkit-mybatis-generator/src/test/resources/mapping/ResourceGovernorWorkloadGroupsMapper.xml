@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ResourceGovernorWorkloadGroupsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ResourceGovernorWorkloadGroups">
+    <result column="group_id" jdbcType="INTEGER" property="group_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="importance" jdbcType="VARCHAR" property="importance" />
+    <result column="request_max_memory_grant_percent" jdbcType="INTEGER" property="request_max_memory_grant_percent" />
+    <result column="request_max_cpu_time_sec" jdbcType="INTEGER" property="request_max_cpu_time_sec" />
+    <result column="request_memory_grant_timeout_sec" jdbcType="INTEGER" property="request_memory_grant_timeout_sec" />
+    <result column="max_dop" jdbcType="INTEGER" property="max_dop" />
+    <result column="group_max_requests" jdbcType="INTEGER" property="group_max_requests" />
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ResourceGovernorWorkloadGroups">
+    insert into resource_governor_workload_groups (group_id, name, importance, 
+      request_max_memory_grant_percent, request_max_cpu_time_sec, 
+      request_memory_grant_timeout_sec, max_dop, 
+      group_max_requests, pool_id)
+    values (#{group_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{importance,jdbcType=VARCHAR}, 
+      #{request_max_memory_grant_percent,jdbcType=INTEGER}, #{request_max_cpu_time_sec,jdbcType=INTEGER}, 
+      #{request_memory_grant_timeout_sec,jdbcType=INTEGER}, #{max_dop,jdbcType=INTEGER}, 
+      #{group_max_requests,jdbcType=INTEGER}, #{pool_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ResourceGovernorWorkloadGroups">
+    insert into resource_governor_workload_groups
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="importance != null">
+        importance,
+      </if>
+      <if test="request_max_memory_grant_percent != null">
+        request_max_memory_grant_percent,
+      </if>
+      <if test="request_max_cpu_time_sec != null">
+        request_max_cpu_time_sec,
+      </if>
+      <if test="request_memory_grant_timeout_sec != null">
+        request_memory_grant_timeout_sec,
+      </if>
+      <if test="max_dop != null">
+        max_dop,
+      </if>
+      <if test="group_max_requests != null">
+        group_max_requests,
+      </if>
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="importance != null">
+        #{importance,jdbcType=VARCHAR},
+      </if>
+      <if test="request_max_memory_grant_percent != null">
+        #{request_max_memory_grant_percent,jdbcType=INTEGER},
+      </if>
+      <if test="request_max_cpu_time_sec != null">
+        #{request_max_cpu_time_sec,jdbcType=INTEGER},
+      </if>
+      <if test="request_memory_grant_timeout_sec != null">
+        #{request_memory_grant_timeout_sec,jdbcType=INTEGER},
+      </if>
+      <if test="max_dop != null">
+        #{max_dop,jdbcType=INTEGER},
+      </if>
+      <if test="group_max_requests != null">
+        #{group_max_requests,jdbcType=INTEGER},
+      </if>
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

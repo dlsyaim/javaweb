@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsPressureadjustvalverealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsPressureadjustvalvereal">
+    <id column="PressureAdjustValveRealId" jdbcType="BIGINT" property="pressureAdjustValveRealId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RealTime" jdbcType="TIMESTAMP" property="realTime" />
+    <result column="Pressure" jdbcType="DOUBLE" property="pressure" />
+    <result column="Position" jdbcType="DOUBLE" property="position" />
+    <result column="Fault" jdbcType="BIT" property="fault" />
+    <result column="Local" jdbcType="BIT" property="local" />
+    <result column="PressureOrPosition" jdbcType="BIT" property="pressureOrPosition" />
+    <result column="PressureSet" jdbcType="DOUBLE" property="pressureSet" />
+    <result column="PositionSet" jdbcType="DOUBLE" property="positionSet" />
+    <result column="PressureOrPositionSet" jdbcType="BIT" property="pressureOrPositionSet" />
+    <result column="ConfirmSet" jdbcType="BIT" property="confirmSet" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PressureAdjustValveRealId, EquipmentId, RealTime, Pressure, Position, Fault, Local, 
+    PressureOrPosition, PressureSet, PositionSet, PressureOrPositionSet, ConfirmSet
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_PressureAdjustValveReal
+    where PressureAdjustValveRealId = #{pressureAdjustValveRealId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_PressureAdjustValveReal
+    where PressureAdjustValveRealId = #{pressureAdjustValveRealId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsPressureadjustvalvereal">
+    insert into KS_PressureAdjustValveReal (PressureAdjustValveRealId, EquipmentId, 
+      RealTime, Pressure, Position, 
+      Fault, Local, PressureOrPosition, 
+      PressureSet, PositionSet, PressureOrPositionSet, 
+      ConfirmSet)
+    values (#{pressureAdjustValveRealId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, 
+      #{realTime,jdbcType=TIMESTAMP}, #{pressure,jdbcType=DOUBLE}, #{position,jdbcType=DOUBLE}, 
+      #{fault,jdbcType=BIT}, #{local,jdbcType=BIT}, #{pressureOrPosition,jdbcType=BIT}, 
+      #{pressureSet,jdbcType=DOUBLE}, #{positionSet,jdbcType=DOUBLE}, #{pressureOrPositionSet,jdbcType=BIT}, 
+      #{confirmSet,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsPressureadjustvalvereal">
+    insert into KS_PressureAdjustValveReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pressureAdjustValveRealId != null">
+        PressureAdjustValveRealId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="realTime != null">
+        RealTime,
+      </if>
+      <if test="pressure != null">
+        Pressure,
+      </if>
+      <if test="position != null">
+        Position,
+      </if>
+      <if test="fault != null">
+        Fault,
+      </if>
+      <if test="local != null">
+        Local,
+      </if>
+      <if test="pressureOrPosition != null">
+        PressureOrPosition,
+      </if>
+      <if test="pressureSet != null">
+        PressureSet,
+      </if>
+      <if test="positionSet != null">
+        PositionSet,
+      </if>
+      <if test="pressureOrPositionSet != null">
+        PressureOrPositionSet,
+      </if>
+      <if test="confirmSet != null">
+        ConfirmSet,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pressureAdjustValveRealId != null">
+        #{pressureAdjustValveRealId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pressure != null">
+        #{pressure,jdbcType=DOUBLE},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=DOUBLE},
+      </if>
+      <if test="fault != null">
+        #{fault,jdbcType=BIT},
+      </if>
+      <if test="local != null">
+        #{local,jdbcType=BIT},
+      </if>
+      <if test="pressureOrPosition != null">
+        #{pressureOrPosition,jdbcType=BIT},
+      </if>
+      <if test="pressureSet != null">
+        #{pressureSet,jdbcType=DOUBLE},
+      </if>
+      <if test="positionSet != null">
+        #{positionSet,jdbcType=DOUBLE},
+      </if>
+      <if test="pressureOrPositionSet != null">
+        #{pressureOrPositionSet,jdbcType=BIT},
+      </if>
+      <if test="confirmSet != null">
+        #{confirmSet,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsPressureadjustvalvereal">
+    update KS_PressureAdjustValveReal
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        RealTime = #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pressure != null">
+        Pressure = #{pressure,jdbcType=DOUBLE},
+      </if>
+      <if test="position != null">
+        Position = #{position,jdbcType=DOUBLE},
+      </if>
+      <if test="fault != null">
+        Fault = #{fault,jdbcType=BIT},
+      </if>
+      <if test="local != null">
+        Local = #{local,jdbcType=BIT},
+      </if>
+      <if test="pressureOrPosition != null">
+        PressureOrPosition = #{pressureOrPosition,jdbcType=BIT},
+      </if>
+      <if test="pressureSet != null">
+        PressureSet = #{pressureSet,jdbcType=DOUBLE},
+      </if>
+      <if test="positionSet != null">
+        PositionSet = #{positionSet,jdbcType=DOUBLE},
+      </if>
+      <if test="pressureOrPositionSet != null">
+        PressureOrPositionSet = #{pressureOrPositionSet,jdbcType=BIT},
+      </if>
+      <if test="confirmSet != null">
+        ConfirmSet = #{confirmSet,jdbcType=BIT},
+      </if>
+    </set>
+    where PressureAdjustValveRealId = #{pressureAdjustValveRealId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsPressureadjustvalvereal">
+    update KS_PressureAdjustValveReal
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RealTime = #{realTime,jdbcType=TIMESTAMP},
+      Pressure = #{pressure,jdbcType=DOUBLE},
+      Position = #{position,jdbcType=DOUBLE},
+      Fault = #{fault,jdbcType=BIT},
+      Local = #{local,jdbcType=BIT},
+      PressureOrPosition = #{pressureOrPosition,jdbcType=BIT},
+      PressureSet = #{pressureSet,jdbcType=DOUBLE},
+      PositionSet = #{positionSet,jdbcType=DOUBLE},
+      PressureOrPositionSet = #{pressureOrPositionSet,jdbcType=BIT},
+      ConfirmSet = #{confirmSet,jdbcType=BIT}
+    where PressureAdjustValveRealId = #{pressureAdjustValveRealId,jdbcType=BIGINT}
+  </update>
+</mapper>

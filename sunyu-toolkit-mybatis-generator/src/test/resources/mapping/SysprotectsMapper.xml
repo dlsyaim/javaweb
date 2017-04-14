@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysprotectsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysprotects">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="SMALLINT" property="uid" />
+    <result column="action" jdbcType="TINYINT" property="action" />
+    <result column="protecttype" jdbcType="TINYINT" property="protecttype" />
+    <result column="grantor" jdbcType="SMALLINT" property="grantor" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.Sysprotects">
+    <result column="columns" jdbcType="VARBINARY" property="columns" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    columns
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysprotects">
+    insert into sysprotects (id, uid, action, 
+      protecttype, grantor, columns
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=SMALLINT}, #{action,jdbcType=TINYINT}, 
+      #{protecttype,jdbcType=TINYINT}, #{grantor,jdbcType=SMALLINT}, #{columns,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysprotects">
+    insert into sysprotects
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="action != null">
+        action,
+      </if>
+      <if test="protecttype != null">
+        protecttype,
+      </if>
+      <if test="grantor != null">
+        grantor,
+      </if>
+      <if test="columns != null">
+        columns,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=SMALLINT},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=TINYINT},
+      </if>
+      <if test="protecttype != null">
+        #{protecttype,jdbcType=TINYINT},
+      </if>
+      <if test="grantor != null">
+        #{grantor,jdbcType=SMALLINT},
+      </if>
+      <if test="columns != null">
+        #{columns,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

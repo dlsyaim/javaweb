@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsLatchStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsLatchStats">
+    <result column="latch_class" jdbcType="VARCHAR" property="latch_class" />
+    <result column="waiting_requests_count" jdbcType="BIGINT" property="waiting_requests_count" />
+    <result column="wait_time_ms" jdbcType="BIGINT" property="wait_time_ms" />
+    <result column="max_wait_time_ms" jdbcType="BIGINT" property="max_wait_time_ms" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsLatchStats">
+    insert into dm_os_latch_stats (latch_class, waiting_requests_count, 
+      wait_time_ms, max_wait_time_ms)
+    values (#{latch_class,jdbcType=VARCHAR}, #{waiting_requests_count,jdbcType=BIGINT}, 
+      #{wait_time_ms,jdbcType=BIGINT}, #{max_wait_time_ms,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsLatchStats">
+    insert into dm_os_latch_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="latch_class != null">
+        latch_class,
+      </if>
+      <if test="waiting_requests_count != null">
+        waiting_requests_count,
+      </if>
+      <if test="wait_time_ms != null">
+        wait_time_ms,
+      </if>
+      <if test="max_wait_time_ms != null">
+        max_wait_time_ms,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="latch_class != null">
+        #{latch_class,jdbcType=VARCHAR},
+      </if>
+      <if test="waiting_requests_count != null">
+        #{waiting_requests_count,jdbcType=BIGINT},
+      </if>
+      <if test="wait_time_ms != null">
+        #{wait_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="max_wait_time_ms != null">
+        #{max_wait_time_ms,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

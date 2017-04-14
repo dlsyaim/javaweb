@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ZwTempMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ZwTemp">
+    <result column="badge" jdbcType="VARCHAR" property="badge" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="Job" jdbcType="VARCHAR" property="job" />
+    <result column="KDA" jdbcType="DOUBLE" property="KDA" />
+    <result column="Match" jdbcType="INTEGER" property="match" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ZwTemp">
+    insert into zw_Temp (badge, name, Job, 
+      KDA, Match)
+    values (#{badge,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{KDA,jdbcType=DOUBLE}, #{match,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ZwTemp">
+    insert into zw_Temp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="badge != null">
+        badge,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="job != null">
+        Job,
+      </if>
+      <if test="KDA != null">
+        KDA,
+      </if>
+      <if test="match != null">
+        Match,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="badge != null">
+        #{badge,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="KDA != null">
+        #{KDA,jdbcType=DOUBLE},
+      </if>
+      <if test="match != null">
+        #{match,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

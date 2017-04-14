@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsBlazerealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsBlazereal">
+    <id column="BlazeRealId" jdbcType="BIGINT" property="blazeRealId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RealTime" jdbcType="TIMESTAMP" property="realTime" />
+    <result column="Blaze" jdbcType="DOUBLE" property="blaze" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BlazeRealId, EquipmentId, RealTime, Blaze
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_BlazeReal
+    where BlazeRealId = #{blazeRealId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_BlazeReal
+    where BlazeRealId = #{blazeRealId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsBlazereal">
+    insert into KS_BlazeReal (BlazeRealId, EquipmentId, RealTime, 
+      Blaze)
+    values (#{blazeRealId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, #{realTime,jdbcType=TIMESTAMP}, 
+      #{blaze,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsBlazereal">
+    insert into KS_BlazeReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blazeRealId != null">
+        BlazeRealId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="realTime != null">
+        RealTime,
+      </if>
+      <if test="blaze != null">
+        Blaze,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blazeRealId != null">
+        #{blazeRealId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="blaze != null">
+        #{blaze,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsBlazereal">
+    update KS_BlazeReal
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        RealTime = #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="blaze != null">
+        Blaze = #{blaze,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where BlazeRealId = #{blazeRealId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsBlazereal">
+    update KS_BlazeReal
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RealTime = #{realTime,jdbcType=TIMESTAMP},
+      Blaze = #{blaze,jdbcType=DOUBLE}
+    where BlazeRealId = #{blazeRealId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TableConstraintsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.TableConstraints">
+    <result column="CONSTRAINT_CATALOG" jdbcType="VARCHAR" property="CONSTRAINT_CATALOG" />
+    <result column="CONSTRAINT_SCHEMA" jdbcType="VARCHAR" property="CONSTRAINT_SCHEMA" />
+    <result column="CONSTRAINT_NAME" jdbcType="VARCHAR" property="CONSTRAINT_NAME" />
+    <result column="TABLE_CATALOG" jdbcType="VARCHAR" property="TABLE_CATALOG" />
+    <result column="TABLE_SCHEMA" jdbcType="VARCHAR" property="TABLE_SCHEMA" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="TABLE_NAME" />
+    <result column="CONSTRAINT_TYPE" jdbcType="VARCHAR" property="CONSTRAINT_TYPE" />
+    <result column="IS_DEFERRABLE" jdbcType="VARCHAR" property="IS_DEFERRABLE" />
+    <result column="INITIALLY_DEFERRED" jdbcType="VARCHAR" property="INITIALLY_DEFERRED" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.TableConstraints">
+    insert into TABLE_CONSTRAINTS (CONSTRAINT_CATALOG, CONSTRAINT_SCHEMA, 
+      CONSTRAINT_NAME, TABLE_CATALOG, TABLE_SCHEMA, 
+      TABLE_NAME, CONSTRAINT_TYPE, IS_DEFERRABLE, 
+      INITIALLY_DEFERRED)
+    values (#{CONSTRAINT_CATALOG,jdbcType=VARCHAR}, #{CONSTRAINT_SCHEMA,jdbcType=VARCHAR}, 
+      #{CONSTRAINT_NAME,jdbcType=VARCHAR}, #{TABLE_CATALOG,jdbcType=VARCHAR}, #{TABLE_SCHEMA,jdbcType=VARCHAR}, 
+      #{TABLE_NAME,jdbcType=VARCHAR}, #{CONSTRAINT_TYPE,jdbcType=VARCHAR}, #{IS_DEFERRABLE,jdbcType=VARCHAR}, 
+      #{INITIALLY_DEFERRED,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.TableConstraints">
+    insert into TABLE_CONSTRAINTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="CONSTRAINT_CATALOG != null">
+        CONSTRAINT_CATALOG,
+      </if>
+      <if test="CONSTRAINT_SCHEMA != null">
+        CONSTRAINT_SCHEMA,
+      </if>
+      <if test="CONSTRAINT_NAME != null">
+        CONSTRAINT_NAME,
+      </if>
+      <if test="TABLE_CATALOG != null">
+        TABLE_CATALOG,
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        TABLE_SCHEMA,
+      </if>
+      <if test="TABLE_NAME != null">
+        TABLE_NAME,
+      </if>
+      <if test="CONSTRAINT_TYPE != null">
+        CONSTRAINT_TYPE,
+      </if>
+      <if test="IS_DEFERRABLE != null">
+        IS_DEFERRABLE,
+      </if>
+      <if test="INITIALLY_DEFERRED != null">
+        INITIALLY_DEFERRED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="CONSTRAINT_CATALOG != null">
+        #{CONSTRAINT_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSTRAINT_SCHEMA != null">
+        #{CONSTRAINT_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSTRAINT_NAME != null">
+        #{CONSTRAINT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_CATALOG != null">
+        #{TABLE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        #{TABLE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_NAME != null">
+        #{TABLE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSTRAINT_TYPE != null">
+        #{CONSTRAINT_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_DEFERRABLE != null">
+        #{IS_DEFERRABLE,jdbcType=VARCHAR},
+      </if>
+      <if test="INITIALLY_DEFERRED != null">
+        #{INITIALLY_DEFERRED,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

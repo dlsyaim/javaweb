@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnBuiltinPermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnBuiltinPermissions">
+    <result column="class_desc" jdbcType="VARCHAR" property="class_desc" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permission_name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="covering_permission_name" jdbcType="VARCHAR" property="covering_permission_name" />
+    <result column="parent_class_desc" jdbcType="VARCHAR" property="parent_class_desc" />
+    <result column="parent_covering_permission_name" jdbcType="VARCHAR" property="parent_covering_permission_name" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnBuiltinPermissions">
+    insert into fn_builtin_permissions (class_desc, permission_name, type, 
+      covering_permission_name, parent_class_desc, 
+      parent_covering_permission_name)
+    values (#{class_desc,jdbcType=VARCHAR}, #{permission_name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{covering_permission_name,jdbcType=VARCHAR}, #{parent_class_desc,jdbcType=VARCHAR}, 
+      #{parent_covering_permission_name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnBuiltinPermissions">
+    insert into fn_builtin_permissions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="class_desc != null">
+        class_desc,
+      </if>
+      <if test="permission_name != null">
+        permission_name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="covering_permission_name != null">
+        covering_permission_name,
+      </if>
+      <if test="parent_class_desc != null">
+        parent_class_desc,
+      </if>
+      <if test="parent_covering_permission_name != null">
+        parent_covering_permission_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="class_desc != null">
+        #{class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="permission_name != null">
+        #{permission_name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="covering_permission_name != null">
+        #{covering_permission_name,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_class_desc != null">
+        #{parent_class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_covering_permission_name != null">
+        #{parent_covering_permission_name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

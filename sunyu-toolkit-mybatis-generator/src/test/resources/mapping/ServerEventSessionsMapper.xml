@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServerEventSessionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ServerEventSessions">
+    <result column="event_session_id" jdbcType="INTEGER" property="event_session_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="event_retention_mode" jdbcType="CHAR" property="event_retention_mode" />
+    <result column="event_retention_mode_desc" jdbcType="VARCHAR" property="event_retention_mode_desc" />
+    <result column="max_dispatch_latency" jdbcType="INTEGER" property="max_dispatch_latency" />
+    <result column="max_memory" jdbcType="INTEGER" property="max_memory" />
+    <result column="max_event_size" jdbcType="INTEGER" property="max_event_size" />
+    <result column="memory_partition_mode" jdbcType="CHAR" property="memory_partition_mode" />
+    <result column="memory_partition_mode_desc" jdbcType="VARCHAR" property="memory_partition_mode_desc" />
+    <result column="track_causality" jdbcType="BIT" property="track_causality" />
+    <result column="startup_state" jdbcType="BIT" property="startup_state" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ServerEventSessions">
+    insert into server_event_sessions (event_session_id, name, event_retention_mode, 
+      event_retention_mode_desc, max_dispatch_latency, 
+      max_memory, max_event_size, memory_partition_mode, 
+      memory_partition_mode_desc, track_causality, 
+      startup_state)
+    values (#{event_session_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{event_retention_mode,jdbcType=CHAR}, 
+      #{event_retention_mode_desc,jdbcType=VARCHAR}, #{max_dispatch_latency,jdbcType=INTEGER}, 
+      #{max_memory,jdbcType=INTEGER}, #{max_event_size,jdbcType=INTEGER}, #{memory_partition_mode,jdbcType=CHAR}, 
+      #{memory_partition_mode_desc,jdbcType=VARCHAR}, #{track_causality,jdbcType=BIT}, 
+      #{startup_state,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ServerEventSessions">
+    insert into server_event_sessions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="event_session_id != null">
+        event_session_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="event_retention_mode != null">
+        event_retention_mode,
+      </if>
+      <if test="event_retention_mode_desc != null">
+        event_retention_mode_desc,
+      </if>
+      <if test="max_dispatch_latency != null">
+        max_dispatch_latency,
+      </if>
+      <if test="max_memory != null">
+        max_memory,
+      </if>
+      <if test="max_event_size != null">
+        max_event_size,
+      </if>
+      <if test="memory_partition_mode != null">
+        memory_partition_mode,
+      </if>
+      <if test="memory_partition_mode_desc != null">
+        memory_partition_mode_desc,
+      </if>
+      <if test="track_causality != null">
+        track_causality,
+      </if>
+      <if test="startup_state != null">
+        startup_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="event_session_id != null">
+        #{event_session_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="event_retention_mode != null">
+        #{event_retention_mode,jdbcType=CHAR},
+      </if>
+      <if test="event_retention_mode_desc != null">
+        #{event_retention_mode_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="max_dispatch_latency != null">
+        #{max_dispatch_latency,jdbcType=INTEGER},
+      </if>
+      <if test="max_memory != null">
+        #{max_memory,jdbcType=INTEGER},
+      </if>
+      <if test="max_event_size != null">
+        #{max_event_size,jdbcType=INTEGER},
+      </if>
+      <if test="memory_partition_mode != null">
+        #{memory_partition_mode,jdbcType=CHAR},
+      </if>
+      <if test="memory_partition_mode_desc != null">
+        #{memory_partition_mode_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="track_causality != null">
+        #{track_causality,jdbcType=BIT},
+      </if>
+      <if test="startup_state != null">
+        #{startup_state,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

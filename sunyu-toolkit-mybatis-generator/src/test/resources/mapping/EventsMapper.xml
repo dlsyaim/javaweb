@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.EventsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Events">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="is_trigger_event" jdbcType="BIT" property="is_trigger_event" />
+    <result column="event_group_type" jdbcType="INTEGER" property="event_group_type" />
+    <result column="event_group_type_desc" jdbcType="VARCHAR" property="event_group_type_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Events">
+    insert into events (object_id, type, type_desc, 
+      is_trigger_event, event_group_type, event_group_type_desc
+      )
+    values (#{object_id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{type_desc,jdbcType=VARCHAR}, 
+      #{is_trigger_event,jdbcType=BIT}, #{event_group_type,jdbcType=INTEGER}, #{event_group_type_desc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Events">
+    insert into events
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="is_trigger_event != null">
+        is_trigger_event,
+      </if>
+      <if test="event_group_type != null">
+        event_group_type,
+      </if>
+      <if test="event_group_type_desc != null">
+        event_group_type_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="is_trigger_event != null">
+        #{is_trigger_event,jdbcType=BIT},
+      </if>
+      <if test="event_group_type != null">
+        #{event_group_type,jdbcType=INTEGER},
+      </if>
+      <if test="event_group_type_desc != null">
+        #{event_group_type_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

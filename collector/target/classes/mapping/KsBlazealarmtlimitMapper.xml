@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsBlazealarmtlimitMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsBlazealarmtlimit">
+    <id column="BlaAlarmID" jdbcType="BIGINT" property="blaAlarmID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="BlaLLowLimit" jdbcType="DOUBLE" property="blaLLowLimit" />
+    <result column="BlaLowLimit" jdbcType="DOUBLE" property="blaLowLimit" />
+    <result column="BlaHighLimit" jdbcType="DOUBLE" property="blaHighLimit" />
+    <result column="BlaHHighLimit" jdbcType="DOUBLE" property="blaHHighLimit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BlaAlarmID, EquipMentID, BlaLLowLimit, BlaLowLimit, BlaHighLimit, BlaHHighLimit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_BlazeAlarmtLimit
+    where BlaAlarmID = #{blaAlarmID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_BlazeAlarmtLimit
+    where BlaAlarmID = #{blaAlarmID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsBlazealarmtlimit">
+    insert into KS_BlazeAlarmtLimit (BlaAlarmID, EquipMentID, BlaLLowLimit, 
+      BlaLowLimit, BlaHighLimit, BlaHHighLimit
+      )
+    values (#{blaAlarmID,jdbcType=BIGINT}, #{equipMentID,jdbcType=BIGINT}, #{blaLLowLimit,jdbcType=DOUBLE}, 
+      #{blaLowLimit,jdbcType=DOUBLE}, #{blaHighLimit,jdbcType=DOUBLE}, #{blaHHighLimit,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsBlazealarmtlimit">
+    insert into KS_BlazeAlarmtLimit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blaAlarmID != null">
+        BlaAlarmID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="blaLLowLimit != null">
+        BlaLLowLimit,
+      </if>
+      <if test="blaLowLimit != null">
+        BlaLowLimit,
+      </if>
+      <if test="blaHighLimit != null">
+        BlaHighLimit,
+      </if>
+      <if test="blaHHighLimit != null">
+        BlaHHighLimit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blaAlarmID != null">
+        #{blaAlarmID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="blaLLowLimit != null">
+        #{blaLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="blaLowLimit != null">
+        #{blaLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="blaHighLimit != null">
+        #{blaHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="blaHHighLimit != null">
+        #{blaHHighLimit,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsBlazealarmtlimit">
+    update KS_BlazeAlarmtLimit
+    <set>
+      <if test="equipMentID != null">
+        EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="blaLLowLimit != null">
+        BlaLLowLimit = #{blaLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="blaLowLimit != null">
+        BlaLowLimit = #{blaLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="blaHighLimit != null">
+        BlaHighLimit = #{blaHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="blaHHighLimit != null">
+        BlaHHighLimit = #{blaHHighLimit,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where BlaAlarmID = #{blaAlarmID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsBlazealarmtlimit">
+    update KS_BlazeAlarmtLimit
+    set EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      BlaLLowLimit = #{blaLLowLimit,jdbcType=DOUBLE},
+      BlaLowLimit = #{blaLowLimit,jdbcType=DOUBLE},
+      BlaHighLimit = #{blaHighLimit,jdbcType=DOUBLE},
+      BlaHHighLimit = #{blaHHighLimit,jdbcType=DOUBLE}
+    where BlaAlarmID = #{blaAlarmID,jdbcType=BIGINT}
+  </update>
+</mapper>

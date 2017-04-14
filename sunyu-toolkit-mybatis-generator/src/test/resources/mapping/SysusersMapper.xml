@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysusersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysusers">
+    <result column="uid" jdbcType="SMALLINT" property="uid" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="updatedate" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="altuid" jdbcType="SMALLINT" property="altuid" />
+    <result column="gid" jdbcType="SMALLINT" property="gid" />
+    <result column="environ" jdbcType="VARCHAR" property="environ" />
+    <result column="hasdbaccess" jdbcType="INTEGER" property="hasdbaccess" />
+    <result column="islogin" jdbcType="INTEGER" property="islogin" />
+    <result column="isntname" jdbcType="INTEGER" property="isntname" />
+    <result column="isntgroup" jdbcType="INTEGER" property="isntgroup" />
+    <result column="isntuser" jdbcType="INTEGER" property="isntuser" />
+    <result column="issqluser" jdbcType="INTEGER" property="issqluser" />
+    <result column="isaliased" jdbcType="INTEGER" property="isaliased" />
+    <result column="issqlrole" jdbcType="INTEGER" property="issqlrole" />
+    <result column="isapprole" jdbcType="INTEGER" property="isapprole" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysusersWithBLOBs">
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+    <result column="roles" jdbcType="VARBINARY" property="roles" />
+    <result column="password" jdbcType="VARBINARY" property="password" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sid, roles, password
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysusersWithBLOBs">
+    insert into sysusers (uid, status, name, 
+      createdate, updatedate, altuid, 
+      gid, environ, hasdbaccess, 
+      islogin, isntname, isntgroup, 
+      isntuser, issqluser, isaliased, 
+      issqlrole, isapprole, sid, 
+      roles, password)
+    values (#{uid,jdbcType=SMALLINT}, #{status,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}, #{altuid,jdbcType=SMALLINT}, 
+      #{gid,jdbcType=SMALLINT}, #{environ,jdbcType=VARCHAR}, #{hasdbaccess,jdbcType=INTEGER}, 
+      #{islogin,jdbcType=INTEGER}, #{isntname,jdbcType=INTEGER}, #{isntgroup,jdbcType=INTEGER}, 
+      #{isntuser,jdbcType=INTEGER}, #{issqluser,jdbcType=INTEGER}, #{isaliased,jdbcType=INTEGER}, 
+      #{issqlrole,jdbcType=INTEGER}, #{isapprole,jdbcType=INTEGER}, #{sid,jdbcType=VARBINARY}, 
+      #{roles,jdbcType=VARBINARY}, #{password,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysusersWithBLOBs">
+    insert into sysusers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="updatedate != null">
+        updatedate,
+      </if>
+      <if test="altuid != null">
+        altuid,
+      </if>
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="environ != null">
+        environ,
+      </if>
+      <if test="hasdbaccess != null">
+        hasdbaccess,
+      </if>
+      <if test="islogin != null">
+        islogin,
+      </if>
+      <if test="isntname != null">
+        isntname,
+      </if>
+      <if test="isntgroup != null">
+        isntgroup,
+      </if>
+      <if test="isntuser != null">
+        isntuser,
+      </if>
+      <if test="issqluser != null">
+        issqluser,
+      </if>
+      <if test="isaliased != null">
+        isaliased,
+      </if>
+      <if test="issqlrole != null">
+        issqlrole,
+      </if>
+      <if test="isapprole != null">
+        isapprole,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="roles != null">
+        roles,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="altuid != null">
+        #{altuid,jdbcType=SMALLINT},
+      </if>
+      <if test="gid != null">
+        #{gid,jdbcType=SMALLINT},
+      </if>
+      <if test="environ != null">
+        #{environ,jdbcType=VARCHAR},
+      </if>
+      <if test="hasdbaccess != null">
+        #{hasdbaccess,jdbcType=INTEGER},
+      </if>
+      <if test="islogin != null">
+        #{islogin,jdbcType=INTEGER},
+      </if>
+      <if test="isntname != null">
+        #{isntname,jdbcType=INTEGER},
+      </if>
+      <if test="isntgroup != null">
+        #{isntgroup,jdbcType=INTEGER},
+      </if>
+      <if test="isntuser != null">
+        #{isntuser,jdbcType=INTEGER},
+      </if>
+      <if test="issqluser != null">
+        #{issqluser,jdbcType=INTEGER},
+      </if>
+      <if test="isaliased != null">
+        #{isaliased,jdbcType=INTEGER},
+      </if>
+      <if test="issqlrole != null">
+        #{issqlrole,jdbcType=INTEGER},
+      </if>
+      <if test="isapprole != null">
+        #{isapprole,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+      <if test="roles != null">
+        #{roles,jdbcType=VARBINARY},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

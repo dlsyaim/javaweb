@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DomainsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Domains">
+    <result column="DOMAIN_CATALOG" jdbcType="VARCHAR" property="DOMAIN_CATALOG" />
+    <result column="DOMAIN_SCHEMA" jdbcType="VARCHAR" property="DOMAIN_SCHEMA" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="DOMAIN_NAME" />
+    <result column="DATA_TYPE" jdbcType="VARCHAR" property="DATA_TYPE" />
+    <result column="CHARACTER_MAXIMUM_LENGTH" jdbcType="INTEGER" property="CHARACTER_MAXIMUM_LENGTH" />
+    <result column="CHARACTER_OCTET_LENGTH" jdbcType="INTEGER" property="CHARACTER_OCTET_LENGTH" />
+    <result column="COLLATION_CATALOG" jdbcType="VARCHAR" property="COLLATION_CATALOG" />
+    <result column="COLLATION_SCHEMA" jdbcType="VARCHAR" property="COLLATION_SCHEMA" />
+    <result column="COLLATION_NAME" jdbcType="VARCHAR" property="COLLATION_NAME" />
+    <result column="CHARACTER_SET_CATALOG" jdbcType="VARCHAR" property="CHARACTER_SET_CATALOG" />
+    <result column="CHARACTER_SET_SCHEMA" jdbcType="VARCHAR" property="CHARACTER_SET_SCHEMA" />
+    <result column="CHARACTER_SET_NAME" jdbcType="VARCHAR" property="CHARACTER_SET_NAME" />
+    <result column="NUMERIC_PRECISION" jdbcType="TINYINT" property="NUMERIC_PRECISION" />
+    <result column="NUMERIC_PRECISION_RADIX" jdbcType="SMALLINT" property="NUMERIC_PRECISION_RADIX" />
+    <result column="NUMERIC_SCALE" jdbcType="INTEGER" property="NUMERIC_SCALE" />
+    <result column="DATETIME_PRECISION" jdbcType="SMALLINT" property="DATETIME_PRECISION" />
+    <result column="DOMAIN_DEFAULT" jdbcType="VARCHAR" property="DOMAIN_DEFAULT" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Domains">
+    insert into DOMAINS (DOMAIN_CATALOG, DOMAIN_SCHEMA, DOMAIN_NAME, 
+      DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, 
+      COLLATION_CATALOG, COLLATION_SCHEMA, COLLATION_NAME, 
+      CHARACTER_SET_CATALOG, CHARACTER_SET_SCHEMA, 
+      CHARACTER_SET_NAME, NUMERIC_PRECISION, 
+      NUMERIC_PRECISION_RADIX, NUMERIC_SCALE, 
+      DATETIME_PRECISION, DOMAIN_DEFAULT)
+    values (#{DOMAIN_CATALOG,jdbcType=VARCHAR}, #{DOMAIN_SCHEMA,jdbcType=VARCHAR}, #{DOMAIN_NAME,jdbcType=VARCHAR}, 
+      #{DATA_TYPE,jdbcType=VARCHAR}, #{CHARACTER_MAXIMUM_LENGTH,jdbcType=INTEGER}, #{CHARACTER_OCTET_LENGTH,jdbcType=INTEGER}, 
+      #{COLLATION_CATALOG,jdbcType=VARCHAR}, #{COLLATION_SCHEMA,jdbcType=VARCHAR}, #{COLLATION_NAME,jdbcType=VARCHAR}, 
+      #{CHARACTER_SET_CATALOG,jdbcType=VARCHAR}, #{CHARACTER_SET_SCHEMA,jdbcType=VARCHAR}, 
+      #{CHARACTER_SET_NAME,jdbcType=VARCHAR}, #{NUMERIC_PRECISION,jdbcType=TINYINT}, 
+      #{NUMERIC_PRECISION_RADIX,jdbcType=SMALLINT}, #{NUMERIC_SCALE,jdbcType=INTEGER}, 
+      #{DATETIME_PRECISION,jdbcType=SMALLINT}, #{DOMAIN_DEFAULT,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Domains">
+    insert into DOMAINS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="DOMAIN_CATALOG != null">
+        DOMAIN_CATALOG,
+      </if>
+      <if test="DOMAIN_SCHEMA != null">
+        DOMAIN_SCHEMA,
+      </if>
+      <if test="DOMAIN_NAME != null">
+        DOMAIN_NAME,
+      </if>
+      <if test="DATA_TYPE != null">
+        DATA_TYPE,
+      </if>
+      <if test="CHARACTER_MAXIMUM_LENGTH != null">
+        CHARACTER_MAXIMUM_LENGTH,
+      </if>
+      <if test="CHARACTER_OCTET_LENGTH != null">
+        CHARACTER_OCTET_LENGTH,
+      </if>
+      <if test="COLLATION_CATALOG != null">
+        COLLATION_CATALOG,
+      </if>
+      <if test="COLLATION_SCHEMA != null">
+        COLLATION_SCHEMA,
+      </if>
+      <if test="COLLATION_NAME != null">
+        COLLATION_NAME,
+      </if>
+      <if test="CHARACTER_SET_CATALOG != null">
+        CHARACTER_SET_CATALOG,
+      </if>
+      <if test="CHARACTER_SET_SCHEMA != null">
+        CHARACTER_SET_SCHEMA,
+      </if>
+      <if test="CHARACTER_SET_NAME != null">
+        CHARACTER_SET_NAME,
+      </if>
+      <if test="NUMERIC_PRECISION != null">
+        NUMERIC_PRECISION,
+      </if>
+      <if test="NUMERIC_PRECISION_RADIX != null">
+        NUMERIC_PRECISION_RADIX,
+      </if>
+      <if test="NUMERIC_SCALE != null">
+        NUMERIC_SCALE,
+      </if>
+      <if test="DATETIME_PRECISION != null">
+        DATETIME_PRECISION,
+      </if>
+      <if test="DOMAIN_DEFAULT != null">
+        DOMAIN_DEFAULT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="DOMAIN_CATALOG != null">
+        #{DOMAIN_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="DOMAIN_SCHEMA != null">
+        #{DOMAIN_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="DOMAIN_NAME != null">
+        #{DOMAIN_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="DATA_TYPE != null">
+        #{DATA_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_MAXIMUM_LENGTH != null">
+        #{CHARACTER_MAXIMUM_LENGTH,jdbcType=INTEGER},
+      </if>
+      <if test="CHARACTER_OCTET_LENGTH != null">
+        #{CHARACTER_OCTET_LENGTH,jdbcType=INTEGER},
+      </if>
+      <if test="COLLATION_CATALOG != null">
+        #{COLLATION_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLATION_SCHEMA != null">
+        #{COLLATION_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLATION_NAME != null">
+        #{COLLATION_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_CATALOG != null">
+        #{CHARACTER_SET_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_SCHEMA != null">
+        #{CHARACTER_SET_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_NAME != null">
+        #{CHARACTER_SET_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="NUMERIC_PRECISION != null">
+        #{NUMERIC_PRECISION,jdbcType=TINYINT},
+      </if>
+      <if test="NUMERIC_PRECISION_RADIX != null">
+        #{NUMERIC_PRECISION_RADIX,jdbcType=SMALLINT},
+      </if>
+      <if test="NUMERIC_SCALE != null">
+        #{NUMERIC_SCALE,jdbcType=INTEGER},
+      </if>
+      <if test="DATETIME_PRECISION != null">
+        #{DATETIME_PRECISION,jdbcType=SMALLINT},
+      </if>
+      <if test="DOMAIN_DEFAULT != null">
+        #{DOMAIN_DEFAULT,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SecurableClassesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.SecurableClasses">
+    <result column="class_desc" jdbcType="VARCHAR" property="class_desc" />
+    <result column="class" jdbcType="INTEGER" property="class" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SecurableClasses">
+    insert into securable_classes (class_desc, class)
+    values (#{class_desc,jdbcType=VARCHAR}, #{class,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SecurableClasses">
+    insert into securable_classes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="class_desc != null">
+        class_desc,
+      </if>
+      <if test="class != null">
+        class,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="class_desc != null">
+        #{class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

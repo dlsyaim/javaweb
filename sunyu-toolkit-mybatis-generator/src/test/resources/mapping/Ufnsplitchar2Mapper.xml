@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.Ufnsplitchar2Mapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Ufnsplitchar2">
+    <result column="COL" jdbcType="INTEGER" property="COL" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Ufnsplitchar2">
+    insert into ufnSplitChar2 (COL)
+    values (#{COL,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Ufnsplitchar2">
+    insert into ufnSplitChar2
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="COL != null">
+        COL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="COL != null">
+        #{COL,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

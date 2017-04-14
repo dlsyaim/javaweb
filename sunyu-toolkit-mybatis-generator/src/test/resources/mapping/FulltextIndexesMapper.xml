@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FulltextIndexesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FulltextIndexes">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="unique_index_id" jdbcType="INTEGER" property="unique_index_id" />
+    <result column="fulltext_catalog_id" jdbcType="INTEGER" property="fulltext_catalog_id" />
+    <result column="is_enabled" jdbcType="BIT" property="is_enabled" />
+    <result column="change_tracking_state" jdbcType="CHAR" property="change_tracking_state" />
+    <result column="change_tracking_state_desc" jdbcType="VARCHAR" property="change_tracking_state_desc" />
+    <result column="has_crawl_completed" jdbcType="BIT" property="has_crawl_completed" />
+    <result column="crawl_type" jdbcType="CHAR" property="crawl_type" />
+    <result column="crawl_type_desc" jdbcType="VARCHAR" property="crawl_type_desc" />
+    <result column="crawl_start_date" jdbcType="TIMESTAMP" property="crawl_start_date" />
+    <result column="crawl_end_date" jdbcType="TIMESTAMP" property="crawl_end_date" />
+    <result column="stoplist_id" jdbcType="INTEGER" property="stoplist_id" />
+    <result column="data_space_id" jdbcType="INTEGER" property="data_space_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.FulltextIndexes">
+    <result column="incremental_timestamp" jdbcType="BINARY" property="incremental_timestamp" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    incremental_timestamp
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FulltextIndexes">
+    insert into fulltext_indexes (object_id, unique_index_id, fulltext_catalog_id, 
+      is_enabled, change_tracking_state, change_tracking_state_desc, 
+      has_crawl_completed, crawl_type, crawl_type_desc, 
+      crawl_start_date, crawl_end_date, stoplist_id, 
+      data_space_id, incremental_timestamp)
+    values (#{object_id,jdbcType=INTEGER}, #{unique_index_id,jdbcType=INTEGER}, #{fulltext_catalog_id,jdbcType=INTEGER}, 
+      #{is_enabled,jdbcType=BIT}, #{change_tracking_state,jdbcType=CHAR}, #{change_tracking_state_desc,jdbcType=VARCHAR}, 
+      #{has_crawl_completed,jdbcType=BIT}, #{crawl_type,jdbcType=CHAR}, #{crawl_type_desc,jdbcType=VARCHAR}, 
+      #{crawl_start_date,jdbcType=TIMESTAMP}, #{crawl_end_date,jdbcType=TIMESTAMP}, #{stoplist_id,jdbcType=INTEGER}, 
+      #{data_space_id,jdbcType=INTEGER}, #{incremental_timestamp,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FulltextIndexes">
+    insert into fulltext_indexes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="unique_index_id != null">
+        unique_index_id,
+      </if>
+      <if test="fulltext_catalog_id != null">
+        fulltext_catalog_id,
+      </if>
+      <if test="is_enabled != null">
+        is_enabled,
+      </if>
+      <if test="change_tracking_state != null">
+        change_tracking_state,
+      </if>
+      <if test="change_tracking_state_desc != null">
+        change_tracking_state_desc,
+      </if>
+      <if test="has_crawl_completed != null">
+        has_crawl_completed,
+      </if>
+      <if test="crawl_type != null">
+        crawl_type,
+      </if>
+      <if test="crawl_type_desc != null">
+        crawl_type_desc,
+      </if>
+      <if test="crawl_start_date != null">
+        crawl_start_date,
+      </if>
+      <if test="crawl_end_date != null">
+        crawl_end_date,
+      </if>
+      <if test="stoplist_id != null">
+        stoplist_id,
+      </if>
+      <if test="data_space_id != null">
+        data_space_id,
+      </if>
+      <if test="incremental_timestamp != null">
+        incremental_timestamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="unique_index_id != null">
+        #{unique_index_id,jdbcType=INTEGER},
+      </if>
+      <if test="fulltext_catalog_id != null">
+        #{fulltext_catalog_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_enabled != null">
+        #{is_enabled,jdbcType=BIT},
+      </if>
+      <if test="change_tracking_state != null">
+        #{change_tracking_state,jdbcType=CHAR},
+      </if>
+      <if test="change_tracking_state_desc != null">
+        #{change_tracking_state_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="has_crawl_completed != null">
+        #{has_crawl_completed,jdbcType=BIT},
+      </if>
+      <if test="crawl_type != null">
+        #{crawl_type,jdbcType=CHAR},
+      </if>
+      <if test="crawl_type_desc != null">
+        #{crawl_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="crawl_start_date != null">
+        #{crawl_start_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crawl_end_date != null">
+        #{crawl_end_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stoplist_id != null">
+        #{stoplist_id,jdbcType=INTEGER},
+      </if>
+      <if test="data_space_id != null">
+        #{data_space_id,jdbcType=INTEGER},
+      </if>
+      <if test="incremental_timestamp != null">
+        #{incremental_timestamp,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecQueryTransformationStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecQueryTransformationStats">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="promise_total" jdbcType="BIGINT" property="promise_total" />
+    <result column="promise_avg" jdbcType="DOUBLE" property="promise_avg" />
+    <result column="promised" jdbcType="BIGINT" property="promised" />
+    <result column="built_substitute" jdbcType="BIGINT" property="built_substitute" />
+    <result column="succeeded" jdbcType="BIGINT" property="succeeded" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecQueryTransformationStats">
+    insert into dm_exec_query_transformation_stats (name, promise_total, promise_avg, 
+      promised, built_substitute, succeeded
+      )
+    values (#{name,jdbcType=VARCHAR}, #{promise_total,jdbcType=BIGINT}, #{promise_avg,jdbcType=DOUBLE}, 
+      #{promised,jdbcType=BIGINT}, #{built_substitute,jdbcType=BIGINT}, #{succeeded,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecQueryTransformationStats">
+    insert into dm_exec_query_transformation_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="promise_total != null">
+        promise_total,
+      </if>
+      <if test="promise_avg != null">
+        promise_avg,
+      </if>
+      <if test="promised != null">
+        promised,
+      </if>
+      <if test="built_substitute != null">
+        built_substitute,
+      </if>
+      <if test="succeeded != null">
+        succeeded,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="promise_total != null">
+        #{promise_total,jdbcType=BIGINT},
+      </if>
+      <if test="promise_avg != null">
+        #{promise_avg,jdbcType=DOUBLE},
+      </if>
+      <if test="promised != null">
+        #{promised,jdbcType=BIGINT},
+      </if>
+      <if test="built_substitute != null">
+        #{built_substitute,jdbcType=BIGINT},
+      </if>
+      <if test="succeeded != null">
+        #{succeeded,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

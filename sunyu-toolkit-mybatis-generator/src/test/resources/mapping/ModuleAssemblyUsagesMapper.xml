@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ModuleAssemblyUsagesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ModuleAssemblyUsages">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="assembly_id" jdbcType="INTEGER" property="assembly_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ModuleAssemblyUsages">
+    insert into module_assembly_usages (object_id, assembly_id)
+    values (#{object_id,jdbcType=INTEGER}, #{assembly_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ModuleAssemblyUsages">
+    insert into module_assembly_usages
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="assembly_id != null">
+        assembly_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="assembly_id != null">
+        #{assembly_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.HisDivisionMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.HisDivision">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="ParentID" jdbcType="INTEGER" property="parentID" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+    <result column="OrderID" jdbcType="INTEGER" property="orderID" />
+    <result column="IsDelete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Name, ParentID, Description, OrderID, IsDelete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HIS_Division
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HIS_Division
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.HisDivision">
+    insert into HIS_Division (ID, Name, ParentID, 
+      Description, OrderID, IsDelete
+      )
+    values (#{ID,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentID,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{orderID,jdbcType=INTEGER}, #{isDelete,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.HisDivision">
+    insert into HIS_Division
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="parentID != null">
+        ParentID,
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+      <if test="orderID != null">
+        OrderID,
+      </if>
+      <if test="isDelete != null">
+        IsDelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null">
+        #{parentID,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="orderID != null">
+        #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.HisDivision">
+    update HIS_Division
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null">
+        ParentID = #{parentID,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="orderID != null">
+        OrderID = #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        IsDelete = #{isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.HisDivision">
+    update HIS_Division
+    set Name = #{name,jdbcType=VARCHAR},
+      ParentID = #{parentID,jdbcType=INTEGER},
+      Description = #{description,jdbcType=VARCHAR},
+      OrderID = #{orderID,jdbcType=INTEGER},
+      IsDelete = #{isDelete,jdbcType=BIT}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

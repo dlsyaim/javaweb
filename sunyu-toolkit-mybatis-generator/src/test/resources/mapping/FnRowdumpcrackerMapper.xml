@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnRowdumpcrackerMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnRowdumpcracker">
+    <result column="partition_id" jdbcType="BIGINT" property="partition_id" />
+    <result column="colName" jdbcType="VARCHAR" property="colName" />
+    <result column="IsInrow" jdbcType="BIT" property="isInrow" />
+    <result column="IsSparse" jdbcType="BIT" property="isSparse" />
+    <result column="IsRecordPrefixCompressed" jdbcType="BIT" property="isRecordPrefixCompressed" />
+    <result column="IsSymbol" jdbcType="BIT" property="isSymbol" />
+    <result column="PrefixBytes" jdbcType="INTEGER" property="prefixBytes" />
+    <result column="InRowLength" jdbcType="INTEGER" property="inRowLength" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnRowdumpcracker">
+    insert into fn_RowDumpCracker (partition_id, colName, IsInrow, 
+      IsSparse, IsRecordPrefixCompressed, IsSymbol, 
+      PrefixBytes, InRowLength)
+    values (#{partition_id,jdbcType=BIGINT}, #{colName,jdbcType=VARCHAR}, #{isInrow,jdbcType=BIT}, 
+      #{isSparse,jdbcType=BIT}, #{isRecordPrefixCompressed,jdbcType=BIT}, #{isSymbol,jdbcType=BIT}, 
+      #{prefixBytes,jdbcType=INTEGER}, #{inRowLength,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnRowdumpcracker">
+    insert into fn_RowDumpCracker
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        partition_id,
+      </if>
+      <if test="colName != null">
+        colName,
+      </if>
+      <if test="isInrow != null">
+        IsInrow,
+      </if>
+      <if test="isSparse != null">
+        IsSparse,
+      </if>
+      <if test="isRecordPrefixCompressed != null">
+        IsRecordPrefixCompressed,
+      </if>
+      <if test="isSymbol != null">
+        IsSymbol,
+      </if>
+      <if test="prefixBytes != null">
+        PrefixBytes,
+      </if>
+      <if test="inRowLength != null">
+        InRowLength,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        #{partition_id,jdbcType=BIGINT},
+      </if>
+      <if test="colName != null">
+        #{colName,jdbcType=VARCHAR},
+      </if>
+      <if test="isInrow != null">
+        #{isInrow,jdbcType=BIT},
+      </if>
+      <if test="isSparse != null">
+        #{isSparse,jdbcType=BIT},
+      </if>
+      <if test="isRecordPrefixCompressed != null">
+        #{isRecordPrefixCompressed,jdbcType=BIT},
+      </if>
+      <if test="isSymbol != null">
+        #{isSymbol,jdbcType=BIT},
+      </if>
+      <if test="prefixBytes != null">
+        #{prefixBytes,jdbcType=INTEGER},
+      </if>
+      <if test="inRowLength != null">
+        #{inRowLength,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

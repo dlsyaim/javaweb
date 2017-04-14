@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysreferencesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysreferences">
+    <result column="constid" jdbcType="INTEGER" property="constid" />
+    <result column="fkeyid" jdbcType="INTEGER" property="fkeyid" />
+    <result column="rkeyid" jdbcType="INTEGER" property="rkeyid" />
+    <result column="rkeyindid" jdbcType="SMALLINT" property="rkeyindid" />
+    <result column="keycnt" jdbcType="SMALLINT" property="keycnt" />
+    <result column="fkeydbid" jdbcType="SMALLINT" property="fkeydbid" />
+    <result column="rkeydbid" jdbcType="SMALLINT" property="rkeydbid" />
+    <result column="fkey1" jdbcType="SMALLINT" property="fkey1" />
+    <result column="fkey2" jdbcType="SMALLINT" property="fkey2" />
+    <result column="fkey3" jdbcType="SMALLINT" property="fkey3" />
+    <result column="fkey4" jdbcType="SMALLINT" property="fkey4" />
+    <result column="fkey5" jdbcType="SMALLINT" property="fkey5" />
+    <result column="fkey6" jdbcType="SMALLINT" property="fkey6" />
+    <result column="fkey7" jdbcType="SMALLINT" property="fkey7" />
+    <result column="fkey8" jdbcType="SMALLINT" property="fkey8" />
+    <result column="fkey9" jdbcType="SMALLINT" property="fkey9" />
+    <result column="fkey10" jdbcType="SMALLINT" property="fkey10" />
+    <result column="fkey11" jdbcType="SMALLINT" property="fkey11" />
+    <result column="fkey12" jdbcType="SMALLINT" property="fkey12" />
+    <result column="fkey13" jdbcType="SMALLINT" property="fkey13" />
+    <result column="fkey14" jdbcType="SMALLINT" property="fkey14" />
+    <result column="fkey15" jdbcType="SMALLINT" property="fkey15" />
+    <result column="fkey16" jdbcType="SMALLINT" property="fkey16" />
+    <result column="rkey1" jdbcType="SMALLINT" property="rkey1" />
+    <result column="rkey2" jdbcType="SMALLINT" property="rkey2" />
+    <result column="rkey3" jdbcType="SMALLINT" property="rkey3" />
+    <result column="rkey4" jdbcType="SMALLINT" property="rkey4" />
+    <result column="rkey5" jdbcType="SMALLINT" property="rkey5" />
+    <result column="rkey6" jdbcType="SMALLINT" property="rkey6" />
+    <result column="rkey7" jdbcType="SMALLINT" property="rkey7" />
+    <result column="rkey8" jdbcType="SMALLINT" property="rkey8" />
+    <result column="rkey9" jdbcType="SMALLINT" property="rkey9" />
+    <result column="rkey10" jdbcType="SMALLINT" property="rkey10" />
+    <result column="rkey11" jdbcType="SMALLINT" property="rkey11" />
+    <result column="rkey12" jdbcType="SMALLINT" property="rkey12" />
+    <result column="rkey13" jdbcType="SMALLINT" property="rkey13" />
+    <result column="rkey14" jdbcType="SMALLINT" property="rkey14" />
+    <result column="rkey15" jdbcType="SMALLINT" property="rkey15" />
+    <result column="rkey16" jdbcType="SMALLINT" property="rkey16" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysreferencesWithBLOBs">
+    <result column="forkeys" jdbcType="VARBINARY" property="forkeys" />
+    <result column="refkeys" jdbcType="VARBINARY" property="refkeys" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    forkeys, refkeys
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysreferencesWithBLOBs">
+    insert into sysreferences (constid, fkeyid, rkeyid, 
+      rkeyindid, keycnt, fkeydbid, 
+      rkeydbid, fkey1, fkey2, 
+      fkey3, fkey4, fkey5, 
+      fkey6, fkey7, fkey8, 
+      fkey9, fkey10, fkey11, 
+      fkey12, fkey13, fkey14, 
+      fkey15, fkey16, rkey1, 
+      rkey2, rkey3, rkey4, 
+      rkey5, rkey6, rkey7, 
+      rkey8, rkey9, rkey10, 
+      rkey11, rkey12, rkey13, 
+      rkey14, rkey15, rkey16, 
+      forkeys, refkeys)
+    values (#{constid,jdbcType=INTEGER}, #{fkeyid,jdbcType=INTEGER}, #{rkeyid,jdbcType=INTEGER}, 
+      #{rkeyindid,jdbcType=SMALLINT}, #{keycnt,jdbcType=SMALLINT}, #{fkeydbid,jdbcType=SMALLINT}, 
+      #{rkeydbid,jdbcType=SMALLINT}, #{fkey1,jdbcType=SMALLINT}, #{fkey2,jdbcType=SMALLINT}, 
+      #{fkey3,jdbcType=SMALLINT}, #{fkey4,jdbcType=SMALLINT}, #{fkey5,jdbcType=SMALLINT}, 
+      #{fkey6,jdbcType=SMALLINT}, #{fkey7,jdbcType=SMALLINT}, #{fkey8,jdbcType=SMALLINT}, 
+      #{fkey9,jdbcType=SMALLINT}, #{fkey10,jdbcType=SMALLINT}, #{fkey11,jdbcType=SMALLINT}, 
+      #{fkey12,jdbcType=SMALLINT}, #{fkey13,jdbcType=SMALLINT}, #{fkey14,jdbcType=SMALLINT}, 
+      #{fkey15,jdbcType=SMALLINT}, #{fkey16,jdbcType=SMALLINT}, #{rkey1,jdbcType=SMALLINT}, 
+      #{rkey2,jdbcType=SMALLINT}, #{rkey3,jdbcType=SMALLINT}, #{rkey4,jdbcType=SMALLINT}, 
+      #{rkey5,jdbcType=SMALLINT}, #{rkey6,jdbcType=SMALLINT}, #{rkey7,jdbcType=SMALLINT}, 
+      #{rkey8,jdbcType=SMALLINT}, #{rkey9,jdbcType=SMALLINT}, #{rkey10,jdbcType=SMALLINT}, 
+      #{rkey11,jdbcType=SMALLINT}, #{rkey12,jdbcType=SMALLINT}, #{rkey13,jdbcType=SMALLINT}, 
+      #{rkey14,jdbcType=SMALLINT}, #{rkey15,jdbcType=SMALLINT}, #{rkey16,jdbcType=SMALLINT}, 
+      #{forkeys,jdbcType=VARBINARY}, #{refkeys,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysreferencesWithBLOBs">
+    insert into sysreferences
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="constid != null">
+        constid,
+      </if>
+      <if test="fkeyid != null">
+        fkeyid,
+      </if>
+      <if test="rkeyid != null">
+        rkeyid,
+      </if>
+      <if test="rkeyindid != null">
+        rkeyindid,
+      </if>
+      <if test="keycnt != null">
+        keycnt,
+      </if>
+      <if test="fkeydbid != null">
+        fkeydbid,
+      </if>
+      <if test="rkeydbid != null">
+        rkeydbid,
+      </if>
+      <if test="fkey1 != null">
+        fkey1,
+      </if>
+      <if test="fkey2 != null">
+        fkey2,
+      </if>
+      <if test="fkey3 != null">
+        fkey3,
+      </if>
+      <if test="fkey4 != null">
+        fkey4,
+      </if>
+      <if test="fkey5 != null">
+        fkey5,
+      </if>
+      <if test="fkey6 != null">
+        fkey6,
+      </if>
+      <if test="fkey7 != null">
+        fkey7,
+      </if>
+      <if test="fkey8 != null">
+        fkey8,
+      </if>
+      <if test="fkey9 != null">
+        fkey9,
+      </if>
+      <if test="fkey10 != null">
+        fkey10,
+      </if>
+      <if test="fkey11 != null">
+        fkey11,
+      </if>
+      <if test="fkey12 != null">
+        fkey12,
+      </if>
+      <if test="fkey13 != null">
+        fkey13,
+      </if>
+      <if test="fkey14 != null">
+        fkey14,
+      </if>
+      <if test="fkey15 != null">
+        fkey15,
+      </if>
+      <if test="fkey16 != null">
+        fkey16,
+      </if>
+      <if test="rkey1 != null">
+        rkey1,
+      </if>
+      <if test="rkey2 != null">
+        rkey2,
+      </if>
+      <if test="rkey3 != null">
+        rkey3,
+      </if>
+      <if test="rkey4 != null">
+        rkey4,
+      </if>
+      <if test="rkey5 != null">
+        rkey5,
+      </if>
+      <if test="rkey6 != null">
+        rkey6,
+      </if>
+      <if test="rkey7 != null">
+        rkey7,
+      </if>
+      <if test="rkey8 != null">
+        rkey8,
+      </if>
+      <if test="rkey9 != null">
+        rkey9,
+      </if>
+      <if test="rkey10 != null">
+        rkey10,
+      </if>
+      <if test="rkey11 != null">
+        rkey11,
+      </if>
+      <if test="rkey12 != null">
+        rkey12,
+      </if>
+      <if test="rkey13 != null">
+        rkey13,
+      </if>
+      <if test="rkey14 != null">
+        rkey14,
+      </if>
+      <if test="rkey15 != null">
+        rkey15,
+      </if>
+      <if test="rkey16 != null">
+        rkey16,
+      </if>
+      <if test="forkeys != null">
+        forkeys,
+      </if>
+      <if test="refkeys != null">
+        refkeys,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="constid != null">
+        #{constid,jdbcType=INTEGER},
+      </if>
+      <if test="fkeyid != null">
+        #{fkeyid,jdbcType=INTEGER},
+      </if>
+      <if test="rkeyid != null">
+        #{rkeyid,jdbcType=INTEGER},
+      </if>
+      <if test="rkeyindid != null">
+        #{rkeyindid,jdbcType=SMALLINT},
+      </if>
+      <if test="keycnt != null">
+        #{keycnt,jdbcType=SMALLINT},
+      </if>
+      <if test="fkeydbid != null">
+        #{fkeydbid,jdbcType=SMALLINT},
+      </if>
+      <if test="rkeydbid != null">
+        #{rkeydbid,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey1 != null">
+        #{fkey1,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey2 != null">
+        #{fkey2,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey3 != null">
+        #{fkey3,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey4 != null">
+        #{fkey4,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey5 != null">
+        #{fkey5,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey6 != null">
+        #{fkey6,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey7 != null">
+        #{fkey7,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey8 != null">
+        #{fkey8,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey9 != null">
+        #{fkey9,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey10 != null">
+        #{fkey10,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey11 != null">
+        #{fkey11,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey12 != null">
+        #{fkey12,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey13 != null">
+        #{fkey13,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey14 != null">
+        #{fkey14,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey15 != null">
+        #{fkey15,jdbcType=SMALLINT},
+      </if>
+      <if test="fkey16 != null">
+        #{fkey16,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey1 != null">
+        #{rkey1,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey2 != null">
+        #{rkey2,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey3 != null">
+        #{rkey3,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey4 != null">
+        #{rkey4,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey5 != null">
+        #{rkey5,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey6 != null">
+        #{rkey6,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey7 != null">
+        #{rkey7,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey8 != null">
+        #{rkey8,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey9 != null">
+        #{rkey9,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey10 != null">
+        #{rkey10,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey11 != null">
+        #{rkey11,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey12 != null">
+        #{rkey12,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey13 != null">
+        #{rkey13,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey14 != null">
+        #{rkey14,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey15 != null">
+        #{rkey15,jdbcType=SMALLINT},
+      </if>
+      <if test="rkey16 != null">
+        #{rkey16,jdbcType=SMALLINT},
+      </if>
+      <if test="forkeys != null">
+        #{forkeys,jdbcType=VARBINARY},
+      </if>
+      <if test="refkeys != null">
+        #{refkeys,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

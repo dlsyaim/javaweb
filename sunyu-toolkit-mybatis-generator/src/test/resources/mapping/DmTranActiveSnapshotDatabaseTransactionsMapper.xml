@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranActiveSnapshotDatabaseTransactionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranActiveSnapshotDatabaseTransactions">
+    <result column="transaction_id" jdbcType="BIGINT" property="transaction_id" />
+    <result column="transaction_sequence_num" jdbcType="BIGINT" property="transaction_sequence_num" />
+    <result column="commit_sequence_num" jdbcType="BIGINT" property="commit_sequence_num" />
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="is_snapshot" jdbcType="BIT" property="is_snapshot" />
+    <result column="first_snapshot_sequence_num" jdbcType="BIGINT" property="first_snapshot_sequence_num" />
+    <result column="max_version_chain_traversed" jdbcType="INTEGER" property="max_version_chain_traversed" />
+    <result column="average_version_chain_traversed" jdbcType="DOUBLE" property="average_version_chain_traversed" />
+    <result column="elapsed_time_seconds" jdbcType="BIGINT" property="elapsed_time_seconds" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranActiveSnapshotDatabaseTransactions">
+    insert into dm_tran_active_snapshot_database_transactions (transaction_id, transaction_sequence_num, 
+      commit_sequence_num, session_id, is_snapshot, 
+      first_snapshot_sequence_num, max_version_chain_traversed, 
+      average_version_chain_traversed, elapsed_time_seconds
+      )
+    values (#{transaction_id,jdbcType=BIGINT}, #{transaction_sequence_num,jdbcType=BIGINT}, 
+      #{commit_sequence_num,jdbcType=BIGINT}, #{session_id,jdbcType=INTEGER}, #{is_snapshot,jdbcType=BIT}, 
+      #{first_snapshot_sequence_num,jdbcType=BIGINT}, #{max_version_chain_traversed,jdbcType=INTEGER}, 
+      #{average_version_chain_traversed,jdbcType=DOUBLE}, #{elapsed_time_seconds,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranActiveSnapshotDatabaseTransactions">
+    insert into dm_tran_active_snapshot_database_transactions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        transaction_id,
+      </if>
+      <if test="transaction_sequence_num != null">
+        transaction_sequence_num,
+      </if>
+      <if test="commit_sequence_num != null">
+        commit_sequence_num,
+      </if>
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="is_snapshot != null">
+        is_snapshot,
+      </if>
+      <if test="first_snapshot_sequence_num != null">
+        first_snapshot_sequence_num,
+      </if>
+      <if test="max_version_chain_traversed != null">
+        max_version_chain_traversed,
+      </if>
+      <if test="average_version_chain_traversed != null">
+        average_version_chain_traversed,
+      </if>
+      <if test="elapsed_time_seconds != null">
+        elapsed_time_seconds,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        #{transaction_id,jdbcType=BIGINT},
+      </if>
+      <if test="transaction_sequence_num != null">
+        #{transaction_sequence_num,jdbcType=BIGINT},
+      </if>
+      <if test="commit_sequence_num != null">
+        #{commit_sequence_num,jdbcType=BIGINT},
+      </if>
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_snapshot != null">
+        #{is_snapshot,jdbcType=BIT},
+      </if>
+      <if test="first_snapshot_sequence_num != null">
+        #{first_snapshot_sequence_num,jdbcType=BIGINT},
+      </if>
+      <if test="max_version_chain_traversed != null">
+        #{max_version_chain_traversed,jdbcType=INTEGER},
+      </if>
+      <if test="average_version_chain_traversed != null">
+        #{average_version_chain_traversed,jdbcType=DOUBLE},
+      </if>
+      <if test="elapsed_time_seconds != null">
+        #{elapsed_time_seconds,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

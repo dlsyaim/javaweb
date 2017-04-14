@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecQueryOptimizerInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecQueryOptimizerInfo">
+    <result column="counter" jdbcType="VARCHAR" property="counter" />
+    <result column="occurrence" jdbcType="BIGINT" property="occurrence" />
+    <result column="value" jdbcType="DOUBLE" property="value" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecQueryOptimizerInfo">
+    insert into dm_exec_query_optimizer_info (counter, occurrence, value
+      )
+    values (#{counter,jdbcType=VARCHAR}, #{occurrence,jdbcType=BIGINT}, #{value,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecQueryOptimizerInfo">
+    insert into dm_exec_query_optimizer_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="counter != null">
+        counter,
+      </if>
+      <if test="occurrence != null">
+        occurrence,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="counter != null">
+        #{counter,jdbcType=VARCHAR},
+      </if>
+      <if test="occurrence != null">
+        #{occurrence,jdbcType=BIGINT},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranSessionTransactionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranSessionTransactions">
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="transaction_id" jdbcType="BIGINT" property="transaction_id" />
+    <result column="enlist_count" jdbcType="INTEGER" property="enlist_count" />
+    <result column="is_user_transaction" jdbcType="BIT" property="is_user_transaction" />
+    <result column="is_local" jdbcType="BIT" property="is_local" />
+    <result column="is_enlisted" jdbcType="BIT" property="is_enlisted" />
+    <result column="is_bound" jdbcType="BIT" property="is_bound" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmTranSessionTransactions">
+    <result column="transaction_descriptor" jdbcType="BINARY" property="transaction_descriptor" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    transaction_descriptor
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranSessionTransactions">
+    insert into dm_tran_session_transactions (session_id, transaction_id, enlist_count, 
+      is_user_transaction, is_local, is_enlisted, 
+      is_bound, transaction_descriptor)
+    values (#{session_id,jdbcType=INTEGER}, #{transaction_id,jdbcType=BIGINT}, #{enlist_count,jdbcType=INTEGER}, 
+      #{is_user_transaction,jdbcType=BIT}, #{is_local,jdbcType=BIT}, #{is_enlisted,jdbcType=BIT}, 
+      #{is_bound,jdbcType=BIT}, #{transaction_descriptor,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranSessionTransactions">
+    insert into dm_tran_session_transactions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="transaction_id != null">
+        transaction_id,
+      </if>
+      <if test="enlist_count != null">
+        enlist_count,
+      </if>
+      <if test="is_user_transaction != null">
+        is_user_transaction,
+      </if>
+      <if test="is_local != null">
+        is_local,
+      </if>
+      <if test="is_enlisted != null">
+        is_enlisted,
+      </if>
+      <if test="is_bound != null">
+        is_bound,
+      </if>
+      <if test="transaction_descriptor != null">
+        transaction_descriptor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="transaction_id != null">
+        #{transaction_id,jdbcType=BIGINT},
+      </if>
+      <if test="enlist_count != null">
+        #{enlist_count,jdbcType=INTEGER},
+      </if>
+      <if test="is_user_transaction != null">
+        #{is_user_transaction,jdbcType=BIT},
+      </if>
+      <if test="is_local != null">
+        #{is_local,jdbcType=BIT},
+      </if>
+      <if test="is_enlisted != null">
+        #{is_enlisted,jdbcType=BIT},
+      </if>
+      <if test="is_bound != null">
+        #{is_bound,jdbcType=BIT},
+      </if>
+      <if test="transaction_descriptor != null">
+        #{transaction_descriptor,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

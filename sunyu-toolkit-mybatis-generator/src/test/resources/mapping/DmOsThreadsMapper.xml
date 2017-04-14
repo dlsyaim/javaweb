@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsThreadsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsThreads">
+    <result column="started_by_sqlservr" jdbcType="BIT" property="started_by_sqlservr" />
+    <result column="os_thread_id" jdbcType="INTEGER" property="os_thread_id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="creation_time" jdbcType="TIMESTAMP" property="creation_time" />
+    <result column="kernel_time" jdbcType="BIGINT" property="kernel_time" />
+    <result column="usermode_time" jdbcType="BIGINT" property="usermode_time" />
+    <result column="stack_bytes_committed" jdbcType="INTEGER" property="stack_bytes_committed" />
+    <result column="stack_bytes_used" jdbcType="INTEGER" property="stack_bytes_used" />
+    <result column="affinity" jdbcType="BIGINT" property="affinity" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="locale" jdbcType="INTEGER" property="locale" />
+    <result column="is_impersonating" jdbcType="INTEGER" property="is_impersonating" />
+    <result column="is_waiting_on_loader_lock" jdbcType="INTEGER" property="is_waiting_on_loader_lock" />
+    <result column="processor_group" jdbcType="SMALLINT" property="processor_group" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsThreadsWithBLOBs">
+    <result column="thread_address" jdbcType="VARBINARY" property="thread_address" />
+    <result column="instruction_address" jdbcType="VARBINARY" property="instruction_address" />
+    <result column="stack_base_address" jdbcType="VARBINARY" property="stack_base_address" />
+    <result column="stack_end_address" jdbcType="VARBINARY" property="stack_end_address" />
+    <result column="token" jdbcType="VARBINARY" property="token" />
+    <result column="fiber_data" jdbcType="VARBINARY" property="fiber_data" />
+    <result column="thread_handle" jdbcType="VARBINARY" property="thread_handle" />
+    <result column="event_handle" jdbcType="VARBINARY" property="event_handle" />
+    <result column="scheduler_address" jdbcType="VARBINARY" property="scheduler_address" />
+    <result column="worker_address" jdbcType="VARBINARY" property="worker_address" />
+    <result column="fiber_context_address" jdbcType="VARBINARY" property="fiber_context_address" />
+    <result column="self_address" jdbcType="VARBINARY" property="self_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    thread_address, instruction_address, stack_base_address, stack_end_address, token, 
+    fiber_data, thread_handle, event_handle, scheduler_address, worker_address, fiber_context_address, 
+    self_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsThreadsWithBLOBs">
+    insert into dm_os_threads (started_by_sqlservr, os_thread_id, status, 
+      creation_time, kernel_time, usermode_time, 
+      stack_bytes_committed, stack_bytes_used, 
+      affinity, priority, locale, 
+      is_impersonating, is_waiting_on_loader_lock, 
+      processor_group, thread_address, instruction_address, 
+      stack_base_address, stack_end_address, 
+      token, fiber_data, thread_handle, 
+      event_handle, scheduler_address, worker_address, 
+      fiber_context_address, self_address
+      )
+    values (#{started_by_sqlservr,jdbcType=BIT}, #{os_thread_id,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{creation_time,jdbcType=TIMESTAMP}, #{kernel_time,jdbcType=BIGINT}, #{usermode_time,jdbcType=BIGINT}, 
+      #{stack_bytes_committed,jdbcType=INTEGER}, #{stack_bytes_used,jdbcType=INTEGER}, 
+      #{affinity,jdbcType=BIGINT}, #{priority,jdbcType=INTEGER}, #{locale,jdbcType=INTEGER}, 
+      #{is_impersonating,jdbcType=INTEGER}, #{is_waiting_on_loader_lock,jdbcType=INTEGER}, 
+      #{processor_group,jdbcType=SMALLINT}, #{thread_address,jdbcType=VARBINARY}, #{instruction_address,jdbcType=VARBINARY}, 
+      #{stack_base_address,jdbcType=VARBINARY}, #{stack_end_address,jdbcType=VARBINARY}, 
+      #{token,jdbcType=VARBINARY}, #{fiber_data,jdbcType=VARBINARY}, #{thread_handle,jdbcType=VARBINARY}, 
+      #{event_handle,jdbcType=VARBINARY}, #{scheduler_address,jdbcType=VARBINARY}, #{worker_address,jdbcType=VARBINARY}, 
+      #{fiber_context_address,jdbcType=VARBINARY}, #{self_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsThreadsWithBLOBs">
+    insert into dm_os_threads
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="started_by_sqlservr != null">
+        started_by_sqlservr,
+      </if>
+      <if test="os_thread_id != null">
+        os_thread_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="creation_time != null">
+        creation_time,
+      </if>
+      <if test="kernel_time != null">
+        kernel_time,
+      </if>
+      <if test="usermode_time != null">
+        usermode_time,
+      </if>
+      <if test="stack_bytes_committed != null">
+        stack_bytes_committed,
+      </if>
+      <if test="stack_bytes_used != null">
+        stack_bytes_used,
+      </if>
+      <if test="affinity != null">
+        affinity,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="locale != null">
+        locale,
+      </if>
+      <if test="is_impersonating != null">
+        is_impersonating,
+      </if>
+      <if test="is_waiting_on_loader_lock != null">
+        is_waiting_on_loader_lock,
+      </if>
+      <if test="processor_group != null">
+        processor_group,
+      </if>
+      <if test="thread_address != null">
+        thread_address,
+      </if>
+      <if test="instruction_address != null">
+        instruction_address,
+      </if>
+      <if test="stack_base_address != null">
+        stack_base_address,
+      </if>
+      <if test="stack_end_address != null">
+        stack_end_address,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="fiber_data != null">
+        fiber_data,
+      </if>
+      <if test="thread_handle != null">
+        thread_handle,
+      </if>
+      <if test="event_handle != null">
+        event_handle,
+      </if>
+      <if test="scheduler_address != null">
+        scheduler_address,
+      </if>
+      <if test="worker_address != null">
+        worker_address,
+      </if>
+      <if test="fiber_context_address != null">
+        fiber_context_address,
+      </if>
+      <if test="self_address != null">
+        self_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="started_by_sqlservr != null">
+        #{started_by_sqlservr,jdbcType=BIT},
+      </if>
+      <if test="os_thread_id != null">
+        #{os_thread_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creation_time != null">
+        #{creation_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kernel_time != null">
+        #{kernel_time,jdbcType=BIGINT},
+      </if>
+      <if test="usermode_time != null">
+        #{usermode_time,jdbcType=BIGINT},
+      </if>
+      <if test="stack_bytes_committed != null">
+        #{stack_bytes_committed,jdbcType=INTEGER},
+      </if>
+      <if test="stack_bytes_used != null">
+        #{stack_bytes_used,jdbcType=INTEGER},
+      </if>
+      <if test="affinity != null">
+        #{affinity,jdbcType=BIGINT},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="locale != null">
+        #{locale,jdbcType=INTEGER},
+      </if>
+      <if test="is_impersonating != null">
+        #{is_impersonating,jdbcType=INTEGER},
+      </if>
+      <if test="is_waiting_on_loader_lock != null">
+        #{is_waiting_on_loader_lock,jdbcType=INTEGER},
+      </if>
+      <if test="processor_group != null">
+        #{processor_group,jdbcType=SMALLINT},
+      </if>
+      <if test="thread_address != null">
+        #{thread_address,jdbcType=VARBINARY},
+      </if>
+      <if test="instruction_address != null">
+        #{instruction_address,jdbcType=VARBINARY},
+      </if>
+      <if test="stack_base_address != null">
+        #{stack_base_address,jdbcType=VARBINARY},
+      </if>
+      <if test="stack_end_address != null">
+        #{stack_end_address,jdbcType=VARBINARY},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARBINARY},
+      </if>
+      <if test="fiber_data != null">
+        #{fiber_data,jdbcType=VARBINARY},
+      </if>
+      <if test="thread_handle != null">
+        #{thread_handle,jdbcType=VARBINARY},
+      </if>
+      <if test="event_handle != null">
+        #{event_handle,jdbcType=VARBINARY},
+      </if>
+      <if test="scheduler_address != null">
+        #{scheduler_address,jdbcType=VARBINARY},
+      </if>
+      <if test="worker_address != null">
+        #{worker_address,jdbcType=VARBINARY},
+      </if>
+      <if test="fiber_context_address != null">
+        #{fiber_context_address,jdbcType=VARBINARY},
+      </if>
+      <if test="self_address != null">
+        #{self_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

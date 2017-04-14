@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsLogMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsLog">
+    <id column="nId" jdbcType="BIGINT" property="nId" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="dtDate" jdbcType="TIMESTAMP" property="dtDate" />
+    <result column="sThread" jdbcType="VARCHAR" property="sThread" />
+    <result column="sLevel" jdbcType="VARCHAR" property="sLevel" />
+    <result column="sLogger" jdbcType="VARCHAR" property="sLogger" />
+    <result column="sMessage" jdbcType="VARCHAR" property="sMessage" />
+    <result column="sException" jdbcType="VARCHAR" property="sException" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    nId, ManagerID, dtDate, sThread, sLevel, sLogger, sMessage, sException
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Log
+    where nId = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_Log
+    where nId = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsLog">
+    insert into KS_Log (nId, ManagerID, dtDate, 
+      sThread, sLevel, sLogger, 
+      sMessage, sException)
+    values (#{nId,jdbcType=BIGINT}, #{managerID,jdbcType=BIGINT}, #{dtDate,jdbcType=TIMESTAMP}, 
+      #{sThread,jdbcType=VARCHAR}, #{sLevel,jdbcType=VARCHAR}, #{sLogger,jdbcType=VARCHAR}, 
+      #{sMessage,jdbcType=VARCHAR}, #{sException,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsLog">
+    insert into KS_Log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        nId,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="dtDate != null">
+        dtDate,
+      </if>
+      <if test="sThread != null">
+        sThread,
+      </if>
+      <if test="sLevel != null">
+        sLevel,
+      </if>
+      <if test="sLogger != null">
+        sLogger,
+      </if>
+      <if test="sMessage != null">
+        sMessage,
+      </if>
+      <if test="sException != null">
+        sException,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="dtDate != null">
+        #{dtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sThread != null">
+        #{sThread,jdbcType=VARCHAR},
+      </if>
+      <if test="sLevel != null">
+        #{sLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="sLogger != null">
+        #{sLogger,jdbcType=VARCHAR},
+      </if>
+      <if test="sMessage != null">
+        #{sMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="sException != null">
+        #{sException,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsLog">
+    update KS_Log
+    <set>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="dtDate != null">
+        dtDate = #{dtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sThread != null">
+        sThread = #{sThread,jdbcType=VARCHAR},
+      </if>
+      <if test="sLevel != null">
+        sLevel = #{sLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="sLogger != null">
+        sLogger = #{sLogger,jdbcType=VARCHAR},
+      </if>
+      <if test="sMessage != null">
+        sMessage = #{sMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="sException != null">
+        sException = #{sException,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where nId = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsLog">
+    update KS_Log
+    set ManagerID = #{managerID,jdbcType=BIGINT},
+      dtDate = #{dtDate,jdbcType=TIMESTAMP},
+      sThread = #{sThread,jdbcType=VARCHAR},
+      sLevel = #{sLevel,jdbcType=VARCHAR},
+      sLogger = #{sLogger,jdbcType=VARCHAR},
+      sMessage = #{sMessage,jdbcType=VARCHAR},
+      sException = #{sException,jdbcType=VARCHAR}
+    where nId = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

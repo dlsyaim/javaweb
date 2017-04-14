@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ks.collcetor</groupId>
+  <artifactId>collector</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>collector Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- 核心工具类 -->
+    <dependency>
+      <groupId>sunyu.toolkit.core</groupId>
+      <artifactId>sunyu-toolkit-core</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <!-- 日志 -->
+    <dependency>
+      <groupId>sunyu.toolkit.logback</groupId>
+      <artifactId>sunyu-toolkit-logback</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <!-- spring mvc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>4.3.7.RELEASE</version>
+    </dependency>
+    <!-- spring jdbc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>4.3.7.RELEASE</version>
+    </dependency>
+    <!-- spring context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>4.3.7.RELEASE</version>
+    </dependency>
+    <!-- spring jms -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+      <version>4.3.7.RELEASE</version>
+    </dependency>
+    <!-- spring test -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>4.3.7.RELEASE</version>
+    </dependency>
+    <!-- spring aop需要的jar -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.10</version>
+    </dependency>
+
+    <!-- 阿里巴巴数据源 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.29</version>
+    </dependency>
+
+    <!-- mysql驱动类 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <!-- 坑人的6版本，需要mysql必须是新版才行 -->
+      <!-- <version>6.0.6</version> -->
+      <version>5.1.41</version>
+    </dependency>
+
+    <!-- sqlserver驱动类 -->
+    <dependency>
+      <groupId>net.sourceforge.jtds</groupId>
+      <artifactId>jtds</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+
+    <!-- mybatis -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.4.4</version>
+    </dependency>
+    <!-- spring整合mybatis -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+    <!-- mybatis分页插件 -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <compilerVersion>1.8</compilerVersion>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <!-- 跳过单元测试 -->
+          <skip>true</skip>
+          <forkMode>once</forkMode>
+          <argLine>-Dfile.encoding=UTF-8</argLine>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

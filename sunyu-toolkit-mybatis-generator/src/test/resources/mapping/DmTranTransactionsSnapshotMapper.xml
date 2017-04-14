@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranTransactionsSnapshotMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranTransactionsSnapshot">
+    <result column="transaction_sequence_num" jdbcType="BIGINT" property="transaction_sequence_num" />
+    <result column="snapshot_id" jdbcType="INTEGER" property="snapshot_id" />
+    <result column="snapshot_sequence_num" jdbcType="BIGINT" property="snapshot_sequence_num" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranTransactionsSnapshot">
+    insert into dm_tran_transactions_snapshot (transaction_sequence_num, snapshot_id, 
+      snapshot_sequence_num)
+    values (#{transaction_sequence_num,jdbcType=BIGINT}, #{snapshot_id,jdbcType=INTEGER}, 
+      #{snapshot_sequence_num,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranTransactionsSnapshot">
+    insert into dm_tran_transactions_snapshot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transaction_sequence_num != null">
+        transaction_sequence_num,
+      </if>
+      <if test="snapshot_id != null">
+        snapshot_id,
+      </if>
+      <if test="snapshot_sequence_num != null">
+        snapshot_sequence_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transaction_sequence_num != null">
+        #{transaction_sequence_num,jdbcType=BIGINT},
+      </if>
+      <if test="snapshot_id != null">
+        #{snapshot_id,jdbcType=INTEGER},
+      </if>
+      <if test="snapshot_sequence_num != null">
+        #{snapshot_sequence_num,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

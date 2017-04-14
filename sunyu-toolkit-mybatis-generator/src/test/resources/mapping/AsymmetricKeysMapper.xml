@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.AsymmetricKeysMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.AsymmetricKeys">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="asymmetric_key_id" jdbcType="INTEGER" property="asymmetric_key_id" />
+    <result column="pvt_key_encryption_type" jdbcType="CHAR" property="pvt_key_encryption_type" />
+    <result column="pvt_key_encryption_type_desc" jdbcType="VARCHAR" property="pvt_key_encryption_type_desc" />
+    <result column="algorithm" jdbcType="CHAR" property="algorithm" />
+    <result column="algorithm_desc" jdbcType="VARCHAR" property="algorithm_desc" />
+    <result column="key_length" jdbcType="INTEGER" property="key_length" />
+    <result column="string_sid" jdbcType="VARCHAR" property="string_sid" />
+    <result column="attested_by" jdbcType="VARCHAR" property="attested_by" />
+    <result column="provider_type" jdbcType="VARCHAR" property="provider_type" />
+    <result column="cryptographic_provider_guid" jdbcType="CHAR" property="cryptographic_provider_guid" />
+    <result column="cryptographic_provider_algid" jdbcType="VARCHAR" property="cryptographic_provider_algid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.AsymmetricKeysWithBLOBs">
+    <result column="thumbprint" jdbcType="VARBINARY" property="thumbprint" />
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+    <result column="public_key" jdbcType="BLOB" property="public_key" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    thumbprint, sid, public_key
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.AsymmetricKeysWithBLOBs">
+    insert into asymmetric_keys (name, principal_id, asymmetric_key_id, 
+      pvt_key_encryption_type, pvt_key_encryption_type_desc, 
+      algorithm, algorithm_desc, key_length, 
+      string_sid, attested_by, provider_type, 
+      cryptographic_provider_guid, cryptographic_provider_algid, 
+      thumbprint, sid, public_key
+      )
+    values (#{name,jdbcType=VARCHAR}, #{principal_id,jdbcType=INTEGER}, #{asymmetric_key_id,jdbcType=INTEGER}, 
+      #{pvt_key_encryption_type,jdbcType=CHAR}, #{pvt_key_encryption_type_desc,jdbcType=VARCHAR}, 
+      #{algorithm,jdbcType=CHAR}, #{algorithm_desc,jdbcType=VARCHAR}, #{key_length,jdbcType=INTEGER}, 
+      #{string_sid,jdbcType=VARCHAR}, #{attested_by,jdbcType=VARCHAR}, #{provider_type,jdbcType=VARCHAR}, 
+      #{cryptographic_provider_guid,jdbcType=CHAR}, #{cryptographic_provider_algid,jdbcType=VARCHAR}, 
+      #{thumbprint,jdbcType=VARBINARY}, #{sid,jdbcType=VARBINARY}, #{public_key,jdbcType=BLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.AsymmetricKeysWithBLOBs">
+    insert into asymmetric_keys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="asymmetric_key_id != null">
+        asymmetric_key_id,
+      </if>
+      <if test="pvt_key_encryption_type != null">
+        pvt_key_encryption_type,
+      </if>
+      <if test="pvt_key_encryption_type_desc != null">
+        pvt_key_encryption_type_desc,
+      </if>
+      <if test="algorithm != null">
+        algorithm,
+      </if>
+      <if test="algorithm_desc != null">
+        algorithm_desc,
+      </if>
+      <if test="key_length != null">
+        key_length,
+      </if>
+      <if test="string_sid != null">
+        string_sid,
+      </if>
+      <if test="attested_by != null">
+        attested_by,
+      </if>
+      <if test="provider_type != null">
+        provider_type,
+      </if>
+      <if test="cryptographic_provider_guid != null">
+        cryptographic_provider_guid,
+      </if>
+      <if test="cryptographic_provider_algid != null">
+        cryptographic_provider_algid,
+      </if>
+      <if test="thumbprint != null">
+        thumbprint,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="public_key != null">
+        public_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="asymmetric_key_id != null">
+        #{asymmetric_key_id,jdbcType=INTEGER},
+      </if>
+      <if test="pvt_key_encryption_type != null">
+        #{pvt_key_encryption_type,jdbcType=CHAR},
+      </if>
+      <if test="pvt_key_encryption_type_desc != null">
+        #{pvt_key_encryption_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="algorithm != null">
+        #{algorithm,jdbcType=CHAR},
+      </if>
+      <if test="algorithm_desc != null">
+        #{algorithm_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="key_length != null">
+        #{key_length,jdbcType=INTEGER},
+      </if>
+      <if test="string_sid != null">
+        #{string_sid,jdbcType=VARCHAR},
+      </if>
+      <if test="attested_by != null">
+        #{attested_by,jdbcType=VARCHAR},
+      </if>
+      <if test="provider_type != null">
+        #{provider_type,jdbcType=VARCHAR},
+      </if>
+      <if test="cryptographic_provider_guid != null">
+        #{cryptographic_provider_guid,jdbcType=CHAR},
+      </if>
+      <if test="cryptographic_provider_algid != null">
+        #{cryptographic_provider_algid,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbprint != null">
+        #{thumbprint,jdbcType=VARBINARY},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+      <if test="public_key != null">
+        #{public_key,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

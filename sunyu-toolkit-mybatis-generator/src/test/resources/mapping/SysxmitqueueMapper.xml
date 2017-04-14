@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysxmitqueueMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysxmitqueue">
+    <result column="dlgid" jdbcType="CHAR" property="dlgid" />
+    <result column="finitiator" jdbcType="BIT" property="finitiator" />
+    <result column="tosvc" jdbcType="VARCHAR" property="tosvc" />
+    <result column="tobrkrinst" jdbcType="VARCHAR" property="tobrkrinst" />
+    <result column="fromsvc" jdbcType="VARCHAR" property="fromsvc" />
+    <result column="frombrkrinst" jdbcType="VARCHAR" property="frombrkrinst" />
+    <result column="svccontr" jdbcType="VARCHAR" property="svccontr" />
+    <result column="msgseqnum" jdbcType="BIGINT" property="msgseqnum" />
+    <result column="msgtype" jdbcType="VARCHAR" property="msgtype" />
+    <result column="unackmfn" jdbcType="INTEGER" property="unackmfn" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="enqtime" jdbcType="TIMESTAMP" property="enqtime" />
+    <result column="rsndtime" jdbcType="TIMESTAMP" property="rsndtime" />
+    <result column="dlgerr" jdbcType="INTEGER" property="dlgerr" />
+    <result column="msgid" jdbcType="CHAR" property="msgid" />
+    <result column="hdrpartlen" jdbcType="SMALLINT" property="hdrpartlen" />
+    <result column="hdrseclen" jdbcType="SMALLINT" property="hdrseclen" />
+    <result column="msgenc" jdbcType="TINYINT" property="msgenc" />
+    <result column="msgbodylen" jdbcType="INTEGER" property="msgbodylen" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.Sysxmitqueue">
+    <result column="msgbody" jdbcType="BLOB" property="msgbody" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    msgbody
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysxmitqueue">
+    insert into sysxmitqueue (dlgid, finitiator, tosvc, 
+      tobrkrinst, fromsvc, frombrkrinst, 
+      svccontr, msgseqnum, msgtype, 
+      unackmfn, status, enqtime, 
+      rsndtime, dlgerr, msgid, 
+      hdrpartlen, hdrseclen, msgenc, 
+      msgbodylen, msgbody)
+    values (#{dlgid,jdbcType=CHAR}, #{finitiator,jdbcType=BIT}, #{tosvc,jdbcType=VARCHAR}, 
+      #{tobrkrinst,jdbcType=VARCHAR}, #{fromsvc,jdbcType=VARCHAR}, #{frombrkrinst,jdbcType=VARCHAR}, 
+      #{svccontr,jdbcType=VARCHAR}, #{msgseqnum,jdbcType=BIGINT}, #{msgtype,jdbcType=VARCHAR}, 
+      #{unackmfn,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{enqtime,jdbcType=TIMESTAMP}, 
+      #{rsndtime,jdbcType=TIMESTAMP}, #{dlgerr,jdbcType=INTEGER}, #{msgid,jdbcType=CHAR}, 
+      #{hdrpartlen,jdbcType=SMALLINT}, #{hdrseclen,jdbcType=SMALLINT}, #{msgenc,jdbcType=TINYINT}, 
+      #{msgbodylen,jdbcType=INTEGER}, #{msgbody,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysxmitqueue">
+    insert into sysxmitqueue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dlgid != null">
+        dlgid,
+      </if>
+      <if test="finitiator != null">
+        finitiator,
+      </if>
+      <if test="tosvc != null">
+        tosvc,
+      </if>
+      <if test="tobrkrinst != null">
+        tobrkrinst,
+      </if>
+      <if test="fromsvc != null">
+        fromsvc,
+      </if>
+      <if test="frombrkrinst != null">
+        frombrkrinst,
+      </if>
+      <if test="svccontr != null">
+        svccontr,
+      </if>
+      <if test="msgseqnum != null">
+        msgseqnum,
+      </if>
+      <if test="msgtype != null">
+        msgtype,
+      </if>
+      <if test="unackmfn != null">
+        unackmfn,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="enqtime != null">
+        enqtime,
+      </if>
+      <if test="rsndtime != null">
+        rsndtime,
+      </if>
+      <if test="dlgerr != null">
+        dlgerr,
+      </if>
+      <if test="msgid != null">
+        msgid,
+      </if>
+      <if test="hdrpartlen != null">
+        hdrpartlen,
+      </if>
+      <if test="hdrseclen != null">
+        hdrseclen,
+      </if>
+      <if test="msgenc != null">
+        msgenc,
+      </if>
+      <if test="msgbodylen != null">
+        msgbodylen,
+      </if>
+      <if test="msgbody != null">
+        msgbody,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dlgid != null">
+        #{dlgid,jdbcType=CHAR},
+      </if>
+      <if test="finitiator != null">
+        #{finitiator,jdbcType=BIT},
+      </if>
+      <if test="tosvc != null">
+        #{tosvc,jdbcType=VARCHAR},
+      </if>
+      <if test="tobrkrinst != null">
+        #{tobrkrinst,jdbcType=VARCHAR},
+      </if>
+      <if test="fromsvc != null">
+        #{fromsvc,jdbcType=VARCHAR},
+      </if>
+      <if test="frombrkrinst != null">
+        #{frombrkrinst,jdbcType=VARCHAR},
+      </if>
+      <if test="svccontr != null">
+        #{svccontr,jdbcType=VARCHAR},
+      </if>
+      <if test="msgseqnum != null">
+        #{msgseqnum,jdbcType=BIGINT},
+      </if>
+      <if test="msgtype != null">
+        #{msgtype,jdbcType=VARCHAR},
+      </if>
+      <if test="unackmfn != null">
+        #{unackmfn,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="enqtime != null">
+        #{enqtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsndtime != null">
+        #{rsndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dlgerr != null">
+        #{dlgerr,jdbcType=INTEGER},
+      </if>
+      <if test="msgid != null">
+        #{msgid,jdbcType=CHAR},
+      </if>
+      <if test="hdrpartlen != null">
+        #{hdrpartlen,jdbcType=SMALLINT},
+      </if>
+      <if test="hdrseclen != null">
+        #{hdrseclen,jdbcType=SMALLINT},
+      </if>
+      <if test="msgenc != null">
+        #{msgenc,jdbcType=TINYINT},
+      </if>
+      <if test="msgbodylen != null">
+        #{msgbodylen,jdbcType=INTEGER},
+      </if>
+      <if test="msgbody != null">
+        #{msgbody,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

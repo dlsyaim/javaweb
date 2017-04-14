@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmFtsIndexPopulationMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmFtsIndexPopulation">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="catalog_id" jdbcType="INTEGER" property="catalog_id" />
+    <result column="table_id" jdbcType="INTEGER" property="table_id" />
+    <result column="population_type" jdbcType="INTEGER" property="population_type" />
+    <result column="population_type_description" jdbcType="VARCHAR" property="population_type_description" />
+    <result column="is_clustered_index_scan" jdbcType="BIT" property="is_clustered_index_scan" />
+    <result column="range_count" jdbcType="INTEGER" property="range_count" />
+    <result column="completed_range_count" jdbcType="INTEGER" property="completed_range_count" />
+    <result column="outstanding_batch_count" jdbcType="INTEGER" property="outstanding_batch_count" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="status_description" jdbcType="VARCHAR" property="status_description" />
+    <result column="completion_type" jdbcType="INTEGER" property="completion_type" />
+    <result column="completion_type_description" jdbcType="VARCHAR" property="completion_type_description" />
+    <result column="worker_count" jdbcType="INTEGER" property="worker_count" />
+    <result column="queued_population_type" jdbcType="INTEGER" property="queued_population_type" />
+    <result column="queued_population_type_description" jdbcType="VARCHAR" property="queued_population_type_description" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmFtsIndexPopulationWithBLOBs">
+    <result column="memory_address" jdbcType="VARBINARY" property="memory_address" />
+    <result column="incremental_timestamp" jdbcType="BINARY" property="incremental_timestamp" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_address, incremental_timestamp
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmFtsIndexPopulationWithBLOBs">
+    insert into dm_fts_index_population (database_id, catalog_id, table_id, 
+      population_type, population_type_description, 
+      is_clustered_index_scan, range_count, completed_range_count, 
+      outstanding_batch_count, status, status_description, 
+      completion_type, completion_type_description, 
+      worker_count, queued_population_type, queued_population_type_description, 
+      start_time, memory_address, incremental_timestamp
+      )
+    values (#{database_id,jdbcType=INTEGER}, #{catalog_id,jdbcType=INTEGER}, #{table_id,jdbcType=INTEGER}, 
+      #{population_type,jdbcType=INTEGER}, #{population_type_description,jdbcType=VARCHAR}, 
+      #{is_clustered_index_scan,jdbcType=BIT}, #{range_count,jdbcType=INTEGER}, #{completed_range_count,jdbcType=INTEGER}, 
+      #{outstanding_batch_count,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{status_description,jdbcType=VARCHAR}, 
+      #{completion_type,jdbcType=INTEGER}, #{completion_type_description,jdbcType=VARCHAR}, 
+      #{worker_count,jdbcType=INTEGER}, #{queued_population_type,jdbcType=INTEGER}, #{queued_population_type_description,jdbcType=VARCHAR}, 
+      #{start_time,jdbcType=TIMESTAMP}, #{memory_address,jdbcType=VARBINARY}, #{incremental_timestamp,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmFtsIndexPopulationWithBLOBs">
+    insert into dm_fts_index_population
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="catalog_id != null">
+        catalog_id,
+      </if>
+      <if test="table_id != null">
+        table_id,
+      </if>
+      <if test="population_type != null">
+        population_type,
+      </if>
+      <if test="population_type_description != null">
+        population_type_description,
+      </if>
+      <if test="is_clustered_index_scan != null">
+        is_clustered_index_scan,
+      </if>
+      <if test="range_count != null">
+        range_count,
+      </if>
+      <if test="completed_range_count != null">
+        completed_range_count,
+      </if>
+      <if test="outstanding_batch_count != null">
+        outstanding_batch_count,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="status_description != null">
+        status_description,
+      </if>
+      <if test="completion_type != null">
+        completion_type,
+      </if>
+      <if test="completion_type_description != null">
+        completion_type_description,
+      </if>
+      <if test="worker_count != null">
+        worker_count,
+      </if>
+      <if test="queued_population_type != null">
+        queued_population_type,
+      </if>
+      <if test="queued_population_type_description != null">
+        queued_population_type_description,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="memory_address != null">
+        memory_address,
+      </if>
+      <if test="incremental_timestamp != null">
+        incremental_timestamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="catalog_id != null">
+        #{catalog_id,jdbcType=INTEGER},
+      </if>
+      <if test="table_id != null">
+        #{table_id,jdbcType=INTEGER},
+      </if>
+      <if test="population_type != null">
+        #{population_type,jdbcType=INTEGER},
+      </if>
+      <if test="population_type_description != null">
+        #{population_type_description,jdbcType=VARCHAR},
+      </if>
+      <if test="is_clustered_index_scan != null">
+        #{is_clustered_index_scan,jdbcType=BIT},
+      </if>
+      <if test="range_count != null">
+        #{range_count,jdbcType=INTEGER},
+      </if>
+      <if test="completed_range_count != null">
+        #{completed_range_count,jdbcType=INTEGER},
+      </if>
+      <if test="outstanding_batch_count != null">
+        #{outstanding_batch_count,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="status_description != null">
+        #{status_description,jdbcType=VARCHAR},
+      </if>
+      <if test="completion_type != null">
+        #{completion_type,jdbcType=INTEGER},
+      </if>
+      <if test="completion_type_description != null">
+        #{completion_type_description,jdbcType=VARCHAR},
+      </if>
+      <if test="worker_count != null">
+        #{worker_count,jdbcType=INTEGER},
+      </if>
+      <if test="queued_population_type != null">
+        #{queued_population_type,jdbcType=INTEGER},
+      </if>
+      <if test="queued_population_type_description != null">
+        #{queued_population_type_description,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memory_address != null">
+        #{memory_address,jdbcType=VARBINARY},
+      </if>
+      <if test="incremental_timestamp != null">
+        #{incremental_timestamp,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysphfgMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysphfg">
+    <result column="dbfragid" jdbcType="INTEGER" property="dbfragid" />
+    <result column="phfgid" jdbcType="INTEGER" property="phfgid" />
+    <result column="fgid" jdbcType="INTEGER" property="fgid" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="fgguid" jdbcType="CHAR" property="fgguid" />
+    <result column="lgfgid" jdbcType="INTEGER" property="lgfgid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysphfg">
+    insert into sysphfg (dbfragid, phfgid, fgid, 
+      type, fgguid, lgfgid, status, 
+      name)
+    values (#{dbfragid,jdbcType=INTEGER}, #{phfgid,jdbcType=INTEGER}, #{fgid,jdbcType=INTEGER}, 
+      #{type,jdbcType=CHAR}, #{fgguid,jdbcType=CHAR}, #{lgfgid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysphfg">
+    insert into sysphfg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dbfragid != null">
+        dbfragid,
+      </if>
+      <if test="phfgid != null">
+        phfgid,
+      </if>
+      <if test="fgid != null">
+        fgid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="fgguid != null">
+        fgguid,
+      </if>
+      <if test="lgfgid != null">
+        lgfgid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dbfragid != null">
+        #{dbfragid,jdbcType=INTEGER},
+      </if>
+      <if test="phfgid != null">
+        #{phfgid,jdbcType=INTEGER},
+      </if>
+      <if test="fgid != null">
+        #{fgid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="fgguid != null">
+        #{fgguid,jdbcType=CHAR},
+      </if>
+      <if test="lgfgid != null">
+        #{lgfgid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.GeometryColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.GeometryColumns">
+    <id column="f_table_catalog" jdbcType="VARCHAR" property="f_table_catalog" />
+    <id column="f_table_schema" jdbcType="VARCHAR" property="f_table_schema" />
+    <id column="f_table_name" jdbcType="VARCHAR" property="f_table_name" />
+    <id column="f_geometry_column" jdbcType="VARCHAR" property="f_geometry_column" />
+    <result column="coord_dimension" jdbcType="INTEGER" property="coord_dimension" />
+    <result column="srid" jdbcType="INTEGER" property="srid" />
+    <result column="geometry_type" jdbcType="VARCHAR" property="geometry_type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    f_table_catalog, f_table_schema, f_table_name, f_geometry_column, coord_dimension, 
+    srid, geometry_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.ks.monitor.pojo.GeometryColumnsKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from geometry_columns
+    where f_table_catalog = #{f_table_catalog,jdbcType=VARCHAR}
+      and f_table_schema = #{f_table_schema,jdbcType=VARCHAR}
+      and f_table_name = #{f_table_name,jdbcType=VARCHAR}
+      and f_geometry_column = #{f_geometry_column,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ks.monitor.pojo.GeometryColumnsKey">
+    delete from geometry_columns
+    where f_table_catalog = #{f_table_catalog,jdbcType=VARCHAR}
+      and f_table_schema = #{f_table_schema,jdbcType=VARCHAR}
+      and f_table_name = #{f_table_name,jdbcType=VARCHAR}
+      and f_geometry_column = #{f_geometry_column,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.GeometryColumns">
+    insert into geometry_columns (f_table_catalog, f_table_schema, 
+      f_table_name, f_geometry_column, coord_dimension, 
+      srid, geometry_type)
+    values (#{f_table_catalog,jdbcType=VARCHAR}, #{f_table_schema,jdbcType=VARCHAR}, 
+      #{f_table_name,jdbcType=VARCHAR}, #{f_geometry_column,jdbcType=VARCHAR}, #{coord_dimension,jdbcType=INTEGER}, 
+      #{srid,jdbcType=INTEGER}, #{geometry_type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.GeometryColumns">
+    insert into geometry_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="f_table_catalog != null">
+        f_table_catalog,
+      </if>
+      <if test="f_table_schema != null">
+        f_table_schema,
+      </if>
+      <if test="f_table_name != null">
+        f_table_name,
+      </if>
+      <if test="f_geometry_column != null">
+        f_geometry_column,
+      </if>
+      <if test="coord_dimension != null">
+        coord_dimension,
+      </if>
+      <if test="srid != null">
+        srid,
+      </if>
+      <if test="geometry_type != null">
+        geometry_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="f_table_catalog != null">
+        #{f_table_catalog,jdbcType=VARCHAR},
+      </if>
+      <if test="f_table_schema != null">
+        #{f_table_schema,jdbcType=VARCHAR},
+      </if>
+      <if test="f_table_name != null">
+        #{f_table_name,jdbcType=VARCHAR},
+      </if>
+      <if test="f_geometry_column != null">
+        #{f_geometry_column,jdbcType=VARCHAR},
+      </if>
+      <if test="coord_dimension != null">
+        #{coord_dimension,jdbcType=INTEGER},
+      </if>
+      <if test="srid != null">
+        #{srid,jdbcType=INTEGER},
+      </if>
+      <if test="geometry_type != null">
+        #{geometry_type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.GeometryColumns">
+    update geometry_columns
+    <set>
+      <if test="coord_dimension != null">
+        coord_dimension = #{coord_dimension,jdbcType=INTEGER},
+      </if>
+      <if test="srid != null">
+        srid = #{srid,jdbcType=INTEGER},
+      </if>
+      <if test="geometry_type != null">
+        geometry_type = #{geometry_type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where f_table_catalog = #{f_table_catalog,jdbcType=VARCHAR}
+      and f_table_schema = #{f_table_schema,jdbcType=VARCHAR}
+      and f_table_name = #{f_table_name,jdbcType=VARCHAR}
+      and f_geometry_column = #{f_geometry_column,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.GeometryColumns">
+    update geometry_columns
+    set coord_dimension = #{coord_dimension,jdbcType=INTEGER},
+      srid = #{srid,jdbcType=INTEGER},
+      geometry_type = #{geometry_type,jdbcType=VARCHAR}
+    where f_table_catalog = #{f_table_catalog,jdbcType=VARCHAR}
+      and f_table_schema = #{f_table_schema,jdbcType=VARCHAR}
+      and f_table_name = #{f_table_name,jdbcType=VARCHAR}
+      and f_geometry_column = #{f_geometry_column,jdbcType=VARCHAR}
+  </update>
+</mapper>

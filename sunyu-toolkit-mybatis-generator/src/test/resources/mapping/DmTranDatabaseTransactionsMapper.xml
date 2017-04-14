@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranDatabaseTransactionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranDatabaseTransactions">
+    <result column="transaction_id" jdbcType="BIGINT" property="transaction_id" />
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="database_transaction_begin_time" jdbcType="TIMESTAMP" property="database_transaction_begin_time" />
+    <result column="database_transaction_type" jdbcType="INTEGER" property="database_transaction_type" />
+    <result column="database_transaction_state" jdbcType="INTEGER" property="database_transaction_state" />
+    <result column="database_transaction_status" jdbcType="INTEGER" property="database_transaction_status" />
+    <result column="database_transaction_status2" jdbcType="INTEGER" property="database_transaction_status2" />
+    <result column="database_transaction_log_record_count" jdbcType="BIGINT" property="database_transaction_log_record_count" />
+    <result column="database_transaction_replicate_record_count" jdbcType="INTEGER" property="database_transaction_replicate_record_count" />
+    <result column="database_transaction_log_bytes_used" jdbcType="BIGINT" property="database_transaction_log_bytes_used" />
+    <result column="database_transaction_log_bytes_reserved" jdbcType="BIGINT" property="database_transaction_log_bytes_reserved" />
+    <result column="database_transaction_log_bytes_used_system" jdbcType="INTEGER" property="database_transaction_log_bytes_used_system" />
+    <result column="database_transaction_log_bytes_reserved_system" jdbcType="INTEGER" property="database_transaction_log_bytes_reserved_system" />
+    <result column="database_transaction_begin_lsn" jdbcType="NUMERIC" property="database_transaction_begin_lsn" />
+    <result column="database_transaction_last_lsn" jdbcType="NUMERIC" property="database_transaction_last_lsn" />
+    <result column="database_transaction_most_recent_savepoint_lsn" jdbcType="NUMERIC" property="database_transaction_most_recent_savepoint_lsn" />
+    <result column="database_transaction_commit_lsn" jdbcType="NUMERIC" property="database_transaction_commit_lsn" />
+    <result column="database_transaction_last_rollback_lsn" jdbcType="NUMERIC" property="database_transaction_last_rollback_lsn" />
+    <result column="database_transaction_next_undo_lsn" jdbcType="NUMERIC" property="database_transaction_next_undo_lsn" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranDatabaseTransactions">
+    insert into dm_tran_database_transactions (transaction_id, database_id, database_transaction_begin_time, 
+      database_transaction_type, database_transaction_state, 
+      database_transaction_status, database_transaction_status2, 
+      database_transaction_log_record_count, database_transaction_replicate_record_count, 
+      database_transaction_log_bytes_used, database_transaction_log_bytes_reserved, 
+      database_transaction_log_bytes_used_system, database_transaction_log_bytes_reserved_system, 
+      database_transaction_begin_lsn, database_transaction_last_lsn, 
+      database_transaction_most_recent_savepoint_lsn, database_transaction_commit_lsn, 
+      database_transaction_last_rollback_lsn, database_transaction_next_undo_lsn
+      )
+    values (#{transaction_id,jdbcType=BIGINT}, #{database_id,jdbcType=INTEGER}, #{database_transaction_begin_time,jdbcType=TIMESTAMP}, 
+      #{database_transaction_type,jdbcType=INTEGER}, #{database_transaction_state,jdbcType=INTEGER}, 
+      #{database_transaction_status,jdbcType=INTEGER}, #{database_transaction_status2,jdbcType=INTEGER}, 
+      #{database_transaction_log_record_count,jdbcType=BIGINT}, #{database_transaction_replicate_record_count,jdbcType=INTEGER}, 
+      #{database_transaction_log_bytes_used,jdbcType=BIGINT}, #{database_transaction_log_bytes_reserved,jdbcType=BIGINT}, 
+      #{database_transaction_log_bytes_used_system,jdbcType=INTEGER}, #{database_transaction_log_bytes_reserved_system,jdbcType=INTEGER}, 
+      #{database_transaction_begin_lsn,jdbcType=NUMERIC}, #{database_transaction_last_lsn,jdbcType=NUMERIC}, 
+      #{database_transaction_most_recent_savepoint_lsn,jdbcType=NUMERIC}, #{database_transaction_commit_lsn,jdbcType=NUMERIC}, 
+      #{database_transaction_last_rollback_lsn,jdbcType=NUMERIC}, #{database_transaction_next_undo_lsn,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranDatabaseTransactions">
+    insert into dm_tran_database_transactions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        transaction_id,
+      </if>
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="database_transaction_begin_time != null">
+        database_transaction_begin_time,
+      </if>
+      <if test="database_transaction_type != null">
+        database_transaction_type,
+      </if>
+      <if test="database_transaction_state != null">
+        database_transaction_state,
+      </if>
+      <if test="database_transaction_status != null">
+        database_transaction_status,
+      </if>
+      <if test="database_transaction_status2 != null">
+        database_transaction_status2,
+      </if>
+      <if test="database_transaction_log_record_count != null">
+        database_transaction_log_record_count,
+      </if>
+      <if test="database_transaction_replicate_record_count != null">
+        database_transaction_replicate_record_count,
+      </if>
+      <if test="database_transaction_log_bytes_used != null">
+        database_transaction_log_bytes_used,
+      </if>
+      <if test="database_transaction_log_bytes_reserved != null">
+        database_transaction_log_bytes_reserved,
+      </if>
+      <if test="database_transaction_log_bytes_used_system != null">
+        database_transaction_log_bytes_used_system,
+      </if>
+      <if test="database_transaction_log_bytes_reserved_system != null">
+        database_transaction_log_bytes_reserved_system,
+      </if>
+      <if test="database_transaction_begin_lsn != null">
+        database_transaction_begin_lsn,
+      </if>
+      <if test="database_transaction_last_lsn != null">
+        database_transaction_last_lsn,
+      </if>
+      <if test="database_transaction_most_recent_savepoint_lsn != null">
+        database_transaction_most_recent_savepoint_lsn,
+      </if>
+      <if test="database_transaction_commit_lsn != null">
+        database_transaction_commit_lsn,
+      </if>
+      <if test="database_transaction_last_rollback_lsn != null">
+        database_transaction_last_rollback_lsn,
+      </if>
+      <if test="database_transaction_next_undo_lsn != null">
+        database_transaction_next_undo_lsn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        #{transaction_id,jdbcType=BIGINT},
+      </if>
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_begin_time != null">
+        #{database_transaction_begin_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="database_transaction_type != null">
+        #{database_transaction_type,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_state != null">
+        #{database_transaction_state,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_status != null">
+        #{database_transaction_status,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_status2 != null">
+        #{database_transaction_status2,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_log_record_count != null">
+        #{database_transaction_log_record_count,jdbcType=BIGINT},
+      </if>
+      <if test="database_transaction_replicate_record_count != null">
+        #{database_transaction_replicate_record_count,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_log_bytes_used != null">
+        #{database_transaction_log_bytes_used,jdbcType=BIGINT},
+      </if>
+      <if test="database_transaction_log_bytes_reserved != null">
+        #{database_transaction_log_bytes_reserved,jdbcType=BIGINT},
+      </if>
+      <if test="database_transaction_log_bytes_used_system != null">
+        #{database_transaction_log_bytes_used_system,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_log_bytes_reserved_system != null">
+        #{database_transaction_log_bytes_reserved_system,jdbcType=INTEGER},
+      </if>
+      <if test="database_transaction_begin_lsn != null">
+        #{database_transaction_begin_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="database_transaction_last_lsn != null">
+        #{database_transaction_last_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="database_transaction_most_recent_savepoint_lsn != null">
+        #{database_transaction_most_recent_savepoint_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="database_transaction_commit_lsn != null">
+        #{database_transaction_commit_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="database_transaction_last_rollback_lsn != null">
+        #{database_transaction_last_rollback_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="database_transaction_next_undo_lsn != null">
+        #{database_transaction_next_undo_lsn,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+</mapper>

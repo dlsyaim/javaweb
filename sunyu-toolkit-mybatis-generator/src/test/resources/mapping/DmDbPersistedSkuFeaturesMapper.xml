@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbPersistedSkuFeaturesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbPersistedSkuFeatures">
+    <result column="feature_name" jdbcType="VARCHAR" property="feature_name" />
+    <result column="feature_id" jdbcType="INTEGER" property="feature_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbPersistedSkuFeatures">
+    insert into dm_db_persisted_sku_features (feature_name, feature_id)
+    values (#{feature_name,jdbcType=VARCHAR}, #{feature_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbPersistedSkuFeatures">
+    insert into dm_db_persisted_sku_features
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="feature_name != null">
+        feature_name,
+      </if>
+      <if test="feature_id != null">
+        feature_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="feature_name != null">
+        #{feature_name,jdbcType=VARCHAR},
+      </if>
+      <if test="feature_id != null">
+        #{feature_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

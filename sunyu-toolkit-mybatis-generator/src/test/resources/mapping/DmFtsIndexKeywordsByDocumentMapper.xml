@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmFtsIndexKeywordsByDocumentMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmFtsIndexKeywordsByDocument">
+    <result column="display_term" jdbcType="VARCHAR" property="display_term" />
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+    <result column="document_id" jdbcType="BIGINT" property="document_id" />
+    <result column="occurrence_count" jdbcType="INTEGER" property="occurrence_count" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmFtsIndexKeywordsByDocument">
+    <result column="keyword" jdbcType="VARBINARY" property="keyword" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    keyword
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmFtsIndexKeywordsByDocument">
+    insert into dm_fts_index_keywords_by_document (display_term, column_id, document_id, 
+      occurrence_count, keyword)
+    values (#{display_term,jdbcType=VARCHAR}, #{column_id,jdbcType=INTEGER}, #{document_id,jdbcType=BIGINT}, 
+      #{occurrence_count,jdbcType=INTEGER}, #{keyword,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmFtsIndexKeywordsByDocument">
+    insert into dm_fts_index_keywords_by_document
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="display_term != null">
+        display_term,
+      </if>
+      <if test="column_id != null">
+        column_id,
+      </if>
+      <if test="document_id != null">
+        document_id,
+      </if>
+      <if test="occurrence_count != null">
+        occurrence_count,
+      </if>
+      <if test="keyword != null">
+        keyword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="display_term != null">
+        #{display_term,jdbcType=VARCHAR},
+      </if>
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+      <if test="document_id != null">
+        #{document_id,jdbcType=BIGINT},
+      </if>
+      <if test="occurrence_count != null">
+        #{occurrence_count,jdbcType=INTEGER},
+      </if>
+      <if test="keyword != null">
+        #{keyword,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

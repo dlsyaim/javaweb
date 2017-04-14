@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServiceQueuesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ServiceQueues">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="schema_id" jdbcType="INTEGER" property="schema_id" />
+    <result column="parent_object_id" jdbcType="INTEGER" property="parent_object_id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="is_ms_shipped" jdbcType="BIT" property="is_ms_shipped" />
+    <result column="is_published" jdbcType="BIT" property="is_published" />
+    <result column="is_schema_published" jdbcType="BIT" property="is_schema_published" />
+    <result column="max_readers" jdbcType="SMALLINT" property="max_readers" />
+    <result column="activation_procedure" jdbcType="VARCHAR" property="activation_procedure" />
+    <result column="execute_as_principal_id" jdbcType="INTEGER" property="execute_as_principal_id" />
+    <result column="is_activation_enabled" jdbcType="BIT" property="is_activation_enabled" />
+    <result column="is_receive_enabled" jdbcType="BIT" property="is_receive_enabled" />
+    <result column="is_enqueue_enabled" jdbcType="BIT" property="is_enqueue_enabled" />
+    <result column="is_retention_enabled" jdbcType="BIT" property="is_retention_enabled" />
+    <result column="is_poison_message_handling_enabled" jdbcType="BIT" property="is_poison_message_handling_enabled" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ServiceQueues">
+    insert into service_queues (name, object_id, principal_id, 
+      schema_id, parent_object_id, type, 
+      type_desc, create_date, modify_date, 
+      is_ms_shipped, is_published, is_schema_published, 
+      max_readers, activation_procedure, execute_as_principal_id, 
+      is_activation_enabled, is_receive_enabled, is_enqueue_enabled, 
+      is_retention_enabled, is_poison_message_handling_enabled
+      )
+    values (#{name,jdbcType=VARCHAR}, #{object_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, 
+      #{schema_id,jdbcType=INTEGER}, #{parent_object_id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{type_desc,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, #{modify_date,jdbcType=TIMESTAMP}, 
+      #{is_ms_shipped,jdbcType=BIT}, #{is_published,jdbcType=BIT}, #{is_schema_published,jdbcType=BIT}, 
+      #{max_readers,jdbcType=SMALLINT}, #{activation_procedure,jdbcType=VARCHAR}, #{execute_as_principal_id,jdbcType=INTEGER}, 
+      #{is_activation_enabled,jdbcType=BIT}, #{is_receive_enabled,jdbcType=BIT}, #{is_enqueue_enabled,jdbcType=BIT}, 
+      #{is_retention_enabled,jdbcType=BIT}, #{is_poison_message_handling_enabled,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ServiceQueues">
+    insert into service_queues
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="schema_id != null">
+        schema_id,
+      </if>
+      <if test="parent_object_id != null">
+        parent_object_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="is_ms_shipped != null">
+        is_ms_shipped,
+      </if>
+      <if test="is_published != null">
+        is_published,
+      </if>
+      <if test="is_schema_published != null">
+        is_schema_published,
+      </if>
+      <if test="max_readers != null">
+        max_readers,
+      </if>
+      <if test="activation_procedure != null">
+        activation_procedure,
+      </if>
+      <if test="execute_as_principal_id != null">
+        execute_as_principal_id,
+      </if>
+      <if test="is_activation_enabled != null">
+        is_activation_enabled,
+      </if>
+      <if test="is_receive_enabled != null">
+        is_receive_enabled,
+      </if>
+      <if test="is_enqueue_enabled != null">
+        is_enqueue_enabled,
+      </if>
+      <if test="is_retention_enabled != null">
+        is_retention_enabled,
+      </if>
+      <if test="is_poison_message_handling_enabled != null">
+        is_poison_message_handling_enabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="schema_id != null">
+        #{schema_id,jdbcType=INTEGER},
+      </if>
+      <if test="parent_object_id != null">
+        #{parent_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_ms_shipped != null">
+        #{is_ms_shipped,jdbcType=BIT},
+      </if>
+      <if test="is_published != null">
+        #{is_published,jdbcType=BIT},
+      </if>
+      <if test="is_schema_published != null">
+        #{is_schema_published,jdbcType=BIT},
+      </if>
+      <if test="max_readers != null">
+        #{max_readers,jdbcType=SMALLINT},
+      </if>
+      <if test="activation_procedure != null">
+        #{activation_procedure,jdbcType=VARCHAR},
+      </if>
+      <if test="execute_as_principal_id != null">
+        #{execute_as_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_activation_enabled != null">
+        #{is_activation_enabled,jdbcType=BIT},
+      </if>
+      <if test="is_receive_enabled != null">
+        #{is_receive_enabled,jdbcType=BIT},
+      </if>
+      <if test="is_enqueue_enabled != null">
+        #{is_enqueue_enabled,jdbcType=BIT},
+      </if>
+      <if test="is_retention_enabled != null">
+        #{is_retention_enabled,jdbcType=BIT},
+      </if>
+      <if test="is_poison_message_handling_enabled != null">
+        #{is_poison_message_handling_enabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

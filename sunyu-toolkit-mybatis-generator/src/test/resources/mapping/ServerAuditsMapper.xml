@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServerAuditsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ServerAudits">
+    <result column="audit_id" jdbcType="INTEGER" property="audit_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="audit_guid" jdbcType="CHAR" property="audit_guid" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="on_failure" jdbcType="TINYINT" property="on_failure" />
+    <result column="on_failure_desc" jdbcType="VARCHAR" property="on_failure_desc" />
+    <result column="is_state_enabled" jdbcType="BIT" property="is_state_enabled" />
+    <result column="queue_delay" jdbcType="INTEGER" property="queue_delay" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ServerAudits">
+    insert into server_audits (audit_id, name, audit_guid, 
+      create_date, modify_date, principal_id, 
+      type, type_desc, on_failure, 
+      on_failure_desc, is_state_enabled, queue_delay
+      )
+    values (#{audit_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{audit_guid,jdbcType=CHAR}, 
+      #{create_date,jdbcType=TIMESTAMP}, #{modify_date,jdbcType=TIMESTAMP}, #{principal_id,jdbcType=INTEGER}, 
+      #{type,jdbcType=CHAR}, #{type_desc,jdbcType=VARCHAR}, #{on_failure,jdbcType=TINYINT}, 
+      #{on_failure_desc,jdbcType=VARCHAR}, #{is_state_enabled,jdbcType=BIT}, #{queue_delay,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ServerAudits">
+    insert into server_audits
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="audit_id != null">
+        audit_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="audit_guid != null">
+        audit_guid,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="on_failure != null">
+        on_failure,
+      </if>
+      <if test="on_failure_desc != null">
+        on_failure_desc,
+      </if>
+      <if test="is_state_enabled != null">
+        is_state_enabled,
+      </if>
+      <if test="queue_delay != null">
+        queue_delay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="audit_id != null">
+        #{audit_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="audit_guid != null">
+        #{audit_guid,jdbcType=CHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="on_failure != null">
+        #{on_failure,jdbcType=TINYINT},
+      </if>
+      <if test="on_failure_desc != null">
+        #{on_failure_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="is_state_enabled != null">
+        #{is_state_enabled,jdbcType=BIT},
+      </if>
+      <if test="queue_delay != null">
+        #{queue_delay,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

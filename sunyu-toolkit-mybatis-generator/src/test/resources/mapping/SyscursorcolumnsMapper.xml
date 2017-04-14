@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyscursorcolumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syscursorcolumns">
+    <result column="cursor_handle" jdbcType="INTEGER" property="cursor_handle" />
+    <result column="column_name" jdbcType="VARCHAR" property="column_name" />
+    <result column="ordinal_position" jdbcType="INTEGER" property="ordinal_position" />
+    <result column="column_characteristics_flags" jdbcType="INTEGER" property="column_characteristics_flags" />
+    <result column="column_size" jdbcType="INTEGER" property="column_size" />
+    <result column="data_type_sql" jdbcType="INTEGER" property="data_type_sql" />
+    <result column="column_precision" jdbcType="TINYINT" property="column_precision" />
+    <result column="column_scale" jdbcType="TINYINT" property="column_scale" />
+    <result column="order_position" jdbcType="INTEGER" property="order_position" />
+    <result column="order_direction" jdbcType="VARCHAR" property="order_direction" />
+    <result column="hidden_column" jdbcType="SMALLINT" property="hidden_column" />
+    <result column="columnid" jdbcType="INTEGER" property="columnid" />
+    <result column="objectid" jdbcType="INTEGER" property="objectid" />
+    <result column="dbid" jdbcType="INTEGER" property="dbid" />
+    <result column="dbname" jdbcType="VARCHAR" property="dbname" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syscursorcolumns">
+    insert into syscursorcolumns (cursor_handle, column_name, ordinal_position, 
+      column_characteristics_flags, column_size, 
+      data_type_sql, column_precision, column_scale, 
+      order_position, order_direction, hidden_column, 
+      columnid, objectid, dbid, 
+      dbname)
+    values (#{cursor_handle,jdbcType=INTEGER}, #{column_name,jdbcType=VARCHAR}, #{ordinal_position,jdbcType=INTEGER}, 
+      #{column_characteristics_flags,jdbcType=INTEGER}, #{column_size,jdbcType=INTEGER}, 
+      #{data_type_sql,jdbcType=INTEGER}, #{column_precision,jdbcType=TINYINT}, #{column_scale,jdbcType=TINYINT}, 
+      #{order_position,jdbcType=INTEGER}, #{order_direction,jdbcType=VARCHAR}, #{hidden_column,jdbcType=SMALLINT}, 
+      #{columnid,jdbcType=INTEGER}, #{objectid,jdbcType=INTEGER}, #{dbid,jdbcType=INTEGER}, 
+      #{dbname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syscursorcolumns">
+    insert into syscursorcolumns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cursor_handle != null">
+        cursor_handle,
+      </if>
+      <if test="column_name != null">
+        column_name,
+      </if>
+      <if test="ordinal_position != null">
+        ordinal_position,
+      </if>
+      <if test="column_characteristics_flags != null">
+        column_characteristics_flags,
+      </if>
+      <if test="column_size != null">
+        column_size,
+      </if>
+      <if test="data_type_sql != null">
+        data_type_sql,
+      </if>
+      <if test="column_precision != null">
+        column_precision,
+      </if>
+      <if test="column_scale != null">
+        column_scale,
+      </if>
+      <if test="order_position != null">
+        order_position,
+      </if>
+      <if test="order_direction != null">
+        order_direction,
+      </if>
+      <if test="hidden_column != null">
+        hidden_column,
+      </if>
+      <if test="columnid != null">
+        columnid,
+      </if>
+      <if test="objectid != null">
+        objectid,
+      </if>
+      <if test="dbid != null">
+        dbid,
+      </if>
+      <if test="dbname != null">
+        dbname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cursor_handle != null">
+        #{cursor_handle,jdbcType=INTEGER},
+      </if>
+      <if test="column_name != null">
+        #{column_name,jdbcType=VARCHAR},
+      </if>
+      <if test="ordinal_position != null">
+        #{ordinal_position,jdbcType=INTEGER},
+      </if>
+      <if test="column_characteristics_flags != null">
+        #{column_characteristics_flags,jdbcType=INTEGER},
+      </if>
+      <if test="column_size != null">
+        #{column_size,jdbcType=INTEGER},
+      </if>
+      <if test="data_type_sql != null">
+        #{data_type_sql,jdbcType=INTEGER},
+      </if>
+      <if test="column_precision != null">
+        #{column_precision,jdbcType=TINYINT},
+      </if>
+      <if test="column_scale != null">
+        #{column_scale,jdbcType=TINYINT},
+      </if>
+      <if test="order_position != null">
+        #{order_position,jdbcType=INTEGER},
+      </if>
+      <if test="order_direction != null">
+        #{order_direction,jdbcType=VARCHAR},
+      </if>
+      <if test="hidden_column != null">
+        #{hidden_column,jdbcType=SMALLINT},
+      </if>
+      <if test="columnid != null">
+        #{columnid,jdbcType=INTEGER},
+      </if>
+      <if test="objectid != null">
+        #{objectid,jdbcType=INTEGER},
+      </if>
+      <if test="dbid != null">
+        #{dbid,jdbcType=INTEGER},
+      </if>
+      <if test="dbname != null">
+        #{dbname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

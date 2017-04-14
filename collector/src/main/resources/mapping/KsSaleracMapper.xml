@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsSaleracMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsSalerac">
+    <id column="SaleID" jdbcType="BIGINT" property="saleID" />
+    <result column="AeratedID" jdbcType="VARCHAR" property="aeratedID" />
+    <result column="MachineID" jdbcType="BIGINT" property="machineID" />
+    <result column="AddVolume" jdbcType="DECIMAL" property="addVolume" />
+    <result column="Money" jdbcType="INTEGER" property="money" />
+    <result column="UnitPrice" jdbcType="DECIMAL" property="unitPrice" />
+    <result column="GasType" jdbcType="VARCHAR" property="gasType" />
+    <result column="Cumulative" jdbcType="DECIMAL" property="cumulative" />
+    <result column="Employees" jdbcType="VARCHAR" property="employees" />
+    <result column="UserCardNumber" jdbcType="VARCHAR" property="userCardNumber" />
+    <result column="ColTime" jdbcType="TIMESTAMP" property="colTime" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SaleID, AeratedID, MachineID, AddVolume, Money, UnitPrice, GasType, Cumulative, Employees, 
+    UserCardNumber, ColTime, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_SaleRac
+    where SaleID = #{saleID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_SaleRac
+    where SaleID = #{saleID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsSalerac">
+    insert into KS_SaleRac (SaleID, AeratedID, MachineID, 
+      AddVolume, Money, UnitPrice, 
+      GasType, Cumulative, Employees, 
+      UserCardNumber, ColTime, AddTime, 
+      Status)
+    values (#{saleID,jdbcType=BIGINT}, #{aeratedID,jdbcType=VARCHAR}, #{machineID,jdbcType=BIGINT}, 
+      #{addVolume,jdbcType=DECIMAL}, #{money,jdbcType=INTEGER}, #{unitPrice,jdbcType=DECIMAL}, 
+      #{gasType,jdbcType=VARCHAR}, #{cumulative,jdbcType=DECIMAL}, #{employees,jdbcType=VARCHAR}, 
+      #{userCardNumber,jdbcType=VARCHAR}, #{colTime,jdbcType=TIMESTAMP}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsSalerac">
+    insert into KS_SaleRac
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="saleID != null">
+        SaleID,
+      </if>
+      <if test="aeratedID != null">
+        AeratedID,
+      </if>
+      <if test="machineID != null">
+        MachineID,
+      </if>
+      <if test="addVolume != null">
+        AddVolume,
+      </if>
+      <if test="money != null">
+        Money,
+      </if>
+      <if test="unitPrice != null">
+        UnitPrice,
+      </if>
+      <if test="gasType != null">
+        GasType,
+      </if>
+      <if test="cumulative != null">
+        Cumulative,
+      </if>
+      <if test="employees != null">
+        Employees,
+      </if>
+      <if test="userCardNumber != null">
+        UserCardNumber,
+      </if>
+      <if test="colTime != null">
+        ColTime,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="saleID != null">
+        #{saleID,jdbcType=BIGINT},
+      </if>
+      <if test="aeratedID != null">
+        #{aeratedID,jdbcType=VARCHAR},
+      </if>
+      <if test="machineID != null">
+        #{machineID,jdbcType=BIGINT},
+      </if>
+      <if test="addVolume != null">
+        #{addVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="gasType != null">
+        #{gasType,jdbcType=VARCHAR},
+      </if>
+      <if test="cumulative != null">
+        #{cumulative,jdbcType=DECIMAL},
+      </if>
+      <if test="employees != null">
+        #{employees,jdbcType=VARCHAR},
+      </if>
+      <if test="userCardNumber != null">
+        #{userCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="colTime != null">
+        #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsSalerac">
+    update KS_SaleRac
+    <set>
+      <if test="aeratedID != null">
+        AeratedID = #{aeratedID,jdbcType=VARCHAR},
+      </if>
+      <if test="machineID != null">
+        MachineID = #{machineID,jdbcType=BIGINT},
+      </if>
+      <if test="addVolume != null">
+        AddVolume = #{addVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        Money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null">
+        UnitPrice = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="gasType != null">
+        GasType = #{gasType,jdbcType=VARCHAR},
+      </if>
+      <if test="cumulative != null">
+        Cumulative = #{cumulative,jdbcType=DECIMAL},
+      </if>
+      <if test="employees != null">
+        Employees = #{employees,jdbcType=VARCHAR},
+      </if>
+      <if test="userCardNumber != null">
+        UserCardNumber = #{userCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="colTime != null">
+        ColTime = #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where SaleID = #{saleID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsSalerac">
+    update KS_SaleRac
+    set AeratedID = #{aeratedID,jdbcType=VARCHAR},
+      MachineID = #{machineID,jdbcType=BIGINT},
+      AddVolume = #{addVolume,jdbcType=DECIMAL},
+      Money = #{money,jdbcType=INTEGER},
+      UnitPrice = #{unitPrice,jdbcType=DECIMAL},
+      GasType = #{gasType,jdbcType=VARCHAR},
+      Cumulative = #{cumulative,jdbcType=DECIMAL},
+      Employees = #{employees,jdbcType=VARCHAR},
+      UserCardNumber = #{userCardNumber,jdbcType=VARCHAR},
+      ColTime = #{colTime,jdbcType=TIMESTAMP},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where SaleID = #{saleID,jdbcType=BIGINT}
+  </update>
+</mapper>

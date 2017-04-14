@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ChangeTrackingDatabasesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ChangeTrackingDatabases">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="is_auto_cleanup_on" jdbcType="TINYINT" property="is_auto_cleanup_on" />
+    <result column="retention_period" jdbcType="INTEGER" property="retention_period" />
+    <result column="retention_period_units" jdbcType="TINYINT" property="retention_period_units" />
+    <result column="retention_period_units_desc" jdbcType="VARCHAR" property="retention_period_units_desc" />
+    <result column="max_cleanup_version" jdbcType="BIGINT" property="max_cleanup_version" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ChangeTrackingDatabases">
+    insert into change_tracking_databases (database_id, is_auto_cleanup_on, 
+      retention_period, retention_period_units, 
+      retention_period_units_desc, max_cleanup_version
+      )
+    values (#{database_id,jdbcType=INTEGER}, #{is_auto_cleanup_on,jdbcType=TINYINT}, 
+      #{retention_period,jdbcType=INTEGER}, #{retention_period_units,jdbcType=TINYINT}, 
+      #{retention_period_units_desc,jdbcType=VARCHAR}, #{max_cleanup_version,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ChangeTrackingDatabases">
+    insert into change_tracking_databases
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="is_auto_cleanup_on != null">
+        is_auto_cleanup_on,
+      </if>
+      <if test="retention_period != null">
+        retention_period,
+      </if>
+      <if test="retention_period_units != null">
+        retention_period_units,
+      </if>
+      <if test="retention_period_units_desc != null">
+        retention_period_units_desc,
+      </if>
+      <if test="max_cleanup_version != null">
+        max_cleanup_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_auto_cleanup_on != null">
+        #{is_auto_cleanup_on,jdbcType=TINYINT},
+      </if>
+      <if test="retention_period != null">
+        #{retention_period,jdbcType=INTEGER},
+      </if>
+      <if test="retention_period_units != null">
+        #{retention_period_units,jdbcType=TINYINT},
+      </if>
+      <if test="retention_period_units_desc != null">
+        #{retention_period_units_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="max_cleanup_version != null">
+        #{max_cleanup_version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

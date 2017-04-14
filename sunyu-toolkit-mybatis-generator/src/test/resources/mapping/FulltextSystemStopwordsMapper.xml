@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FulltextSystemStopwordsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FulltextSystemStopwords">
+    <result column="stopword" jdbcType="VARCHAR" property="stopword" />
+    <result column="language_id" jdbcType="INTEGER" property="language_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FulltextSystemStopwords">
+    insert into fulltext_system_stopwords (stopword, language_id)
+    values (#{stopword,jdbcType=VARCHAR}, #{language_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FulltextSystemStopwords">
+    insert into fulltext_system_stopwords
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stopword != null">
+        stopword,
+      </if>
+      <if test="language_id != null">
+        language_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stopword != null">
+        #{stopword,jdbcType=VARCHAR},
+      </if>
+      <if test="language_id != null">
+        #{language_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

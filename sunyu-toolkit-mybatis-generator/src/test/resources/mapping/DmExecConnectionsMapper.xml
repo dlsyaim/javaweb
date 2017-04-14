@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecConnectionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecConnections">
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="most_recent_session_id" jdbcType="INTEGER" property="most_recent_session_id" />
+    <result column="connect_time" jdbcType="TIMESTAMP" property="connect_time" />
+    <result column="net_transport" jdbcType="VARCHAR" property="net_transport" />
+    <result column="protocol_type" jdbcType="VARCHAR" property="protocol_type" />
+    <result column="protocol_version" jdbcType="INTEGER" property="protocol_version" />
+    <result column="endpoint_id" jdbcType="INTEGER" property="endpoint_id" />
+    <result column="encrypt_option" jdbcType="VARCHAR" property="encrypt_option" />
+    <result column="auth_scheme" jdbcType="VARCHAR" property="auth_scheme" />
+    <result column="node_affinity" jdbcType="SMALLINT" property="node_affinity" />
+    <result column="num_reads" jdbcType="INTEGER" property="num_reads" />
+    <result column="num_writes" jdbcType="INTEGER" property="num_writes" />
+    <result column="last_read" jdbcType="TIMESTAMP" property="last_read" />
+    <result column="last_write" jdbcType="TIMESTAMP" property="last_write" />
+    <result column="net_packet_size" jdbcType="INTEGER" property="net_packet_size" />
+    <result column="client_net_address" jdbcType="VARCHAR" property="client_net_address" />
+    <result column="client_tcp_port" jdbcType="INTEGER" property="client_tcp_port" />
+    <result column="local_net_address" jdbcType="VARCHAR" property="local_net_address" />
+    <result column="local_tcp_port" jdbcType="INTEGER" property="local_tcp_port" />
+    <result column="connection_id" jdbcType="CHAR" property="connection_id" />
+    <result column="parent_connection_id" jdbcType="CHAR" property="parent_connection_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecConnections">
+    <result column="most_recent_sql_handle" jdbcType="VARBINARY" property="most_recent_sql_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    most_recent_sql_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecConnections">
+    insert into dm_exec_connections (session_id, most_recent_session_id, 
+      connect_time, net_transport, protocol_type, 
+      protocol_version, endpoint_id, encrypt_option, 
+      auth_scheme, node_affinity, num_reads, 
+      num_writes, last_read, last_write, 
+      net_packet_size, client_net_address, client_tcp_port, 
+      local_net_address, local_tcp_port, connection_id, 
+      parent_connection_id, most_recent_sql_handle
+      )
+    values (#{session_id,jdbcType=INTEGER}, #{most_recent_session_id,jdbcType=INTEGER}, 
+      #{connect_time,jdbcType=TIMESTAMP}, #{net_transport,jdbcType=VARCHAR}, #{protocol_type,jdbcType=VARCHAR}, 
+      #{protocol_version,jdbcType=INTEGER}, #{endpoint_id,jdbcType=INTEGER}, #{encrypt_option,jdbcType=VARCHAR}, 
+      #{auth_scheme,jdbcType=VARCHAR}, #{node_affinity,jdbcType=SMALLINT}, #{num_reads,jdbcType=INTEGER}, 
+      #{num_writes,jdbcType=INTEGER}, #{last_read,jdbcType=TIMESTAMP}, #{last_write,jdbcType=TIMESTAMP}, 
+      #{net_packet_size,jdbcType=INTEGER}, #{client_net_address,jdbcType=VARCHAR}, #{client_tcp_port,jdbcType=INTEGER}, 
+      #{local_net_address,jdbcType=VARCHAR}, #{local_tcp_port,jdbcType=INTEGER}, #{connection_id,jdbcType=CHAR}, 
+      #{parent_connection_id,jdbcType=CHAR}, #{most_recent_sql_handle,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecConnections">
+    insert into dm_exec_connections
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="most_recent_session_id != null">
+        most_recent_session_id,
+      </if>
+      <if test="connect_time != null">
+        connect_time,
+      </if>
+      <if test="net_transport != null">
+        net_transport,
+      </if>
+      <if test="protocol_type != null">
+        protocol_type,
+      </if>
+      <if test="protocol_version != null">
+        protocol_version,
+      </if>
+      <if test="endpoint_id != null">
+        endpoint_id,
+      </if>
+      <if test="encrypt_option != null">
+        encrypt_option,
+      </if>
+      <if test="auth_scheme != null">
+        auth_scheme,
+      </if>
+      <if test="node_affinity != null">
+        node_affinity,
+      </if>
+      <if test="num_reads != null">
+        num_reads,
+      </if>
+      <if test="num_writes != null">
+        num_writes,
+      </if>
+      <if test="last_read != null">
+        last_read,
+      </if>
+      <if test="last_write != null">
+        last_write,
+      </if>
+      <if test="net_packet_size != null">
+        net_packet_size,
+      </if>
+      <if test="client_net_address != null">
+        client_net_address,
+      </if>
+      <if test="client_tcp_port != null">
+        client_tcp_port,
+      </if>
+      <if test="local_net_address != null">
+        local_net_address,
+      </if>
+      <if test="local_tcp_port != null">
+        local_tcp_port,
+      </if>
+      <if test="connection_id != null">
+        connection_id,
+      </if>
+      <if test="parent_connection_id != null">
+        parent_connection_id,
+      </if>
+      <if test="most_recent_sql_handle != null">
+        most_recent_sql_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="most_recent_session_id != null">
+        #{most_recent_session_id,jdbcType=INTEGER},
+      </if>
+      <if test="connect_time != null">
+        #{connect_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="net_transport != null">
+        #{net_transport,jdbcType=VARCHAR},
+      </if>
+      <if test="protocol_type != null">
+        #{protocol_type,jdbcType=VARCHAR},
+      </if>
+      <if test="protocol_version != null">
+        #{protocol_version,jdbcType=INTEGER},
+      </if>
+      <if test="endpoint_id != null">
+        #{endpoint_id,jdbcType=INTEGER},
+      </if>
+      <if test="encrypt_option != null">
+        #{encrypt_option,jdbcType=VARCHAR},
+      </if>
+      <if test="auth_scheme != null">
+        #{auth_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="node_affinity != null">
+        #{node_affinity,jdbcType=SMALLINT},
+      </if>
+      <if test="num_reads != null">
+        #{num_reads,jdbcType=INTEGER},
+      </if>
+      <if test="num_writes != null">
+        #{num_writes,jdbcType=INTEGER},
+      </if>
+      <if test="last_read != null">
+        #{last_read,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_write != null">
+        #{last_write,jdbcType=TIMESTAMP},
+      </if>
+      <if test="net_packet_size != null">
+        #{net_packet_size,jdbcType=INTEGER},
+      </if>
+      <if test="client_net_address != null">
+        #{client_net_address,jdbcType=VARCHAR},
+      </if>
+      <if test="client_tcp_port != null">
+        #{client_tcp_port,jdbcType=INTEGER},
+      </if>
+      <if test="local_net_address != null">
+        #{local_net_address,jdbcType=VARCHAR},
+      </if>
+      <if test="local_tcp_port != null">
+        #{local_tcp_port,jdbcType=INTEGER},
+      </if>
+      <if test="connection_id != null">
+        #{connection_id,jdbcType=CHAR},
+      </if>
+      <if test="parent_connection_id != null">
+        #{parent_connection_id,jdbcType=CHAR},
+      </if>
+      <if test="most_recent_sql_handle != null">
+        #{most_recent_sql_handle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsPressureregulatorrealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsPressureregulatorreal">
+    <id column="PressureRegulatorRealId" jdbcType="BIGINT" property="pressureRegulatorRealId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RealTime" jdbcType="TIMESTAMP" property="realTime" />
+    <result column="Position" jdbcType="DOUBLE" property="position" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PressureRegulatorRealId, EquipmentId, RealTime, Position
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_PressureRegulatorReal
+    where PressureRegulatorRealId = #{pressureRegulatorRealId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_PressureRegulatorReal
+    where PressureRegulatorRealId = #{pressureRegulatorRealId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsPressureregulatorreal">
+    insert into KS_PressureRegulatorReal (PressureRegulatorRealId, EquipmentId, 
+      RealTime, Position)
+    values (#{pressureRegulatorRealId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, 
+      #{realTime,jdbcType=TIMESTAMP}, #{position,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsPressureregulatorreal">
+    insert into KS_PressureRegulatorReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pressureRegulatorRealId != null">
+        PressureRegulatorRealId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="realTime != null">
+        RealTime,
+      </if>
+      <if test="position != null">
+        Position,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pressureRegulatorRealId != null">
+        #{pressureRegulatorRealId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsPressureregulatorreal">
+    update KS_PressureRegulatorReal
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        RealTime = #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="position != null">
+        Position = #{position,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where PressureRegulatorRealId = #{pressureRegulatorRealId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsPressureregulatorreal">
+    update KS_PressureRegulatorReal
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RealTime = #{realTime,jdbcType=TIMESTAMP},
+      Position = #{position,jdbcType=DOUBLE}
+    where PressureRegulatorRealId = #{pressureRegulatorRealId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbPartitionStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbPartitionStats">
+    <result column="partition_id" jdbcType="BIGINT" property="partition_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="index_id" jdbcType="INTEGER" property="index_id" />
+    <result column="partition_number" jdbcType="INTEGER" property="partition_number" />
+    <result column="in_row_data_page_count" jdbcType="BIGINT" property="in_row_data_page_count" />
+    <result column="in_row_used_page_count" jdbcType="BIGINT" property="in_row_used_page_count" />
+    <result column="in_row_reserved_page_count" jdbcType="BIGINT" property="in_row_reserved_page_count" />
+    <result column="lob_used_page_count" jdbcType="BIGINT" property="lob_used_page_count" />
+    <result column="lob_reserved_page_count" jdbcType="BIGINT" property="lob_reserved_page_count" />
+    <result column="row_overflow_used_page_count" jdbcType="BIGINT" property="row_overflow_used_page_count" />
+    <result column="row_overflow_reserved_page_count" jdbcType="BIGINT" property="row_overflow_reserved_page_count" />
+    <result column="used_page_count" jdbcType="BIGINT" property="used_page_count" />
+    <result column="reserved_page_count" jdbcType="BIGINT" property="reserved_page_count" />
+    <result column="row_count" jdbcType="BIGINT" property="row_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbPartitionStats">
+    insert into dm_db_partition_stats (partition_id, object_id, index_id, 
+      partition_number, in_row_data_page_count, 
+      in_row_used_page_count, in_row_reserved_page_count, 
+      lob_used_page_count, lob_reserved_page_count, 
+      row_overflow_used_page_count, row_overflow_reserved_page_count, 
+      used_page_count, reserved_page_count, row_count
+      )
+    values (#{partition_id,jdbcType=BIGINT}, #{object_id,jdbcType=INTEGER}, #{index_id,jdbcType=INTEGER}, 
+      #{partition_number,jdbcType=INTEGER}, #{in_row_data_page_count,jdbcType=BIGINT}, 
+      #{in_row_used_page_count,jdbcType=BIGINT}, #{in_row_reserved_page_count,jdbcType=BIGINT}, 
+      #{lob_used_page_count,jdbcType=BIGINT}, #{lob_reserved_page_count,jdbcType=BIGINT}, 
+      #{row_overflow_used_page_count,jdbcType=BIGINT}, #{row_overflow_reserved_page_count,jdbcType=BIGINT}, 
+      #{used_page_count,jdbcType=BIGINT}, #{reserved_page_count,jdbcType=BIGINT}, #{row_count,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbPartitionStats">
+    insert into dm_db_partition_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        partition_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="index_id != null">
+        index_id,
+      </if>
+      <if test="partition_number != null">
+        partition_number,
+      </if>
+      <if test="in_row_data_page_count != null">
+        in_row_data_page_count,
+      </if>
+      <if test="in_row_used_page_count != null">
+        in_row_used_page_count,
+      </if>
+      <if test="in_row_reserved_page_count != null">
+        in_row_reserved_page_count,
+      </if>
+      <if test="lob_used_page_count != null">
+        lob_used_page_count,
+      </if>
+      <if test="lob_reserved_page_count != null">
+        lob_reserved_page_count,
+      </if>
+      <if test="row_overflow_used_page_count != null">
+        row_overflow_used_page_count,
+      </if>
+      <if test="row_overflow_reserved_page_count != null">
+        row_overflow_reserved_page_count,
+      </if>
+      <if test="used_page_count != null">
+        used_page_count,
+      </if>
+      <if test="reserved_page_count != null">
+        reserved_page_count,
+      </if>
+      <if test="row_count != null">
+        row_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        #{partition_id,jdbcType=BIGINT},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_id != null">
+        #{index_id,jdbcType=INTEGER},
+      </if>
+      <if test="partition_number != null">
+        #{partition_number,jdbcType=INTEGER},
+      </if>
+      <if test="in_row_data_page_count != null">
+        #{in_row_data_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="in_row_used_page_count != null">
+        #{in_row_used_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="in_row_reserved_page_count != null">
+        #{in_row_reserved_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="lob_used_page_count != null">
+        #{lob_used_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="lob_reserved_page_count != null">
+        #{lob_reserved_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="row_overflow_used_page_count != null">
+        #{row_overflow_used_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="row_overflow_reserved_page_count != null">
+        #{row_overflow_reserved_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="used_page_count != null">
+        #{used_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="reserved_page_count != null">
+        #{reserved_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="row_count != null">
+        #{row_count,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

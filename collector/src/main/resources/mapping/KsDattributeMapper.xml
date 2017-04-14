@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDattributeMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDattribute">
+    <id column="AttrID" jdbcType="BIGINT" property="attrID" />
+    <result column="ClassID" jdbcType="BIGINT" property="classID" />
+    <result column="AttrName" jdbcType="VARCHAR" property="attrName" />
+    <result column="FieldName" jdbcType="VARCHAR" property="fieldName" />
+    <result column="InputType" jdbcType="INTEGER" property="inputType" />
+    <result column="ValueType" jdbcType="INTEGER" property="valueType" />
+    <result column="ValueLength" jdbcType="INTEGER" property="valueLength" />
+    <result column="Orderby" jdbcType="BIGINT" property="orderby" />
+    <result column="IsSearch" jdbcType="SMALLINT" property="isSearch" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AttrID, ClassID, AttrName, FieldName, InputType, ValueType, ValueLength, Orderby, 
+    IsSearch, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_DAttribute
+    where AttrID = #{attrID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_DAttribute
+    where AttrID = #{attrID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDattribute">
+    insert into KS_DAttribute (AttrID, ClassID, AttrName, 
+      FieldName, InputType, ValueType, 
+      ValueLength, Orderby, IsSearch, 
+      AddTime, Status)
+    values (#{attrID,jdbcType=BIGINT}, #{classID,jdbcType=BIGINT}, #{attrName,jdbcType=VARCHAR}, 
+      #{fieldName,jdbcType=VARCHAR}, #{inputType,jdbcType=INTEGER}, #{valueType,jdbcType=INTEGER}, 
+      #{valueLength,jdbcType=INTEGER}, #{orderby,jdbcType=BIGINT}, #{isSearch,jdbcType=SMALLINT}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDattribute">
+    insert into KS_DAttribute
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="attrID != null">
+        AttrID,
+      </if>
+      <if test="classID != null">
+        ClassID,
+      </if>
+      <if test="attrName != null">
+        AttrName,
+      </if>
+      <if test="fieldName != null">
+        FieldName,
+      </if>
+      <if test="inputType != null">
+        InputType,
+      </if>
+      <if test="valueType != null">
+        ValueType,
+      </if>
+      <if test="valueLength != null">
+        ValueLength,
+      </if>
+      <if test="orderby != null">
+        Orderby,
+      </if>
+      <if test="isSearch != null">
+        IsSearch,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="attrID != null">
+        #{attrID,jdbcType=BIGINT},
+      </if>
+      <if test="classID != null">
+        #{classID,jdbcType=BIGINT},
+      </if>
+      <if test="attrName != null">
+        #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputType != null">
+        #{inputType,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="valueLength != null">
+        #{valueLength,jdbcType=INTEGER},
+      </if>
+      <if test="orderby != null">
+        #{orderby,jdbcType=BIGINT},
+      </if>
+      <if test="isSearch != null">
+        #{isSearch,jdbcType=SMALLINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDattribute">
+    update KS_DAttribute
+    <set>
+      <if test="classID != null">
+        ClassID = #{classID,jdbcType=BIGINT},
+      </if>
+      <if test="attrName != null">
+        AttrName = #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        FieldName = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputType != null">
+        InputType = #{inputType,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        ValueType = #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="valueLength != null">
+        ValueLength = #{valueLength,jdbcType=INTEGER},
+      </if>
+      <if test="orderby != null">
+        Orderby = #{orderby,jdbcType=BIGINT},
+      </if>
+      <if test="isSearch != null">
+        IsSearch = #{isSearch,jdbcType=SMALLINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where AttrID = #{attrID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDattribute">
+    update KS_DAttribute
+    set ClassID = #{classID,jdbcType=BIGINT},
+      AttrName = #{attrName,jdbcType=VARCHAR},
+      FieldName = #{fieldName,jdbcType=VARCHAR},
+      InputType = #{inputType,jdbcType=INTEGER},
+      ValueType = #{valueType,jdbcType=INTEGER},
+      ValueLength = #{valueLength,jdbcType=INTEGER},
+      Orderby = #{orderby,jdbcType=BIGINT},
+      IsSearch = #{isSearch,jdbcType=SMALLINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where AttrID = #{attrID,jdbcType=BIGINT}
+  </update>
+</mapper>

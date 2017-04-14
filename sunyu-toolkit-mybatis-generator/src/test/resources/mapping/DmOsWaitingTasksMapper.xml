@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsWaitingTasksMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsWaitingTasks">
+    <result column="session_id" jdbcType="SMALLINT" property="session_id" />
+    <result column="exec_context_id" jdbcType="INTEGER" property="exec_context_id" />
+    <result column="wait_duration_ms" jdbcType="BIGINT" property="wait_duration_ms" />
+    <result column="wait_type" jdbcType="VARCHAR" property="wait_type" />
+    <result column="blocking_session_id" jdbcType="SMALLINT" property="blocking_session_id" />
+    <result column="blocking_exec_context_id" jdbcType="INTEGER" property="blocking_exec_context_id" />
+    <result column="resource_description" jdbcType="VARCHAR" property="resource_description" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsWaitingTasksWithBLOBs">
+    <result column="waiting_task_address" jdbcType="VARBINARY" property="waiting_task_address" />
+    <result column="resource_address" jdbcType="VARBINARY" property="resource_address" />
+    <result column="blocking_task_address" jdbcType="VARBINARY" property="blocking_task_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    waiting_task_address, resource_address, blocking_task_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsWaitingTasksWithBLOBs">
+    insert into dm_os_waiting_tasks (session_id, exec_context_id, wait_duration_ms, 
+      wait_type, blocking_session_id, blocking_exec_context_id, 
+      resource_description, waiting_task_address, 
+      resource_address, blocking_task_address
+      )
+    values (#{session_id,jdbcType=SMALLINT}, #{exec_context_id,jdbcType=INTEGER}, #{wait_duration_ms,jdbcType=BIGINT}, 
+      #{wait_type,jdbcType=VARCHAR}, #{blocking_session_id,jdbcType=SMALLINT}, #{blocking_exec_context_id,jdbcType=INTEGER}, 
+      #{resource_description,jdbcType=VARCHAR}, #{waiting_task_address,jdbcType=VARBINARY}, 
+      #{resource_address,jdbcType=VARBINARY}, #{blocking_task_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsWaitingTasksWithBLOBs">
+    insert into dm_os_waiting_tasks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="exec_context_id != null">
+        exec_context_id,
+      </if>
+      <if test="wait_duration_ms != null">
+        wait_duration_ms,
+      </if>
+      <if test="wait_type != null">
+        wait_type,
+      </if>
+      <if test="blocking_session_id != null">
+        blocking_session_id,
+      </if>
+      <if test="blocking_exec_context_id != null">
+        blocking_exec_context_id,
+      </if>
+      <if test="resource_description != null">
+        resource_description,
+      </if>
+      <if test="waiting_task_address != null">
+        waiting_task_address,
+      </if>
+      <if test="resource_address != null">
+        resource_address,
+      </if>
+      <if test="blocking_task_address != null">
+        blocking_task_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=SMALLINT},
+      </if>
+      <if test="exec_context_id != null">
+        #{exec_context_id,jdbcType=INTEGER},
+      </if>
+      <if test="wait_duration_ms != null">
+        #{wait_duration_ms,jdbcType=BIGINT},
+      </if>
+      <if test="wait_type != null">
+        #{wait_type,jdbcType=VARCHAR},
+      </if>
+      <if test="blocking_session_id != null">
+        #{blocking_session_id,jdbcType=SMALLINT},
+      </if>
+      <if test="blocking_exec_context_id != null">
+        #{blocking_exec_context_id,jdbcType=INTEGER},
+      </if>
+      <if test="resource_description != null">
+        #{resource_description,jdbcType=VARCHAR},
+      </if>
+      <if test="waiting_task_address != null">
+        #{waiting_task_address,jdbcType=VARBINARY},
+      </if>
+      <if test="resource_address != null">
+        #{resource_address,jdbcType=VARBINARY},
+      </if>
+      <if test="blocking_task_address != null">
+        #{blocking_task_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

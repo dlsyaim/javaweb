@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsSolenoidvalverecMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsSolenoidvalverec">
+    <id column="SolenoidValveRecId" jdbcType="BIGINT" property="solenoidValveRecId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RecTime" jdbcType="TIMESTAMP" property="recTime" />
+    <result column="State" jdbcType="BIT" property="state" />
+    <result column="Manual" jdbcType="BIT" property="manual" />
+    <result column="Control" jdbcType="BIT" property="control" />
+    <result column="SetConfirm" jdbcType="BIT" property="setConfirm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SolenoidValveRecId, EquipmentId, RecTime, State, Manual, Control, SetConfirm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_SolenoidValveRec
+    where SolenoidValveRecId = #{solenoidValveRecId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_SolenoidValveRec
+    where SolenoidValveRecId = #{solenoidValveRecId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsSolenoidvalverec">
+    insert into KS_SolenoidValveRec (SolenoidValveRecId, EquipmentId, RecTime, 
+      State, Manual, Control, SetConfirm
+      )
+    values (#{solenoidValveRecId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, #{recTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=BIT}, #{manual,jdbcType=BIT}, #{control,jdbcType=BIT}, #{setConfirm,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsSolenoidvalverec">
+    insert into KS_SolenoidValveRec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="solenoidValveRecId != null">
+        SolenoidValveRecId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="recTime != null">
+        RecTime,
+      </if>
+      <if test="state != null">
+        State,
+      </if>
+      <if test="manual != null">
+        Manual,
+      </if>
+      <if test="control != null">
+        Control,
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="solenoidValveRecId != null">
+        #{solenoidValveRecId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="recTime != null">
+        #{recTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="manual != null">
+        #{manual,jdbcType=BIT},
+      </if>
+      <if test="control != null">
+        #{control,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        #{setConfirm,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsSolenoidvalverec">
+    update KS_SolenoidValveRec
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="recTime != null">
+        RecTime = #{recTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        State = #{state,jdbcType=BIT},
+      </if>
+      <if test="manual != null">
+        Manual = #{manual,jdbcType=BIT},
+      </if>
+      <if test="control != null">
+        Control = #{control,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm = #{setConfirm,jdbcType=BIT},
+      </if>
+    </set>
+    where SolenoidValveRecId = #{solenoidValveRecId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsSolenoidvalverec">
+    update KS_SolenoidValveRec
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RecTime = #{recTime,jdbcType=TIMESTAMP},
+      State = #{state,jdbcType=BIT},
+      Manual = #{manual,jdbcType=BIT},
+      Control = #{control,jdbcType=BIT},
+      SetConfirm = #{setConfirm,jdbcType=BIT}
+    where SolenoidValveRecId = #{solenoidValveRecId,jdbcType=BIGINT}
+  </update>
+</mapper>

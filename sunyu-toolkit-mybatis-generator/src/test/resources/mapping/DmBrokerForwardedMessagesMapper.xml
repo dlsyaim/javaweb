@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmBrokerForwardedMessagesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmBrokerForwardedMessages">
+    <result column="conversation_id" jdbcType="CHAR" property="conversation_id" />
+    <result column="is_initiator" jdbcType="BIT" property="is_initiator" />
+    <result column="to_service_name" jdbcType="VARCHAR" property="to_service_name" />
+    <result column="to_broker_instance" jdbcType="VARCHAR" property="to_broker_instance" />
+    <result column="from_service_name" jdbcType="VARCHAR" property="from_service_name" />
+    <result column="from_broker_instance" jdbcType="VARCHAR" property="from_broker_instance" />
+    <result column="adjacent_broker_address" jdbcType="VARCHAR" property="adjacent_broker_address" />
+    <result column="message_sequence_number" jdbcType="BIGINT" property="message_sequence_number" />
+    <result column="message_fragment_number" jdbcType="INTEGER" property="message_fragment_number" />
+    <result column="hops_remaining" jdbcType="TINYINT" property="hops_remaining" />
+    <result column="time_to_live" jdbcType="INTEGER" property="time_to_live" />
+    <result column="time_consumed" jdbcType="INTEGER" property="time_consumed" />
+    <result column="message_id" jdbcType="CHAR" property="message_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmBrokerForwardedMessages">
+    insert into dm_broker_forwarded_messages (conversation_id, is_initiator, to_service_name, 
+      to_broker_instance, from_service_name, 
+      from_broker_instance, adjacent_broker_address, 
+      message_sequence_number, message_fragment_number, 
+      hops_remaining, time_to_live, time_consumed, 
+      message_id)
+    values (#{conversation_id,jdbcType=CHAR}, #{is_initiator,jdbcType=BIT}, #{to_service_name,jdbcType=VARCHAR}, 
+      #{to_broker_instance,jdbcType=VARCHAR}, #{from_service_name,jdbcType=VARCHAR}, 
+      #{from_broker_instance,jdbcType=VARCHAR}, #{adjacent_broker_address,jdbcType=VARCHAR}, 
+      #{message_sequence_number,jdbcType=BIGINT}, #{message_fragment_number,jdbcType=INTEGER}, 
+      #{hops_remaining,jdbcType=TINYINT}, #{time_to_live,jdbcType=INTEGER}, #{time_consumed,jdbcType=INTEGER}, 
+      #{message_id,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmBrokerForwardedMessages">
+    insert into dm_broker_forwarded_messages
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conversation_id != null">
+        conversation_id,
+      </if>
+      <if test="is_initiator != null">
+        is_initiator,
+      </if>
+      <if test="to_service_name != null">
+        to_service_name,
+      </if>
+      <if test="to_broker_instance != null">
+        to_broker_instance,
+      </if>
+      <if test="from_service_name != null">
+        from_service_name,
+      </if>
+      <if test="from_broker_instance != null">
+        from_broker_instance,
+      </if>
+      <if test="adjacent_broker_address != null">
+        adjacent_broker_address,
+      </if>
+      <if test="message_sequence_number != null">
+        message_sequence_number,
+      </if>
+      <if test="message_fragment_number != null">
+        message_fragment_number,
+      </if>
+      <if test="hops_remaining != null">
+        hops_remaining,
+      </if>
+      <if test="time_to_live != null">
+        time_to_live,
+      </if>
+      <if test="time_consumed != null">
+        time_consumed,
+      </if>
+      <if test="message_id != null">
+        message_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conversation_id != null">
+        #{conversation_id,jdbcType=CHAR},
+      </if>
+      <if test="is_initiator != null">
+        #{is_initiator,jdbcType=BIT},
+      </if>
+      <if test="to_service_name != null">
+        #{to_service_name,jdbcType=VARCHAR},
+      </if>
+      <if test="to_broker_instance != null">
+        #{to_broker_instance,jdbcType=VARCHAR},
+      </if>
+      <if test="from_service_name != null">
+        #{from_service_name,jdbcType=VARCHAR},
+      </if>
+      <if test="from_broker_instance != null">
+        #{from_broker_instance,jdbcType=VARCHAR},
+      </if>
+      <if test="adjacent_broker_address != null">
+        #{adjacent_broker_address,jdbcType=VARCHAR},
+      </if>
+      <if test="message_sequence_number != null">
+        #{message_sequence_number,jdbcType=BIGINT},
+      </if>
+      <if test="message_fragment_number != null">
+        #{message_fragment_number,jdbcType=INTEGER},
+      </if>
+      <if test="hops_remaining != null">
+        #{hops_remaining,jdbcType=TINYINT},
+      </if>
+      <if test="time_to_live != null">
+        #{time_to_live,jdbcType=INTEGER},
+      </if>
+      <if test="time_consumed != null">
+        #{time_consumed,jdbcType=INTEGER},
+      </if>
+      <if test="message_id != null">
+        #{message_id,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

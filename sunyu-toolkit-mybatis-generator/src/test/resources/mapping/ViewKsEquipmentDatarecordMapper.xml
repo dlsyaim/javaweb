@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ViewKsEquipmentDatarecordMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ViewKsEquipmentDatarecord">
+    <result column="RecID" jdbcType="BIGINT" property="recID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="RamCode" jdbcType="VARCHAR" property="ramCode" />
+    <result column="StaRecCumAmt" jdbcType="DOUBLE" property="staRecCumAmt" />
+    <result column="StaRecInsCumAmt" jdbcType="DOUBLE" property="staRecInsCumAmt" />
+    <result column="WorRecCumAmt" jdbcType="DOUBLE" property="worRecCumAmt" />
+    <result column="WorRecInsCumAmt" jdbcType="DOUBLE" property="worRecInsCumAmt" />
+    <result column="RecPressure" jdbcType="DOUBLE" property="recPressure" />
+    <result column="RecTemperature" jdbcType="DOUBLE" property="recTemperature" />
+    <result column="RecConcentration" jdbcType="DOUBLE" property="recConcentration" />
+    <result column="ColTime" jdbcType="TIMESTAMP" property="colTime" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+    <result column="EquipMentName" jdbcType="VARCHAR" property="equipMentName" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ViewKsEquipmentDatarecord">
+    insert into View_KS_EquipMent_DataRecord (RecID, EquipMentID, RamCode, 
+      StaRecCumAmt, StaRecInsCumAmt, WorRecCumAmt, 
+      WorRecInsCumAmt, RecPressure, RecTemperature, 
+      RecConcentration, ColTime, AddTime, 
+      Status, EquipMentName)
+    values (#{recID,jdbcType=BIGINT}, #{equipMentID,jdbcType=BIGINT}, #{ramCode,jdbcType=VARCHAR}, 
+      #{staRecCumAmt,jdbcType=DOUBLE}, #{staRecInsCumAmt,jdbcType=DOUBLE}, #{worRecCumAmt,jdbcType=DOUBLE}, 
+      #{worRecInsCumAmt,jdbcType=DOUBLE}, #{recPressure,jdbcType=DOUBLE}, #{recTemperature,jdbcType=DOUBLE}, 
+      #{recConcentration,jdbcType=DOUBLE}, #{colTime,jdbcType=TIMESTAMP}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT}, #{equipMentName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ViewKsEquipmentDatarecord">
+    insert into View_KS_EquipMent_DataRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recID != null">
+        RecID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="ramCode != null">
+        RamCode,
+      </if>
+      <if test="staRecCumAmt != null">
+        StaRecCumAmt,
+      </if>
+      <if test="staRecInsCumAmt != null">
+        StaRecInsCumAmt,
+      </if>
+      <if test="worRecCumAmt != null">
+        WorRecCumAmt,
+      </if>
+      <if test="worRecInsCumAmt != null">
+        WorRecInsCumAmt,
+      </if>
+      <if test="recPressure != null">
+        RecPressure,
+      </if>
+      <if test="recTemperature != null">
+        RecTemperature,
+      </if>
+      <if test="recConcentration != null">
+        RecConcentration,
+      </if>
+      <if test="colTime != null">
+        ColTime,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="equipMentName != null">
+        EquipMentName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recID != null">
+        #{recID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staRecCumAmt != null">
+        #{staRecCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="staRecInsCumAmt != null">
+        #{staRecInsCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="worRecCumAmt != null">
+        #{worRecCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="worRecInsCumAmt != null">
+        #{worRecInsCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="recPressure != null">
+        #{recPressure,jdbcType=DOUBLE},
+      </if>
+      <if test="recTemperature != null">
+        #{recTemperature,jdbcType=DOUBLE},
+      </if>
+      <if test="recConcentration != null">
+        #{recConcentration,jdbcType=DOUBLE},
+      </if>
+      <if test="colTime != null">
+        #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="equipMentName != null">
+        #{equipMentName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

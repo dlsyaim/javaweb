@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDtuMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDtu">
+    <id column="DtuID" jdbcType="BIGINT" property="dtuID" />
+    <result column="DtuName" jdbcType="VARCHAR" property="dtuName" />
+    <result column="DtuSite" jdbcType="VARCHAR" property="dtuSite" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DtuID, DtuName, DtuSite, ManagerID, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_DTU
+    where DtuID = #{dtuID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_DTU
+    where DtuID = #{dtuID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDtu">
+    insert into KS_DTU (DtuID, DtuName, DtuSite, 
+      ManagerID, AddTime, Status
+      )
+    values (#{dtuID,jdbcType=BIGINT}, #{dtuName,jdbcType=VARCHAR}, #{dtuSite,jdbcType=VARCHAR}, 
+      #{managerID,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDtu">
+    insert into KS_DTU
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dtuID != null">
+        DtuID,
+      </if>
+      <if test="dtuName != null">
+        DtuName,
+      </if>
+      <if test="dtuSite != null">
+        DtuSite,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dtuID != null">
+        #{dtuID,jdbcType=BIGINT},
+      </if>
+      <if test="dtuName != null">
+        #{dtuName,jdbcType=VARCHAR},
+      </if>
+      <if test="dtuSite != null">
+        #{dtuSite,jdbcType=VARCHAR},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDtu">
+    update KS_DTU
+    <set>
+      <if test="dtuName != null">
+        DtuName = #{dtuName,jdbcType=VARCHAR},
+      </if>
+      <if test="dtuSite != null">
+        DtuSite = #{dtuSite,jdbcType=VARCHAR},
+      </if>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where DtuID = #{dtuID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDtu">
+    update KS_DTU
+    set DtuName = #{dtuName,jdbcType=VARCHAR},
+      DtuSite = #{dtuSite,jdbcType=VARCHAR},
+      ManagerID = #{managerID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where DtuID = #{dtuID,jdbcType=BIGINT}
+  </update>
+</mapper>

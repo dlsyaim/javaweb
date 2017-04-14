@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysftindsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysftinds">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="indid" jdbcType="INTEGER" property="indid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="crtype" jdbcType="CHAR" property="crtype" />
+    <result column="crstart" jdbcType="TIMESTAMP" property="crstart" />
+    <result column="crend" jdbcType="TIMESTAMP" property="crend" />
+    <result column="crrows" jdbcType="BIGINT" property="crrows" />
+    <result column="crerrors" jdbcType="INTEGER" property="crerrors" />
+    <result column="sensitivity" jdbcType="TINYINT" property="sensitivity" />
+    <result column="bXVTDocidUseBaseT" jdbcType="TINYINT" property="bXVTDocidUseBaseT" />
+    <result column="batchsize" jdbcType="INTEGER" property="batchsize" />
+    <result column="nextdocid" jdbcType="BIGINT" property="nextdocid" />
+    <result column="fgid" jdbcType="INTEGER" property="fgid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysftindsWithBLOBs">
+    <result column="crschver" jdbcType="BINARY" property="crschver" />
+    <result column="crtsnext" jdbcType="BINARY" property="crtsnext" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    crschver, crtsnext
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysftindsWithBLOBs">
+    insert into sysftinds (id, indid, status, 
+      crtype, crstart, crend, 
+      crrows, crerrors, sensitivity, 
+      bXVTDocidUseBaseT, batchsize, nextdocid, 
+      fgid, crschver, crtsnext
+      )
+    values (#{id,jdbcType=INTEGER}, #{indid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{crtype,jdbcType=CHAR}, #{crstart,jdbcType=TIMESTAMP}, #{crend,jdbcType=TIMESTAMP}, 
+      #{crrows,jdbcType=BIGINT}, #{crerrors,jdbcType=INTEGER}, #{sensitivity,jdbcType=TINYINT}, 
+      #{bXVTDocidUseBaseT,jdbcType=TINYINT}, #{batchsize,jdbcType=INTEGER}, #{nextdocid,jdbcType=BIGINT}, 
+      #{fgid,jdbcType=INTEGER}, #{crschver,jdbcType=BINARY}, #{crtsnext,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysftindsWithBLOBs">
+    insert into sysftinds
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="indid != null">
+        indid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="crtype != null">
+        crtype,
+      </if>
+      <if test="crstart != null">
+        crstart,
+      </if>
+      <if test="crend != null">
+        crend,
+      </if>
+      <if test="crrows != null">
+        crrows,
+      </if>
+      <if test="crerrors != null">
+        crerrors,
+      </if>
+      <if test="sensitivity != null">
+        sensitivity,
+      </if>
+      <if test="bXVTDocidUseBaseT != null">
+        bXVTDocidUseBaseT,
+      </if>
+      <if test="batchsize != null">
+        batchsize,
+      </if>
+      <if test="nextdocid != null">
+        nextdocid,
+      </if>
+      <if test="fgid != null">
+        fgid,
+      </if>
+      <if test="crschver != null">
+        crschver,
+      </if>
+      <if test="crtsnext != null">
+        crtsnext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="indid != null">
+        #{indid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="crtype != null">
+        #{crtype,jdbcType=CHAR},
+      </if>
+      <if test="crstart != null">
+        #{crstart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crend != null">
+        #{crend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crrows != null">
+        #{crrows,jdbcType=BIGINT},
+      </if>
+      <if test="crerrors != null">
+        #{crerrors,jdbcType=INTEGER},
+      </if>
+      <if test="sensitivity != null">
+        #{sensitivity,jdbcType=TINYINT},
+      </if>
+      <if test="bXVTDocidUseBaseT != null">
+        #{bXVTDocidUseBaseT,jdbcType=TINYINT},
+      </if>
+      <if test="batchsize != null">
+        #{batchsize,jdbcType=INTEGER},
+      </if>
+      <if test="nextdocid != null">
+        #{nextdocid,jdbcType=BIGINT},
+      </if>
+      <if test="fgid != null">
+        #{fgid,jdbcType=INTEGER},
+      </if>
+      <if test="crschver != null">
+        #{crschver,jdbcType=BINARY},
+      </if>
+      <if test="crtsnext != null">
+        #{crtsnext,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

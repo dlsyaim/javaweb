@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ResourceGovernorResourcePoolsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ResourceGovernorResourcePools">
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="min_cpu_percent" jdbcType="INTEGER" property="min_cpu_percent" />
+    <result column="max_cpu_percent" jdbcType="INTEGER" property="max_cpu_percent" />
+    <result column="min_memory_percent" jdbcType="INTEGER" property="min_memory_percent" />
+    <result column="max_memory_percent" jdbcType="INTEGER" property="max_memory_percent" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ResourceGovernorResourcePools">
+    insert into resource_governor_resource_pools (pool_id, name, min_cpu_percent, 
+      max_cpu_percent, min_memory_percent, max_memory_percent
+      )
+    values (#{pool_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{min_cpu_percent,jdbcType=INTEGER}, 
+      #{max_cpu_percent,jdbcType=INTEGER}, #{min_memory_percent,jdbcType=INTEGER}, #{max_memory_percent,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ResourceGovernorResourcePools">
+    insert into resource_governor_resource_pools
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="min_cpu_percent != null">
+        min_cpu_percent,
+      </if>
+      <if test="max_cpu_percent != null">
+        max_cpu_percent,
+      </if>
+      <if test="min_memory_percent != null">
+        min_memory_percent,
+      </if>
+      <if test="max_memory_percent != null">
+        max_memory_percent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="min_cpu_percent != null">
+        #{min_cpu_percent,jdbcType=INTEGER},
+      </if>
+      <if test="max_cpu_percent != null">
+        #{max_cpu_percent,jdbcType=INTEGER},
+      </if>
+      <if test="min_memory_percent != null">
+        #{min_memory_percent,jdbcType=INTEGER},
+      </if>
+      <if test="max_memory_percent != null">
+        #{max_memory_percent,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

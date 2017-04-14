@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SystemInternalsAllocationUnitsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.SystemInternalsAllocationUnits">
+    <result column="allocation_unit_id" jdbcType="BIGINT" property="allocation_unit_id" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="container_id" jdbcType="BIGINT" property="container_id" />
+    <result column="filegroup_id" jdbcType="SMALLINT" property="filegroup_id" />
+    <result column="total_pages" jdbcType="BIGINT" property="total_pages" />
+    <result column="used_pages" jdbcType="BIGINT" property="used_pages" />
+    <result column="data_pages" jdbcType="BIGINT" property="data_pages" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SystemInternalsAllocationUnitsWithBLOBs">
+    <result column="first_page" jdbcType="BINARY" property="first_page" />
+    <result column="root_page" jdbcType="BINARY" property="root_page" />
+    <result column="first_iam_page" jdbcType="BINARY" property="first_iam_page" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    first_page, root_page, first_iam_page
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SystemInternalsAllocationUnitsWithBLOBs">
+    insert into system_internals_allocation_units (allocation_unit_id, type, type_desc, 
+      container_id, filegroup_id, total_pages, 
+      used_pages, data_pages, first_page, 
+      root_page, first_iam_page)
+    values (#{allocation_unit_id,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, #{type_desc,jdbcType=VARCHAR}, 
+      #{container_id,jdbcType=BIGINT}, #{filegroup_id,jdbcType=SMALLINT}, #{total_pages,jdbcType=BIGINT}, 
+      #{used_pages,jdbcType=BIGINT}, #{data_pages,jdbcType=BIGINT}, #{first_page,jdbcType=BINARY}, 
+      #{root_page,jdbcType=BINARY}, #{first_iam_page,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SystemInternalsAllocationUnitsWithBLOBs">
+    insert into system_internals_allocation_units
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="allocation_unit_id != null">
+        allocation_unit_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="container_id != null">
+        container_id,
+      </if>
+      <if test="filegroup_id != null">
+        filegroup_id,
+      </if>
+      <if test="total_pages != null">
+        total_pages,
+      </if>
+      <if test="used_pages != null">
+        used_pages,
+      </if>
+      <if test="data_pages != null">
+        data_pages,
+      </if>
+      <if test="first_page != null">
+        first_page,
+      </if>
+      <if test="root_page != null">
+        root_page,
+      </if>
+      <if test="first_iam_page != null">
+        first_iam_page,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="allocation_unit_id != null">
+        #{allocation_unit_id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="container_id != null">
+        #{container_id,jdbcType=BIGINT},
+      </if>
+      <if test="filegroup_id != null">
+        #{filegroup_id,jdbcType=SMALLINT},
+      </if>
+      <if test="total_pages != null">
+        #{total_pages,jdbcType=BIGINT},
+      </if>
+      <if test="used_pages != null">
+        #{used_pages,jdbcType=BIGINT},
+      </if>
+      <if test="data_pages != null">
+        #{data_pages,jdbcType=BIGINT},
+      </if>
+      <if test="first_page != null">
+        #{first_page,jdbcType=BINARY},
+      </if>
+      <if test="root_page != null">
+        #{root_page,jdbcType=BINARY},
+      </if>
+      <if test="first_iam_page != null">
+        #{first_iam_page,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

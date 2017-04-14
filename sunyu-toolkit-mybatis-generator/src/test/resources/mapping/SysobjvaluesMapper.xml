@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysobjvaluesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysobjvalues">
+    <result column="valclass" jdbcType="TINYINT" property="valclass" />
+    <result column="objid" jdbcType="INTEGER" property="objid" />
+    <result column="subobjid" jdbcType="INTEGER" property="subobjid" />
+    <result column="valnum" jdbcType="INTEGER" property="valnum" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.Sysobjvalues">
+    <result column="imageval" jdbcType="BLOB" property="imageval" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    imageval
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysobjvalues">
+    insert into sysobjvalues (valclass, objid, subobjid, 
+      valnum, value, imageval
+      )
+    values (#{valclass,jdbcType=TINYINT}, #{objid,jdbcType=INTEGER}, #{subobjid,jdbcType=INTEGER}, 
+      #{valnum,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}, #{imageval,jdbcType=BLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysobjvalues">
+    insert into sysobjvalues
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="valclass != null">
+        valclass,
+      </if>
+      <if test="objid != null">
+        objid,
+      </if>
+      <if test="subobjid != null">
+        subobjid,
+      </if>
+      <if test="valnum != null">
+        valnum,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="imageval != null">
+        imageval,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="valclass != null">
+        #{valclass,jdbcType=TINYINT},
+      </if>
+      <if test="objid != null">
+        #{objid,jdbcType=INTEGER},
+      </if>
+      <if test="subobjid != null">
+        #{subobjid,jdbcType=INTEGER},
+      </if>
+      <if test="valnum != null">
+        #{valnum,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="imageval != null">
+        #{imageval,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

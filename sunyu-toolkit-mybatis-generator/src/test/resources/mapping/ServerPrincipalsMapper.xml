@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServerPrincipalsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ServerPrincipals">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="is_disabled" jdbcType="BIT" property="is_disabled" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="default_database_name" jdbcType="VARCHAR" property="default_database_name" />
+    <result column="default_language_name" jdbcType="VARCHAR" property="default_language_name" />
+    <result column="credential_id" jdbcType="INTEGER" property="credential_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.ServerPrincipals">
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sid
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ServerPrincipals">
+    insert into server_principals (name, principal_id, type, 
+      type_desc, is_disabled, create_date, 
+      modify_date, default_database_name, default_language_name, 
+      credential_id, sid)
+    values (#{name,jdbcType=VARCHAR}, #{principal_id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{type_desc,jdbcType=VARCHAR}, #{is_disabled,jdbcType=BIT}, #{create_date,jdbcType=TIMESTAMP}, 
+      #{modify_date,jdbcType=TIMESTAMP}, #{default_database_name,jdbcType=VARCHAR}, #{default_language_name,jdbcType=VARCHAR}, 
+      #{credential_id,jdbcType=INTEGER}, #{sid,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ServerPrincipals">
+    insert into server_principals
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="is_disabled != null">
+        is_disabled,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="default_database_name != null">
+        default_database_name,
+      </if>
+      <if test="default_language_name != null">
+        default_language_name,
+      </if>
+      <if test="credential_id != null">
+        credential_id,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="is_disabled != null">
+        #{is_disabled,jdbcType=BIT},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="default_database_name != null">
+        #{default_database_name,jdbcType=VARCHAR},
+      </if>
+      <if test="default_language_name != null">
+        #{default_language_name,jdbcType=VARCHAR},
+      </if>
+      <if test="credential_id != null">
+        #{credential_id,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

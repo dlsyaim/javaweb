@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysownersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysowners">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="dfltsch" jdbcType="VARCHAR" property="dfltsch" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysownersWithBLOBs">
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+    <result column="password" jdbcType="VARBINARY" property="password" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sid, password
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysownersWithBLOBs">
+    insert into sysowners (id, name, type, 
+      dfltsch, status, created, 
+      modified, sid, password
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, 
+      #{dfltsch,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+      #{modified,jdbcType=TIMESTAMP}, #{sid,jdbcType=VARBINARY}, #{password,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysownersWithBLOBs">
+    insert into sysowners
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="dfltsch != null">
+        dfltsch,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="dfltsch != null">
+        #{dfltsch,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

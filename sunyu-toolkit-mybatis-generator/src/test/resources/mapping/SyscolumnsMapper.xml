@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyscolumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syscolumns">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="xtype" jdbcType="TINYINT" property="xtype" />
+    <result column="typestat" jdbcType="TINYINT" property="typestat" />
+    <result column="xusertype" jdbcType="SMALLINT" property="xusertype" />
+    <result column="length" jdbcType="SMALLINT" property="length" />
+    <result column="xprec" jdbcType="TINYINT" property="xprec" />
+    <result column="xscale" jdbcType="TINYINT" property="xscale" />
+    <result column="colid" jdbcType="SMALLINT" property="colid" />
+    <result column="xoffset" jdbcType="SMALLINT" property="xoffset" />
+    <result column="bitpos" jdbcType="TINYINT" property="bitpos" />
+    <result column="reserved" jdbcType="TINYINT" property="reserved" />
+    <result column="colstat" jdbcType="SMALLINT" property="colstat" />
+    <result column="cdefault" jdbcType="INTEGER" property="cdefault" />
+    <result column="domain" jdbcType="INTEGER" property="domain" />
+    <result column="number" jdbcType="SMALLINT" property="number" />
+    <result column="colorder" jdbcType="SMALLINT" property="colorder" />
+    <result column="offset" jdbcType="SMALLINT" property="offset" />
+    <result column="collationid" jdbcType="INTEGER" property="collationid" />
+    <result column="language" jdbcType="INTEGER" property="language" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="usertype" jdbcType="SMALLINT" property="usertype" />
+    <result column="printfmt" jdbcType="VARCHAR" property="printfmt" />
+    <result column="prec" jdbcType="SMALLINT" property="prec" />
+    <result column="scale" jdbcType="INTEGER" property="scale" />
+    <result column="iscomputed" jdbcType="INTEGER" property="iscomputed" />
+    <result column="isoutparam" jdbcType="INTEGER" property="isoutparam" />
+    <result column="isnullable" jdbcType="INTEGER" property="isnullable" />
+    <result column="collation" jdbcType="VARCHAR" property="collation" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SyscolumnsWithBLOBs">
+    <result column="autoval" jdbcType="VARBINARY" property="autoval" />
+    <result column="tdscollation" jdbcType="BINARY" property="tdscollation" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    autoval, tdscollation
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SyscolumnsWithBLOBs">
+    insert into syscolumns (name, id, xtype, 
+      typestat, xusertype, length, 
+      xprec, xscale, colid, 
+      xoffset, bitpos, reserved, 
+      colstat, cdefault, domain, 
+      number, colorder, offset, 
+      collationid, language, status, 
+      type, usertype, printfmt, 
+      prec, scale, iscomputed, 
+      isoutparam, isnullable, collation, 
+      autoval, tdscollation)
+    values (#{name,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{xtype,jdbcType=TINYINT}, 
+      #{typestat,jdbcType=TINYINT}, #{xusertype,jdbcType=SMALLINT}, #{length,jdbcType=SMALLINT}, 
+      #{xprec,jdbcType=TINYINT}, #{xscale,jdbcType=TINYINT}, #{colid,jdbcType=SMALLINT}, 
+      #{xoffset,jdbcType=SMALLINT}, #{bitpos,jdbcType=TINYINT}, #{reserved,jdbcType=TINYINT}, 
+      #{colstat,jdbcType=SMALLINT}, #{cdefault,jdbcType=INTEGER}, #{domain,jdbcType=INTEGER}, 
+      #{number,jdbcType=SMALLINT}, #{colorder,jdbcType=SMALLINT}, #{offset,jdbcType=SMALLINT}, 
+      #{collationid,jdbcType=INTEGER}, #{language,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{type,jdbcType=TINYINT}, #{usertype,jdbcType=SMALLINT}, #{printfmt,jdbcType=VARCHAR}, 
+      #{prec,jdbcType=SMALLINT}, #{scale,jdbcType=INTEGER}, #{iscomputed,jdbcType=INTEGER}, 
+      #{isoutparam,jdbcType=INTEGER}, #{isnullable,jdbcType=INTEGER}, #{collation,jdbcType=VARCHAR}, 
+      #{autoval,jdbcType=VARBINARY}, #{tdscollation,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SyscolumnsWithBLOBs">
+    insert into syscolumns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="xtype != null">
+        xtype,
+      </if>
+      <if test="typestat != null">
+        typestat,
+      </if>
+      <if test="xusertype != null">
+        xusertype,
+      </if>
+      <if test="length != null">
+        length,
+      </if>
+      <if test="xprec != null">
+        xprec,
+      </if>
+      <if test="xscale != null">
+        xscale,
+      </if>
+      <if test="colid != null">
+        colid,
+      </if>
+      <if test="xoffset != null">
+        xoffset,
+      </if>
+      <if test="bitpos != null">
+        bitpos,
+      </if>
+      <if test="reserved != null">
+        reserved,
+      </if>
+      <if test="colstat != null">
+        colstat,
+      </if>
+      <if test="cdefault != null">
+        cdefault,
+      </if>
+      <if test="domain != null">
+        domain,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="colorder != null">
+        colorder,
+      </if>
+      <if test="offset != null">
+        offset,
+      </if>
+      <if test="collationid != null">
+        collationid,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+      <if test="printfmt != null">
+        printfmt,
+      </if>
+      <if test="prec != null">
+        prec,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="iscomputed != null">
+        iscomputed,
+      </if>
+      <if test="isoutparam != null">
+        isoutparam,
+      </if>
+      <if test="isnullable != null">
+        isnullable,
+      </if>
+      <if test="collation != null">
+        collation,
+      </if>
+      <if test="autoval != null">
+        autoval,
+      </if>
+      <if test="tdscollation != null">
+        tdscollation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="xtype != null">
+        #{xtype,jdbcType=TINYINT},
+      </if>
+      <if test="typestat != null">
+        #{typestat,jdbcType=TINYINT},
+      </if>
+      <if test="xusertype != null">
+        #{xusertype,jdbcType=SMALLINT},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=SMALLINT},
+      </if>
+      <if test="xprec != null">
+        #{xprec,jdbcType=TINYINT},
+      </if>
+      <if test="xscale != null">
+        #{xscale,jdbcType=TINYINT},
+      </if>
+      <if test="colid != null">
+        #{colid,jdbcType=SMALLINT},
+      </if>
+      <if test="xoffset != null">
+        #{xoffset,jdbcType=SMALLINT},
+      </if>
+      <if test="bitpos != null">
+        #{bitpos,jdbcType=TINYINT},
+      </if>
+      <if test="reserved != null">
+        #{reserved,jdbcType=TINYINT},
+      </if>
+      <if test="colstat != null">
+        #{colstat,jdbcType=SMALLINT},
+      </if>
+      <if test="cdefault != null">
+        #{cdefault,jdbcType=INTEGER},
+      </if>
+      <if test="domain != null">
+        #{domain,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=SMALLINT},
+      </if>
+      <if test="colorder != null">
+        #{colorder,jdbcType=SMALLINT},
+      </if>
+      <if test="offset != null">
+        #{offset,jdbcType=SMALLINT},
+      </if>
+      <if test="collationid != null">
+        #{collationid,jdbcType=INTEGER},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=SMALLINT},
+      </if>
+      <if test="printfmt != null">
+        #{printfmt,jdbcType=VARCHAR},
+      </if>
+      <if test="prec != null">
+        #{prec,jdbcType=SMALLINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=INTEGER},
+      </if>
+      <if test="iscomputed != null">
+        #{iscomputed,jdbcType=INTEGER},
+      </if>
+      <if test="isoutparam != null">
+        #{isoutparam,jdbcType=INTEGER},
+      </if>
+      <if test="isnullable != null">
+        #{isnullable,jdbcType=INTEGER},
+      </if>
+      <if test="collation != null">
+        #{collation,jdbcType=VARCHAR},
+      </if>
+      <if test="autoval != null">
+        #{autoval,jdbcType=VARBINARY},
+      </if>
+      <if test="tdscollation != null">
+        #{tdscollation,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

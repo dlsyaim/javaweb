@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.NumberedProcedureParametersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.NumberedProcedureParameters">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="procedure_number" jdbcType="SMALLINT" property="procedure_number" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parameter_id" jdbcType="INTEGER" property="parameter_id" />
+    <result column="system_type_id" jdbcType="TINYINT" property="system_type_id" />
+    <result column="user_type_id" jdbcType="INTEGER" property="user_type_id" />
+    <result column="max_length" jdbcType="SMALLINT" property="max_length" />
+    <result column="precision" jdbcType="TINYINT" property="precision" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="is_output" jdbcType="BIT" property="is_output" />
+    <result column="is_cursor_ref" jdbcType="BIT" property="is_cursor_ref" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.NumberedProcedureParameters">
+    insert into numbered_procedure_parameters (object_id, procedure_number, name, 
+      parameter_id, system_type_id, user_type_id, 
+      max_length, precision, scale, 
+      is_output, is_cursor_ref)
+    values (#{object_id,jdbcType=INTEGER}, #{procedure_number,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}, 
+      #{parameter_id,jdbcType=INTEGER}, #{system_type_id,jdbcType=TINYINT}, #{user_type_id,jdbcType=INTEGER}, 
+      #{max_length,jdbcType=SMALLINT}, #{precision,jdbcType=TINYINT}, #{scale,jdbcType=TINYINT}, 
+      #{is_output,jdbcType=BIT}, #{is_cursor_ref,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.NumberedProcedureParameters">
+    insert into numbered_procedure_parameters
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="procedure_number != null">
+        procedure_number,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="parameter_id != null">
+        parameter_id,
+      </if>
+      <if test="system_type_id != null">
+        system_type_id,
+      </if>
+      <if test="user_type_id != null">
+        user_type_id,
+      </if>
+      <if test="max_length != null">
+        max_length,
+      </if>
+      <if test="precision != null">
+        precision,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="is_output != null">
+        is_output,
+      </if>
+      <if test="is_cursor_ref != null">
+        is_cursor_ref,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="procedure_number != null">
+        #{procedure_number,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter_id != null">
+        #{parameter_id,jdbcType=INTEGER},
+      </if>
+      <if test="system_type_id != null">
+        #{system_type_id,jdbcType=TINYINT},
+      </if>
+      <if test="user_type_id != null">
+        #{user_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="max_length != null">
+        #{max_length,jdbcType=SMALLINT},
+      </if>
+      <if test="precision != null">
+        #{precision,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="is_output != null">
+        #{is_output,jdbcType=BIT},
+      </if>
+      <if test="is_cursor_ref != null">
+        #{is_cursor_ref,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.RoutesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Routes">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="route_id" jdbcType="INTEGER" property="route_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="remote_service_name" jdbcType="VARCHAR" property="remote_service_name" />
+    <result column="broker_instance" jdbcType="VARCHAR" property="broker_instance" />
+    <result column="lifetime" jdbcType="TIMESTAMP" property="lifetime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="mirror_address" jdbcType="VARCHAR" property="mirror_address" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Routes">
+    insert into routes (name, route_id, principal_id, 
+      remote_service_name, broker_instance, lifetime, 
+      address, mirror_address)
+    values (#{name,jdbcType=VARCHAR}, #{route_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, 
+      #{remote_service_name,jdbcType=VARCHAR}, #{broker_instance,jdbcType=VARCHAR}, #{lifetime,jdbcType=TIMESTAMP}, 
+      #{address,jdbcType=VARCHAR}, #{mirror_address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Routes">
+    insert into routes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="route_id != null">
+        route_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="remote_service_name != null">
+        remote_service_name,
+      </if>
+      <if test="broker_instance != null">
+        broker_instance,
+      </if>
+      <if test="lifetime != null">
+        lifetime,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="mirror_address != null">
+        mirror_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="route_id != null">
+        #{route_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="remote_service_name != null">
+        #{remote_service_name,jdbcType=VARCHAR},
+      </if>
+      <if test="broker_instance != null">
+        #{broker_instance,jdbcType=VARCHAR},
+      </if>
+      <if test="lifetime != null">
+        #{lifetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mirror_address != null">
+        #{mirror_address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

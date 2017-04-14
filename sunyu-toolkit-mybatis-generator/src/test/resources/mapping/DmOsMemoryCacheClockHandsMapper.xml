@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryCacheClockHandsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryCacheClockHands">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="clock_hand" jdbcType="VARCHAR" property="clock_hand" />
+    <result column="clock_status" jdbcType="VARCHAR" property="clock_status" />
+    <result column="rounds_count" jdbcType="BIGINT" property="rounds_count" />
+    <result column="removed_all_rounds_count" jdbcType="BIGINT" property="removed_all_rounds_count" />
+    <result column="updated_last_round_count" jdbcType="BIGINT" property="updated_last_round_count" />
+    <result column="removed_last_round_count" jdbcType="BIGINT" property="removed_last_round_count" />
+    <result column="last_tick_time" jdbcType="BIGINT" property="last_tick_time" />
+    <result column="round_start_time" jdbcType="BIGINT" property="round_start_time" />
+    <result column="last_round_start_time" jdbcType="BIGINT" property="last_round_start_time" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsMemoryCacheClockHands">
+    <result column="cache_address" jdbcType="VARBINARY" property="cache_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    cache_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheClockHands">
+    insert into dm_os_memory_cache_clock_hands (name, type, clock_hand, 
+      clock_status, rounds_count, removed_all_rounds_count, 
+      updated_last_round_count, removed_last_round_count, 
+      last_tick_time, round_start_time, last_round_start_time, 
+      cache_address)
+    values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{clock_hand,jdbcType=VARCHAR}, 
+      #{clock_status,jdbcType=VARCHAR}, #{rounds_count,jdbcType=BIGINT}, #{removed_all_rounds_count,jdbcType=BIGINT}, 
+      #{updated_last_round_count,jdbcType=BIGINT}, #{removed_last_round_count,jdbcType=BIGINT}, 
+      #{last_tick_time,jdbcType=BIGINT}, #{round_start_time,jdbcType=BIGINT}, #{last_round_start_time,jdbcType=BIGINT}, 
+      #{cache_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheClockHands">
+    insert into dm_os_memory_cache_clock_hands
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="clock_hand != null">
+        clock_hand,
+      </if>
+      <if test="clock_status != null">
+        clock_status,
+      </if>
+      <if test="rounds_count != null">
+        rounds_count,
+      </if>
+      <if test="removed_all_rounds_count != null">
+        removed_all_rounds_count,
+      </if>
+      <if test="updated_last_round_count != null">
+        updated_last_round_count,
+      </if>
+      <if test="removed_last_round_count != null">
+        removed_last_round_count,
+      </if>
+      <if test="last_tick_time != null">
+        last_tick_time,
+      </if>
+      <if test="round_start_time != null">
+        round_start_time,
+      </if>
+      <if test="last_round_start_time != null">
+        last_round_start_time,
+      </if>
+      <if test="cache_address != null">
+        cache_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="clock_hand != null">
+        #{clock_hand,jdbcType=VARCHAR},
+      </if>
+      <if test="clock_status != null">
+        #{clock_status,jdbcType=VARCHAR},
+      </if>
+      <if test="rounds_count != null">
+        #{rounds_count,jdbcType=BIGINT},
+      </if>
+      <if test="removed_all_rounds_count != null">
+        #{removed_all_rounds_count,jdbcType=BIGINT},
+      </if>
+      <if test="updated_last_round_count != null">
+        #{updated_last_round_count,jdbcType=BIGINT},
+      </if>
+      <if test="removed_last_round_count != null">
+        #{removed_last_round_count,jdbcType=BIGINT},
+      </if>
+      <if test="last_tick_time != null">
+        #{last_tick_time,jdbcType=BIGINT},
+      </if>
+      <if test="round_start_time != null">
+        #{round_start_time,jdbcType=BIGINT},
+      </if>
+      <if test="last_round_start_time != null">
+        #{last_round_start_time,jdbcType=BIGINT},
+      </if>
+      <if test="cache_address != null">
+        #{cache_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

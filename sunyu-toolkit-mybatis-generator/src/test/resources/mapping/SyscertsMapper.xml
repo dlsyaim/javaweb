@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyscertsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syscerts">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="encrtype" jdbcType="CHAR" property="encrtype" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="lastpkeybackup" jdbcType="TIMESTAMP" property="lastpkeybackup" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SyscertsWithBLOBs">
+    <result column="issuer" jdbcType="VARBINARY" property="issuer" />
+    <result column="snum" jdbcType="VARBINARY" property="snum" />
+    <result column="thumbprint" jdbcType="VARBINARY" property="thumbprint" />
+    <result column="pkey" jdbcType="VARBINARY" property="pkey" />
+    <result column="cert" jdbcType="BLOB" property="cert" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    issuer, snum, thumbprint, pkey, cert
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SyscertsWithBLOBs">
+    insert into syscerts (id, name, encrtype, 
+      status, lastpkeybackup, issuer, 
+      snum, thumbprint, pkey, 
+      cert)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{encrtype,jdbcType=CHAR}, 
+      #{status,jdbcType=INTEGER}, #{lastpkeybackup,jdbcType=TIMESTAMP}, #{issuer,jdbcType=VARBINARY}, 
+      #{snum,jdbcType=VARBINARY}, #{thumbprint,jdbcType=VARBINARY}, #{pkey,jdbcType=VARBINARY}, 
+      #{cert,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SyscertsWithBLOBs">
+    insert into syscerts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="encrtype != null">
+        encrtype,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="lastpkeybackup != null">
+        lastpkeybackup,
+      </if>
+      <if test="issuer != null">
+        issuer,
+      </if>
+      <if test="snum != null">
+        snum,
+      </if>
+      <if test="thumbprint != null">
+        thumbprint,
+      </if>
+      <if test="pkey != null">
+        pkey,
+      </if>
+      <if test="cert != null">
+        cert,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="encrtype != null">
+        #{encrtype,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastpkeybackup != null">
+        #{lastpkeybackup,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issuer != null">
+        #{issuer,jdbcType=VARBINARY},
+      </if>
+      <if test="snum != null">
+        #{snum,jdbcType=VARBINARY},
+      </if>
+      <if test="thumbprint != null">
+        #{thumbprint,jdbcType=VARBINARY},
+      </if>
+      <if test="pkey != null">
+        #{pkey,jdbcType=VARBINARY},
+      </if>
+      <if test="cert != null">
+        #{cert,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsXianAlarmlimitMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsXianAlarmlimit">
+    <id column="ID" jdbcType="BIGINT" property="ID" />
+    <result column="RamCode" jdbcType="VARCHAR" property="ramCode" />
+    <result column="QbHH" jdbcType="DOUBLE" property="qbHH" />
+    <result column="QbH" jdbcType="DOUBLE" property="qbH" />
+    <result column="QbL" jdbcType="DOUBLE" property="qbL" />
+    <result column="QbLL" jdbcType="DOUBLE" property="qbLL" />
+    <result column="QmHH" jdbcType="DOUBLE" property="qmHH" />
+    <result column="QmH" jdbcType="DOUBLE" property="qmH" />
+    <result column="QmL" jdbcType="DOUBLE" property="qmL" />
+    <result column="QmLL" jdbcType="DOUBLE" property="qmLL" />
+    <result column="THH" jdbcType="DOUBLE" property="THH" />
+    <result column="TH" jdbcType="DOUBLE" property="TH" />
+    <result column="TL" jdbcType="DOUBLE" property="TL" />
+    <result column="TLL" jdbcType="DOUBLE" property="TLL" />
+    <result column="PHH" jdbcType="DOUBLE" property="PHH" />
+    <result column="PH" jdbcType="DOUBLE" property="PH" />
+    <result column="PL" jdbcType="DOUBLE" property="PL" />
+    <result column="PLL" jdbcType="DOUBLE" property="PLL" />
+    <result column="CHH" jdbcType="DOUBLE" property="CHH" />
+    <result column="CH" jdbcType="DOUBLE" property="CH" />
+    <result column="AddTime" jdbcType="VARCHAR" property="addTime" />
+    <result column="State" jdbcType="SMALLINT" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, RamCode, QbHH, QbH, QbL, QbLL, QmHH, QmH, QmL, QmLL, THH, TH, TL, TLL, PHH, PH, 
+    PL, PLL, CHH, CH, AddTime, State
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_XiAn_AlarmLimit
+    where ID = #{ID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_XiAn_AlarmLimit
+    where ID = #{ID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsXianAlarmlimit">
+    insert into KS_XiAn_AlarmLimit (ID, RamCode, QbHH, 
+      QbH, QbL, QbLL, QmHH, 
+      QmH, QmL, QmLL, THH, 
+      TH, TL, TLL, PHH, 
+      PH, PL, PLL, CHH, 
+      CH, AddTime, State)
+    values (#{ID,jdbcType=BIGINT}, #{ramCode,jdbcType=VARCHAR}, #{qbHH,jdbcType=DOUBLE}, 
+      #{qbH,jdbcType=DOUBLE}, #{qbL,jdbcType=DOUBLE}, #{qbLL,jdbcType=DOUBLE}, #{qmHH,jdbcType=DOUBLE}, 
+      #{qmH,jdbcType=DOUBLE}, #{qmL,jdbcType=DOUBLE}, #{qmLL,jdbcType=DOUBLE}, #{THH,jdbcType=DOUBLE}, 
+      #{TH,jdbcType=DOUBLE}, #{TL,jdbcType=DOUBLE}, #{TLL,jdbcType=DOUBLE}, #{PHH,jdbcType=DOUBLE}, 
+      #{PH,jdbcType=DOUBLE}, #{PL,jdbcType=DOUBLE}, #{PLL,jdbcType=DOUBLE}, #{CHH,jdbcType=DOUBLE}, 
+      #{CH,jdbcType=DOUBLE}, #{addTime,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsXianAlarmlimit">
+    insert into KS_XiAn_AlarmLimit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="ramCode != null">
+        RamCode,
+      </if>
+      <if test="qbHH != null">
+        QbHH,
+      </if>
+      <if test="qbH != null">
+        QbH,
+      </if>
+      <if test="qbL != null">
+        QbL,
+      </if>
+      <if test="qbLL != null">
+        QbLL,
+      </if>
+      <if test="qmHH != null">
+        QmHH,
+      </if>
+      <if test="qmH != null">
+        QmH,
+      </if>
+      <if test="qmL != null">
+        QmL,
+      </if>
+      <if test="qmLL != null">
+        QmLL,
+      </if>
+      <if test="THH != null">
+        THH,
+      </if>
+      <if test="TH != null">
+        TH,
+      </if>
+      <if test="TL != null">
+        TL,
+      </if>
+      <if test="TLL != null">
+        TLL,
+      </if>
+      <if test="PHH != null">
+        PHH,
+      </if>
+      <if test="PH != null">
+        PH,
+      </if>
+      <if test="PL != null">
+        PL,
+      </if>
+      <if test="PLL != null">
+        PLL,
+      </if>
+      <if test="CHH != null">
+        CHH,
+      </if>
+      <if test="CH != null">
+        CH,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="state != null">
+        State,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="qbHH != null">
+        #{qbHH,jdbcType=DOUBLE},
+      </if>
+      <if test="qbH != null">
+        #{qbH,jdbcType=DOUBLE},
+      </if>
+      <if test="qbL != null">
+        #{qbL,jdbcType=DOUBLE},
+      </if>
+      <if test="qbLL != null">
+        #{qbLL,jdbcType=DOUBLE},
+      </if>
+      <if test="qmHH != null">
+        #{qmHH,jdbcType=DOUBLE},
+      </if>
+      <if test="qmH != null">
+        #{qmH,jdbcType=DOUBLE},
+      </if>
+      <if test="qmL != null">
+        #{qmL,jdbcType=DOUBLE},
+      </if>
+      <if test="qmLL != null">
+        #{qmLL,jdbcType=DOUBLE},
+      </if>
+      <if test="THH != null">
+        #{THH,jdbcType=DOUBLE},
+      </if>
+      <if test="TH != null">
+        #{TH,jdbcType=DOUBLE},
+      </if>
+      <if test="TL != null">
+        #{TL,jdbcType=DOUBLE},
+      </if>
+      <if test="TLL != null">
+        #{TLL,jdbcType=DOUBLE},
+      </if>
+      <if test="PHH != null">
+        #{PHH,jdbcType=DOUBLE},
+      </if>
+      <if test="PH != null">
+        #{PH,jdbcType=DOUBLE},
+      </if>
+      <if test="PL != null">
+        #{PL,jdbcType=DOUBLE},
+      </if>
+      <if test="PLL != null">
+        #{PLL,jdbcType=DOUBLE},
+      </if>
+      <if test="CHH != null">
+        #{CHH,jdbcType=DOUBLE},
+      </if>
+      <if test="CH != null">
+        #{CH,jdbcType=DOUBLE},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsXianAlarmlimit">
+    update KS_XiAn_AlarmLimit
+    <set>
+      <if test="ramCode != null">
+        RamCode = #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="qbHH != null">
+        QbHH = #{qbHH,jdbcType=DOUBLE},
+      </if>
+      <if test="qbH != null">
+        QbH = #{qbH,jdbcType=DOUBLE},
+      </if>
+      <if test="qbL != null">
+        QbL = #{qbL,jdbcType=DOUBLE},
+      </if>
+      <if test="qbLL != null">
+        QbLL = #{qbLL,jdbcType=DOUBLE},
+      </if>
+      <if test="qmHH != null">
+        QmHH = #{qmHH,jdbcType=DOUBLE},
+      </if>
+      <if test="qmH != null">
+        QmH = #{qmH,jdbcType=DOUBLE},
+      </if>
+      <if test="qmL != null">
+        QmL = #{qmL,jdbcType=DOUBLE},
+      </if>
+      <if test="qmLL != null">
+        QmLL = #{qmLL,jdbcType=DOUBLE},
+      </if>
+      <if test="THH != null">
+        THH = #{THH,jdbcType=DOUBLE},
+      </if>
+      <if test="TH != null">
+        TH = #{TH,jdbcType=DOUBLE},
+      </if>
+      <if test="TL != null">
+        TL = #{TL,jdbcType=DOUBLE},
+      </if>
+      <if test="TLL != null">
+        TLL = #{TLL,jdbcType=DOUBLE},
+      </if>
+      <if test="PHH != null">
+        PHH = #{PHH,jdbcType=DOUBLE},
+      </if>
+      <if test="PH != null">
+        PH = #{PH,jdbcType=DOUBLE},
+      </if>
+      <if test="PL != null">
+        PL = #{PL,jdbcType=DOUBLE},
+      </if>
+      <if test="PLL != null">
+        PLL = #{PLL,jdbcType=DOUBLE},
+      </if>
+      <if test="CHH != null">
+        CHH = #{CHH,jdbcType=DOUBLE},
+      </if>
+      <if test="CH != null">
+        CH = #{CH,jdbcType=DOUBLE},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        State = #{state,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsXianAlarmlimit">
+    update KS_XiAn_AlarmLimit
+    set RamCode = #{ramCode,jdbcType=VARCHAR},
+      QbHH = #{qbHH,jdbcType=DOUBLE},
+      QbH = #{qbH,jdbcType=DOUBLE},
+      QbL = #{qbL,jdbcType=DOUBLE},
+      QbLL = #{qbLL,jdbcType=DOUBLE},
+      QmHH = #{qmHH,jdbcType=DOUBLE},
+      QmH = #{qmH,jdbcType=DOUBLE},
+      QmL = #{qmL,jdbcType=DOUBLE},
+      QmLL = #{qmLL,jdbcType=DOUBLE},
+      THH = #{THH,jdbcType=DOUBLE},
+      TH = #{TH,jdbcType=DOUBLE},
+      TL = #{TL,jdbcType=DOUBLE},
+      TLL = #{TLL,jdbcType=DOUBLE},
+      PHH = #{PHH,jdbcType=DOUBLE},
+      PH = #{PH,jdbcType=DOUBLE},
+      PL = #{PL,jdbcType=DOUBLE},
+      PLL = #{PLL,jdbcType=DOUBLE},
+      CHH = #{CHH,jdbcType=DOUBLE},
+      CH = #{CH,jdbcType=DOUBLE},
+      AddTime = #{addTime,jdbcType=VARCHAR},
+      State = #{state,jdbcType=SMALLINT}
+    where ID = #{ID,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsAlarmlimitMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsAlarmlimit">
+    <id column="AlarmID" jdbcType="BIGINT" property="alarmID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="RamCode" jdbcType="VARCHAR" property="ramCode" />
+    <result column="StaLLowLimit" jdbcType="DOUBLE" property="staLLowLimit" />
+    <result column="StaLowLimit" jdbcType="DOUBLE" property="staLowLimit" />
+    <result column="StaHighLimit" jdbcType="DOUBLE" property="staHighLimit" />
+    <result column="StaHHighLimit" jdbcType="DOUBLE" property="staHHighLimit" />
+    <result column="WorLLowLimit" jdbcType="DOUBLE" property="worLLowLimit" />
+    <result column="WorLowLimit" jdbcType="DOUBLE" property="worLowLimit" />
+    <result column="WorHighLimit" jdbcType="DOUBLE" property="worHighLimit" />
+    <result column="WorHHighLimit" jdbcType="DOUBLE" property="worHHighLimit" />
+    <result column="TemLLowLimit" jdbcType="DOUBLE" property="temLLowLimit" />
+    <result column="TemLowLimit" jdbcType="DOUBLE" property="temLowLimit" />
+    <result column="TemHighLimit" jdbcType="DOUBLE" property="temHighLimit" />
+    <result column="TemHHighLimit" jdbcType="DOUBLE" property="temHHighLimit" />
+    <result column="CnsHighLimit" jdbcType="DOUBLE" property="cnsHighLimit" />
+    <result column="CnsHHighLimit" jdbcType="DOUBLE" property="cnsHHighLimit" />
+    <result column="PreLLowLimit" jdbcType="DOUBLE" property="preLLowLimit" />
+    <result column="PreLowLimit" jdbcType="DOUBLE" property="preLowLimit" />
+    <result column="PreHighLimit" jdbcType="DOUBLE" property="preHighLimit" />
+    <result column="PreHHighLimit" jdbcType="DOUBLE" property="preHHighLimit" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AlarmID, EquipMentID, RamCode, StaLLowLimit, StaLowLimit, StaHighLimit, StaHHighLimit, 
+    WorLLowLimit, WorLowLimit, WorHighLimit, WorHHighLimit, TemLLowLimit, TemLowLimit, 
+    TemHighLimit, TemHHighLimit, CnsHighLimit, CnsHHighLimit, PreLLowLimit, PreLowLimit, 
+    PreHighLimit, PreHHighLimit, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_AlarmLimit
+    where AlarmID = #{alarmID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_AlarmLimit
+    where AlarmID = #{alarmID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsAlarmlimit">
+    insert into KS_AlarmLimit (AlarmID, EquipMentID, RamCode, 
+      StaLLowLimit, StaLowLimit, StaHighLimit, 
+      StaHHighLimit, WorLLowLimit, WorLowLimit, 
+      WorHighLimit, WorHHighLimit, TemLLowLimit, 
+      TemLowLimit, TemHighLimit, TemHHighLimit, 
+      CnsHighLimit, CnsHHighLimit, PreLLowLimit, 
+      PreLowLimit, PreHighLimit, PreHHighLimit, 
+      AddTime, Status)
+    values (#{alarmID,jdbcType=BIGINT}, #{equipMentID,jdbcType=BIGINT}, #{ramCode,jdbcType=VARCHAR}, 
+      #{staLLowLimit,jdbcType=DOUBLE}, #{staLowLimit,jdbcType=DOUBLE}, #{staHighLimit,jdbcType=DOUBLE}, 
+      #{staHHighLimit,jdbcType=DOUBLE}, #{worLLowLimit,jdbcType=DOUBLE}, #{worLowLimit,jdbcType=DOUBLE}, 
+      #{worHighLimit,jdbcType=DOUBLE}, #{worHHighLimit,jdbcType=DOUBLE}, #{temLLowLimit,jdbcType=DOUBLE}, 
+      #{temLowLimit,jdbcType=DOUBLE}, #{temHighLimit,jdbcType=DOUBLE}, #{temHHighLimit,jdbcType=DOUBLE}, 
+      #{cnsHighLimit,jdbcType=DOUBLE}, #{cnsHHighLimit,jdbcType=DOUBLE}, #{preLLowLimit,jdbcType=DOUBLE}, 
+      #{preLowLimit,jdbcType=DOUBLE}, #{preHighLimit,jdbcType=DOUBLE}, #{preHHighLimit,jdbcType=DOUBLE}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsAlarmlimit">
+    insert into KS_AlarmLimit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alarmID != null">
+        AlarmID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="ramCode != null">
+        RamCode,
+      </if>
+      <if test="staLLowLimit != null">
+        StaLLowLimit,
+      </if>
+      <if test="staLowLimit != null">
+        StaLowLimit,
+      </if>
+      <if test="staHighLimit != null">
+        StaHighLimit,
+      </if>
+      <if test="staHHighLimit != null">
+        StaHHighLimit,
+      </if>
+      <if test="worLLowLimit != null">
+        WorLLowLimit,
+      </if>
+      <if test="worLowLimit != null">
+        WorLowLimit,
+      </if>
+      <if test="worHighLimit != null">
+        WorHighLimit,
+      </if>
+      <if test="worHHighLimit != null">
+        WorHHighLimit,
+      </if>
+      <if test="temLLowLimit != null">
+        TemLLowLimit,
+      </if>
+      <if test="temLowLimit != null">
+        TemLowLimit,
+      </if>
+      <if test="temHighLimit != null">
+        TemHighLimit,
+      </if>
+      <if test="temHHighLimit != null">
+        TemHHighLimit,
+      </if>
+      <if test="cnsHighLimit != null">
+        CnsHighLimit,
+      </if>
+      <if test="cnsHHighLimit != null">
+        CnsHHighLimit,
+      </if>
+      <if test="preLLowLimit != null">
+        PreLLowLimit,
+      </if>
+      <if test="preLowLimit != null">
+        PreLowLimit,
+      </if>
+      <if test="preHighLimit != null">
+        PreHighLimit,
+      </if>
+      <if test="preHHighLimit != null">
+        PreHHighLimit,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alarmID != null">
+        #{alarmID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staLLowLimit != null">
+        #{staLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="staLowLimit != null">
+        #{staLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="staHighLimit != null">
+        #{staHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="staHHighLimit != null">
+        #{staHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worLLowLimit != null">
+        #{worLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worLowLimit != null">
+        #{worLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worHighLimit != null">
+        #{worHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worHHighLimit != null">
+        #{worHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temLLowLimit != null">
+        #{temLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temLowLimit != null">
+        #{temLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temHighLimit != null">
+        #{temHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temHHighLimit != null">
+        #{temHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="cnsHighLimit != null">
+        #{cnsHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="cnsHHighLimit != null">
+        #{cnsHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preLLowLimit != null">
+        #{preLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preLowLimit != null">
+        #{preLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preHighLimit != null">
+        #{preHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preHHighLimit != null">
+        #{preHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsAlarmlimit">
+    update KS_AlarmLimit
+    <set>
+      <if test="equipMentID != null">
+        EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        RamCode = #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staLLowLimit != null">
+        StaLLowLimit = #{staLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="staLowLimit != null">
+        StaLowLimit = #{staLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="staHighLimit != null">
+        StaHighLimit = #{staHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="staHHighLimit != null">
+        StaHHighLimit = #{staHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worLLowLimit != null">
+        WorLLowLimit = #{worLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worLowLimit != null">
+        WorLowLimit = #{worLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worHighLimit != null">
+        WorHighLimit = #{worHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="worHHighLimit != null">
+        WorHHighLimit = #{worHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temLLowLimit != null">
+        TemLLowLimit = #{temLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temLowLimit != null">
+        TemLowLimit = #{temLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temHighLimit != null">
+        TemHighLimit = #{temHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="temHHighLimit != null">
+        TemHHighLimit = #{temHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="cnsHighLimit != null">
+        CnsHighLimit = #{cnsHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="cnsHHighLimit != null">
+        CnsHHighLimit = #{cnsHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preLLowLimit != null">
+        PreLLowLimit = #{preLLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preLowLimit != null">
+        PreLowLimit = #{preLowLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preHighLimit != null">
+        PreHighLimit = #{preHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="preHHighLimit != null">
+        PreHHighLimit = #{preHHighLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where AlarmID = #{alarmID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsAlarmlimit">
+    update KS_AlarmLimit
+    set EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      RamCode = #{ramCode,jdbcType=VARCHAR},
+      StaLLowLimit = #{staLLowLimit,jdbcType=DOUBLE},
+      StaLowLimit = #{staLowLimit,jdbcType=DOUBLE},
+      StaHighLimit = #{staHighLimit,jdbcType=DOUBLE},
+      StaHHighLimit = #{staHHighLimit,jdbcType=DOUBLE},
+      WorLLowLimit = #{worLLowLimit,jdbcType=DOUBLE},
+      WorLowLimit = #{worLowLimit,jdbcType=DOUBLE},
+      WorHighLimit = #{worHighLimit,jdbcType=DOUBLE},
+      WorHHighLimit = #{worHHighLimit,jdbcType=DOUBLE},
+      TemLLowLimit = #{temLLowLimit,jdbcType=DOUBLE},
+      TemLowLimit = #{temLowLimit,jdbcType=DOUBLE},
+      TemHighLimit = #{temHighLimit,jdbcType=DOUBLE},
+      TemHHighLimit = #{temHHighLimit,jdbcType=DOUBLE},
+      CnsHighLimit = #{cnsHighLimit,jdbcType=DOUBLE},
+      CnsHHighLimit = #{cnsHHighLimit,jdbcType=DOUBLE},
+      PreLLowLimit = #{preLLowLimit,jdbcType=DOUBLE},
+      PreLowLimit = #{preLowLimit,jdbcType=DOUBLE},
+      PreHighLimit = #{preHighLimit,jdbcType=DOUBLE},
+      PreHHighLimit = #{preHHighLimit,jdbcType=DOUBLE},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where AlarmID = #{alarmID,jdbcType=BIGINT}
+  </update>
+</mapper>

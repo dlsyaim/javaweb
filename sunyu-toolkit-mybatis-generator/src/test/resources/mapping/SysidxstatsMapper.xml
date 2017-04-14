@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysidxstatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysidxstats">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="indid" jdbcType="INTEGER" property="indid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="intprop" jdbcType="INTEGER" property="intprop" />
+    <result column="fillfact" jdbcType="TINYINT" property="fillfact" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="tinyprop" jdbcType="TINYINT" property="tinyprop" />
+    <result column="dataspace" jdbcType="INTEGER" property="dataspace" />
+    <result column="lobds" jdbcType="INTEGER" property="lobds" />
+    <result column="rowset" jdbcType="BIGINT" property="rowset" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysidxstats">
+    insert into sysidxstats (id, indid, name, 
+      status, intprop, fillfact, 
+      type, tinyprop, dataspace, 
+      lobds, rowset)
+    values (#{id,jdbcType=INTEGER}, #{indid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{intprop,jdbcType=INTEGER}, #{fillfact,jdbcType=TINYINT}, 
+      #{type,jdbcType=TINYINT}, #{tinyprop,jdbcType=TINYINT}, #{dataspace,jdbcType=INTEGER}, 
+      #{lobds,jdbcType=INTEGER}, #{rowset,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysidxstats">
+    insert into sysidxstats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="indid != null">
+        indid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="intprop != null">
+        intprop,
+      </if>
+      <if test="fillfact != null">
+        fillfact,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="tinyprop != null">
+        tinyprop,
+      </if>
+      <if test="dataspace != null">
+        dataspace,
+      </if>
+      <if test="lobds != null">
+        lobds,
+      </if>
+      <if test="rowset != null">
+        rowset,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="indid != null">
+        #{indid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="intprop != null">
+        #{intprop,jdbcType=INTEGER},
+      </if>
+      <if test="fillfact != null">
+        #{fillfact,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="tinyprop != null">
+        #{tinyprop,jdbcType=TINYINT},
+      </if>
+      <if test="dataspace != null">
+        #{dataspace,jdbcType=INTEGER},
+      </if>
+      <if test="lobds != null">
+        #{lobds,jdbcType=INTEGER},
+      </if>
+      <if test="rowset != null">
+        #{rowset,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

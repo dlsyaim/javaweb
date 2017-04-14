@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ViewHisMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ViewHis">
+    <result column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="ItemNo" jdbcType="VARCHAR" property="itemNo" />
+    <result column="DivisionID" jdbcType="INTEGER" property="divisionID" />
+    <result column="DivisionName" jdbcType="VARCHAR" property="divisionName" />
+    <result column="StationID" jdbcType="INTEGER" property="stationID" />
+    <result column="StationName" jdbcType="VARCHAR" property="stationName" />
+    <result column="SensorID" jdbcType="INTEGER" property="sensorID" />
+    <result column="SensorName" jdbcType="VARCHAR" property="sensorName" />
+    <result column="InstallAddress" jdbcType="VARCHAR" property="installAddress" />
+    <result column="Value" jdbcType="DOUBLE" property="value" />
+    <result column="ValueTime" jdbcType="TIMESTAMP" property="valueTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ViewHis">
+    insert into View_HIS (ID, ItemNo, DivisionID, 
+      DivisionName, StationID, StationName, 
+      SensorID, SensorName, InstallAddress, 
+      Value, ValueTime)
+    values (#{ID,jdbcType=INTEGER}, #{itemNo,jdbcType=VARCHAR}, #{divisionID,jdbcType=INTEGER}, 
+      #{divisionName,jdbcType=VARCHAR}, #{stationID,jdbcType=INTEGER}, #{stationName,jdbcType=VARCHAR}, 
+      #{sensorID,jdbcType=INTEGER}, #{sensorName,jdbcType=VARCHAR}, #{installAddress,jdbcType=VARCHAR}, 
+      #{value,jdbcType=DOUBLE}, #{valueTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ViewHis">
+    insert into View_HIS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="itemNo != null">
+        ItemNo,
+      </if>
+      <if test="divisionID != null">
+        DivisionID,
+      </if>
+      <if test="divisionName != null">
+        DivisionName,
+      </if>
+      <if test="stationID != null">
+        StationID,
+      </if>
+      <if test="stationName != null">
+        StationName,
+      </if>
+      <if test="sensorID != null">
+        SensorID,
+      </if>
+      <if test="sensorName != null">
+        SensorName,
+      </if>
+      <if test="installAddress != null">
+        InstallAddress,
+      </if>
+      <if test="value != null">
+        Value,
+      </if>
+      <if test="valueTime != null">
+        ValueTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="itemNo != null">
+        #{itemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="divisionID != null">
+        #{divisionID,jdbcType=INTEGER},
+      </if>
+      <if test="divisionName != null">
+        #{divisionName,jdbcType=VARCHAR},
+      </if>
+      <if test="stationID != null">
+        #{stationID,jdbcType=INTEGER},
+      </if>
+      <if test="stationName != null">
+        #{stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="sensorID != null">
+        #{sensorID,jdbcType=INTEGER},
+      </if>
+      <if test="sensorName != null">
+        #{sensorName,jdbcType=VARCHAR},
+      </if>
+      <if test="installAddress != null">
+        #{installAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=DOUBLE},
+      </if>
+      <if test="valueTime != null">
+        #{valueTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

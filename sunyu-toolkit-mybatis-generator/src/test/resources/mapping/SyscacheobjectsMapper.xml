@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyscacheobjectsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syscacheobjects">
+    <result column="bucketid" jdbcType="INTEGER" property="bucketid" />
+    <result column="cacheobjtype" jdbcType="VARCHAR" property="cacheobjtype" />
+    <result column="objtype" jdbcType="VARCHAR" property="objtype" />
+    <result column="objid" jdbcType="INTEGER" property="objid" />
+    <result column="dbid" jdbcType="SMALLINT" property="dbid" />
+    <result column="dbidexec" jdbcType="SMALLINT" property="dbidexec" />
+    <result column="uid" jdbcType="SMALLINT" property="uid" />
+    <result column="refcounts" jdbcType="INTEGER" property="refcounts" />
+    <result column="usecounts" jdbcType="INTEGER" property="usecounts" />
+    <result column="pagesused" jdbcType="INTEGER" property="pagesused" />
+    <result column="setopts" jdbcType="INTEGER" property="setopts" />
+    <result column="langid" jdbcType="SMALLINT" property="langid" />
+    <result column="dateformat" jdbcType="SMALLINT" property="dateformat" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="lasttime" jdbcType="BIGINT" property="lasttime" />
+    <result column="maxexectime" jdbcType="BIGINT" property="maxexectime" />
+    <result column="avgexectime" jdbcType="BIGINT" property="avgexectime" />
+    <result column="lastreads" jdbcType="BIGINT" property="lastreads" />
+    <result column="lastwrites" jdbcType="BIGINT" property="lastwrites" />
+    <result column="sqlbytes" jdbcType="INTEGER" property="sqlbytes" />
+    <result column="sql" jdbcType="VARCHAR" property="sql" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syscacheobjects">
+    insert into syscacheobjects (bucketid, cacheobjtype, objtype, 
+      objid, dbid, dbidexec, 
+      uid, refcounts, usecounts, 
+      pagesused, setopts, langid, 
+      dateformat, status, lasttime, 
+      maxexectime, avgexectime, lastreads, 
+      lastwrites, sqlbytes, sql
+      )
+    values (#{bucketid,jdbcType=INTEGER}, #{cacheobjtype,jdbcType=VARCHAR}, #{objtype,jdbcType=VARCHAR}, 
+      #{objid,jdbcType=INTEGER}, #{dbid,jdbcType=SMALLINT}, #{dbidexec,jdbcType=SMALLINT}, 
+      #{uid,jdbcType=SMALLINT}, #{refcounts,jdbcType=INTEGER}, #{usecounts,jdbcType=INTEGER}, 
+      #{pagesused,jdbcType=INTEGER}, #{setopts,jdbcType=INTEGER}, #{langid,jdbcType=SMALLINT}, 
+      #{dateformat,jdbcType=SMALLINT}, #{status,jdbcType=INTEGER}, #{lasttime,jdbcType=BIGINT}, 
+      #{maxexectime,jdbcType=BIGINT}, #{avgexectime,jdbcType=BIGINT}, #{lastreads,jdbcType=BIGINT}, 
+      #{lastwrites,jdbcType=BIGINT}, #{sqlbytes,jdbcType=INTEGER}, #{sql,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syscacheobjects">
+    insert into syscacheobjects
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bucketid != null">
+        bucketid,
+      </if>
+      <if test="cacheobjtype != null">
+        cacheobjtype,
+      </if>
+      <if test="objtype != null">
+        objtype,
+      </if>
+      <if test="objid != null">
+        objid,
+      </if>
+      <if test="dbid != null">
+        dbid,
+      </if>
+      <if test="dbidexec != null">
+        dbidexec,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="refcounts != null">
+        refcounts,
+      </if>
+      <if test="usecounts != null">
+        usecounts,
+      </if>
+      <if test="pagesused != null">
+        pagesused,
+      </if>
+      <if test="setopts != null">
+        setopts,
+      </if>
+      <if test="langid != null">
+        langid,
+      </if>
+      <if test="dateformat != null">
+        dateformat,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="lasttime != null">
+        lasttime,
+      </if>
+      <if test="maxexectime != null">
+        maxexectime,
+      </if>
+      <if test="avgexectime != null">
+        avgexectime,
+      </if>
+      <if test="lastreads != null">
+        lastreads,
+      </if>
+      <if test="lastwrites != null">
+        lastwrites,
+      </if>
+      <if test="sqlbytes != null">
+        sqlbytes,
+      </if>
+      <if test="sql != null">
+        sql,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bucketid != null">
+        #{bucketid,jdbcType=INTEGER},
+      </if>
+      <if test="cacheobjtype != null">
+        #{cacheobjtype,jdbcType=VARCHAR},
+      </if>
+      <if test="objtype != null">
+        #{objtype,jdbcType=VARCHAR},
+      </if>
+      <if test="objid != null">
+        #{objid,jdbcType=INTEGER},
+      </if>
+      <if test="dbid != null">
+        #{dbid,jdbcType=SMALLINT},
+      </if>
+      <if test="dbidexec != null">
+        #{dbidexec,jdbcType=SMALLINT},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=SMALLINT},
+      </if>
+      <if test="refcounts != null">
+        #{refcounts,jdbcType=INTEGER},
+      </if>
+      <if test="usecounts != null">
+        #{usecounts,jdbcType=INTEGER},
+      </if>
+      <if test="pagesused != null">
+        #{pagesused,jdbcType=INTEGER},
+      </if>
+      <if test="setopts != null">
+        #{setopts,jdbcType=INTEGER},
+      </if>
+      <if test="langid != null">
+        #{langid,jdbcType=SMALLINT},
+      </if>
+      <if test="dateformat != null">
+        #{dateformat,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lasttime != null">
+        #{lasttime,jdbcType=BIGINT},
+      </if>
+      <if test="maxexectime != null">
+        #{maxexectime,jdbcType=BIGINT},
+      </if>
+      <if test="avgexectime != null">
+        #{avgexectime,jdbcType=BIGINT},
+      </if>
+      <if test="lastreads != null">
+        #{lastreads,jdbcType=BIGINT},
+      </if>
+      <if test="lastwrites != null">
+        #{lastwrites,jdbcType=BIGINT},
+      </if>
+      <if test="sqlbytes != null">
+        #{sqlbytes,jdbcType=INTEGER},
+      </if>
+      <if test="sql != null">
+        #{sql,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysobjectsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysobjects">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="xtype" jdbcType="CHAR" property="xtype" />
+    <result column="uid" jdbcType="SMALLINT" property="uid" />
+    <result column="info" jdbcType="SMALLINT" property="info" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="base_schema_ver" jdbcType="INTEGER" property="base_schema_ver" />
+    <result column="replinfo" jdbcType="INTEGER" property="replinfo" />
+    <result column="parent_obj" jdbcType="INTEGER" property="parent_obj" />
+    <result column="crdate" jdbcType="TIMESTAMP" property="crdate" />
+    <result column="ftcatid" jdbcType="SMALLINT" property="ftcatid" />
+    <result column="schema_ver" jdbcType="INTEGER" property="schema_ver" />
+    <result column="stats_schema_ver" jdbcType="INTEGER" property="stats_schema_ver" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="userstat" jdbcType="SMALLINT" property="userstat" />
+    <result column="sysstat" jdbcType="SMALLINT" property="sysstat" />
+    <result column="indexdel" jdbcType="SMALLINT" property="indexdel" />
+    <result column="refdate" jdbcType="TIMESTAMP" property="refdate" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="deltrig" jdbcType="INTEGER" property="deltrig" />
+    <result column="instrig" jdbcType="INTEGER" property="instrig" />
+    <result column="updtrig" jdbcType="INTEGER" property="updtrig" />
+    <result column="seltrig" jdbcType="INTEGER" property="seltrig" />
+    <result column="category" jdbcType="INTEGER" property="category" />
+    <result column="cache" jdbcType="SMALLINT" property="cache" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysobjects">
+    insert into sysobjects (name, id, xtype, 
+      uid, info, status, 
+      base_schema_ver, replinfo, parent_obj, 
+      crdate, ftcatid, schema_ver, 
+      stats_schema_ver, type, userstat, 
+      sysstat, indexdel, refdate, 
+      version, deltrig, instrig, 
+      updtrig, seltrig, category, 
+      cache)
+    values (#{name,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{xtype,jdbcType=CHAR}, 
+      #{uid,jdbcType=SMALLINT}, #{info,jdbcType=SMALLINT}, #{status,jdbcType=INTEGER}, 
+      #{base_schema_ver,jdbcType=INTEGER}, #{replinfo,jdbcType=INTEGER}, #{parent_obj,jdbcType=INTEGER}, 
+      #{crdate,jdbcType=TIMESTAMP}, #{ftcatid,jdbcType=SMALLINT}, #{schema_ver,jdbcType=INTEGER}, 
+      #{stats_schema_ver,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{userstat,jdbcType=SMALLINT}, 
+      #{sysstat,jdbcType=SMALLINT}, #{indexdel,jdbcType=SMALLINT}, #{refdate,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=INTEGER}, #{deltrig,jdbcType=INTEGER}, #{instrig,jdbcType=INTEGER}, 
+      #{updtrig,jdbcType=INTEGER}, #{seltrig,jdbcType=INTEGER}, #{category,jdbcType=INTEGER}, 
+      #{cache,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysobjects">
+    insert into sysobjects
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="xtype != null">
+        xtype,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="info != null">
+        info,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="base_schema_ver != null">
+        base_schema_ver,
+      </if>
+      <if test="replinfo != null">
+        replinfo,
+      </if>
+      <if test="parent_obj != null">
+        parent_obj,
+      </if>
+      <if test="crdate != null">
+        crdate,
+      </if>
+      <if test="ftcatid != null">
+        ftcatid,
+      </if>
+      <if test="schema_ver != null">
+        schema_ver,
+      </if>
+      <if test="stats_schema_ver != null">
+        stats_schema_ver,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="userstat != null">
+        userstat,
+      </if>
+      <if test="sysstat != null">
+        sysstat,
+      </if>
+      <if test="indexdel != null">
+        indexdel,
+      </if>
+      <if test="refdate != null">
+        refdate,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="deltrig != null">
+        deltrig,
+      </if>
+      <if test="instrig != null">
+        instrig,
+      </if>
+      <if test="updtrig != null">
+        updtrig,
+      </if>
+      <if test="seltrig != null">
+        seltrig,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="cache != null">
+        cache,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="xtype != null">
+        #{xtype,jdbcType=CHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=SMALLINT},
+      </if>
+      <if test="info != null">
+        #{info,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="base_schema_ver != null">
+        #{base_schema_ver,jdbcType=INTEGER},
+      </if>
+      <if test="replinfo != null">
+        #{replinfo,jdbcType=INTEGER},
+      </if>
+      <if test="parent_obj != null">
+        #{parent_obj,jdbcType=INTEGER},
+      </if>
+      <if test="crdate != null">
+        #{crdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ftcatid != null">
+        #{ftcatid,jdbcType=SMALLINT},
+      </if>
+      <if test="schema_ver != null">
+        #{schema_ver,jdbcType=INTEGER},
+      </if>
+      <if test="stats_schema_ver != null">
+        #{stats_schema_ver,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="userstat != null">
+        #{userstat,jdbcType=SMALLINT},
+      </if>
+      <if test="sysstat != null">
+        #{sysstat,jdbcType=SMALLINT},
+      </if>
+      <if test="indexdel != null">
+        #{indexdel,jdbcType=SMALLINT},
+      </if>
+      <if test="refdate != null">
+        #{refdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="deltrig != null">
+        #{deltrig,jdbcType=INTEGER},
+      </if>
+      <if test="instrig != null">
+        #{instrig,jdbcType=INTEGER},
+      </if>
+      <if test="updtrig != null">
+        #{updtrig,jdbcType=INTEGER},
+      </if>
+      <if test="seltrig != null">
+        #{seltrig,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=INTEGER},
+      </if>
+      <if test="cache != null">
+        #{cache,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

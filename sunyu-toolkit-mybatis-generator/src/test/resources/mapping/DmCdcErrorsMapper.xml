@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmCdcErrorsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmCdcErrors">
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="phase_number" jdbcType="INTEGER" property="phase_number" />
+    <result column="entry_time" jdbcType="TIMESTAMP" property="entry_time" />
+    <result column="error_number" jdbcType="INTEGER" property="error_number" />
+    <result column="error_severity" jdbcType="INTEGER" property="error_severity" />
+    <result column="error_state" jdbcType="INTEGER" property="error_state" />
+    <result column="error_message" jdbcType="VARCHAR" property="error_message" />
+    <result column="start_lsn" jdbcType="VARCHAR" property="start_lsn" />
+    <result column="begin_lsn" jdbcType="VARCHAR" property="begin_lsn" />
+    <result column="sequence_value" jdbcType="VARCHAR" property="sequence_value" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmCdcErrors">
+    insert into dm_cdc_errors (session_id, phase_number, entry_time, 
+      error_number, error_severity, error_state, 
+      error_message, start_lsn, begin_lsn, 
+      sequence_value)
+    values (#{session_id,jdbcType=INTEGER}, #{phase_number,jdbcType=INTEGER}, #{entry_time,jdbcType=TIMESTAMP}, 
+      #{error_number,jdbcType=INTEGER}, #{error_severity,jdbcType=INTEGER}, #{error_state,jdbcType=INTEGER}, 
+      #{error_message,jdbcType=VARCHAR}, #{start_lsn,jdbcType=VARCHAR}, #{begin_lsn,jdbcType=VARCHAR}, 
+      #{sequence_value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmCdcErrors">
+    insert into dm_cdc_errors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="phase_number != null">
+        phase_number,
+      </if>
+      <if test="entry_time != null">
+        entry_time,
+      </if>
+      <if test="error_number != null">
+        error_number,
+      </if>
+      <if test="error_severity != null">
+        error_severity,
+      </if>
+      <if test="error_state != null">
+        error_state,
+      </if>
+      <if test="error_message != null">
+        error_message,
+      </if>
+      <if test="start_lsn != null">
+        start_lsn,
+      </if>
+      <if test="begin_lsn != null">
+        begin_lsn,
+      </if>
+      <if test="sequence_value != null">
+        sequence_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="phase_number != null">
+        #{phase_number,jdbcType=INTEGER},
+      </if>
+      <if test="entry_time != null">
+        #{entry_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="error_number != null">
+        #{error_number,jdbcType=INTEGER},
+      </if>
+      <if test="error_severity != null">
+        #{error_severity,jdbcType=INTEGER},
+      </if>
+      <if test="error_state != null">
+        #{error_state,jdbcType=INTEGER},
+      </if>
+      <if test="error_message != null">
+        #{error_message,jdbcType=VARCHAR},
+      </if>
+      <if test="start_lsn != null">
+        #{start_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="begin_lsn != null">
+        #{begin_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence_value != null">
+        #{sequence_value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

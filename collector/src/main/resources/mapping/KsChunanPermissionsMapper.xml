@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsChunanPermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsChunanPermissions">
+    <id column="PID" jdbcType="BIGINT" property="PID" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="SiteID" jdbcType="BIGINT" property="siteID" />
+    <result column="PermissionsID" jdbcType="BIGINT" property="permissionsID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PID, ManagerID, SiteID, PermissionsID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_ChunAn_Permissions
+    where PID = #{PID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_ChunAn_Permissions
+    where PID = #{PID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsChunanPermissions">
+    insert into KS_ChunAn_Permissions (PID, ManagerID, SiteID, 
+      PermissionsID)
+    values (#{PID,jdbcType=BIGINT}, #{managerID,jdbcType=BIGINT}, #{siteID,jdbcType=BIGINT}, 
+      #{permissionsID,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsChunanPermissions">
+    insert into KS_ChunAn_Permissions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="PID != null">
+        PID,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="siteID != null">
+        SiteID,
+      </if>
+      <if test="permissionsID != null">
+        PermissionsID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="PID != null">
+        #{PID,jdbcType=BIGINT},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="siteID != null">
+        #{siteID,jdbcType=BIGINT},
+      </if>
+      <if test="permissionsID != null">
+        #{permissionsID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsChunanPermissions">
+    update KS_ChunAn_Permissions
+    <set>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="siteID != null">
+        SiteID = #{siteID,jdbcType=BIGINT},
+      </if>
+      <if test="permissionsID != null">
+        PermissionsID = #{permissionsID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where PID = #{PID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsChunanPermissions">
+    update KS_ChunAn_Permissions
+    set ManagerID = #{managerID,jdbcType=BIGINT},
+      SiteID = #{siteID,jdbcType=BIGINT},
+      PermissionsID = #{permissionsID,jdbcType=BIGINT}
+    where PID = #{PID,jdbcType=BIGINT}
+  </update>
+</mapper>

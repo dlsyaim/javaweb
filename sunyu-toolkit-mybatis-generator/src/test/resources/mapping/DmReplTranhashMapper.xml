@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmReplTranhashMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmReplTranhash">
+    <result column="buckets" jdbcType="INTEGER" property="buckets" />
+    <result column="hashed_trans" jdbcType="INTEGER" property="hashed_trans" />
+    <result column="completed_trans" jdbcType="INTEGER" property="completed_trans" />
+    <result column="compensated_trans" jdbcType="INTEGER" property="compensated_trans" />
+    <result column="first_begin_lsn" jdbcType="VARCHAR" property="first_begin_lsn" />
+    <result column="last_commit_lsn" jdbcType="VARCHAR" property="last_commit_lsn" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmReplTranhash">
+    insert into dm_repl_tranhash (buckets, hashed_trans, completed_trans, 
+      compensated_trans, first_begin_lsn, last_commit_lsn
+      )
+    values (#{buckets,jdbcType=INTEGER}, #{hashed_trans,jdbcType=INTEGER}, #{completed_trans,jdbcType=INTEGER}, 
+      #{compensated_trans,jdbcType=INTEGER}, #{first_begin_lsn,jdbcType=VARCHAR}, #{last_commit_lsn,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmReplTranhash">
+    insert into dm_repl_tranhash
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="buckets != null">
+        buckets,
+      </if>
+      <if test="hashed_trans != null">
+        hashed_trans,
+      </if>
+      <if test="completed_trans != null">
+        completed_trans,
+      </if>
+      <if test="compensated_trans != null">
+        compensated_trans,
+      </if>
+      <if test="first_begin_lsn != null">
+        first_begin_lsn,
+      </if>
+      <if test="last_commit_lsn != null">
+        last_commit_lsn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="buckets != null">
+        #{buckets,jdbcType=INTEGER},
+      </if>
+      <if test="hashed_trans != null">
+        #{hashed_trans,jdbcType=INTEGER},
+      </if>
+      <if test="completed_trans != null">
+        #{completed_trans,jdbcType=INTEGER},
+      </if>
+      <if test="compensated_trans != null">
+        #{compensated_trans,jdbcType=INTEGER},
+      </if>
+      <if test="first_begin_lsn != null">
+        #{first_begin_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="last_commit_lsn != null">
+        #{last_commit_lsn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

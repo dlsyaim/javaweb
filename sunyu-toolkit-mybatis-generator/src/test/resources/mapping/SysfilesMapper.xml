@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysfilesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysfiles">
+    <result column="fileid" jdbcType="SMALLINT" property="fileid" />
+    <result column="groupid" jdbcType="SMALLINT" property="groupid" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="maxsize" jdbcType="INTEGER" property="maxsize" />
+    <result column="growth" jdbcType="INTEGER" property="growth" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="perf" jdbcType="INTEGER" property="perf" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysfiles">
+    insert into sysfiles (fileid, groupid, size, 
+      maxsize, growth, status, 
+      perf, name, filename
+      )
+    values (#{fileid,jdbcType=SMALLINT}, #{groupid,jdbcType=SMALLINT}, #{size,jdbcType=INTEGER}, 
+      #{maxsize,jdbcType=INTEGER}, #{growth,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{perf,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysfiles">
+    insert into sysfiles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fileid != null">
+        fileid,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="maxsize != null">
+        maxsize,
+      </if>
+      <if test="growth != null">
+        growth,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="perf != null">
+        perf,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="filename != null">
+        filename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fileid != null">
+        #{fileid,jdbcType=SMALLINT},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=SMALLINT},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="maxsize != null">
+        #{maxsize,jdbcType=INTEGER},
+      </if>
+      <if test="growth != null">
+        #{growth,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="perf != null">
+        #{perf,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsEquipmentManagerMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsEquipmentManager">
+    <id column="ID" jdbcType="BIGINT" property="ID" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ManagerID, EquipMentID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_EquipMent_Manager
+    where ID = #{ID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_EquipMent_Manager
+    where ID = #{ID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsEquipmentManager">
+    insert into KS_EquipMent_Manager (ID, ManagerID, EquipMentID
+      )
+    values (#{ID,jdbcType=BIGINT}, #{managerID,jdbcType=BIGINT}, #{equipMentID,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsEquipmentManager">
+    insert into KS_EquipMent_Manager
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=BIGINT},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsEquipmentManager">
+    update KS_EquipMent_Manager
+    <set>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsEquipmentManager">
+    update KS_EquipMent_Manager
+    set ManagerID = #{managerID,jdbcType=BIGINT},
+      EquipMentID = #{equipMentID,jdbcType=BIGINT}
+    where ID = #{ID,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SystypesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Systypes">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="xtype" jdbcType="TINYINT" property="xtype" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="xusertype" jdbcType="SMALLINT" property="xusertype" />
+    <result column="length" jdbcType="SMALLINT" property="length" />
+    <result column="xprec" jdbcType="TINYINT" property="xprec" />
+    <result column="xscale" jdbcType="TINYINT" property="xscale" />
+    <result column="tdefault" jdbcType="INTEGER" property="tdefault" />
+    <result column="domain" jdbcType="INTEGER" property="domain" />
+    <result column="uid" jdbcType="SMALLINT" property="uid" />
+    <result column="reserved" jdbcType="SMALLINT" property="reserved" />
+    <result column="collationid" jdbcType="INTEGER" property="collationid" />
+    <result column="usertype" jdbcType="SMALLINT" property="usertype" />
+    <result column="variable" jdbcType="BIT" property="variable" />
+    <result column="allownulls" jdbcType="BIT" property="allownulls" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="printfmt" jdbcType="VARCHAR" property="printfmt" />
+    <result column="prec" jdbcType="SMALLINT" property="prec" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="collation" jdbcType="VARCHAR" property="collation" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Systypes">
+    insert into systypes (name, xtype, status, 
+      xusertype, length, xprec, 
+      xscale, tdefault, domain, 
+      uid, reserved, collationid, 
+      usertype, variable, allownulls, 
+      type, printfmt, prec, 
+      scale, collation)
+    values (#{name,jdbcType=VARCHAR}, #{xtype,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{xusertype,jdbcType=SMALLINT}, #{length,jdbcType=SMALLINT}, #{xprec,jdbcType=TINYINT}, 
+      #{xscale,jdbcType=TINYINT}, #{tdefault,jdbcType=INTEGER}, #{domain,jdbcType=INTEGER}, 
+      #{uid,jdbcType=SMALLINT}, #{reserved,jdbcType=SMALLINT}, #{collationid,jdbcType=INTEGER}, 
+      #{usertype,jdbcType=SMALLINT}, #{variable,jdbcType=BIT}, #{allownulls,jdbcType=BIT}, 
+      #{type,jdbcType=TINYINT}, #{printfmt,jdbcType=VARCHAR}, #{prec,jdbcType=SMALLINT}, 
+      #{scale,jdbcType=TINYINT}, #{collation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Systypes">
+    insert into systypes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="xtype != null">
+        xtype,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="xusertype != null">
+        xusertype,
+      </if>
+      <if test="length != null">
+        length,
+      </if>
+      <if test="xprec != null">
+        xprec,
+      </if>
+      <if test="xscale != null">
+        xscale,
+      </if>
+      <if test="tdefault != null">
+        tdefault,
+      </if>
+      <if test="domain != null">
+        domain,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="reserved != null">
+        reserved,
+      </if>
+      <if test="collationid != null">
+        collationid,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+      <if test="variable != null">
+        variable,
+      </if>
+      <if test="allownulls != null">
+        allownulls,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="printfmt != null">
+        printfmt,
+      </if>
+      <if test="prec != null">
+        prec,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="collation != null">
+        collation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xtype != null">
+        #{xtype,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="xusertype != null">
+        #{xusertype,jdbcType=SMALLINT},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=SMALLINT},
+      </if>
+      <if test="xprec != null">
+        #{xprec,jdbcType=TINYINT},
+      </if>
+      <if test="xscale != null">
+        #{xscale,jdbcType=TINYINT},
+      </if>
+      <if test="tdefault != null">
+        #{tdefault,jdbcType=INTEGER},
+      </if>
+      <if test="domain != null">
+        #{domain,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=SMALLINT},
+      </if>
+      <if test="reserved != null">
+        #{reserved,jdbcType=SMALLINT},
+      </if>
+      <if test="collationid != null">
+        #{collationid,jdbcType=INTEGER},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=SMALLINT},
+      </if>
+      <if test="variable != null">
+        #{variable,jdbcType=BIT},
+      </if>
+      <if test="allownulls != null">
+        #{allownulls,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="printfmt != null">
+        #{printfmt,jdbcType=VARCHAR},
+      </if>
+      <if test="prec != null">
+        #{prec,jdbcType=SMALLINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="collation != null">
+        #{collation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TransmissionQueueMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.TransmissionQueue">
+    <result column="conversation_handle" jdbcType="CHAR" property="conversation_handle" />
+    <result column="to_service_name" jdbcType="VARCHAR" property="to_service_name" />
+    <result column="to_broker_instance" jdbcType="VARCHAR" property="to_broker_instance" />
+    <result column="from_service_name" jdbcType="VARCHAR" property="from_service_name" />
+    <result column="service_contract_name" jdbcType="VARCHAR" property="service_contract_name" />
+    <result column="enqueue_time" jdbcType="TIMESTAMP" property="enqueue_time" />
+    <result column="message_sequence_number" jdbcType="BIGINT" property="message_sequence_number" />
+    <result column="message_type_name" jdbcType="VARCHAR" property="message_type_name" />
+    <result column="is_conversation_error" jdbcType="BIT" property="is_conversation_error" />
+    <result column="is_end_of_dialog" jdbcType="BIT" property="is_end_of_dialog" />
+    <result column="transmission_status" jdbcType="VARCHAR" property="transmission_status" />
+    <result column="priority" jdbcType="TINYINT" property="priority" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.TransmissionQueue">
+    <result column="message_body" jdbcType="BLOB" property="message_body" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    message_body
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.TransmissionQueue">
+    insert into transmission_queue (conversation_handle, to_service_name, 
+      to_broker_instance, from_service_name, 
+      service_contract_name, enqueue_time, 
+      message_sequence_number, message_type_name, 
+      is_conversation_error, is_end_of_dialog, transmission_status, 
+      priority, message_body)
+    values (#{conversation_handle,jdbcType=CHAR}, #{to_service_name,jdbcType=VARCHAR}, 
+      #{to_broker_instance,jdbcType=VARCHAR}, #{from_service_name,jdbcType=VARCHAR}, 
+      #{service_contract_name,jdbcType=VARCHAR}, #{enqueue_time,jdbcType=TIMESTAMP}, 
+      #{message_sequence_number,jdbcType=BIGINT}, #{message_type_name,jdbcType=VARCHAR}, 
+      #{is_conversation_error,jdbcType=BIT}, #{is_end_of_dialog,jdbcType=BIT}, #{transmission_status,jdbcType=VARCHAR}, 
+      #{priority,jdbcType=TINYINT}, #{message_body,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.TransmissionQueue">
+    insert into transmission_queue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conversation_handle != null">
+        conversation_handle,
+      </if>
+      <if test="to_service_name != null">
+        to_service_name,
+      </if>
+      <if test="to_broker_instance != null">
+        to_broker_instance,
+      </if>
+      <if test="from_service_name != null">
+        from_service_name,
+      </if>
+      <if test="service_contract_name != null">
+        service_contract_name,
+      </if>
+      <if test="enqueue_time != null">
+        enqueue_time,
+      </if>
+      <if test="message_sequence_number != null">
+        message_sequence_number,
+      </if>
+      <if test="message_type_name != null">
+        message_type_name,
+      </if>
+      <if test="is_conversation_error != null">
+        is_conversation_error,
+      </if>
+      <if test="is_end_of_dialog != null">
+        is_end_of_dialog,
+      </if>
+      <if test="transmission_status != null">
+        transmission_status,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="message_body != null">
+        message_body,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conversation_handle != null">
+        #{conversation_handle,jdbcType=CHAR},
+      </if>
+      <if test="to_service_name != null">
+        #{to_service_name,jdbcType=VARCHAR},
+      </if>
+      <if test="to_broker_instance != null">
+        #{to_broker_instance,jdbcType=VARCHAR},
+      </if>
+      <if test="from_service_name != null">
+        #{from_service_name,jdbcType=VARCHAR},
+      </if>
+      <if test="service_contract_name != null">
+        #{service_contract_name,jdbcType=VARCHAR},
+      </if>
+      <if test="enqueue_time != null">
+        #{enqueue_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="message_sequence_number != null">
+        #{message_sequence_number,jdbcType=BIGINT},
+      </if>
+      <if test="message_type_name != null">
+        #{message_type_name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_conversation_error != null">
+        #{is_conversation_error,jdbcType=BIT},
+      </if>
+      <if test="is_end_of_dialog != null">
+        #{is_end_of_dialog,jdbcType=BIT},
+      </if>
+      <if test="transmission_status != null">
+        #{transmission_status,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=TINYINT},
+      </if>
+      <if test="message_body != null">
+        #{message_body,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

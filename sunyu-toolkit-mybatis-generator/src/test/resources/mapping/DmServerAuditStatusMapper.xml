@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmServerAuditStatusMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmServerAuditStatus">
+    <result column="audit_id" jdbcType="INTEGER" property="audit_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="status_desc" jdbcType="VARCHAR" property="status_desc" />
+    <result column="status_time" jdbcType="VARCHAR" property="status_time" />
+    <result column="audit_file_path" jdbcType="VARCHAR" property="audit_file_path" />
+    <result column="audit_file_size" jdbcType="BIGINT" property="audit_file_size" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmServerAuditStatus">
+    <result column="event_session_address" jdbcType="VARBINARY" property="event_session_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    event_session_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmServerAuditStatus">
+    insert into dm_server_audit_status (audit_id, name, status, 
+      status_desc, status_time, audit_file_path, 
+      audit_file_size, event_session_address
+      )
+    values (#{audit_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, 
+      #{status_desc,jdbcType=VARCHAR}, #{status_time,jdbcType=VARCHAR}, #{audit_file_path,jdbcType=VARCHAR}, 
+      #{audit_file_size,jdbcType=BIGINT}, #{event_session_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmServerAuditStatus">
+    insert into dm_server_audit_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="audit_id != null">
+        audit_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="status_desc != null">
+        status_desc,
+      </if>
+      <if test="status_time != null">
+        status_time,
+      </if>
+      <if test="audit_file_path != null">
+        audit_file_path,
+      </if>
+      <if test="audit_file_size != null">
+        audit_file_size,
+      </if>
+      <if test="event_session_address != null">
+        event_session_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="audit_id != null">
+        #{audit_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="status_desc != null">
+        #{status_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="status_time != null">
+        #{status_time,jdbcType=VARCHAR},
+      </if>
+      <if test="audit_file_path != null">
+        #{audit_file_path,jdbcType=VARCHAR},
+      </if>
+      <if test="audit_file_size != null">
+        #{audit_file_size,jdbcType=BIGINT},
+      </if>
+      <if test="event_session_address != null">
+        #{event_session_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

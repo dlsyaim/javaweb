@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.AssemblyModulesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.AssemblyModules">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="assembly_id" jdbcType="INTEGER" property="assembly_id" />
+    <result column="assembly_class" jdbcType="VARCHAR" property="assembly_class" />
+    <result column="assembly_method" jdbcType="VARCHAR" property="assembly_method" />
+    <result column="null_on_null_input" jdbcType="BIT" property="null_on_null_input" />
+    <result column="execute_as_principal_id" jdbcType="INTEGER" property="execute_as_principal_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.AssemblyModules">
+    insert into assembly_modules (object_id, assembly_id, assembly_class, 
+      assembly_method, null_on_null_input, execute_as_principal_id
+      )
+    values (#{object_id,jdbcType=INTEGER}, #{assembly_id,jdbcType=INTEGER}, #{assembly_class,jdbcType=VARCHAR}, 
+      #{assembly_method,jdbcType=VARCHAR}, #{null_on_null_input,jdbcType=BIT}, #{execute_as_principal_id,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.AssemblyModules">
+    insert into assembly_modules
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="assembly_id != null">
+        assembly_id,
+      </if>
+      <if test="assembly_class != null">
+        assembly_class,
+      </if>
+      <if test="assembly_method != null">
+        assembly_method,
+      </if>
+      <if test="null_on_null_input != null">
+        null_on_null_input,
+      </if>
+      <if test="execute_as_principal_id != null">
+        execute_as_principal_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="assembly_id != null">
+        #{assembly_id,jdbcType=INTEGER},
+      </if>
+      <if test="assembly_class != null">
+        #{assembly_class,jdbcType=VARCHAR},
+      </if>
+      <if test="assembly_method != null">
+        #{assembly_method,jdbcType=VARCHAR},
+      </if>
+      <if test="null_on_null_input != null">
+        #{null_on_null_input,jdbcType=BIT},
+      </if>
+      <if test="execute_as_principal_id != null">
+        #{execute_as_principal_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

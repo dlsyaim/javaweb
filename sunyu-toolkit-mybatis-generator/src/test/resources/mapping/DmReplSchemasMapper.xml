@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmReplSchemasMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmReplSchemas">
+    <result column="tabid" jdbcType="INTEGER" property="tabid" />
+    <result column="indexid" jdbcType="SMALLINT" property="indexid" />
+    <result column="idSch" jdbcType="INTEGER" property="idSch" />
+    <result column="tabschema" jdbcType="VARCHAR" property="tabschema" />
+    <result column="ccTabschema" jdbcType="SMALLINT" property="ccTabschema" />
+    <result column="tabname" jdbcType="VARCHAR" property="tabname" />
+    <result column="ccTabname" jdbcType="SMALLINT" property="ccTabname" />
+    <result column="rowsetid_delete" jdbcType="BIGINT" property="rowsetid_delete" />
+    <result column="rowsetid_insert" jdbcType="BIGINT" property="rowsetid_insert" />
+    <result column="num_pk_cols" jdbcType="INTEGER" property="num_pk_cols" />
+    <result column="re_numtextcols" jdbcType="INTEGER" property="re_numtextcols" />
+    <result column="re_schema_lsn_begin" jdbcType="VARCHAR" property="re_schema_lsn_begin" />
+    <result column="re_schema_lsn_end" jdbcType="VARCHAR" property="re_schema_lsn_end" />
+    <result column="re_numcols" jdbcType="INTEGER" property="re_numcols" />
+    <result column="re_colid" jdbcType="INTEGER" property="re_colid" />
+    <result column="re_awcName" jdbcType="VARCHAR" property="re_awcName" />
+    <result column="re_ccName" jdbcType="SMALLINT" property="re_ccName" />
+    <result column="re_colattr" jdbcType="SMALLINT" property="re_colattr" />
+    <result column="re_maxlen" jdbcType="SMALLINT" property="re_maxlen" />
+    <result column="re_prec" jdbcType="TINYINT" property="re_prec" />
+    <result column="re_scale" jdbcType="TINYINT" property="re_scale" />
+    <result column="re_collatid" jdbcType="INTEGER" property="re_collatid" />
+    <result column="re_xvtype" jdbcType="TINYINT" property="re_xvtype" />
+    <result column="re_offset" jdbcType="INTEGER" property="re_offset" />
+    <result column="re_bitpos" jdbcType="TINYINT" property="re_bitpos" />
+    <result column="re_fNullable" jdbcType="TINYINT" property="re_fNullable" />
+    <result column="re_fAnsiTrim" jdbcType="TINYINT" property="re_fAnsiTrim" />
+    <result column="re_computed" jdbcType="INTEGER" property="re_computed" />
+    <result column="se_rowsetid" jdbcType="BIGINT" property="se_rowsetid" />
+    <result column="se_schema_lsn_begin" jdbcType="VARCHAR" property="se_schema_lsn_begin" />
+    <result column="se_schema_lsn_end" jdbcType="VARCHAR" property="se_schema_lsn_end" />
+    <result column="se_numcols" jdbcType="INTEGER" property="se_numcols" />
+    <result column="se_colid" jdbcType="INTEGER" property="se_colid" />
+    <result column="se_maxlen" jdbcType="SMALLINT" property="se_maxlen" />
+    <result column="se_prec" jdbcType="TINYINT" property="se_prec" />
+    <result column="se_scale" jdbcType="TINYINT" property="se_scale" />
+    <result column="se_collatid" jdbcType="INTEGER" property="se_collatid" />
+    <result column="se_xvtype" jdbcType="TINYINT" property="se_xvtype" />
+    <result column="se_offset" jdbcType="INTEGER" property="se_offset" />
+    <result column="se_bitpos" jdbcType="TINYINT" property="se_bitpos" />
+    <result column="se_fNullable" jdbcType="TINYINT" property="se_fNullable" />
+    <result column="se_fAnsiTrim" jdbcType="TINYINT" property="se_fAnsiTrim" />
+    <result column="se_computed" jdbcType="TINYINT" property="se_computed" />
+    <result column="se_nullBitInLeafRows" jdbcType="SMALLINT" property="se_nullBitInLeafRows" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmReplSchemasWithBLOBs">
+    <result column="artcache_schema_address" jdbcType="VARBINARY" property="artcache_schema_address" />
+    <result column="pcitee" jdbcType="VARBINARY" property="pcitee" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    artcache_schema_address, pcitee
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmReplSchemasWithBLOBs">
+    insert into dm_repl_schemas (tabid, indexid, idSch, 
+      tabschema, ccTabschema, tabname, 
+      ccTabname, rowsetid_delete, rowsetid_insert, 
+      num_pk_cols, re_numtextcols, re_schema_lsn_begin, 
+      re_schema_lsn_end, re_numcols, re_colid, 
+      re_awcName, re_ccName, re_colattr, 
+      re_maxlen, re_prec, re_scale, 
+      re_collatid, re_xvtype, re_offset, 
+      re_bitpos, re_fNullable, re_fAnsiTrim, 
+      re_computed, se_rowsetid, se_schema_lsn_begin, 
+      se_schema_lsn_end, se_numcols, se_colid, 
+      se_maxlen, se_prec, se_scale, 
+      se_collatid, se_xvtype, se_offset, 
+      se_bitpos, se_fNullable, se_fAnsiTrim, 
+      se_computed, se_nullBitInLeafRows, artcache_schema_address, 
+      pcitee)
+    values (#{tabid,jdbcType=INTEGER}, #{indexid,jdbcType=SMALLINT}, #{idSch,jdbcType=INTEGER}, 
+      #{tabschema,jdbcType=VARCHAR}, #{ccTabschema,jdbcType=SMALLINT}, #{tabname,jdbcType=VARCHAR}, 
+      #{ccTabname,jdbcType=SMALLINT}, #{rowsetid_delete,jdbcType=BIGINT}, #{rowsetid_insert,jdbcType=BIGINT}, 
+      #{num_pk_cols,jdbcType=INTEGER}, #{re_numtextcols,jdbcType=INTEGER}, #{re_schema_lsn_begin,jdbcType=VARCHAR}, 
+      #{re_schema_lsn_end,jdbcType=VARCHAR}, #{re_numcols,jdbcType=INTEGER}, #{re_colid,jdbcType=INTEGER}, 
+      #{re_awcName,jdbcType=VARCHAR}, #{re_ccName,jdbcType=SMALLINT}, #{re_colattr,jdbcType=SMALLINT}, 
+      #{re_maxlen,jdbcType=SMALLINT}, #{re_prec,jdbcType=TINYINT}, #{re_scale,jdbcType=TINYINT}, 
+      #{re_collatid,jdbcType=INTEGER}, #{re_xvtype,jdbcType=TINYINT}, #{re_offset,jdbcType=INTEGER}, 
+      #{re_bitpos,jdbcType=TINYINT}, #{re_fNullable,jdbcType=TINYINT}, #{re_fAnsiTrim,jdbcType=TINYINT}, 
+      #{re_computed,jdbcType=INTEGER}, #{se_rowsetid,jdbcType=BIGINT}, #{se_schema_lsn_begin,jdbcType=VARCHAR}, 
+      #{se_schema_lsn_end,jdbcType=VARCHAR}, #{se_numcols,jdbcType=INTEGER}, #{se_colid,jdbcType=INTEGER}, 
+      #{se_maxlen,jdbcType=SMALLINT}, #{se_prec,jdbcType=TINYINT}, #{se_scale,jdbcType=TINYINT}, 
+      #{se_collatid,jdbcType=INTEGER}, #{se_xvtype,jdbcType=TINYINT}, #{se_offset,jdbcType=INTEGER}, 
+      #{se_bitpos,jdbcType=TINYINT}, #{se_fNullable,jdbcType=TINYINT}, #{se_fAnsiTrim,jdbcType=TINYINT}, 
+      #{se_computed,jdbcType=TINYINT}, #{se_nullBitInLeafRows,jdbcType=SMALLINT}, #{artcache_schema_address,jdbcType=VARBINARY}, 
+      #{pcitee,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmReplSchemasWithBLOBs">
+    insert into dm_repl_schemas
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tabid != null">
+        tabid,
+      </if>
+      <if test="indexid != null">
+        indexid,
+      </if>
+      <if test="idSch != null">
+        idSch,
+      </if>
+      <if test="tabschema != null">
+        tabschema,
+      </if>
+      <if test="ccTabschema != null">
+        ccTabschema,
+      </if>
+      <if test="tabname != null">
+        tabname,
+      </if>
+      <if test="ccTabname != null">
+        ccTabname,
+      </if>
+      <if test="rowsetid_delete != null">
+        rowsetid_delete,
+      </if>
+      <if test="rowsetid_insert != null">
+        rowsetid_insert,
+      </if>
+      <if test="num_pk_cols != null">
+        num_pk_cols,
+      </if>
+      <if test="re_numtextcols != null">
+        re_numtextcols,
+      </if>
+      <if test="re_schema_lsn_begin != null">
+        re_schema_lsn_begin,
+      </if>
+      <if test="re_schema_lsn_end != null">
+        re_schema_lsn_end,
+      </if>
+      <if test="re_numcols != null">
+        re_numcols,
+      </if>
+      <if test="re_colid != null">
+        re_colid,
+      </if>
+      <if test="re_awcName != null">
+        re_awcName,
+      </if>
+      <if test="re_ccName != null">
+        re_ccName,
+      </if>
+      <if test="re_colattr != null">
+        re_colattr,
+      </if>
+      <if test="re_maxlen != null">
+        re_maxlen,
+      </if>
+      <if test="re_prec != null">
+        re_prec,
+      </if>
+      <if test="re_scale != null">
+        re_scale,
+      </if>
+      <if test="re_collatid != null">
+        re_collatid,
+      </if>
+      <if test="re_xvtype != null">
+        re_xvtype,
+      </if>
+      <if test="re_offset != null">
+        re_offset,
+      </if>
+      <if test="re_bitpos != null">
+        re_bitpos,
+      </if>
+      <if test="re_fNullable != null">
+        re_fNullable,
+      </if>
+      <if test="re_fAnsiTrim != null">
+        re_fAnsiTrim,
+      </if>
+      <if test="re_computed != null">
+        re_computed,
+      </if>
+      <if test="se_rowsetid != null">
+        se_rowsetid,
+      </if>
+      <if test="se_schema_lsn_begin != null">
+        se_schema_lsn_begin,
+      </if>
+      <if test="se_schema_lsn_end != null">
+        se_schema_lsn_end,
+      </if>
+      <if test="se_numcols != null">
+        se_numcols,
+      </if>
+      <if test="se_colid != null">
+        se_colid,
+      </if>
+      <if test="se_maxlen != null">
+        se_maxlen,
+      </if>
+      <if test="se_prec != null">
+        se_prec,
+      </if>
+      <if test="se_scale != null">
+        se_scale,
+      </if>
+      <if test="se_collatid != null">
+        se_collatid,
+      </if>
+      <if test="se_xvtype != null">
+        se_xvtype,
+      </if>
+      <if test="se_offset != null">
+        se_offset,
+      </if>
+      <if test="se_bitpos != null">
+        se_bitpos,
+      </if>
+      <if test="se_fNullable != null">
+        se_fNullable,
+      </if>
+      <if test="se_fAnsiTrim != null">
+        se_fAnsiTrim,
+      </if>
+      <if test="se_computed != null">
+        se_computed,
+      </if>
+      <if test="se_nullBitInLeafRows != null">
+        se_nullBitInLeafRows,
+      </if>
+      <if test="artcache_schema_address != null">
+        artcache_schema_address,
+      </if>
+      <if test="pcitee != null">
+        pcitee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tabid != null">
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="indexid != null">
+        #{indexid,jdbcType=SMALLINT},
+      </if>
+      <if test="idSch != null">
+        #{idSch,jdbcType=INTEGER},
+      </if>
+      <if test="tabschema != null">
+        #{tabschema,jdbcType=VARCHAR},
+      </if>
+      <if test="ccTabschema != null">
+        #{ccTabschema,jdbcType=SMALLINT},
+      </if>
+      <if test="tabname != null">
+        #{tabname,jdbcType=VARCHAR},
+      </if>
+      <if test="ccTabname != null">
+        #{ccTabname,jdbcType=SMALLINT},
+      </if>
+      <if test="rowsetid_delete != null">
+        #{rowsetid_delete,jdbcType=BIGINT},
+      </if>
+      <if test="rowsetid_insert != null">
+        #{rowsetid_insert,jdbcType=BIGINT},
+      </if>
+      <if test="num_pk_cols != null">
+        #{num_pk_cols,jdbcType=INTEGER},
+      </if>
+      <if test="re_numtextcols != null">
+        #{re_numtextcols,jdbcType=INTEGER},
+      </if>
+      <if test="re_schema_lsn_begin != null">
+        #{re_schema_lsn_begin,jdbcType=VARCHAR},
+      </if>
+      <if test="re_schema_lsn_end != null">
+        #{re_schema_lsn_end,jdbcType=VARCHAR},
+      </if>
+      <if test="re_numcols != null">
+        #{re_numcols,jdbcType=INTEGER},
+      </if>
+      <if test="re_colid != null">
+        #{re_colid,jdbcType=INTEGER},
+      </if>
+      <if test="re_awcName != null">
+        #{re_awcName,jdbcType=VARCHAR},
+      </if>
+      <if test="re_ccName != null">
+        #{re_ccName,jdbcType=SMALLINT},
+      </if>
+      <if test="re_colattr != null">
+        #{re_colattr,jdbcType=SMALLINT},
+      </if>
+      <if test="re_maxlen != null">
+        #{re_maxlen,jdbcType=SMALLINT},
+      </if>
+      <if test="re_prec != null">
+        #{re_prec,jdbcType=TINYINT},
+      </if>
+      <if test="re_scale != null">
+        #{re_scale,jdbcType=TINYINT},
+      </if>
+      <if test="re_collatid != null">
+        #{re_collatid,jdbcType=INTEGER},
+      </if>
+      <if test="re_xvtype != null">
+        #{re_xvtype,jdbcType=TINYINT},
+      </if>
+      <if test="re_offset != null">
+        #{re_offset,jdbcType=INTEGER},
+      </if>
+      <if test="re_bitpos != null">
+        #{re_bitpos,jdbcType=TINYINT},
+      </if>
+      <if test="re_fNullable != null">
+        #{re_fNullable,jdbcType=TINYINT},
+      </if>
+      <if test="re_fAnsiTrim != null">
+        #{re_fAnsiTrim,jdbcType=TINYINT},
+      </if>
+      <if test="re_computed != null">
+        #{re_computed,jdbcType=INTEGER},
+      </if>
+      <if test="se_rowsetid != null">
+        #{se_rowsetid,jdbcType=BIGINT},
+      </if>
+      <if test="se_schema_lsn_begin != null">
+        #{se_schema_lsn_begin,jdbcType=VARCHAR},
+      </if>
+      <if test="se_schema_lsn_end != null">
+        #{se_schema_lsn_end,jdbcType=VARCHAR},
+      </if>
+      <if test="se_numcols != null">
+        #{se_numcols,jdbcType=INTEGER},
+      </if>
+      <if test="se_colid != null">
+        #{se_colid,jdbcType=INTEGER},
+      </if>
+      <if test="se_maxlen != null">
+        #{se_maxlen,jdbcType=SMALLINT},
+      </if>
+      <if test="se_prec != null">
+        #{se_prec,jdbcType=TINYINT},
+      </if>
+      <if test="se_scale != null">
+        #{se_scale,jdbcType=TINYINT},
+      </if>
+      <if test="se_collatid != null">
+        #{se_collatid,jdbcType=INTEGER},
+      </if>
+      <if test="se_xvtype != null">
+        #{se_xvtype,jdbcType=TINYINT},
+      </if>
+      <if test="se_offset != null">
+        #{se_offset,jdbcType=INTEGER},
+      </if>
+      <if test="se_bitpos != null">
+        #{se_bitpos,jdbcType=TINYINT},
+      </if>
+      <if test="se_fNullable != null">
+        #{se_fNullable,jdbcType=TINYINT},
+      </if>
+      <if test="se_fAnsiTrim != null">
+        #{se_fAnsiTrim,jdbcType=TINYINT},
+      </if>
+      <if test="se_computed != null">
+        #{se_computed,jdbcType=TINYINT},
+      </if>
+      <if test="se_nullBitInLeafRows != null">
+        #{se_nullBitInLeafRows,jdbcType=SMALLINT},
+      </if>
+      <if test="artcache_schema_address != null">
+        #{artcache_schema_address,jdbcType=VARBINARY},
+      </if>
+      <if test="pcitee != null">
+        #{pcitee,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

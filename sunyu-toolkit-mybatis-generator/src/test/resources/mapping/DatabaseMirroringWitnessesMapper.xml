@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DatabaseMirroringWitnessesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DatabaseMirroringWitnesses">
+    <result column="database_name" jdbcType="VARCHAR" property="database_name" />
+    <result column="principal_server_name" jdbcType="VARCHAR" property="principal_server_name" />
+    <result column="mirror_server_name" jdbcType="VARCHAR" property="mirror_server_name" />
+    <result column="safety_level" jdbcType="TINYINT" property="safety_level" />
+    <result column="safety_level_desc" jdbcType="VARCHAR" property="safety_level_desc" />
+    <result column="safety_sequence_number" jdbcType="INTEGER" property="safety_sequence_number" />
+    <result column="role_sequence_number" jdbcType="INTEGER" property="role_sequence_number" />
+    <result column="mirroring_guid" jdbcType="CHAR" property="mirroring_guid" />
+    <result column="family_guid" jdbcType="CHAR" property="family_guid" />
+    <result column="is_suspended" jdbcType="BIT" property="is_suspended" />
+    <result column="is_suspended_sequence_number" jdbcType="INTEGER" property="is_suspended_sequence_number" />
+    <result column="partner_sync_state" jdbcType="TINYINT" property="partner_sync_state" />
+    <result column="partner_sync_state_desc" jdbcType="VARCHAR" property="partner_sync_state_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DatabaseMirroringWitnesses">
+    insert into database_mirroring_witnesses (database_name, principal_server_name, 
+      mirror_server_name, safety_level, safety_level_desc, 
+      safety_sequence_number, role_sequence_number, 
+      mirroring_guid, family_guid, is_suspended, 
+      is_suspended_sequence_number, partner_sync_state, 
+      partner_sync_state_desc)
+    values (#{database_name,jdbcType=VARCHAR}, #{principal_server_name,jdbcType=VARCHAR}, 
+      #{mirror_server_name,jdbcType=VARCHAR}, #{safety_level,jdbcType=TINYINT}, #{safety_level_desc,jdbcType=VARCHAR}, 
+      #{safety_sequence_number,jdbcType=INTEGER}, #{role_sequence_number,jdbcType=INTEGER}, 
+      #{mirroring_guid,jdbcType=CHAR}, #{family_guid,jdbcType=CHAR}, #{is_suspended,jdbcType=BIT}, 
+      #{is_suspended_sequence_number,jdbcType=INTEGER}, #{partner_sync_state,jdbcType=TINYINT}, 
+      #{partner_sync_state_desc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DatabaseMirroringWitnesses">
+    insert into database_mirroring_witnesses
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_name != null">
+        database_name,
+      </if>
+      <if test="principal_server_name != null">
+        principal_server_name,
+      </if>
+      <if test="mirror_server_name != null">
+        mirror_server_name,
+      </if>
+      <if test="safety_level != null">
+        safety_level,
+      </if>
+      <if test="safety_level_desc != null">
+        safety_level_desc,
+      </if>
+      <if test="safety_sequence_number != null">
+        safety_sequence_number,
+      </if>
+      <if test="role_sequence_number != null">
+        role_sequence_number,
+      </if>
+      <if test="mirroring_guid != null">
+        mirroring_guid,
+      </if>
+      <if test="family_guid != null">
+        family_guid,
+      </if>
+      <if test="is_suspended != null">
+        is_suspended,
+      </if>
+      <if test="is_suspended_sequence_number != null">
+        is_suspended_sequence_number,
+      </if>
+      <if test="partner_sync_state != null">
+        partner_sync_state,
+      </if>
+      <if test="partner_sync_state_desc != null">
+        partner_sync_state_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_name != null">
+        #{database_name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal_server_name != null">
+        #{principal_server_name,jdbcType=VARCHAR},
+      </if>
+      <if test="mirror_server_name != null">
+        #{mirror_server_name,jdbcType=VARCHAR},
+      </if>
+      <if test="safety_level != null">
+        #{safety_level,jdbcType=TINYINT},
+      </if>
+      <if test="safety_level_desc != null">
+        #{safety_level_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="safety_sequence_number != null">
+        #{safety_sequence_number,jdbcType=INTEGER},
+      </if>
+      <if test="role_sequence_number != null">
+        #{role_sequence_number,jdbcType=INTEGER},
+      </if>
+      <if test="mirroring_guid != null">
+        #{mirroring_guid,jdbcType=CHAR},
+      </if>
+      <if test="family_guid != null">
+        #{family_guid,jdbcType=CHAR},
+      </if>
+      <if test="is_suspended != null">
+        #{is_suspended,jdbcType=BIT},
+      </if>
+      <if test="is_suspended_sequence_number != null">
+        #{is_suspended_sequence_number,jdbcType=INTEGER},
+      </if>
+      <if test="partner_sync_state != null">
+        #{partner_sync_state,jdbcType=TINYINT},
+      </if>
+      <if test="partner_sync_state_desc != null">
+        #{partner_sync_state_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

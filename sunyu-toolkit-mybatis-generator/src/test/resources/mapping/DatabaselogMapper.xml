@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DatabaselogMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Databaselog">
+    <result column="DatabaseLogID" jdbcType="INTEGER" property="databaseLogID" />
+    <result column="PostTime" jdbcType="TIMESTAMP" property="postTime" />
+    <result column="DatabaseUser" jdbcType="VARCHAR" property="databaseUser" />
+    <result column="Event" jdbcType="VARCHAR" property="event" />
+    <result column="Schema" jdbcType="VARCHAR" property="schema" />
+    <result column="Object" jdbcType="VARCHAR" property="object" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DatabaselogWithBLOBs">
+    <result column="TSQL" jdbcType="CLOB" property="TSQL" />
+    <result column="XmlEvent" jdbcType="CLOB" property="xmlEvent" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    TSQL, XmlEvent
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DatabaselogWithBLOBs">
+    insert into DatabaseLog (DatabaseLogID, PostTime, DatabaseUser, 
+      Event, Schema, Object, 
+      TSQL, XmlEvent)
+    values (#{databaseLogID,jdbcType=INTEGER}, #{postTime,jdbcType=TIMESTAMP}, #{databaseUser,jdbcType=VARCHAR}, 
+      #{event,jdbcType=VARCHAR}, #{schema,jdbcType=VARCHAR}, #{object,jdbcType=VARCHAR}, 
+      #{TSQL,jdbcType=CLOB}, #{xmlEvent,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DatabaselogWithBLOBs">
+    insert into DatabaseLog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="databaseLogID != null">
+        DatabaseLogID,
+      </if>
+      <if test="postTime != null">
+        PostTime,
+      </if>
+      <if test="databaseUser != null">
+        DatabaseUser,
+      </if>
+      <if test="event != null">
+        Event,
+      </if>
+      <if test="schema != null">
+        Schema,
+      </if>
+      <if test="object != null">
+        Object,
+      </if>
+      <if test="TSQL != null">
+        TSQL,
+      </if>
+      <if test="xmlEvent != null">
+        XmlEvent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="databaseLogID != null">
+        #{databaseLogID,jdbcType=INTEGER},
+      </if>
+      <if test="postTime != null">
+        #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="databaseUser != null">
+        #{databaseUser,jdbcType=VARCHAR},
+      </if>
+      <if test="event != null">
+        #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="schema != null">
+        #{schema,jdbcType=VARCHAR},
+      </if>
+      <if test="object != null">
+        #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="TSQL != null">
+        #{TSQL,jdbcType=CLOB},
+      </if>
+      <if test="xmlEvent != null">
+        #{xmlEvent,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

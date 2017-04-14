@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDosingcontorllerrecMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDosingcontorllerrec">
+    <id column="DosingControllerRecId" jdbcType="BIGINT" property="dosingControllerRecId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RecTime" jdbcType="TIMESTAMP" property="recTime" />
+    <result column="Manual" jdbcType="BIT" property="manual" />
+    <result column="SetConfirm" jdbcType="BIT" property="setConfirm" />
+    <result column="ManualQb" jdbcType="DOUBLE" property="manualQb" />
+    <result column="Qb" jdbcType="DOUBLE" property="qb" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DosingControllerRecId, EquipmentId, RecTime, Manual, SetConfirm, ManualQb, Qb
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_DosingContorllerRec
+    where DosingControllerRecId = #{dosingControllerRecId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_DosingContorllerRec
+    where DosingControllerRecId = #{dosingControllerRecId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDosingcontorllerrec">
+    insert into KS_DosingContorllerRec (DosingControllerRecId, EquipmentId, 
+      RecTime, Manual, SetConfirm, 
+      ManualQb, Qb)
+    values (#{dosingControllerRecId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, 
+      #{recTime,jdbcType=TIMESTAMP}, #{manual,jdbcType=BIT}, #{setConfirm,jdbcType=BIT}, 
+      #{manualQb,jdbcType=DOUBLE}, #{qb,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDosingcontorllerrec">
+    insert into KS_DosingContorllerRec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dosingControllerRecId != null">
+        DosingControllerRecId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="recTime != null">
+        RecTime,
+      </if>
+      <if test="manual != null">
+        Manual,
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm,
+      </if>
+      <if test="manualQb != null">
+        ManualQb,
+      </if>
+      <if test="qb != null">
+        Qb,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dosingControllerRecId != null">
+        #{dosingControllerRecId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="recTime != null">
+        #{recTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manual != null">
+        #{manual,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        #{setConfirm,jdbcType=BIT},
+      </if>
+      <if test="manualQb != null">
+        #{manualQb,jdbcType=DOUBLE},
+      </if>
+      <if test="qb != null">
+        #{qb,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDosingcontorllerrec">
+    update KS_DosingContorllerRec
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="recTime != null">
+        RecTime = #{recTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manual != null">
+        Manual = #{manual,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm = #{setConfirm,jdbcType=BIT},
+      </if>
+      <if test="manualQb != null">
+        ManualQb = #{manualQb,jdbcType=DOUBLE},
+      </if>
+      <if test="qb != null">
+        Qb = #{qb,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where DosingControllerRecId = #{dosingControllerRecId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDosingcontorllerrec">
+    update KS_DosingContorllerRec
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RecTime = #{recTime,jdbcType=TIMESTAMP},
+      Manual = #{manual,jdbcType=BIT},
+      SetConfirm = #{setConfirm,jdbcType=BIT},
+      ManualQb = #{manualQb,jdbcType=DOUBLE},
+      Qb = #{qb,jdbcType=DOUBLE}
+    where DosingControllerRecId = #{dosingControllerRecId,jdbcType=BIGINT}
+  </update>
+</mapper>

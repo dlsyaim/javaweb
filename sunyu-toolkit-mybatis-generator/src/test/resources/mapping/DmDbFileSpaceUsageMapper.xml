@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbFileSpaceUsageMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbFileSpaceUsage">
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="file_id" jdbcType="SMALLINT" property="file_id" />
+    <result column="unallocated_extent_page_count" jdbcType="BIGINT" property="unallocated_extent_page_count" />
+    <result column="version_store_reserved_page_count" jdbcType="BIGINT" property="version_store_reserved_page_count" />
+    <result column="user_object_reserved_page_count" jdbcType="BIGINT" property="user_object_reserved_page_count" />
+    <result column="internal_object_reserved_page_count" jdbcType="BIGINT" property="internal_object_reserved_page_count" />
+    <result column="mixed_extent_page_count" jdbcType="BIGINT" property="mixed_extent_page_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbFileSpaceUsage">
+    insert into dm_db_file_space_usage (database_id, file_id, unallocated_extent_page_count, 
+      version_store_reserved_page_count, user_object_reserved_page_count, 
+      internal_object_reserved_page_count, mixed_extent_page_count
+      )
+    values (#{database_id,jdbcType=SMALLINT}, #{file_id,jdbcType=SMALLINT}, #{unallocated_extent_page_count,jdbcType=BIGINT}, 
+      #{version_store_reserved_page_count,jdbcType=BIGINT}, #{user_object_reserved_page_count,jdbcType=BIGINT}, 
+      #{internal_object_reserved_page_count,jdbcType=BIGINT}, #{mixed_extent_page_count,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbFileSpaceUsage">
+    insert into dm_db_file_space_usage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="file_id != null">
+        file_id,
+      </if>
+      <if test="unallocated_extent_page_count != null">
+        unallocated_extent_page_count,
+      </if>
+      <if test="version_store_reserved_page_count != null">
+        version_store_reserved_page_count,
+      </if>
+      <if test="user_object_reserved_page_count != null">
+        user_object_reserved_page_count,
+      </if>
+      <if test="internal_object_reserved_page_count != null">
+        internal_object_reserved_page_count,
+      </if>
+      <if test="mixed_extent_page_count != null">
+        mixed_extent_page_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="file_id != null">
+        #{file_id,jdbcType=SMALLINT},
+      </if>
+      <if test="unallocated_extent_page_count != null">
+        #{unallocated_extent_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="version_store_reserved_page_count != null">
+        #{version_store_reserved_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="user_object_reserved_page_count != null">
+        #{user_object_reserved_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="internal_object_reserved_page_count != null">
+        #{internal_object_reserved_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="mixed_extent_page_count != null">
+        #{mixed_extent_page_count,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

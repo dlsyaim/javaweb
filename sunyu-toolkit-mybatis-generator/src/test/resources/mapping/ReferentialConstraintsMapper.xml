@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ReferentialConstraintsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ReferentialConstraints">
+    <result column="CONSTRAINT_CATALOG" jdbcType="VARCHAR" property="CONSTRAINT_CATALOG" />
+    <result column="CONSTRAINT_SCHEMA" jdbcType="VARCHAR" property="CONSTRAINT_SCHEMA" />
+    <result column="CONSTRAINT_NAME" jdbcType="VARCHAR" property="CONSTRAINT_NAME" />
+    <result column="UNIQUE_CONSTRAINT_CATALOG" jdbcType="VARCHAR" property="UNIQUE_CONSTRAINT_CATALOG" />
+    <result column="UNIQUE_CONSTRAINT_SCHEMA" jdbcType="VARCHAR" property="UNIQUE_CONSTRAINT_SCHEMA" />
+    <result column="UNIQUE_CONSTRAINT_NAME" jdbcType="VARCHAR" property="UNIQUE_CONSTRAINT_NAME" />
+    <result column="MATCH_OPTION" jdbcType="VARCHAR" property="MATCH_OPTION" />
+    <result column="UPDATE_RULE" jdbcType="VARCHAR" property="UPDATE_RULE" />
+    <result column="DELETE_RULE" jdbcType="VARCHAR" property="DELETE_RULE" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ReferentialConstraints">
+    insert into REFERENTIAL_CONSTRAINTS (CONSTRAINT_CATALOG, CONSTRAINT_SCHEMA, 
+      CONSTRAINT_NAME, UNIQUE_CONSTRAINT_CATALOG, 
+      UNIQUE_CONSTRAINT_SCHEMA, UNIQUE_CONSTRAINT_NAME, 
+      MATCH_OPTION, UPDATE_RULE, DELETE_RULE
+      )
+    values (#{CONSTRAINT_CATALOG,jdbcType=VARCHAR}, #{CONSTRAINT_SCHEMA,jdbcType=VARCHAR}, 
+      #{CONSTRAINT_NAME,jdbcType=VARCHAR}, #{UNIQUE_CONSTRAINT_CATALOG,jdbcType=VARCHAR}, 
+      #{UNIQUE_CONSTRAINT_SCHEMA,jdbcType=VARCHAR}, #{UNIQUE_CONSTRAINT_NAME,jdbcType=VARCHAR}, 
+      #{MATCH_OPTION,jdbcType=VARCHAR}, #{UPDATE_RULE,jdbcType=VARCHAR}, #{DELETE_RULE,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ReferentialConstraints">
+    insert into REFERENTIAL_CONSTRAINTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="CONSTRAINT_CATALOG != null">
+        CONSTRAINT_CATALOG,
+      </if>
+      <if test="CONSTRAINT_SCHEMA != null">
+        CONSTRAINT_SCHEMA,
+      </if>
+      <if test="CONSTRAINT_NAME != null">
+        CONSTRAINT_NAME,
+      </if>
+      <if test="UNIQUE_CONSTRAINT_CATALOG != null">
+        UNIQUE_CONSTRAINT_CATALOG,
+      </if>
+      <if test="UNIQUE_CONSTRAINT_SCHEMA != null">
+        UNIQUE_CONSTRAINT_SCHEMA,
+      </if>
+      <if test="UNIQUE_CONSTRAINT_NAME != null">
+        UNIQUE_CONSTRAINT_NAME,
+      </if>
+      <if test="MATCH_OPTION != null">
+        MATCH_OPTION,
+      </if>
+      <if test="UPDATE_RULE != null">
+        UPDATE_RULE,
+      </if>
+      <if test="DELETE_RULE != null">
+        DELETE_RULE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="CONSTRAINT_CATALOG != null">
+        #{CONSTRAINT_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSTRAINT_SCHEMA != null">
+        #{CONSTRAINT_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSTRAINT_NAME != null">
+        #{CONSTRAINT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="UNIQUE_CONSTRAINT_CATALOG != null">
+        #{UNIQUE_CONSTRAINT_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="UNIQUE_CONSTRAINT_SCHEMA != null">
+        #{UNIQUE_CONSTRAINT_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="UNIQUE_CONSTRAINT_NAME != null">
+        #{UNIQUE_CONSTRAINT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="MATCH_OPTION != null">
+        #{MATCH_OPTION,jdbcType=VARCHAR},
+      </if>
+      <if test="UPDATE_RULE != null">
+        #{UPDATE_RULE,jdbcType=VARCHAR},
+      </if>
+      <if test="DELETE_RULE != null">
+        #{DELETE_RULE,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

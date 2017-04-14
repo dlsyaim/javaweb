@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.OpenkeysMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Openkeys">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="database_name" jdbcType="VARCHAR" property="database_name" />
+    <result column="key_id" jdbcType="INTEGER" property="key_id" />
+    <result column="key_name" jdbcType="VARCHAR" property="key_name" />
+    <result column="key_guid" jdbcType="CHAR" property="key_guid" />
+    <result column="opened_date" jdbcType="TIMESTAMP" property="opened_date" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Openkeys">
+    insert into openkeys (database_id, database_name, key_id, 
+      key_name, key_guid, opened_date, 
+      status)
+    values (#{database_id,jdbcType=INTEGER}, #{database_name,jdbcType=VARCHAR}, #{key_id,jdbcType=INTEGER}, 
+      #{key_name,jdbcType=VARCHAR}, #{key_guid,jdbcType=CHAR}, #{opened_date,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Openkeys">
+    insert into openkeys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="database_name != null">
+        database_name,
+      </if>
+      <if test="key_id != null">
+        key_id,
+      </if>
+      <if test="key_name != null">
+        key_name,
+      </if>
+      <if test="key_guid != null">
+        key_guid,
+      </if>
+      <if test="opened_date != null">
+        opened_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="database_name != null">
+        #{database_name,jdbcType=VARCHAR},
+      </if>
+      <if test="key_id != null">
+        #{key_id,jdbcType=INTEGER},
+      </if>
+      <if test="key_name != null">
+        #{key_name,jdbcType=VARCHAR},
+      </if>
+      <if test="key_guid != null">
+        #{key_guid,jdbcType=CHAR},
+      </if>
+      <if test="opened_date != null">
+        #{opened_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

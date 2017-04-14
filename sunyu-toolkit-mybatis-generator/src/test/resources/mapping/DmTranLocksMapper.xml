@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranLocksMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranLocks">
+    <result column="resource_type" jdbcType="VARCHAR" property="resource_type" />
+    <result column="resource_subtype" jdbcType="VARCHAR" property="resource_subtype" />
+    <result column="resource_database_id" jdbcType="INTEGER" property="resource_database_id" />
+    <result column="resource_description" jdbcType="VARCHAR" property="resource_description" />
+    <result column="resource_associated_entity_id" jdbcType="BIGINT" property="resource_associated_entity_id" />
+    <result column="resource_lock_partition" jdbcType="INTEGER" property="resource_lock_partition" />
+    <result column="request_mode" jdbcType="VARCHAR" property="request_mode" />
+    <result column="request_type" jdbcType="VARCHAR" property="request_type" />
+    <result column="request_status" jdbcType="VARCHAR" property="request_status" />
+    <result column="request_reference_count" jdbcType="SMALLINT" property="request_reference_count" />
+    <result column="request_lifetime" jdbcType="INTEGER" property="request_lifetime" />
+    <result column="request_session_id" jdbcType="INTEGER" property="request_session_id" />
+    <result column="request_exec_context_id" jdbcType="INTEGER" property="request_exec_context_id" />
+    <result column="request_request_id" jdbcType="INTEGER" property="request_request_id" />
+    <result column="request_owner_type" jdbcType="VARCHAR" property="request_owner_type" />
+    <result column="request_owner_id" jdbcType="BIGINT" property="request_owner_id" />
+    <result column="request_owner_guid" jdbcType="CHAR" property="request_owner_guid" />
+    <result column="request_owner_lockspace_id" jdbcType="VARCHAR" property="request_owner_lockspace_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmTranLocks">
+    <result column="lock_owner_address" jdbcType="VARBINARY" property="lock_owner_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    lock_owner_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranLocks">
+    insert into dm_tran_locks (resource_type, resource_subtype, 
+      resource_database_id, resource_description, 
+      resource_associated_entity_id, resource_lock_partition, 
+      request_mode, request_type, request_status, 
+      request_reference_count, request_lifetime, 
+      request_session_id, request_exec_context_id, 
+      request_request_id, request_owner_type, 
+      request_owner_id, request_owner_guid, request_owner_lockspace_id, 
+      lock_owner_address)
+    values (#{resource_type,jdbcType=VARCHAR}, #{resource_subtype,jdbcType=VARCHAR}, 
+      #{resource_database_id,jdbcType=INTEGER}, #{resource_description,jdbcType=VARCHAR}, 
+      #{resource_associated_entity_id,jdbcType=BIGINT}, #{resource_lock_partition,jdbcType=INTEGER}, 
+      #{request_mode,jdbcType=VARCHAR}, #{request_type,jdbcType=VARCHAR}, #{request_status,jdbcType=VARCHAR}, 
+      #{request_reference_count,jdbcType=SMALLINT}, #{request_lifetime,jdbcType=INTEGER}, 
+      #{request_session_id,jdbcType=INTEGER}, #{request_exec_context_id,jdbcType=INTEGER}, 
+      #{request_request_id,jdbcType=INTEGER}, #{request_owner_type,jdbcType=VARCHAR}, 
+      #{request_owner_id,jdbcType=BIGINT}, #{request_owner_guid,jdbcType=CHAR}, #{request_owner_lockspace_id,jdbcType=VARCHAR}, 
+      #{lock_owner_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranLocks">
+    insert into dm_tran_locks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resource_type != null">
+        resource_type,
+      </if>
+      <if test="resource_subtype != null">
+        resource_subtype,
+      </if>
+      <if test="resource_database_id != null">
+        resource_database_id,
+      </if>
+      <if test="resource_description != null">
+        resource_description,
+      </if>
+      <if test="resource_associated_entity_id != null">
+        resource_associated_entity_id,
+      </if>
+      <if test="resource_lock_partition != null">
+        resource_lock_partition,
+      </if>
+      <if test="request_mode != null">
+        request_mode,
+      </if>
+      <if test="request_type != null">
+        request_type,
+      </if>
+      <if test="request_status != null">
+        request_status,
+      </if>
+      <if test="request_reference_count != null">
+        request_reference_count,
+      </if>
+      <if test="request_lifetime != null">
+        request_lifetime,
+      </if>
+      <if test="request_session_id != null">
+        request_session_id,
+      </if>
+      <if test="request_exec_context_id != null">
+        request_exec_context_id,
+      </if>
+      <if test="request_request_id != null">
+        request_request_id,
+      </if>
+      <if test="request_owner_type != null">
+        request_owner_type,
+      </if>
+      <if test="request_owner_id != null">
+        request_owner_id,
+      </if>
+      <if test="request_owner_guid != null">
+        request_owner_guid,
+      </if>
+      <if test="request_owner_lockspace_id != null">
+        request_owner_lockspace_id,
+      </if>
+      <if test="lock_owner_address != null">
+        lock_owner_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resource_type != null">
+        #{resource_type,jdbcType=VARCHAR},
+      </if>
+      <if test="resource_subtype != null">
+        #{resource_subtype,jdbcType=VARCHAR},
+      </if>
+      <if test="resource_database_id != null">
+        #{resource_database_id,jdbcType=INTEGER},
+      </if>
+      <if test="resource_description != null">
+        #{resource_description,jdbcType=VARCHAR},
+      </if>
+      <if test="resource_associated_entity_id != null">
+        #{resource_associated_entity_id,jdbcType=BIGINT},
+      </if>
+      <if test="resource_lock_partition != null">
+        #{resource_lock_partition,jdbcType=INTEGER},
+      </if>
+      <if test="request_mode != null">
+        #{request_mode,jdbcType=VARCHAR},
+      </if>
+      <if test="request_type != null">
+        #{request_type,jdbcType=VARCHAR},
+      </if>
+      <if test="request_status != null">
+        #{request_status,jdbcType=VARCHAR},
+      </if>
+      <if test="request_reference_count != null">
+        #{request_reference_count,jdbcType=SMALLINT},
+      </if>
+      <if test="request_lifetime != null">
+        #{request_lifetime,jdbcType=INTEGER},
+      </if>
+      <if test="request_session_id != null">
+        #{request_session_id,jdbcType=INTEGER},
+      </if>
+      <if test="request_exec_context_id != null">
+        #{request_exec_context_id,jdbcType=INTEGER},
+      </if>
+      <if test="request_request_id != null">
+        #{request_request_id,jdbcType=INTEGER},
+      </if>
+      <if test="request_owner_type != null">
+        #{request_owner_type,jdbcType=VARCHAR},
+      </if>
+      <if test="request_owner_id != null">
+        #{request_owner_id,jdbcType=BIGINT},
+      </if>
+      <if test="request_owner_guid != null">
+        #{request_owner_guid,jdbcType=CHAR},
+      </if>
+      <if test="request_owner_lockspace_id != null">
+        #{request_owner_lockspace_id,jdbcType=VARCHAR},
+      </if>
+      <if test="lock_owner_address != null">
+        #{lock_owner_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

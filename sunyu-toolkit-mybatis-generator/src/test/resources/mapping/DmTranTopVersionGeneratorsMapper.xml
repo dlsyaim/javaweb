@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranTopVersionGeneratorsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranTopVersionGenerators">
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="rowset_id" jdbcType="BIGINT" property="rowset_id" />
+    <result column="aggregated_record_length_in_bytes" jdbcType="INTEGER" property="aggregated_record_length_in_bytes" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranTopVersionGenerators">
+    insert into dm_tran_top_version_generators (database_id, rowset_id, aggregated_record_length_in_bytes
+      )
+    values (#{database_id,jdbcType=SMALLINT}, #{rowset_id,jdbcType=BIGINT}, #{aggregated_record_length_in_bytes,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranTopVersionGenerators">
+    insert into dm_tran_top_version_generators
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="rowset_id != null">
+        rowset_id,
+      </if>
+      <if test="aggregated_record_length_in_bytes != null">
+        aggregated_record_length_in_bytes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="rowset_id != null">
+        #{rowset_id,jdbcType=BIGINT},
+      </if>
+      <if test="aggregated_record_length_in_bytes != null">
+        #{aggregated_record_length_in_bytes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

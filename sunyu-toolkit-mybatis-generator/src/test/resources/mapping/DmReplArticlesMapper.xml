@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmReplArticlesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmReplArticles">
+    <result column="artid" jdbcType="INTEGER" property="artid" />
+    <result column="artfilter" jdbcType="INTEGER" property="artfilter" />
+    <result column="artobjid" jdbcType="INTEGER" property="artobjid" />
+    <result column="artpubid" jdbcType="INTEGER" property="artpubid" />
+    <result column="artstatus" jdbcType="TINYINT" property="artstatus" />
+    <result column="arttype" jdbcType="TINYINT" property="arttype" />
+    <result column="wszArtdesttable" jdbcType="VARCHAR" property="wszArtdesttable" />
+    <result column="wszArtdesttableowner" jdbcType="VARCHAR" property="wszArtdesttableowner" />
+    <result column="wszArtinscmd" jdbcType="VARCHAR" property="wszArtinscmd" />
+    <result column="cmdTypeIns" jdbcType="INTEGER" property="cmdTypeIns" />
+    <result column="wszArtdelcmd" jdbcType="VARCHAR" property="wszArtdelcmd" />
+    <result column="cmdTypeDel" jdbcType="INTEGER" property="cmdTypeDel" />
+    <result column="wszArtupdcmd" jdbcType="VARCHAR" property="wszArtupdcmd" />
+    <result column="cmdTypeUpd" jdbcType="INTEGER" property="cmdTypeUpd" />
+    <result column="wszArtpartialupdcmd" jdbcType="VARCHAR" property="wszArtpartialupdcmd" />
+    <result column="cmdTypePartialUpd" jdbcType="INTEGER" property="cmdTypePartialUpd" />
+    <result column="numcol" jdbcType="INTEGER" property="numcol" />
+    <result column="artcmdtype" jdbcType="TINYINT" property="artcmdtype" />
+    <result column="artgeninscmd" jdbcType="VARCHAR" property="artgeninscmd" />
+    <result column="artgendelcmd" jdbcType="VARCHAR" property="artgendelcmd" />
+    <result column="artgenupdcmd" jdbcType="VARCHAR" property="artgenupdcmd" />
+    <result column="artpartialupdcmd" jdbcType="VARCHAR" property="artpartialupdcmd" />
+    <result column="artupdtxtcmd" jdbcType="VARCHAR" property="artupdtxtcmd" />
+    <result column="artgenins2cmd" jdbcType="VARCHAR" property="artgenins2cmd" />
+    <result column="artgendel2cmd" jdbcType="VARCHAR" property="artgendel2cmd" />
+    <result column="fInReconcile" jdbcType="TINYINT" property="fInReconcile" />
+    <result column="fPubAllowUpdate" jdbcType="TINYINT" property="fPubAllowUpdate" />
+    <result column="intPublicationOptions" jdbcType="INTEGER" property="intPublicationOptions" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmReplArticlesWithBLOBs">
+    <result column="artcache_db_address" jdbcType="VARBINARY" property="artcache_db_address" />
+    <result column="artcache_table_address" jdbcType="VARBINARY" property="artcache_table_address" />
+    <result column="artcache_schema_address" jdbcType="VARBINARY" property="artcache_schema_address" />
+    <result column="artcache_article_address" jdbcType="VARBINARY" property="artcache_article_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    artcache_db_address, artcache_table_address, artcache_schema_address, artcache_article_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmReplArticlesWithBLOBs">
+    insert into dm_repl_articles (artid, artfilter, artobjid, 
+      artpubid, artstatus, arttype, 
+      wszArtdesttable, wszArtdesttableowner, 
+      wszArtinscmd, cmdTypeIns, wszArtdelcmd, 
+      cmdTypeDel, wszArtupdcmd, cmdTypeUpd, 
+      wszArtpartialupdcmd, cmdTypePartialUpd, 
+      numcol, artcmdtype, artgeninscmd, 
+      artgendelcmd, artgenupdcmd, artpartialupdcmd, 
+      artupdtxtcmd, artgenins2cmd, artgendel2cmd, 
+      fInReconcile, fPubAllowUpdate, intPublicationOptions, 
+      artcache_db_address, artcache_table_address, 
+      artcache_schema_address, artcache_article_address
+      )
+    values (#{artid,jdbcType=INTEGER}, #{artfilter,jdbcType=INTEGER}, #{artobjid,jdbcType=INTEGER}, 
+      #{artpubid,jdbcType=INTEGER}, #{artstatus,jdbcType=TINYINT}, #{arttype,jdbcType=TINYINT}, 
+      #{wszArtdesttable,jdbcType=VARCHAR}, #{wszArtdesttableowner,jdbcType=VARCHAR}, 
+      #{wszArtinscmd,jdbcType=VARCHAR}, #{cmdTypeIns,jdbcType=INTEGER}, #{wszArtdelcmd,jdbcType=VARCHAR}, 
+      #{cmdTypeDel,jdbcType=INTEGER}, #{wszArtupdcmd,jdbcType=VARCHAR}, #{cmdTypeUpd,jdbcType=INTEGER}, 
+      #{wszArtpartialupdcmd,jdbcType=VARCHAR}, #{cmdTypePartialUpd,jdbcType=INTEGER}, 
+      #{numcol,jdbcType=INTEGER}, #{artcmdtype,jdbcType=TINYINT}, #{artgeninscmd,jdbcType=VARCHAR}, 
+      #{artgendelcmd,jdbcType=VARCHAR}, #{artgenupdcmd,jdbcType=VARCHAR}, #{artpartialupdcmd,jdbcType=VARCHAR}, 
+      #{artupdtxtcmd,jdbcType=VARCHAR}, #{artgenins2cmd,jdbcType=VARCHAR}, #{artgendel2cmd,jdbcType=VARCHAR}, 
+      #{fInReconcile,jdbcType=TINYINT}, #{fPubAllowUpdate,jdbcType=TINYINT}, #{intPublicationOptions,jdbcType=INTEGER}, 
+      #{artcache_db_address,jdbcType=VARBINARY}, #{artcache_table_address,jdbcType=VARBINARY}, 
+      #{artcache_schema_address,jdbcType=VARBINARY}, #{artcache_article_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmReplArticlesWithBLOBs">
+    insert into dm_repl_articles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="artid != null">
+        artid,
+      </if>
+      <if test="artfilter != null">
+        artfilter,
+      </if>
+      <if test="artobjid != null">
+        artobjid,
+      </if>
+      <if test="artpubid != null">
+        artpubid,
+      </if>
+      <if test="artstatus != null">
+        artstatus,
+      </if>
+      <if test="arttype != null">
+        arttype,
+      </if>
+      <if test="wszArtdesttable != null">
+        wszArtdesttable,
+      </if>
+      <if test="wszArtdesttableowner != null">
+        wszArtdesttableowner,
+      </if>
+      <if test="wszArtinscmd != null">
+        wszArtinscmd,
+      </if>
+      <if test="cmdTypeIns != null">
+        cmdTypeIns,
+      </if>
+      <if test="wszArtdelcmd != null">
+        wszArtdelcmd,
+      </if>
+      <if test="cmdTypeDel != null">
+        cmdTypeDel,
+      </if>
+      <if test="wszArtupdcmd != null">
+        wszArtupdcmd,
+      </if>
+      <if test="cmdTypeUpd != null">
+        cmdTypeUpd,
+      </if>
+      <if test="wszArtpartialupdcmd != null">
+        wszArtpartialupdcmd,
+      </if>
+      <if test="cmdTypePartialUpd != null">
+        cmdTypePartialUpd,
+      </if>
+      <if test="numcol != null">
+        numcol,
+      </if>
+      <if test="artcmdtype != null">
+        artcmdtype,
+      </if>
+      <if test="artgeninscmd != null">
+        artgeninscmd,
+      </if>
+      <if test="artgendelcmd != null">
+        artgendelcmd,
+      </if>
+      <if test="artgenupdcmd != null">
+        artgenupdcmd,
+      </if>
+      <if test="artpartialupdcmd != null">
+        artpartialupdcmd,
+      </if>
+      <if test="artupdtxtcmd != null">
+        artupdtxtcmd,
+      </if>
+      <if test="artgenins2cmd != null">
+        artgenins2cmd,
+      </if>
+      <if test="artgendel2cmd != null">
+        artgendel2cmd,
+      </if>
+      <if test="fInReconcile != null">
+        fInReconcile,
+      </if>
+      <if test="fPubAllowUpdate != null">
+        fPubAllowUpdate,
+      </if>
+      <if test="intPublicationOptions != null">
+        intPublicationOptions,
+      </if>
+      <if test="artcache_db_address != null">
+        artcache_db_address,
+      </if>
+      <if test="artcache_table_address != null">
+        artcache_table_address,
+      </if>
+      <if test="artcache_schema_address != null">
+        artcache_schema_address,
+      </if>
+      <if test="artcache_article_address != null">
+        artcache_article_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="artid != null">
+        #{artid,jdbcType=INTEGER},
+      </if>
+      <if test="artfilter != null">
+        #{artfilter,jdbcType=INTEGER},
+      </if>
+      <if test="artobjid != null">
+        #{artobjid,jdbcType=INTEGER},
+      </if>
+      <if test="artpubid != null">
+        #{artpubid,jdbcType=INTEGER},
+      </if>
+      <if test="artstatus != null">
+        #{artstatus,jdbcType=TINYINT},
+      </if>
+      <if test="arttype != null">
+        #{arttype,jdbcType=TINYINT},
+      </if>
+      <if test="wszArtdesttable != null">
+        #{wszArtdesttable,jdbcType=VARCHAR},
+      </if>
+      <if test="wszArtdesttableowner != null">
+        #{wszArtdesttableowner,jdbcType=VARCHAR},
+      </if>
+      <if test="wszArtinscmd != null">
+        #{wszArtinscmd,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdTypeIns != null">
+        #{cmdTypeIns,jdbcType=INTEGER},
+      </if>
+      <if test="wszArtdelcmd != null">
+        #{wszArtdelcmd,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdTypeDel != null">
+        #{cmdTypeDel,jdbcType=INTEGER},
+      </if>
+      <if test="wszArtupdcmd != null">
+        #{wszArtupdcmd,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdTypeUpd != null">
+        #{cmdTypeUpd,jdbcType=INTEGER},
+      </if>
+      <if test="wszArtpartialupdcmd != null">
+        #{wszArtpartialupdcmd,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdTypePartialUpd != null">
+        #{cmdTypePartialUpd,jdbcType=INTEGER},
+      </if>
+      <if test="numcol != null">
+        #{numcol,jdbcType=INTEGER},
+      </if>
+      <if test="artcmdtype != null">
+        #{artcmdtype,jdbcType=TINYINT},
+      </if>
+      <if test="artgeninscmd != null">
+        #{artgeninscmd,jdbcType=VARCHAR},
+      </if>
+      <if test="artgendelcmd != null">
+        #{artgendelcmd,jdbcType=VARCHAR},
+      </if>
+      <if test="artgenupdcmd != null">
+        #{artgenupdcmd,jdbcType=VARCHAR},
+      </if>
+      <if test="artpartialupdcmd != null">
+        #{artpartialupdcmd,jdbcType=VARCHAR},
+      </if>
+      <if test="artupdtxtcmd != null">
+        #{artupdtxtcmd,jdbcType=VARCHAR},
+      </if>
+      <if test="artgenins2cmd != null">
+        #{artgenins2cmd,jdbcType=VARCHAR},
+      </if>
+      <if test="artgendel2cmd != null">
+        #{artgendel2cmd,jdbcType=VARCHAR},
+      </if>
+      <if test="fInReconcile != null">
+        #{fInReconcile,jdbcType=TINYINT},
+      </if>
+      <if test="fPubAllowUpdate != null">
+        #{fPubAllowUpdate,jdbcType=TINYINT},
+      </if>
+      <if test="intPublicationOptions != null">
+        #{intPublicationOptions,jdbcType=INTEGER},
+      </if>
+      <if test="artcache_db_address != null">
+        #{artcache_db_address,jdbcType=VARBINARY},
+      </if>
+      <if test="artcache_table_address != null">
+        #{artcache_table_address,jdbcType=VARBINARY},
+      </if>
+      <if test="artcache_schema_address != null">
+        #{artcache_schema_address,jdbcType=VARBINARY},
+      </if>
+      <if test="artcache_article_address != null">
+        #{artcache_article_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

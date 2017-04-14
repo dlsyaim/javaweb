@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysprocessesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysprocesses">
+    <result column="spid" jdbcType="SMALLINT" property="spid" />
+    <result column="kpid" jdbcType="SMALLINT" property="kpid" />
+    <result column="blocked" jdbcType="SMALLINT" property="blocked" />
+    <result column="waittime" jdbcType="BIGINT" property="waittime" />
+    <result column="lastwaittype" jdbcType="CHAR" property="lastwaittype" />
+    <result column="waitresource" jdbcType="CHAR" property="waitresource" />
+    <result column="dbid" jdbcType="SMALLINT" property="dbid" />
+    <result column="uid" jdbcType="SMALLINT" property="uid" />
+    <result column="cpu" jdbcType="INTEGER" property="cpu" />
+    <result column="physical_io" jdbcType="BIGINT" property="physical_io" />
+    <result column="memusage" jdbcType="INTEGER" property="memusage" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="login_time" />
+    <result column="last_batch" jdbcType="TIMESTAMP" property="last_batch" />
+    <result column="ecid" jdbcType="SMALLINT" property="ecid" />
+    <result column="open_tran" jdbcType="SMALLINT" property="open_tran" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="hostname" jdbcType="CHAR" property="hostname" />
+    <result column="program_name" jdbcType="CHAR" property="program_name" />
+    <result column="hostprocess" jdbcType="CHAR" property="hostprocess" />
+    <result column="cmd" jdbcType="CHAR" property="cmd" />
+    <result column="nt_domain" jdbcType="CHAR" property="nt_domain" />
+    <result column="nt_username" jdbcType="CHAR" property="nt_username" />
+    <result column="net_address" jdbcType="CHAR" property="net_address" />
+    <result column="net_library" jdbcType="CHAR" property="net_library" />
+    <result column="loginame" jdbcType="CHAR" property="loginame" />
+    <result column="stmt_start" jdbcType="INTEGER" property="stmt_start" />
+    <result column="stmt_end" jdbcType="INTEGER" property="stmt_end" />
+    <result column="request_id" jdbcType="INTEGER" property="request_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysprocessesWithBLOBs">
+    <result column="waittype" jdbcType="BINARY" property="waittype" />
+    <result column="sid" jdbcType="BINARY" property="sid" />
+    <result column="context_info" jdbcType="BINARY" property="context_info" />
+    <result column="sql_handle" jdbcType="BINARY" property="sql_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    waittype, sid, context_info, sql_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysprocessesWithBLOBs">
+    insert into sysprocesses (spid, kpid, blocked, 
+      waittime, lastwaittype, waitresource, 
+      dbid, uid, cpu, physical_io, 
+      memusage, login_time, last_batch, 
+      ecid, open_tran, status, 
+      hostname, program_name, hostprocess, 
+      cmd, nt_domain, nt_username, 
+      net_address, net_library, loginame, 
+      stmt_start, stmt_end, request_id, 
+      waittype, sid, context_info, 
+      sql_handle)
+    values (#{spid,jdbcType=SMALLINT}, #{kpid,jdbcType=SMALLINT}, #{blocked,jdbcType=SMALLINT}, 
+      #{waittime,jdbcType=BIGINT}, #{lastwaittype,jdbcType=CHAR}, #{waitresource,jdbcType=CHAR}, 
+      #{dbid,jdbcType=SMALLINT}, #{uid,jdbcType=SMALLINT}, #{cpu,jdbcType=INTEGER}, #{physical_io,jdbcType=BIGINT}, 
+      #{memusage,jdbcType=INTEGER}, #{login_time,jdbcType=TIMESTAMP}, #{last_batch,jdbcType=TIMESTAMP}, 
+      #{ecid,jdbcType=SMALLINT}, #{open_tran,jdbcType=SMALLINT}, #{status,jdbcType=CHAR}, 
+      #{hostname,jdbcType=CHAR}, #{program_name,jdbcType=CHAR}, #{hostprocess,jdbcType=CHAR}, 
+      #{cmd,jdbcType=CHAR}, #{nt_domain,jdbcType=CHAR}, #{nt_username,jdbcType=CHAR}, 
+      #{net_address,jdbcType=CHAR}, #{net_library,jdbcType=CHAR}, #{loginame,jdbcType=CHAR}, 
+      #{stmt_start,jdbcType=INTEGER}, #{stmt_end,jdbcType=INTEGER}, #{request_id,jdbcType=INTEGER}, 
+      #{waittype,jdbcType=BINARY}, #{sid,jdbcType=BINARY}, #{context_info,jdbcType=BINARY}, 
+      #{sql_handle,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysprocessesWithBLOBs">
+    insert into sysprocesses
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="spid != null">
+        spid,
+      </if>
+      <if test="kpid != null">
+        kpid,
+      </if>
+      <if test="blocked != null">
+        blocked,
+      </if>
+      <if test="waittime != null">
+        waittime,
+      </if>
+      <if test="lastwaittype != null">
+        lastwaittype,
+      </if>
+      <if test="waitresource != null">
+        waitresource,
+      </if>
+      <if test="dbid != null">
+        dbid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="cpu != null">
+        cpu,
+      </if>
+      <if test="physical_io != null">
+        physical_io,
+      </if>
+      <if test="memusage != null">
+        memusage,
+      </if>
+      <if test="login_time != null">
+        login_time,
+      </if>
+      <if test="last_batch != null">
+        last_batch,
+      </if>
+      <if test="ecid != null">
+        ecid,
+      </if>
+      <if test="open_tran != null">
+        open_tran,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="hostname != null">
+        hostname,
+      </if>
+      <if test="program_name != null">
+        program_name,
+      </if>
+      <if test="hostprocess != null">
+        hostprocess,
+      </if>
+      <if test="cmd != null">
+        cmd,
+      </if>
+      <if test="nt_domain != null">
+        nt_domain,
+      </if>
+      <if test="nt_username != null">
+        nt_username,
+      </if>
+      <if test="net_address != null">
+        net_address,
+      </if>
+      <if test="net_library != null">
+        net_library,
+      </if>
+      <if test="loginame != null">
+        loginame,
+      </if>
+      <if test="stmt_start != null">
+        stmt_start,
+      </if>
+      <if test="stmt_end != null">
+        stmt_end,
+      </if>
+      <if test="request_id != null">
+        request_id,
+      </if>
+      <if test="waittype != null">
+        waittype,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="context_info != null">
+        context_info,
+      </if>
+      <if test="sql_handle != null">
+        sql_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="spid != null">
+        #{spid,jdbcType=SMALLINT},
+      </if>
+      <if test="kpid != null">
+        #{kpid,jdbcType=SMALLINT},
+      </if>
+      <if test="blocked != null">
+        #{blocked,jdbcType=SMALLINT},
+      </if>
+      <if test="waittime != null">
+        #{waittime,jdbcType=BIGINT},
+      </if>
+      <if test="lastwaittype != null">
+        #{lastwaittype,jdbcType=CHAR},
+      </if>
+      <if test="waitresource != null">
+        #{waitresource,jdbcType=CHAR},
+      </if>
+      <if test="dbid != null">
+        #{dbid,jdbcType=SMALLINT},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=SMALLINT},
+      </if>
+      <if test="cpu != null">
+        #{cpu,jdbcType=INTEGER},
+      </if>
+      <if test="physical_io != null">
+        #{physical_io,jdbcType=BIGINT},
+      </if>
+      <if test="memusage != null">
+        #{memusage,jdbcType=INTEGER},
+      </if>
+      <if test="login_time != null">
+        #{login_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_batch != null">
+        #{last_batch,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ecid != null">
+        #{ecid,jdbcType=SMALLINT},
+      </if>
+      <if test="open_tran != null">
+        #{open_tran,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="hostname != null">
+        #{hostname,jdbcType=CHAR},
+      </if>
+      <if test="program_name != null">
+        #{program_name,jdbcType=CHAR},
+      </if>
+      <if test="hostprocess != null">
+        #{hostprocess,jdbcType=CHAR},
+      </if>
+      <if test="cmd != null">
+        #{cmd,jdbcType=CHAR},
+      </if>
+      <if test="nt_domain != null">
+        #{nt_domain,jdbcType=CHAR},
+      </if>
+      <if test="nt_username != null">
+        #{nt_username,jdbcType=CHAR},
+      </if>
+      <if test="net_address != null">
+        #{net_address,jdbcType=CHAR},
+      </if>
+      <if test="net_library != null">
+        #{net_library,jdbcType=CHAR},
+      </if>
+      <if test="loginame != null">
+        #{loginame,jdbcType=CHAR},
+      </if>
+      <if test="stmt_start != null">
+        #{stmt_start,jdbcType=INTEGER},
+      </if>
+      <if test="stmt_end != null">
+        #{stmt_end,jdbcType=INTEGER},
+      </if>
+      <if test="request_id != null">
+        #{request_id,jdbcType=INTEGER},
+      </if>
+      <if test="waittype != null">
+        #{waittype,jdbcType=BINARY},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=BINARY},
+      </if>
+      <if test="context_info != null">
+        #{context_info,jdbcType=BINARY},
+      </if>
+      <if test="sql_handle != null">
+        #{sql_handle,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecQueryResourceSemaphoresMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecQueryResourceSemaphores">
+    <result column="resource_semaphore_id" jdbcType="SMALLINT" property="resource_semaphore_id" />
+    <result column="target_memory_kb" jdbcType="BIGINT" property="target_memory_kb" />
+    <result column="max_target_memory_kb" jdbcType="BIGINT" property="max_target_memory_kb" />
+    <result column="total_memory_kb" jdbcType="BIGINT" property="total_memory_kb" />
+    <result column="available_memory_kb" jdbcType="BIGINT" property="available_memory_kb" />
+    <result column="granted_memory_kb" jdbcType="BIGINT" property="granted_memory_kb" />
+    <result column="used_memory_kb" jdbcType="BIGINT" property="used_memory_kb" />
+    <result column="grantee_count" jdbcType="INTEGER" property="grantee_count" />
+    <result column="waiter_count" jdbcType="INTEGER" property="waiter_count" />
+    <result column="timeout_error_count" jdbcType="BIGINT" property="timeout_error_count" />
+    <result column="forced_grant_count" jdbcType="BIGINT" property="forced_grant_count" />
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecQueryResourceSemaphores">
+    insert into dm_exec_query_resource_semaphores (resource_semaphore_id, target_memory_kb, 
+      max_target_memory_kb, total_memory_kb, available_memory_kb, 
+      granted_memory_kb, used_memory_kb, grantee_count, 
+      waiter_count, timeout_error_count, forced_grant_count, 
+      pool_id)
+    values (#{resource_semaphore_id,jdbcType=SMALLINT}, #{target_memory_kb,jdbcType=BIGINT}, 
+      #{max_target_memory_kb,jdbcType=BIGINT}, #{total_memory_kb,jdbcType=BIGINT}, #{available_memory_kb,jdbcType=BIGINT}, 
+      #{granted_memory_kb,jdbcType=BIGINT}, #{used_memory_kb,jdbcType=BIGINT}, #{grantee_count,jdbcType=INTEGER}, 
+      #{waiter_count,jdbcType=INTEGER}, #{timeout_error_count,jdbcType=BIGINT}, #{forced_grant_count,jdbcType=BIGINT}, 
+      #{pool_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecQueryResourceSemaphores">
+    insert into dm_exec_query_resource_semaphores
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resource_semaphore_id != null">
+        resource_semaphore_id,
+      </if>
+      <if test="target_memory_kb != null">
+        target_memory_kb,
+      </if>
+      <if test="max_target_memory_kb != null">
+        max_target_memory_kb,
+      </if>
+      <if test="total_memory_kb != null">
+        total_memory_kb,
+      </if>
+      <if test="available_memory_kb != null">
+        available_memory_kb,
+      </if>
+      <if test="granted_memory_kb != null">
+        granted_memory_kb,
+      </if>
+      <if test="used_memory_kb != null">
+        used_memory_kb,
+      </if>
+      <if test="grantee_count != null">
+        grantee_count,
+      </if>
+      <if test="waiter_count != null">
+        waiter_count,
+      </if>
+      <if test="timeout_error_count != null">
+        timeout_error_count,
+      </if>
+      <if test="forced_grant_count != null">
+        forced_grant_count,
+      </if>
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resource_semaphore_id != null">
+        #{resource_semaphore_id,jdbcType=SMALLINT},
+      </if>
+      <if test="target_memory_kb != null">
+        #{target_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="max_target_memory_kb != null">
+        #{max_target_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="total_memory_kb != null">
+        #{total_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="available_memory_kb != null">
+        #{available_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="granted_memory_kb != null">
+        #{granted_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="used_memory_kb != null">
+        #{used_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="grantee_count != null">
+        #{grantee_count,jdbcType=INTEGER},
+      </if>
+      <if test="waiter_count != null">
+        #{waiter_count,jdbcType=INTEGER},
+      </if>
+      <if test="timeout_error_count != null">
+        #{timeout_error_count,jdbcType=BIGINT},
+      </if>
+      <if test="forced_grant_count != null">
+        #{forced_grant_count,jdbcType=BIGINT},
+      </if>
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

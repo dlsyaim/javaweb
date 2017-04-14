@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.XmlSchemaElementsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.XmlSchemaElements">
+    <result column="xml_component_id" jdbcType="INTEGER" property="xml_component_id" />
+    <result column="xml_collection_id" jdbcType="INTEGER" property="xml_collection_id" />
+    <result column="xml_namespace_id" jdbcType="INTEGER" property="xml_namespace_id" />
+    <result column="is_qualified" jdbcType="BIT" property="is_qualified" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="symbol_space" jdbcType="CHAR" property="symbol_space" />
+    <result column="symbol_space_desc" jdbcType="VARCHAR" property="symbol_space_desc" />
+    <result column="kind" jdbcType="CHAR" property="kind" />
+    <result column="kind_desc" jdbcType="VARCHAR" property="kind_desc" />
+    <result column="derivation" jdbcType="CHAR" property="derivation" />
+    <result column="derivation_desc" jdbcType="VARCHAR" property="derivation_desc" />
+    <result column="base_xml_component_id" jdbcType="INTEGER" property="base_xml_component_id" />
+    <result column="scoping_xml_component_id" jdbcType="INTEGER" property="scoping_xml_component_id" />
+    <result column="is_default_fixed" jdbcType="BIT" property="is_default_fixed" />
+    <result column="is_abstract" jdbcType="BIT" property="is_abstract" />
+    <result column="is_nillable" jdbcType="BIT" property="is_nillable" />
+    <result column="must_be_qualified" jdbcType="BIT" property="must_be_qualified" />
+    <result column="is_extension_blocked" jdbcType="BIT" property="is_extension_blocked" />
+    <result column="is_restriction_blocked" jdbcType="BIT" property="is_restriction_blocked" />
+    <result column="is_substitution_blocked" jdbcType="BIT" property="is_substitution_blocked" />
+    <result column="is_final_extension" jdbcType="BIT" property="is_final_extension" />
+    <result column="is_final_restriction" jdbcType="BIT" property="is_final_restriction" />
+    <result column="default_value" jdbcType="VARCHAR" property="default_value" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.XmlSchemaElements">
+    insert into xml_schema_elements (xml_component_id, xml_collection_id, 
+      xml_namespace_id, is_qualified, name, 
+      symbol_space, symbol_space_desc, kind, 
+      kind_desc, derivation, derivation_desc, 
+      base_xml_component_id, scoping_xml_component_id, 
+      is_default_fixed, is_abstract, is_nillable, 
+      must_be_qualified, is_extension_blocked, is_restriction_blocked, 
+      is_substitution_blocked, is_final_extension, is_final_restriction, 
+      default_value)
+    values (#{xml_component_id,jdbcType=INTEGER}, #{xml_collection_id,jdbcType=INTEGER}, 
+      #{xml_namespace_id,jdbcType=INTEGER}, #{is_qualified,jdbcType=BIT}, #{name,jdbcType=VARCHAR}, 
+      #{symbol_space,jdbcType=CHAR}, #{symbol_space_desc,jdbcType=VARCHAR}, #{kind,jdbcType=CHAR}, 
+      #{kind_desc,jdbcType=VARCHAR}, #{derivation,jdbcType=CHAR}, #{derivation_desc,jdbcType=VARCHAR}, 
+      #{base_xml_component_id,jdbcType=INTEGER}, #{scoping_xml_component_id,jdbcType=INTEGER}, 
+      #{is_default_fixed,jdbcType=BIT}, #{is_abstract,jdbcType=BIT}, #{is_nillable,jdbcType=BIT}, 
+      #{must_be_qualified,jdbcType=BIT}, #{is_extension_blocked,jdbcType=BIT}, #{is_restriction_blocked,jdbcType=BIT}, 
+      #{is_substitution_blocked,jdbcType=BIT}, #{is_final_extension,jdbcType=BIT}, #{is_final_restriction,jdbcType=BIT}, 
+      #{default_value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.XmlSchemaElements">
+    insert into xml_schema_elements
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xml_component_id != null">
+        xml_component_id,
+      </if>
+      <if test="xml_collection_id != null">
+        xml_collection_id,
+      </if>
+      <if test="xml_namespace_id != null">
+        xml_namespace_id,
+      </if>
+      <if test="is_qualified != null">
+        is_qualified,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="symbol_space != null">
+        symbol_space,
+      </if>
+      <if test="symbol_space_desc != null">
+        symbol_space_desc,
+      </if>
+      <if test="kind != null">
+        kind,
+      </if>
+      <if test="kind_desc != null">
+        kind_desc,
+      </if>
+      <if test="derivation != null">
+        derivation,
+      </if>
+      <if test="derivation_desc != null">
+        derivation_desc,
+      </if>
+      <if test="base_xml_component_id != null">
+        base_xml_component_id,
+      </if>
+      <if test="scoping_xml_component_id != null">
+        scoping_xml_component_id,
+      </if>
+      <if test="is_default_fixed != null">
+        is_default_fixed,
+      </if>
+      <if test="is_abstract != null">
+        is_abstract,
+      </if>
+      <if test="is_nillable != null">
+        is_nillable,
+      </if>
+      <if test="must_be_qualified != null">
+        must_be_qualified,
+      </if>
+      <if test="is_extension_blocked != null">
+        is_extension_blocked,
+      </if>
+      <if test="is_restriction_blocked != null">
+        is_restriction_blocked,
+      </if>
+      <if test="is_substitution_blocked != null">
+        is_substitution_blocked,
+      </if>
+      <if test="is_final_extension != null">
+        is_final_extension,
+      </if>
+      <if test="is_final_restriction != null">
+        is_final_restriction,
+      </if>
+      <if test="default_value != null">
+        default_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xml_component_id != null">
+        #{xml_component_id,jdbcType=INTEGER},
+      </if>
+      <if test="xml_collection_id != null">
+        #{xml_collection_id,jdbcType=INTEGER},
+      </if>
+      <if test="xml_namespace_id != null">
+        #{xml_namespace_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_qualified != null">
+        #{is_qualified,jdbcType=BIT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="symbol_space != null">
+        #{symbol_space,jdbcType=CHAR},
+      </if>
+      <if test="symbol_space_desc != null">
+        #{symbol_space_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="kind != null">
+        #{kind,jdbcType=CHAR},
+      </if>
+      <if test="kind_desc != null">
+        #{kind_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="derivation != null">
+        #{derivation,jdbcType=CHAR},
+      </if>
+      <if test="derivation_desc != null">
+        #{derivation_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="base_xml_component_id != null">
+        #{base_xml_component_id,jdbcType=INTEGER},
+      </if>
+      <if test="scoping_xml_component_id != null">
+        #{scoping_xml_component_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_default_fixed != null">
+        #{is_default_fixed,jdbcType=BIT},
+      </if>
+      <if test="is_abstract != null">
+        #{is_abstract,jdbcType=BIT},
+      </if>
+      <if test="is_nillable != null">
+        #{is_nillable,jdbcType=BIT},
+      </if>
+      <if test="must_be_qualified != null">
+        #{must_be_qualified,jdbcType=BIT},
+      </if>
+      <if test="is_extension_blocked != null">
+        #{is_extension_blocked,jdbcType=BIT},
+      </if>
+      <if test="is_restriction_blocked != null">
+        #{is_restriction_blocked,jdbcType=BIT},
+      </if>
+      <if test="is_substitution_blocked != null">
+        #{is_substitution_blocked,jdbcType=BIT},
+      </if>
+      <if test="is_final_extension != null">
+        #{is_final_extension,jdbcType=BIT},
+      </if>
+      <if test="is_final_restriction != null">
+        #{is_final_restriction,jdbcType=BIT},
+      </if>
+      <if test="default_value != null">
+        #{default_value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

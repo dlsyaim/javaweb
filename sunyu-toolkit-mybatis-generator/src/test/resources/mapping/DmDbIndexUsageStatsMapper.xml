@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbIndexUsageStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbIndexUsageStats">
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="index_id" jdbcType="INTEGER" property="index_id" />
+    <result column="user_seeks" jdbcType="BIGINT" property="user_seeks" />
+    <result column="user_scans" jdbcType="BIGINT" property="user_scans" />
+    <result column="user_lookups" jdbcType="BIGINT" property="user_lookups" />
+    <result column="user_updates" jdbcType="BIGINT" property="user_updates" />
+    <result column="last_user_seek" jdbcType="TIMESTAMP" property="last_user_seek" />
+    <result column="last_user_scan" jdbcType="TIMESTAMP" property="last_user_scan" />
+    <result column="last_user_lookup" jdbcType="TIMESTAMP" property="last_user_lookup" />
+    <result column="last_user_update" jdbcType="TIMESTAMP" property="last_user_update" />
+    <result column="system_seeks" jdbcType="BIGINT" property="system_seeks" />
+    <result column="system_scans" jdbcType="BIGINT" property="system_scans" />
+    <result column="system_lookups" jdbcType="BIGINT" property="system_lookups" />
+    <result column="system_updates" jdbcType="BIGINT" property="system_updates" />
+    <result column="last_system_seek" jdbcType="TIMESTAMP" property="last_system_seek" />
+    <result column="last_system_scan" jdbcType="TIMESTAMP" property="last_system_scan" />
+    <result column="last_system_lookup" jdbcType="TIMESTAMP" property="last_system_lookup" />
+    <result column="last_system_update" jdbcType="TIMESTAMP" property="last_system_update" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbIndexUsageStats">
+    insert into dm_db_index_usage_stats (database_id, object_id, index_id, 
+      user_seeks, user_scans, user_lookups, 
+      user_updates, last_user_seek, last_user_scan, 
+      last_user_lookup, last_user_update, 
+      system_seeks, system_scans, system_lookups, 
+      system_updates, last_system_seek, last_system_scan, 
+      last_system_lookup, last_system_update
+      )
+    values (#{database_id,jdbcType=SMALLINT}, #{object_id,jdbcType=INTEGER}, #{index_id,jdbcType=INTEGER}, 
+      #{user_seeks,jdbcType=BIGINT}, #{user_scans,jdbcType=BIGINT}, #{user_lookups,jdbcType=BIGINT}, 
+      #{user_updates,jdbcType=BIGINT}, #{last_user_seek,jdbcType=TIMESTAMP}, #{last_user_scan,jdbcType=TIMESTAMP}, 
+      #{last_user_lookup,jdbcType=TIMESTAMP}, #{last_user_update,jdbcType=TIMESTAMP}, 
+      #{system_seeks,jdbcType=BIGINT}, #{system_scans,jdbcType=BIGINT}, #{system_lookups,jdbcType=BIGINT}, 
+      #{system_updates,jdbcType=BIGINT}, #{last_system_seek,jdbcType=TIMESTAMP}, #{last_system_scan,jdbcType=TIMESTAMP}, 
+      #{last_system_lookup,jdbcType=TIMESTAMP}, #{last_system_update,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbIndexUsageStats">
+    insert into dm_db_index_usage_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="index_id != null">
+        index_id,
+      </if>
+      <if test="user_seeks != null">
+        user_seeks,
+      </if>
+      <if test="user_scans != null">
+        user_scans,
+      </if>
+      <if test="user_lookups != null">
+        user_lookups,
+      </if>
+      <if test="user_updates != null">
+        user_updates,
+      </if>
+      <if test="last_user_seek != null">
+        last_user_seek,
+      </if>
+      <if test="last_user_scan != null">
+        last_user_scan,
+      </if>
+      <if test="last_user_lookup != null">
+        last_user_lookup,
+      </if>
+      <if test="last_user_update != null">
+        last_user_update,
+      </if>
+      <if test="system_seeks != null">
+        system_seeks,
+      </if>
+      <if test="system_scans != null">
+        system_scans,
+      </if>
+      <if test="system_lookups != null">
+        system_lookups,
+      </if>
+      <if test="system_updates != null">
+        system_updates,
+      </if>
+      <if test="last_system_seek != null">
+        last_system_seek,
+      </if>
+      <if test="last_system_scan != null">
+        last_system_scan,
+      </if>
+      <if test="last_system_lookup != null">
+        last_system_lookup,
+      </if>
+      <if test="last_system_update != null">
+        last_system_update,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_id != null">
+        #{index_id,jdbcType=INTEGER},
+      </if>
+      <if test="user_seeks != null">
+        #{user_seeks,jdbcType=BIGINT},
+      </if>
+      <if test="user_scans != null">
+        #{user_scans,jdbcType=BIGINT},
+      </if>
+      <if test="user_lookups != null">
+        #{user_lookups,jdbcType=BIGINT},
+      </if>
+      <if test="user_updates != null">
+        #{user_updates,jdbcType=BIGINT},
+      </if>
+      <if test="last_user_seek != null">
+        #{last_user_seek,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_user_scan != null">
+        #{last_user_scan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_user_lookup != null">
+        #{last_user_lookup,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_user_update != null">
+        #{last_user_update,jdbcType=TIMESTAMP},
+      </if>
+      <if test="system_seeks != null">
+        #{system_seeks,jdbcType=BIGINT},
+      </if>
+      <if test="system_scans != null">
+        #{system_scans,jdbcType=BIGINT},
+      </if>
+      <if test="system_lookups != null">
+        #{system_lookups,jdbcType=BIGINT},
+      </if>
+      <if test="system_updates != null">
+        #{system_updates,jdbcType=BIGINT},
+      </if>
+      <if test="last_system_seek != null">
+        #{last_system_seek,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_system_scan != null">
+        #{last_system_scan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_system_lookup != null">
+        #{last_system_lookup,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_system_update != null">
+        #{last_system_update,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmFtsActiveCatalogsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmFtsActiveCatalogs">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="catalog_id" jdbcType="INTEGER" property="catalog_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="is_paused" jdbcType="BIT" property="is_paused" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="status_description" jdbcType="VARCHAR" property="status_description" />
+    <result column="previous_status" jdbcType="INTEGER" property="previous_status" />
+    <result column="previous_status_description" jdbcType="VARCHAR" property="previous_status_description" />
+    <result column="worker_count" jdbcType="INTEGER" property="worker_count" />
+    <result column="active_fts_index_count" jdbcType="INTEGER" property="active_fts_index_count" />
+    <result column="auto_population_count" jdbcType="INTEGER" property="auto_population_count" />
+    <result column="manual_population_count" jdbcType="INTEGER" property="manual_population_count" />
+    <result column="full_incremental_population_count" jdbcType="INTEGER" property="full_incremental_population_count" />
+    <result column="row_count_in_thousands" jdbcType="INTEGER" property="row_count_in_thousands" />
+    <result column="is_importing" jdbcType="BIT" property="is_importing" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmFtsActiveCatalogs">
+    <result column="memory_address" jdbcType="VARBINARY" property="memory_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmFtsActiveCatalogs">
+    insert into dm_fts_active_catalogs (database_id, catalog_id, name, 
+      is_paused, status, status_description, 
+      previous_status, previous_status_description, 
+      worker_count, active_fts_index_count, auto_population_count, 
+      manual_population_count, full_incremental_population_count, 
+      row_count_in_thousands, is_importing, memory_address
+      )
+    values (#{database_id,jdbcType=INTEGER}, #{catalog_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{is_paused,jdbcType=BIT}, #{status,jdbcType=INTEGER}, #{status_description,jdbcType=VARCHAR}, 
+      #{previous_status,jdbcType=INTEGER}, #{previous_status_description,jdbcType=VARCHAR}, 
+      #{worker_count,jdbcType=INTEGER}, #{active_fts_index_count,jdbcType=INTEGER}, #{auto_population_count,jdbcType=INTEGER}, 
+      #{manual_population_count,jdbcType=INTEGER}, #{full_incremental_population_count,jdbcType=INTEGER}, 
+      #{row_count_in_thousands,jdbcType=INTEGER}, #{is_importing,jdbcType=BIT}, #{memory_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmFtsActiveCatalogs">
+    insert into dm_fts_active_catalogs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="catalog_id != null">
+        catalog_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="is_paused != null">
+        is_paused,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="status_description != null">
+        status_description,
+      </if>
+      <if test="previous_status != null">
+        previous_status,
+      </if>
+      <if test="previous_status_description != null">
+        previous_status_description,
+      </if>
+      <if test="worker_count != null">
+        worker_count,
+      </if>
+      <if test="active_fts_index_count != null">
+        active_fts_index_count,
+      </if>
+      <if test="auto_population_count != null">
+        auto_population_count,
+      </if>
+      <if test="manual_population_count != null">
+        manual_population_count,
+      </if>
+      <if test="full_incremental_population_count != null">
+        full_incremental_population_count,
+      </if>
+      <if test="row_count_in_thousands != null">
+        row_count_in_thousands,
+      </if>
+      <if test="is_importing != null">
+        is_importing,
+      </if>
+      <if test="memory_address != null">
+        memory_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="catalog_id != null">
+        #{catalog_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_paused != null">
+        #{is_paused,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="status_description != null">
+        #{status_description,jdbcType=VARCHAR},
+      </if>
+      <if test="previous_status != null">
+        #{previous_status,jdbcType=INTEGER},
+      </if>
+      <if test="previous_status_description != null">
+        #{previous_status_description,jdbcType=VARCHAR},
+      </if>
+      <if test="worker_count != null">
+        #{worker_count,jdbcType=INTEGER},
+      </if>
+      <if test="active_fts_index_count != null">
+        #{active_fts_index_count,jdbcType=INTEGER},
+      </if>
+      <if test="auto_population_count != null">
+        #{auto_population_count,jdbcType=INTEGER},
+      </if>
+      <if test="manual_population_count != null">
+        #{manual_population_count,jdbcType=INTEGER},
+      </if>
+      <if test="full_incremental_population_count != null">
+        #{full_incremental_population_count,jdbcType=INTEGER},
+      </if>
+      <if test="row_count_in_thousands != null">
+        #{row_count_in_thousands,jdbcType=INTEGER},
+      </if>
+      <if test="is_importing != null">
+        #{is_importing,jdbcType=BIT},
+      </if>
+      <if test="memory_address != null">
+        #{memory_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

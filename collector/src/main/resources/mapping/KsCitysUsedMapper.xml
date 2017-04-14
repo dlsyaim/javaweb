@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsCitysUsedMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsCitysUsed">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="CityID" jdbcType="BIGINT" property="cityID" />
+    <result column="CityName" jdbcType="VARCHAR" property="cityName" />
+    <result column="ZipCode" jdbcType="VARCHAR" property="zipCode" />
+    <result column="ProvinceID" jdbcType="BIGINT" property="provinceID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CityID, CityName, ZipCode, ProvinceID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Citys_Used
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from KS_Citys_Used
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsCitysUsed">
+    insert into KS_Citys_Used (ID, CityID, CityName, 
+      ZipCode, ProvinceID)
+    values (#{ID,jdbcType=INTEGER}, #{cityID,jdbcType=BIGINT}, #{cityName,jdbcType=VARCHAR}, 
+      #{zipCode,jdbcType=VARCHAR}, #{provinceID,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsCitysUsed">
+    insert into KS_Citys_Used
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="cityID != null">
+        CityID,
+      </if>
+      <if test="cityName != null">
+        CityName,
+      </if>
+      <if test="zipCode != null">
+        ZipCode,
+      </if>
+      <if test="provinceID != null">
+        ProvinceID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="cityID != null">
+        #{cityID,jdbcType=BIGINT},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceID != null">
+        #{provinceID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsCitysUsed">
+    update KS_Citys_Used
+    <set>
+      <if test="cityID != null">
+        CityID = #{cityID,jdbcType=BIGINT},
+      </if>
+      <if test="cityName != null">
+        CityName = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        ZipCode = #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceID != null">
+        ProvinceID = #{provinceID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsCitysUsed">
+    update KS_Citys_Used
+    set CityID = #{cityID,jdbcType=BIGINT},
+      CityName = #{cityName,jdbcType=VARCHAR},
+      ZipCode = #{zipCode,jdbcType=VARCHAR},
+      ProvinceID = #{provinceID,jdbcType=BIGINT}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

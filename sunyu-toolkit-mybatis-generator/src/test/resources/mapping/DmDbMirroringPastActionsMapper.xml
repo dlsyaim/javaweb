@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbMirroringPastActionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbMirroringPastActions">
+    <result column="mirroring_guid" jdbcType="CHAR" property="mirroring_guid" />
+    <result column="state_machine_name" jdbcType="VARCHAR" property="state_machine_name" />
+    <result column="action_type" jdbcType="VARCHAR" property="action_type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="current_state" jdbcType="VARCHAR" property="current_state" />
+    <result column="action_sequence" jdbcType="INTEGER" property="action_sequence" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbMirroringPastActions">
+    insert into dm_db_mirroring_past_actions (mirroring_guid, state_machine_name, 
+      action_type, name, current_state, 
+      action_sequence)
+    values (#{mirroring_guid,jdbcType=CHAR}, #{state_machine_name,jdbcType=VARCHAR}, 
+      #{action_type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{current_state,jdbcType=VARCHAR}, 
+      #{action_sequence,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbMirroringPastActions">
+    insert into dm_db_mirroring_past_actions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mirroring_guid != null">
+        mirroring_guid,
+      </if>
+      <if test="state_machine_name != null">
+        state_machine_name,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="current_state != null">
+        current_state,
+      </if>
+      <if test="action_sequence != null">
+        action_sequence,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mirroring_guid != null">
+        #{mirroring_guid,jdbcType=CHAR},
+      </if>
+      <if test="state_machine_name != null">
+        #{state_machine_name,jdbcType=VARCHAR},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="current_state != null">
+        #{current_state,jdbcType=VARCHAR},
+      </if>
+      <if test="action_sequence != null">
+        #{action_sequence,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

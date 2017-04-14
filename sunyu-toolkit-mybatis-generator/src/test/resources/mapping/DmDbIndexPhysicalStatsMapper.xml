@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbIndexPhysicalStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbIndexPhysicalStats">
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="index_id" jdbcType="INTEGER" property="index_id" />
+    <result column="partition_number" jdbcType="INTEGER" property="partition_number" />
+    <result column="index_type_desc" jdbcType="VARCHAR" property="index_type_desc" />
+    <result column="alloc_unit_type_desc" jdbcType="VARCHAR" property="alloc_unit_type_desc" />
+    <result column="index_depth" jdbcType="TINYINT" property="index_depth" />
+    <result column="index_level" jdbcType="TINYINT" property="index_level" />
+    <result column="avg_fragmentation_in_percent" jdbcType="DOUBLE" property="avg_fragmentation_in_percent" />
+    <result column="fragment_count" jdbcType="BIGINT" property="fragment_count" />
+    <result column="avg_fragment_size_in_pages" jdbcType="DOUBLE" property="avg_fragment_size_in_pages" />
+    <result column="page_count" jdbcType="BIGINT" property="page_count" />
+    <result column="avg_page_space_used_in_percent" jdbcType="DOUBLE" property="avg_page_space_used_in_percent" />
+    <result column="record_count" jdbcType="BIGINT" property="record_count" />
+    <result column="ghost_record_count" jdbcType="BIGINT" property="ghost_record_count" />
+    <result column="version_ghost_record_count" jdbcType="BIGINT" property="version_ghost_record_count" />
+    <result column="min_record_size_in_bytes" jdbcType="INTEGER" property="min_record_size_in_bytes" />
+    <result column="max_record_size_in_bytes" jdbcType="INTEGER" property="max_record_size_in_bytes" />
+    <result column="avg_record_size_in_bytes" jdbcType="DOUBLE" property="avg_record_size_in_bytes" />
+    <result column="forwarded_record_count" jdbcType="BIGINT" property="forwarded_record_count" />
+    <result column="compressed_page_count" jdbcType="BIGINT" property="compressed_page_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbIndexPhysicalStats">
+    insert into dm_db_index_physical_stats (database_id, object_id, index_id, 
+      partition_number, index_type_desc, alloc_unit_type_desc, 
+      index_depth, index_level, avg_fragmentation_in_percent, 
+      fragment_count, avg_fragment_size_in_pages, 
+      page_count, avg_page_space_used_in_percent, 
+      record_count, ghost_record_count, version_ghost_record_count, 
+      min_record_size_in_bytes, max_record_size_in_bytes, 
+      avg_record_size_in_bytes, forwarded_record_count, 
+      compressed_page_count)
+    values (#{database_id,jdbcType=SMALLINT}, #{object_id,jdbcType=INTEGER}, #{index_id,jdbcType=INTEGER}, 
+      #{partition_number,jdbcType=INTEGER}, #{index_type_desc,jdbcType=VARCHAR}, #{alloc_unit_type_desc,jdbcType=VARCHAR}, 
+      #{index_depth,jdbcType=TINYINT}, #{index_level,jdbcType=TINYINT}, #{avg_fragmentation_in_percent,jdbcType=DOUBLE}, 
+      #{fragment_count,jdbcType=BIGINT}, #{avg_fragment_size_in_pages,jdbcType=DOUBLE}, 
+      #{page_count,jdbcType=BIGINT}, #{avg_page_space_used_in_percent,jdbcType=DOUBLE}, 
+      #{record_count,jdbcType=BIGINT}, #{ghost_record_count,jdbcType=BIGINT}, #{version_ghost_record_count,jdbcType=BIGINT}, 
+      #{min_record_size_in_bytes,jdbcType=INTEGER}, #{max_record_size_in_bytes,jdbcType=INTEGER}, 
+      #{avg_record_size_in_bytes,jdbcType=DOUBLE}, #{forwarded_record_count,jdbcType=BIGINT}, 
+      #{compressed_page_count,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbIndexPhysicalStats">
+    insert into dm_db_index_physical_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="index_id != null">
+        index_id,
+      </if>
+      <if test="partition_number != null">
+        partition_number,
+      </if>
+      <if test="index_type_desc != null">
+        index_type_desc,
+      </if>
+      <if test="alloc_unit_type_desc != null">
+        alloc_unit_type_desc,
+      </if>
+      <if test="index_depth != null">
+        index_depth,
+      </if>
+      <if test="index_level != null">
+        index_level,
+      </if>
+      <if test="avg_fragmentation_in_percent != null">
+        avg_fragmentation_in_percent,
+      </if>
+      <if test="fragment_count != null">
+        fragment_count,
+      </if>
+      <if test="avg_fragment_size_in_pages != null">
+        avg_fragment_size_in_pages,
+      </if>
+      <if test="page_count != null">
+        page_count,
+      </if>
+      <if test="avg_page_space_used_in_percent != null">
+        avg_page_space_used_in_percent,
+      </if>
+      <if test="record_count != null">
+        record_count,
+      </if>
+      <if test="ghost_record_count != null">
+        ghost_record_count,
+      </if>
+      <if test="version_ghost_record_count != null">
+        version_ghost_record_count,
+      </if>
+      <if test="min_record_size_in_bytes != null">
+        min_record_size_in_bytes,
+      </if>
+      <if test="max_record_size_in_bytes != null">
+        max_record_size_in_bytes,
+      </if>
+      <if test="avg_record_size_in_bytes != null">
+        avg_record_size_in_bytes,
+      </if>
+      <if test="forwarded_record_count != null">
+        forwarded_record_count,
+      </if>
+      <if test="compressed_page_count != null">
+        compressed_page_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_id != null">
+        #{index_id,jdbcType=INTEGER},
+      </if>
+      <if test="partition_number != null">
+        #{partition_number,jdbcType=INTEGER},
+      </if>
+      <if test="index_type_desc != null">
+        #{index_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="alloc_unit_type_desc != null">
+        #{alloc_unit_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="index_depth != null">
+        #{index_depth,jdbcType=TINYINT},
+      </if>
+      <if test="index_level != null">
+        #{index_level,jdbcType=TINYINT},
+      </if>
+      <if test="avg_fragmentation_in_percent != null">
+        #{avg_fragmentation_in_percent,jdbcType=DOUBLE},
+      </if>
+      <if test="fragment_count != null">
+        #{fragment_count,jdbcType=BIGINT},
+      </if>
+      <if test="avg_fragment_size_in_pages != null">
+        #{avg_fragment_size_in_pages,jdbcType=DOUBLE},
+      </if>
+      <if test="page_count != null">
+        #{page_count,jdbcType=BIGINT},
+      </if>
+      <if test="avg_page_space_used_in_percent != null">
+        #{avg_page_space_used_in_percent,jdbcType=DOUBLE},
+      </if>
+      <if test="record_count != null">
+        #{record_count,jdbcType=BIGINT},
+      </if>
+      <if test="ghost_record_count != null">
+        #{ghost_record_count,jdbcType=BIGINT},
+      </if>
+      <if test="version_ghost_record_count != null">
+        #{version_ghost_record_count,jdbcType=BIGINT},
+      </if>
+      <if test="min_record_size_in_bytes != null">
+        #{min_record_size_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="max_record_size_in_bytes != null">
+        #{max_record_size_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="avg_record_size_in_bytes != null">
+        #{avg_record_size_in_bytes,jdbcType=DOUBLE},
+      </if>
+      <if test="forwarded_record_count != null">
+        #{forwarded_record_count,jdbcType=BIGINT},
+      </if>
+      <if test="compressed_page_count != null">
+        #{compressed_page_count,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

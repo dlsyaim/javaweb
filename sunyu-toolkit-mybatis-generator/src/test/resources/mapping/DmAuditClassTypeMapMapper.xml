@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmAuditClassTypeMapMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmAuditClassTypeMap">
+    <result column="class_type" jdbcType="VARCHAR" property="class_type" />
+    <result column="class_type_desc" jdbcType="VARCHAR" property="class_type_desc" />
+    <result column="securable_class_desc" jdbcType="VARCHAR" property="securable_class_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmAuditClassTypeMap">
+    insert into dm_audit_class_type_map (class_type, class_type_desc, securable_class_desc
+      )
+    values (#{class_type,jdbcType=VARCHAR}, #{class_type_desc,jdbcType=VARCHAR}, #{securable_class_desc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmAuditClassTypeMap">
+    insert into dm_audit_class_type_map
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="class_type != null">
+        class_type,
+      </if>
+      <if test="class_type_desc != null">
+        class_type_desc,
+      </if>
+      <if test="securable_class_desc != null">
+        securable_class_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="class_type != null">
+        #{class_type,jdbcType=VARCHAR},
+      </if>
+      <if test="class_type_desc != null">
+        #{class_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="securable_class_desc != null">
+        #{securable_class_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

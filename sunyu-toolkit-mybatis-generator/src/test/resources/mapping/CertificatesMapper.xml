@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.CertificatesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Certificates">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="certificate_id" jdbcType="INTEGER" property="certificate_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="pvt_key_encryption_type" jdbcType="CHAR" property="pvt_key_encryption_type" />
+    <result column="pvt_key_encryption_type_desc" jdbcType="VARCHAR" property="pvt_key_encryption_type_desc" />
+    <result column="is_active_for_begin_dialog" jdbcType="BIT" property="is_active_for_begin_dialog" />
+    <result column="issuer_name" jdbcType="VARCHAR" property="issuer_name" />
+    <result column="cert_serial_number" jdbcType="VARCHAR" property="cert_serial_number" />
+    <result column="string_sid" jdbcType="VARCHAR" property="string_sid" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="expiry_date" jdbcType="TIMESTAMP" property="expiry_date" />
+    <result column="start_date" jdbcType="TIMESTAMP" property="start_date" />
+    <result column="attested_by" jdbcType="VARCHAR" property="attested_by" />
+    <result column="pvt_key_last_backup_date" jdbcType="TIMESTAMP" property="pvt_key_last_backup_date" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.CertificatesWithBLOBs">
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+    <result column="thumbprint" jdbcType="VARBINARY" property="thumbprint" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sid, thumbprint
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.CertificatesWithBLOBs">
+    insert into certificates (name, certificate_id, principal_id, 
+      pvt_key_encryption_type, pvt_key_encryption_type_desc, 
+      is_active_for_begin_dialog, issuer_name, cert_serial_number, 
+      string_sid, subject, expiry_date, 
+      start_date, attested_by, pvt_key_last_backup_date, 
+      sid, thumbprint)
+    values (#{name,jdbcType=VARCHAR}, #{certificate_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, 
+      #{pvt_key_encryption_type,jdbcType=CHAR}, #{pvt_key_encryption_type_desc,jdbcType=VARCHAR}, 
+      #{is_active_for_begin_dialog,jdbcType=BIT}, #{issuer_name,jdbcType=VARCHAR}, #{cert_serial_number,jdbcType=VARCHAR}, 
+      #{string_sid,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{expiry_date,jdbcType=TIMESTAMP}, 
+      #{start_date,jdbcType=TIMESTAMP}, #{attested_by,jdbcType=VARCHAR}, #{pvt_key_last_backup_date,jdbcType=TIMESTAMP}, 
+      #{sid,jdbcType=VARBINARY}, #{thumbprint,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.CertificatesWithBLOBs">
+    insert into certificates
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="certificate_id != null">
+        certificate_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="pvt_key_encryption_type != null">
+        pvt_key_encryption_type,
+      </if>
+      <if test="pvt_key_encryption_type_desc != null">
+        pvt_key_encryption_type_desc,
+      </if>
+      <if test="is_active_for_begin_dialog != null">
+        is_active_for_begin_dialog,
+      </if>
+      <if test="issuer_name != null">
+        issuer_name,
+      </if>
+      <if test="cert_serial_number != null">
+        cert_serial_number,
+      </if>
+      <if test="string_sid != null">
+        string_sid,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="expiry_date != null">
+        expiry_date,
+      </if>
+      <if test="start_date != null">
+        start_date,
+      </if>
+      <if test="attested_by != null">
+        attested_by,
+      </if>
+      <if test="pvt_key_last_backup_date != null">
+        pvt_key_last_backup_date,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="thumbprint != null">
+        thumbprint,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate_id != null">
+        #{certificate_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="pvt_key_encryption_type != null">
+        #{pvt_key_encryption_type,jdbcType=CHAR},
+      </if>
+      <if test="pvt_key_encryption_type_desc != null">
+        #{pvt_key_encryption_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="is_active_for_begin_dialog != null">
+        #{is_active_for_begin_dialog,jdbcType=BIT},
+      </if>
+      <if test="issuer_name != null">
+        #{issuer_name,jdbcType=VARCHAR},
+      </if>
+      <if test="cert_serial_number != null">
+        #{cert_serial_number,jdbcType=VARCHAR},
+      </if>
+      <if test="string_sid != null">
+        #{string_sid,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="expiry_date != null">
+        #{expiry_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="start_date != null">
+        #{start_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attested_by != null">
+        #{attested_by,jdbcType=VARCHAR},
+      </if>
+      <if test="pvt_key_last_backup_date != null">
+        #{pvt_key_last_backup_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+      <if test="thumbprint != null">
+        #{thumbprint,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

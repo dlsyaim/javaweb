@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServicesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Services">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="service_id" jdbcType="INTEGER" property="service_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="service_queue_id" jdbcType="INTEGER" property="service_queue_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Services">
+    insert into services (name, service_id, principal_id, 
+      service_queue_id)
+    values (#{name,jdbcType=VARCHAR}, #{service_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, 
+      #{service_queue_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Services">
+    insert into services
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="service_id != null">
+        service_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="service_queue_id != null">
+        service_queue_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="service_id != null">
+        #{service_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="service_queue_id != null">
+        #{service_queue_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

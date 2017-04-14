@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsSysInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsSysInfo">
+    <result column="cpu_ticks" jdbcType="BIGINT" property="cpu_ticks" />
+    <result column="ms_ticks" jdbcType="BIGINT" property="ms_ticks" />
+    <result column="cpu_count" jdbcType="INTEGER" property="cpu_count" />
+    <result column="hyperthread_ratio" jdbcType="INTEGER" property="hyperthread_ratio" />
+    <result column="physical_memory_in_bytes" jdbcType="BIGINT" property="physical_memory_in_bytes" />
+    <result column="virtual_memory_in_bytes" jdbcType="BIGINT" property="virtual_memory_in_bytes" />
+    <result column="bpool_committed" jdbcType="INTEGER" property="bpool_committed" />
+    <result column="bpool_commit_target" jdbcType="INTEGER" property="bpool_commit_target" />
+    <result column="bpool_visible" jdbcType="INTEGER" property="bpool_visible" />
+    <result column="stack_size_in_bytes" jdbcType="INTEGER" property="stack_size_in_bytes" />
+    <result column="os_quantum" jdbcType="BIGINT" property="os_quantum" />
+    <result column="os_error_mode" jdbcType="INTEGER" property="os_error_mode" />
+    <result column="os_priority_class" jdbcType="INTEGER" property="os_priority_class" />
+    <result column="max_workers_count" jdbcType="INTEGER" property="max_workers_count" />
+    <result column="scheduler_count" jdbcType="INTEGER" property="scheduler_count" />
+    <result column="scheduler_total_count" jdbcType="INTEGER" property="scheduler_total_count" />
+    <result column="deadlock_monitor_serial_number" jdbcType="INTEGER" property="deadlock_monitor_serial_number" />
+    <result column="sqlserver_start_time_ms_ticks" jdbcType="BIGINT" property="sqlserver_start_time_ms_ticks" />
+    <result column="sqlserver_start_time" jdbcType="TIMESTAMP" property="sqlserver_start_time" />
+    <result column="affinity_type" jdbcType="INTEGER" property="affinity_type" />
+    <result column="affinity_type_desc" jdbcType="VARCHAR" property="affinity_type_desc" />
+    <result column="process_kernel_time_ms" jdbcType="BIGINT" property="process_kernel_time_ms" />
+    <result column="process_user_time_ms" jdbcType="BIGINT" property="process_user_time_ms" />
+    <result column="time_source" jdbcType="INTEGER" property="time_source" />
+    <result column="time_source_desc" jdbcType="VARCHAR" property="time_source_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsSysInfo">
+    insert into dm_os_sys_info (cpu_ticks, ms_ticks, cpu_count, 
+      hyperthread_ratio, physical_memory_in_bytes, 
+      virtual_memory_in_bytes, bpool_committed, 
+      bpool_commit_target, bpool_visible, stack_size_in_bytes, 
+      os_quantum, os_error_mode, os_priority_class, 
+      max_workers_count, scheduler_count, scheduler_total_count, 
+      deadlock_monitor_serial_number, sqlserver_start_time_ms_ticks, 
+      sqlserver_start_time, affinity_type, 
+      affinity_type_desc, process_kernel_time_ms, 
+      process_user_time_ms, time_source, time_source_desc
+      )
+    values (#{cpu_ticks,jdbcType=BIGINT}, #{ms_ticks,jdbcType=BIGINT}, #{cpu_count,jdbcType=INTEGER}, 
+      #{hyperthread_ratio,jdbcType=INTEGER}, #{physical_memory_in_bytes,jdbcType=BIGINT}, 
+      #{virtual_memory_in_bytes,jdbcType=BIGINT}, #{bpool_committed,jdbcType=INTEGER}, 
+      #{bpool_commit_target,jdbcType=INTEGER}, #{bpool_visible,jdbcType=INTEGER}, #{stack_size_in_bytes,jdbcType=INTEGER}, 
+      #{os_quantum,jdbcType=BIGINT}, #{os_error_mode,jdbcType=INTEGER}, #{os_priority_class,jdbcType=INTEGER}, 
+      #{max_workers_count,jdbcType=INTEGER}, #{scheduler_count,jdbcType=INTEGER}, #{scheduler_total_count,jdbcType=INTEGER}, 
+      #{deadlock_monitor_serial_number,jdbcType=INTEGER}, #{sqlserver_start_time_ms_ticks,jdbcType=BIGINT}, 
+      #{sqlserver_start_time,jdbcType=TIMESTAMP}, #{affinity_type,jdbcType=INTEGER}, 
+      #{affinity_type_desc,jdbcType=VARCHAR}, #{process_kernel_time_ms,jdbcType=BIGINT}, 
+      #{process_user_time_ms,jdbcType=BIGINT}, #{time_source,jdbcType=INTEGER}, #{time_source_desc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsSysInfo">
+    insert into dm_os_sys_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cpu_ticks != null">
+        cpu_ticks,
+      </if>
+      <if test="ms_ticks != null">
+        ms_ticks,
+      </if>
+      <if test="cpu_count != null">
+        cpu_count,
+      </if>
+      <if test="hyperthread_ratio != null">
+        hyperthread_ratio,
+      </if>
+      <if test="physical_memory_in_bytes != null">
+        physical_memory_in_bytes,
+      </if>
+      <if test="virtual_memory_in_bytes != null">
+        virtual_memory_in_bytes,
+      </if>
+      <if test="bpool_committed != null">
+        bpool_committed,
+      </if>
+      <if test="bpool_commit_target != null">
+        bpool_commit_target,
+      </if>
+      <if test="bpool_visible != null">
+        bpool_visible,
+      </if>
+      <if test="stack_size_in_bytes != null">
+        stack_size_in_bytes,
+      </if>
+      <if test="os_quantum != null">
+        os_quantum,
+      </if>
+      <if test="os_error_mode != null">
+        os_error_mode,
+      </if>
+      <if test="os_priority_class != null">
+        os_priority_class,
+      </if>
+      <if test="max_workers_count != null">
+        max_workers_count,
+      </if>
+      <if test="scheduler_count != null">
+        scheduler_count,
+      </if>
+      <if test="scheduler_total_count != null">
+        scheduler_total_count,
+      </if>
+      <if test="deadlock_monitor_serial_number != null">
+        deadlock_monitor_serial_number,
+      </if>
+      <if test="sqlserver_start_time_ms_ticks != null">
+        sqlserver_start_time_ms_ticks,
+      </if>
+      <if test="sqlserver_start_time != null">
+        sqlserver_start_time,
+      </if>
+      <if test="affinity_type != null">
+        affinity_type,
+      </if>
+      <if test="affinity_type_desc != null">
+        affinity_type_desc,
+      </if>
+      <if test="process_kernel_time_ms != null">
+        process_kernel_time_ms,
+      </if>
+      <if test="process_user_time_ms != null">
+        process_user_time_ms,
+      </if>
+      <if test="time_source != null">
+        time_source,
+      </if>
+      <if test="time_source_desc != null">
+        time_source_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cpu_ticks != null">
+        #{cpu_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="ms_ticks != null">
+        #{ms_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="cpu_count != null">
+        #{cpu_count,jdbcType=INTEGER},
+      </if>
+      <if test="hyperthread_ratio != null">
+        #{hyperthread_ratio,jdbcType=INTEGER},
+      </if>
+      <if test="physical_memory_in_bytes != null">
+        #{physical_memory_in_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="virtual_memory_in_bytes != null">
+        #{virtual_memory_in_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="bpool_committed != null">
+        #{bpool_committed,jdbcType=INTEGER},
+      </if>
+      <if test="bpool_commit_target != null">
+        #{bpool_commit_target,jdbcType=INTEGER},
+      </if>
+      <if test="bpool_visible != null">
+        #{bpool_visible,jdbcType=INTEGER},
+      </if>
+      <if test="stack_size_in_bytes != null">
+        #{stack_size_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="os_quantum != null">
+        #{os_quantum,jdbcType=BIGINT},
+      </if>
+      <if test="os_error_mode != null">
+        #{os_error_mode,jdbcType=INTEGER},
+      </if>
+      <if test="os_priority_class != null">
+        #{os_priority_class,jdbcType=INTEGER},
+      </if>
+      <if test="max_workers_count != null">
+        #{max_workers_count,jdbcType=INTEGER},
+      </if>
+      <if test="scheduler_count != null">
+        #{scheduler_count,jdbcType=INTEGER},
+      </if>
+      <if test="scheduler_total_count != null">
+        #{scheduler_total_count,jdbcType=INTEGER},
+      </if>
+      <if test="deadlock_monitor_serial_number != null">
+        #{deadlock_monitor_serial_number,jdbcType=INTEGER},
+      </if>
+      <if test="sqlserver_start_time_ms_ticks != null">
+        #{sqlserver_start_time_ms_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="sqlserver_start_time != null">
+        #{sqlserver_start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="affinity_type != null">
+        #{affinity_type,jdbcType=INTEGER},
+      </if>
+      <if test="affinity_type_desc != null">
+        #{affinity_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="process_kernel_time_ms != null">
+        #{process_kernel_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="process_user_time_ms != null">
+        #{process_user_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="time_source != null">
+        #{time_source,jdbcType=INTEGER},
+      </if>
+      <if test="time_source_desc != null">
+        #{time_source_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

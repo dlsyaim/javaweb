@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranActiveTransactionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranActiveTransactions">
+    <result column="transaction_id" jdbcType="BIGINT" property="transaction_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="transaction_begin_time" jdbcType="TIMESTAMP" property="transaction_begin_time" />
+    <result column="transaction_type" jdbcType="INTEGER" property="transaction_type" />
+    <result column="transaction_uow" jdbcType="CHAR" property="transaction_uow" />
+    <result column="transaction_state" jdbcType="INTEGER" property="transaction_state" />
+    <result column="transaction_status" jdbcType="INTEGER" property="transaction_status" />
+    <result column="transaction_status2" jdbcType="INTEGER" property="transaction_status2" />
+    <result column="dtc_state" jdbcType="INTEGER" property="dtc_state" />
+    <result column="dtc_status" jdbcType="INTEGER" property="dtc_status" />
+    <result column="dtc_isolation_level" jdbcType="INTEGER" property="dtc_isolation_level" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmTranActiveTransactions">
+    <result column="filestream_transaction_id" jdbcType="VARBINARY" property="filestream_transaction_id" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    filestream_transaction_id
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranActiveTransactions">
+    insert into dm_tran_active_transactions (transaction_id, name, transaction_begin_time, 
+      transaction_type, transaction_uow, transaction_state, 
+      transaction_status, transaction_status2, 
+      dtc_state, dtc_status, dtc_isolation_level, 
+      filestream_transaction_id)
+    values (#{transaction_id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{transaction_begin_time,jdbcType=TIMESTAMP}, 
+      #{transaction_type,jdbcType=INTEGER}, #{transaction_uow,jdbcType=CHAR}, #{transaction_state,jdbcType=INTEGER}, 
+      #{transaction_status,jdbcType=INTEGER}, #{transaction_status2,jdbcType=INTEGER}, 
+      #{dtc_state,jdbcType=INTEGER}, #{dtc_status,jdbcType=INTEGER}, #{dtc_isolation_level,jdbcType=INTEGER}, 
+      #{filestream_transaction_id,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranActiveTransactions">
+    insert into dm_tran_active_transactions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        transaction_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="transaction_begin_time != null">
+        transaction_begin_time,
+      </if>
+      <if test="transaction_type != null">
+        transaction_type,
+      </if>
+      <if test="transaction_uow != null">
+        transaction_uow,
+      </if>
+      <if test="transaction_state != null">
+        transaction_state,
+      </if>
+      <if test="transaction_status != null">
+        transaction_status,
+      </if>
+      <if test="transaction_status2 != null">
+        transaction_status2,
+      </if>
+      <if test="dtc_state != null">
+        dtc_state,
+      </if>
+      <if test="dtc_status != null">
+        dtc_status,
+      </if>
+      <if test="dtc_isolation_level != null">
+        dtc_isolation_level,
+      </if>
+      <if test="filestream_transaction_id != null">
+        filestream_transaction_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        #{transaction_id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="transaction_begin_time != null">
+        #{transaction_begin_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transaction_type != null">
+        #{transaction_type,jdbcType=INTEGER},
+      </if>
+      <if test="transaction_uow != null">
+        #{transaction_uow,jdbcType=CHAR},
+      </if>
+      <if test="transaction_state != null">
+        #{transaction_state,jdbcType=INTEGER},
+      </if>
+      <if test="transaction_status != null">
+        #{transaction_status,jdbcType=INTEGER},
+      </if>
+      <if test="transaction_status2 != null">
+        #{transaction_status2,jdbcType=INTEGER},
+      </if>
+      <if test="dtc_state != null">
+        #{dtc_state,jdbcType=INTEGER},
+      </if>
+      <if test="dtc_status != null">
+        #{dtc_status,jdbcType=INTEGER},
+      </if>
+      <if test="dtc_isolation_level != null">
+        #{dtc_isolation_level,jdbcType=INTEGER},
+      </if>
+      <if test="filestream_transaction_id != null">
+        #{filestream_transaction_id,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

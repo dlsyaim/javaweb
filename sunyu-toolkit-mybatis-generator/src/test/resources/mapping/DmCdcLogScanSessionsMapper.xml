@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmCdcLogScanSessionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmCdcLogScanSessions">
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="end_time" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="scan_phase" jdbcType="VARCHAR" property="scan_phase" />
+    <result column="error_count" jdbcType="INTEGER" property="error_count" />
+    <result column="start_lsn" jdbcType="VARCHAR" property="start_lsn" />
+    <result column="current_lsn" jdbcType="VARCHAR" property="current_lsn" />
+    <result column="end_lsn" jdbcType="VARCHAR" property="end_lsn" />
+    <result column="tran_count" jdbcType="BIGINT" property="tran_count" />
+    <result column="last_commit_lsn" jdbcType="VARCHAR" property="last_commit_lsn" />
+    <result column="last_commit_time" jdbcType="TIMESTAMP" property="last_commit_time" />
+    <result column="log_record_count" jdbcType="BIGINT" property="log_record_count" />
+    <result column="schema_change_count" jdbcType="INTEGER" property="schema_change_count" />
+    <result column="command_count" jdbcType="BIGINT" property="command_count" />
+    <result column="first_begin_cdc_lsn" jdbcType="VARCHAR" property="first_begin_cdc_lsn" />
+    <result column="last_commit_cdc_lsn" jdbcType="VARCHAR" property="last_commit_cdc_lsn" />
+    <result column="last_commit_cdc_time" jdbcType="TIMESTAMP" property="last_commit_cdc_time" />
+    <result column="latency" jdbcType="INTEGER" property="latency" />
+    <result column="empty_scan_count" jdbcType="INTEGER" property="empty_scan_count" />
+    <result column="failed_sessions_count" jdbcType="INTEGER" property="failed_sessions_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmCdcLogScanSessions">
+    insert into dm_cdc_log_scan_sessions (session_id, start_time, end_time, 
+      duration, scan_phase, error_count, 
+      start_lsn, current_lsn, end_lsn, 
+      tran_count, last_commit_lsn, last_commit_time, 
+      log_record_count, schema_change_count, command_count, 
+      first_begin_cdc_lsn, last_commit_cdc_lsn, 
+      last_commit_cdc_time, latency, empty_scan_count, 
+      failed_sessions_count)
+    values (#{session_id,jdbcType=INTEGER}, #{start_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP}, 
+      #{duration,jdbcType=INTEGER}, #{scan_phase,jdbcType=VARCHAR}, #{error_count,jdbcType=INTEGER}, 
+      #{start_lsn,jdbcType=VARCHAR}, #{current_lsn,jdbcType=VARCHAR}, #{end_lsn,jdbcType=VARCHAR}, 
+      #{tran_count,jdbcType=BIGINT}, #{last_commit_lsn,jdbcType=VARCHAR}, #{last_commit_time,jdbcType=TIMESTAMP}, 
+      #{log_record_count,jdbcType=BIGINT}, #{schema_change_count,jdbcType=INTEGER}, #{command_count,jdbcType=BIGINT}, 
+      #{first_begin_cdc_lsn,jdbcType=VARCHAR}, #{last_commit_cdc_lsn,jdbcType=VARCHAR}, 
+      #{last_commit_cdc_time,jdbcType=TIMESTAMP}, #{latency,jdbcType=INTEGER}, #{empty_scan_count,jdbcType=INTEGER}, 
+      #{failed_sessions_count,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmCdcLogScanSessions">
+    insert into dm_cdc_log_scan_sessions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="end_time != null">
+        end_time,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+      <if test="scan_phase != null">
+        scan_phase,
+      </if>
+      <if test="error_count != null">
+        error_count,
+      </if>
+      <if test="start_lsn != null">
+        start_lsn,
+      </if>
+      <if test="current_lsn != null">
+        current_lsn,
+      </if>
+      <if test="end_lsn != null">
+        end_lsn,
+      </if>
+      <if test="tran_count != null">
+        tran_count,
+      </if>
+      <if test="last_commit_lsn != null">
+        last_commit_lsn,
+      </if>
+      <if test="last_commit_time != null">
+        last_commit_time,
+      </if>
+      <if test="log_record_count != null">
+        log_record_count,
+      </if>
+      <if test="schema_change_count != null">
+        schema_change_count,
+      </if>
+      <if test="command_count != null">
+        command_count,
+      </if>
+      <if test="first_begin_cdc_lsn != null">
+        first_begin_cdc_lsn,
+      </if>
+      <if test="last_commit_cdc_lsn != null">
+        last_commit_cdc_lsn,
+      </if>
+      <if test="last_commit_cdc_time != null">
+        last_commit_cdc_time,
+      </if>
+      <if test="latency != null">
+        latency,
+      </if>
+      <if test="empty_scan_count != null">
+        empty_scan_count,
+      </if>
+      <if test="failed_sessions_count != null">
+        failed_sessions_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null">
+        #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="scan_phase != null">
+        #{scan_phase,jdbcType=VARCHAR},
+      </if>
+      <if test="error_count != null">
+        #{error_count,jdbcType=INTEGER},
+      </if>
+      <if test="start_lsn != null">
+        #{start_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="current_lsn != null">
+        #{current_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="end_lsn != null">
+        #{end_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="tran_count != null">
+        #{tran_count,jdbcType=BIGINT},
+      </if>
+      <if test="last_commit_lsn != null">
+        #{last_commit_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="last_commit_time != null">
+        #{last_commit_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="log_record_count != null">
+        #{log_record_count,jdbcType=BIGINT},
+      </if>
+      <if test="schema_change_count != null">
+        #{schema_change_count,jdbcType=INTEGER},
+      </if>
+      <if test="command_count != null">
+        #{command_count,jdbcType=BIGINT},
+      </if>
+      <if test="first_begin_cdc_lsn != null">
+        #{first_begin_cdc_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="last_commit_cdc_lsn != null">
+        #{last_commit_cdc_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="last_commit_cdc_time != null">
+        #{last_commit_cdc_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latency != null">
+        #{latency,jdbcType=INTEGER},
+      </if>
+      <if test="empty_scan_count != null">
+        #{empty_scan_count,jdbcType=INTEGER},
+      </if>
+      <if test="failed_sessions_count != null">
+        #{failed_sessions_count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

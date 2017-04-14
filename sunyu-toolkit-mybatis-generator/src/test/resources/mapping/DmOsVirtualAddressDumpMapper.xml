@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsVirtualAddressDumpMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsVirtualAddressDump">
+    <result column="region_size_in_bytes" jdbcType="BIGINT" property="region_size_in_bytes" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsVirtualAddressDump">
+    <result column="region_base_address" jdbcType="VARBINARY" property="region_base_address" />
+    <result column="region_allocation_base_address" jdbcType="VARBINARY" property="region_allocation_base_address" />
+    <result column="region_allocation_protection" jdbcType="VARBINARY" property="region_allocation_protection" />
+    <result column="region_state" jdbcType="VARBINARY" property="region_state" />
+    <result column="region_current_protection" jdbcType="VARBINARY" property="region_current_protection" />
+    <result column="region_type" jdbcType="VARBINARY" property="region_type" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    region_base_address, region_allocation_base_address, region_allocation_protection, 
+    region_state, region_current_protection, region_type
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsVirtualAddressDump">
+    insert into dm_os_virtual_address_dump (region_size_in_bytes, region_base_address, 
+      region_allocation_base_address, region_allocation_protection, 
+      region_state, region_current_protection, 
+      region_type)
+    values (#{region_size_in_bytes,jdbcType=BIGINT}, #{region_base_address,jdbcType=VARBINARY}, 
+      #{region_allocation_base_address,jdbcType=VARBINARY}, #{region_allocation_protection,jdbcType=VARBINARY}, 
+      #{region_state,jdbcType=VARBINARY}, #{region_current_protection,jdbcType=VARBINARY}, 
+      #{region_type,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsVirtualAddressDump">
+    insert into dm_os_virtual_address_dump
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="region_size_in_bytes != null">
+        region_size_in_bytes,
+      </if>
+      <if test="region_base_address != null">
+        region_base_address,
+      </if>
+      <if test="region_allocation_base_address != null">
+        region_allocation_base_address,
+      </if>
+      <if test="region_allocation_protection != null">
+        region_allocation_protection,
+      </if>
+      <if test="region_state != null">
+        region_state,
+      </if>
+      <if test="region_current_protection != null">
+        region_current_protection,
+      </if>
+      <if test="region_type != null">
+        region_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="region_size_in_bytes != null">
+        #{region_size_in_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="region_base_address != null">
+        #{region_base_address,jdbcType=VARBINARY},
+      </if>
+      <if test="region_allocation_base_address != null">
+        #{region_allocation_base_address,jdbcType=VARBINARY},
+      </if>
+      <if test="region_allocation_protection != null">
+        #{region_allocation_protection,jdbcType=VARBINARY},
+      </if>
+      <if test="region_state != null">
+        #{region_state,jdbcType=VARBINARY},
+      </if>
+      <if test="region_current_protection != null">
+        #{region_current_protection,jdbcType=VARBINARY},
+      </if>
+      <if test="region_type != null">
+        #{region_type,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SymmetricKeysMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.SymmetricKeys">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="symmetric_key_id" jdbcType="INTEGER" property="symmetric_key_id" />
+    <result column="key_length" jdbcType="INTEGER" property="key_length" />
+    <result column="key_algorithm" jdbcType="CHAR" property="key_algorithm" />
+    <result column="algorithm_desc" jdbcType="VARCHAR" property="algorithm_desc" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="key_guid" jdbcType="CHAR" property="key_guid" />
+    <result column="key_thumbprint" jdbcType="VARCHAR" property="key_thumbprint" />
+    <result column="provider_type" jdbcType="VARCHAR" property="provider_type" />
+    <result column="cryptographic_provider_guid" jdbcType="CHAR" property="cryptographic_provider_guid" />
+    <result column="cryptographic_provider_algid" jdbcType="VARCHAR" property="cryptographic_provider_algid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SymmetricKeys">
+    insert into symmetric_keys (name, principal_id, symmetric_key_id, 
+      key_length, key_algorithm, algorithm_desc, 
+      create_date, modify_date, key_guid, 
+      key_thumbprint, provider_type, cryptographic_provider_guid, 
+      cryptographic_provider_algid)
+    values (#{name,jdbcType=VARCHAR}, #{principal_id,jdbcType=INTEGER}, #{symmetric_key_id,jdbcType=INTEGER}, 
+      #{key_length,jdbcType=INTEGER}, #{key_algorithm,jdbcType=CHAR}, #{algorithm_desc,jdbcType=VARCHAR}, 
+      #{create_date,jdbcType=TIMESTAMP}, #{modify_date,jdbcType=TIMESTAMP}, #{key_guid,jdbcType=CHAR}, 
+      #{key_thumbprint,jdbcType=VARCHAR}, #{provider_type,jdbcType=VARCHAR}, #{cryptographic_provider_guid,jdbcType=CHAR}, 
+      #{cryptographic_provider_algid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SymmetricKeys">
+    insert into symmetric_keys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="symmetric_key_id != null">
+        symmetric_key_id,
+      </if>
+      <if test="key_length != null">
+        key_length,
+      </if>
+      <if test="key_algorithm != null">
+        key_algorithm,
+      </if>
+      <if test="algorithm_desc != null">
+        algorithm_desc,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="key_guid != null">
+        key_guid,
+      </if>
+      <if test="key_thumbprint != null">
+        key_thumbprint,
+      </if>
+      <if test="provider_type != null">
+        provider_type,
+      </if>
+      <if test="cryptographic_provider_guid != null">
+        cryptographic_provider_guid,
+      </if>
+      <if test="cryptographic_provider_algid != null">
+        cryptographic_provider_algid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="symmetric_key_id != null">
+        #{symmetric_key_id,jdbcType=INTEGER},
+      </if>
+      <if test="key_length != null">
+        #{key_length,jdbcType=INTEGER},
+      </if>
+      <if test="key_algorithm != null">
+        #{key_algorithm,jdbcType=CHAR},
+      </if>
+      <if test="algorithm_desc != null">
+        #{algorithm_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="key_guid != null">
+        #{key_guid,jdbcType=CHAR},
+      </if>
+      <if test="key_thumbprint != null">
+        #{key_thumbprint,jdbcType=VARCHAR},
+      </if>
+      <if test="provider_type != null">
+        #{provider_type,jdbcType=VARCHAR},
+      </if>
+      <if test="cryptographic_provider_guid != null">
+        #{cryptographic_provider_guid,jdbcType=CHAR},
+      </if>
+      <if test="cryptographic_provider_algid != null">
+        #{cryptographic_provider_algid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

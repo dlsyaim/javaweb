@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsUsernatureMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsUsernature">
+    <id column="UserID" jdbcType="BIGINT" property="userID" />
+    <result column="UserParentID" jdbcType="BIGINT" property="userParentID" />
+    <result column="CategoryName" jdbcType="VARCHAR" property="categoryName" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Dept" jdbcType="BIGINT" property="dept" />
+    <result column="OrderBy" jdbcType="BIGINT" property="orderBy" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UserID, UserParentID, CategoryName, AddTime, Dept, OrderBy, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_UserNature
+    where UserID = #{userID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_UserNature
+    where UserID = #{userID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsUsernature">
+    insert into KS_UserNature (UserID, UserParentID, CategoryName, 
+      AddTime, Dept, OrderBy, 
+      Status)
+    values (#{userID,jdbcType=BIGINT}, #{userParentID,jdbcType=BIGINT}, #{categoryName,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{dept,jdbcType=BIGINT}, #{orderBy,jdbcType=BIGINT}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsUsernature">
+    insert into KS_UserNature
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userID != null">
+        UserID,
+      </if>
+      <if test="userParentID != null">
+        UserParentID,
+      </if>
+      <if test="categoryName != null">
+        CategoryName,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="dept != null">
+        Dept,
+      </if>
+      <if test="orderBy != null">
+        OrderBy,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userID != null">
+        #{userID,jdbcType=BIGINT},
+      </if>
+      <if test="userParentID != null">
+        #{userParentID,jdbcType=BIGINT},
+      </if>
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=BIGINT},
+      </if>
+      <if test="orderBy != null">
+        #{orderBy,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsUsernature">
+    update KS_UserNature
+    <set>
+      <if test="userParentID != null">
+        UserParentID = #{userParentID,jdbcType=BIGINT},
+      </if>
+      <if test="categoryName != null">
+        CategoryName = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        Dept = #{dept,jdbcType=BIGINT},
+      </if>
+      <if test="orderBy != null">
+        OrderBy = #{orderBy,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where UserID = #{userID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsUsernature">
+    update KS_UserNature
+    set UserParentID = #{userParentID,jdbcType=BIGINT},
+      CategoryName = #{categoryName,jdbcType=VARCHAR},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Dept = #{dept,jdbcType=BIGINT},
+      OrderBy = #{orderBy,jdbcType=BIGINT},
+      Status = #{status,jdbcType=SMALLINT}
+    where UserID = #{userID,jdbcType=BIGINT}
+  </update>
+</mapper>

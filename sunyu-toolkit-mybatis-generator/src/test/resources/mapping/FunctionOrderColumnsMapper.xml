@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FunctionOrderColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FunctionOrderColumns">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="order_column_id" jdbcType="INTEGER" property="order_column_id" />
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+    <result column="is_descending" jdbcType="BIT" property="is_descending" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FunctionOrderColumns">
+    insert into function_order_columns (object_id, order_column_id, column_id, 
+      is_descending)
+    values (#{object_id,jdbcType=INTEGER}, #{order_column_id,jdbcType=INTEGER}, #{column_id,jdbcType=INTEGER}, 
+      #{is_descending,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FunctionOrderColumns">
+    insert into function_order_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="order_column_id != null">
+        order_column_id,
+      </if>
+      <if test="column_id != null">
+        column_id,
+      </if>
+      <if test="is_descending != null">
+        is_descending,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="order_column_id != null">
+        #{order_column_id,jdbcType=INTEGER},
+      </if>
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_descending != null">
+        #{is_descending,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

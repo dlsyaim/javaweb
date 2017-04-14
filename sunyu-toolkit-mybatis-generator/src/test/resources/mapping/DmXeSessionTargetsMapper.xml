@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmXeSessionTargetsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmXeSessionTargets">
+    <result column="target_name" jdbcType="VARCHAR" property="target_name" />
+    <result column="target_package_guid" jdbcType="CHAR" property="target_package_guid" />
+    <result column="execution_count" jdbcType="BIGINT" property="execution_count" />
+    <result column="execution_duration_ms" jdbcType="BIGINT" property="execution_duration_ms" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmXeSessionTargetsWithBLOBs">
+    <result column="event_session_address" jdbcType="VARBINARY" property="event_session_address" />
+    <result column="target_data" jdbcType="CLOB" property="target_data" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    event_session_address, target_data
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmXeSessionTargetsWithBLOBs">
+    insert into dm_xe_session_targets (target_name, target_package_guid, execution_count, 
+      execution_duration_ms, event_session_address, 
+      target_data)
+    values (#{target_name,jdbcType=VARCHAR}, #{target_package_guid,jdbcType=CHAR}, #{execution_count,jdbcType=BIGINT}, 
+      #{execution_duration_ms,jdbcType=BIGINT}, #{event_session_address,jdbcType=VARBINARY}, 
+      #{target_data,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmXeSessionTargetsWithBLOBs">
+    insert into dm_xe_session_targets
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="target_name != null">
+        target_name,
+      </if>
+      <if test="target_package_guid != null">
+        target_package_guid,
+      </if>
+      <if test="execution_count != null">
+        execution_count,
+      </if>
+      <if test="execution_duration_ms != null">
+        execution_duration_ms,
+      </if>
+      <if test="event_session_address != null">
+        event_session_address,
+      </if>
+      <if test="target_data != null">
+        target_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="target_name != null">
+        #{target_name,jdbcType=VARCHAR},
+      </if>
+      <if test="target_package_guid != null">
+        #{target_package_guid,jdbcType=CHAR},
+      </if>
+      <if test="execution_count != null">
+        #{execution_count,jdbcType=BIGINT},
+      </if>
+      <if test="execution_duration_ms != null">
+        #{execution_duration_ms,jdbcType=BIGINT},
+      </if>
+      <if test="event_session_address != null">
+        #{event_session_address,jdbcType=VARBINARY},
+      </if>
+      <if test="target_data != null">
+        #{target_data,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

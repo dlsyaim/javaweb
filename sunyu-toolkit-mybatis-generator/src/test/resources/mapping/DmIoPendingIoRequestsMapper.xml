@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmIoPendingIoRequestsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmIoPendingIoRequests">
+    <result column="io_type" jdbcType="VARCHAR" property="io_type" />
+    <result column="io_pending_ms_ticks" jdbcType="BIGINT" property="io_pending_ms_ticks" />
+    <result column="io_pending" jdbcType="INTEGER" property="io_pending" />
+    <result column="io_offset" jdbcType="BIGINT" property="io_offset" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmIoPendingIoRequestsWithBLOBs">
+    <result column="io_completion_request_address" jdbcType="VARBINARY" property="io_completion_request_address" />
+    <result column="io_completion_routine_address" jdbcType="VARBINARY" property="io_completion_routine_address" />
+    <result column="io_user_data_address" jdbcType="VARBINARY" property="io_user_data_address" />
+    <result column="scheduler_address" jdbcType="VARBINARY" property="scheduler_address" />
+    <result column="io_handle" jdbcType="VARBINARY" property="io_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    io_completion_request_address, io_completion_routine_address, io_user_data_address, 
+    scheduler_address, io_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmIoPendingIoRequestsWithBLOBs">
+    insert into dm_io_pending_io_requests (io_type, io_pending_ms_ticks, io_pending, 
+      io_offset, io_completion_request_address, 
+      io_completion_routine_address, io_user_data_address, 
+      scheduler_address, io_handle)
+    values (#{io_type,jdbcType=VARCHAR}, #{io_pending_ms_ticks,jdbcType=BIGINT}, #{io_pending,jdbcType=INTEGER}, 
+      #{io_offset,jdbcType=BIGINT}, #{io_completion_request_address,jdbcType=VARBINARY}, 
+      #{io_completion_routine_address,jdbcType=VARBINARY}, #{io_user_data_address,jdbcType=VARBINARY}, 
+      #{scheduler_address,jdbcType=VARBINARY}, #{io_handle,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmIoPendingIoRequestsWithBLOBs">
+    insert into dm_io_pending_io_requests
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="io_type != null">
+        io_type,
+      </if>
+      <if test="io_pending_ms_ticks != null">
+        io_pending_ms_ticks,
+      </if>
+      <if test="io_pending != null">
+        io_pending,
+      </if>
+      <if test="io_offset != null">
+        io_offset,
+      </if>
+      <if test="io_completion_request_address != null">
+        io_completion_request_address,
+      </if>
+      <if test="io_completion_routine_address != null">
+        io_completion_routine_address,
+      </if>
+      <if test="io_user_data_address != null">
+        io_user_data_address,
+      </if>
+      <if test="scheduler_address != null">
+        scheduler_address,
+      </if>
+      <if test="io_handle != null">
+        io_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="io_type != null">
+        #{io_type,jdbcType=VARCHAR},
+      </if>
+      <if test="io_pending_ms_ticks != null">
+        #{io_pending_ms_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="io_pending != null">
+        #{io_pending,jdbcType=INTEGER},
+      </if>
+      <if test="io_offset != null">
+        #{io_offset,jdbcType=BIGINT},
+      </if>
+      <if test="io_completion_request_address != null">
+        #{io_completion_request_address,jdbcType=VARBINARY},
+      </if>
+      <if test="io_completion_routine_address != null">
+        #{io_completion_routine_address,jdbcType=VARBINARY},
+      </if>
+      <if test="io_user_data_address != null">
+        #{io_user_data_address,jdbcType=VARBINARY},
+      </if>
+      <if test="scheduler_address != null">
+        #{scheduler_address,jdbcType=VARBINARY},
+      </if>
+      <if test="io_handle != null">
+        #{io_handle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

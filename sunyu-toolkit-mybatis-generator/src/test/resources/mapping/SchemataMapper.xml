@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SchemataMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Schemata">
+    <result column="CATALOG_NAME" jdbcType="VARCHAR" property="CATALOG_NAME" />
+    <result column="SCHEMA_NAME" jdbcType="VARCHAR" property="SCHEMA_NAME" />
+    <result column="SCHEMA_OWNER" jdbcType="VARCHAR" property="SCHEMA_OWNER" />
+    <result column="DEFAULT_CHARACTER_SET_CATALOG" jdbcType="VARCHAR" property="DEFAULT_CHARACTER_SET_CATALOG" />
+    <result column="DEFAULT_CHARACTER_SET_SCHEMA" jdbcType="VARCHAR" property="DEFAULT_CHARACTER_SET_SCHEMA" />
+    <result column="DEFAULT_CHARACTER_SET_NAME" jdbcType="VARCHAR" property="DEFAULT_CHARACTER_SET_NAME" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Schemata">
+    insert into SCHEMATA (CATALOG_NAME, SCHEMA_NAME, SCHEMA_OWNER, 
+      DEFAULT_CHARACTER_SET_CATALOG, DEFAULT_CHARACTER_SET_SCHEMA, 
+      DEFAULT_CHARACTER_SET_NAME)
+    values (#{CATALOG_NAME,jdbcType=VARCHAR}, #{SCHEMA_NAME,jdbcType=VARCHAR}, #{SCHEMA_OWNER,jdbcType=VARCHAR}, 
+      #{DEFAULT_CHARACTER_SET_CATALOG,jdbcType=VARCHAR}, #{DEFAULT_CHARACTER_SET_SCHEMA,jdbcType=VARCHAR}, 
+      #{DEFAULT_CHARACTER_SET_NAME,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Schemata">
+    insert into SCHEMATA
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="CATALOG_NAME != null">
+        CATALOG_NAME,
+      </if>
+      <if test="SCHEMA_NAME != null">
+        SCHEMA_NAME,
+      </if>
+      <if test="SCHEMA_OWNER != null">
+        SCHEMA_OWNER,
+      </if>
+      <if test="DEFAULT_CHARACTER_SET_CATALOG != null">
+        DEFAULT_CHARACTER_SET_CATALOG,
+      </if>
+      <if test="DEFAULT_CHARACTER_SET_SCHEMA != null">
+        DEFAULT_CHARACTER_SET_SCHEMA,
+      </if>
+      <if test="DEFAULT_CHARACTER_SET_NAME != null">
+        DEFAULT_CHARACTER_SET_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="CATALOG_NAME != null">
+        #{CATALOG_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="SCHEMA_NAME != null">
+        #{SCHEMA_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="SCHEMA_OWNER != null">
+        #{SCHEMA_OWNER,jdbcType=VARCHAR},
+      </if>
+      <if test="DEFAULT_CHARACTER_SET_CATALOG != null">
+        #{DEFAULT_CHARACTER_SET_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="DEFAULT_CHARACTER_SET_SCHEMA != null">
+        #{DEFAULT_CHARACTER_SET_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="DEFAULT_CHARACTER_SET_NAME != null">
+        #{DEFAULT_CHARACTER_SET_NAME,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

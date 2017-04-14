@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsStacksMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsStacks">
+    <result column="frame_index" jdbcType="INTEGER" property="frame_index" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsStacks">
+    <result column="stack_address" jdbcType="VARBINARY" property="stack_address" />
+    <result column="frame_address" jdbcType="VARBINARY" property="frame_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    stack_address, frame_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsStacks">
+    insert into dm_os_stacks (frame_index, stack_address, frame_address
+      )
+    values (#{frame_index,jdbcType=INTEGER}, #{stack_address,jdbcType=VARBINARY}, #{frame_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsStacks">
+    insert into dm_os_stacks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="frame_index != null">
+        frame_index,
+      </if>
+      <if test="stack_address != null">
+        stack_address,
+      </if>
+      <if test="frame_address != null">
+        frame_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="frame_index != null">
+        #{frame_index,jdbcType=INTEGER},
+      </if>
+      <if test="stack_address != null">
+        #{stack_address,jdbcType=VARBINARY},
+      </if>
+      <if test="frame_address != null">
+        #{frame_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsClassMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsClass">
+    <id column="ClassID" jdbcType="BIGINT" property="classID" />
+    <result column="ClassParentID" jdbcType="BIGINT" property="classParentID" />
+    <result column="CategoryName" jdbcType="VARCHAR" property="categoryName" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Dept" jdbcType="BIGINT" property="dept" />
+    <result column="OrderBy" jdbcType="BIGINT" property="orderBy" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ClassID, ClassParentID, CategoryName, AddTime, Dept, OrderBy, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Class
+    where ClassID = #{classID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_Class
+    where ClassID = #{classID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsClass">
+    insert into KS_Class (ClassID, ClassParentID, CategoryName, 
+      AddTime, Dept, OrderBy, 
+      Status)
+    values (#{classID,jdbcType=BIGINT}, #{classParentID,jdbcType=BIGINT}, #{categoryName,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{dept,jdbcType=BIGINT}, #{orderBy,jdbcType=BIGINT}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsClass">
+    insert into KS_Class
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="classID != null">
+        ClassID,
+      </if>
+      <if test="classParentID != null">
+        ClassParentID,
+      </if>
+      <if test="categoryName != null">
+        CategoryName,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="dept != null">
+        Dept,
+      </if>
+      <if test="orderBy != null">
+        OrderBy,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="classID != null">
+        #{classID,jdbcType=BIGINT},
+      </if>
+      <if test="classParentID != null">
+        #{classParentID,jdbcType=BIGINT},
+      </if>
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=BIGINT},
+      </if>
+      <if test="orderBy != null">
+        #{orderBy,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsClass">
+    update KS_Class
+    <set>
+      <if test="classParentID != null">
+        ClassParentID = #{classParentID,jdbcType=BIGINT},
+      </if>
+      <if test="categoryName != null">
+        CategoryName = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        Dept = #{dept,jdbcType=BIGINT},
+      </if>
+      <if test="orderBy != null">
+        OrderBy = #{orderBy,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where ClassID = #{classID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsClass">
+    update KS_Class
+    set ClassParentID = #{classParentID,jdbcType=BIGINT},
+      CategoryName = #{categoryName,jdbcType=VARCHAR},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Dept = #{dept,jdbcType=BIGINT},
+      OrderBy = #{orderBy,jdbcType=BIGINT},
+      Status = #{status,jdbcType=SMALLINT}
+    where ClassID = #{classID,jdbcType=BIGINT}
+  </update>
+</mapper>

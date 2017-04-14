@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.RemoteServiceBindingsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.RemoteServiceBindings">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remote_service_binding_id" jdbcType="INTEGER" property="remote_service_binding_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="remote_service_name" jdbcType="VARCHAR" property="remote_service_name" />
+    <result column="service_contract_id" jdbcType="INTEGER" property="service_contract_id" />
+    <result column="remote_principal_id" jdbcType="INTEGER" property="remote_principal_id" />
+    <result column="is_anonymous_on" jdbcType="BIT" property="is_anonymous_on" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.RemoteServiceBindings">
+    insert into remote_service_bindings (name, remote_service_binding_id, 
+      principal_id, remote_service_name, service_contract_id, 
+      remote_principal_id, is_anonymous_on)
+    values (#{name,jdbcType=VARCHAR}, #{remote_service_binding_id,jdbcType=INTEGER}, 
+      #{principal_id,jdbcType=INTEGER}, #{remote_service_name,jdbcType=VARCHAR}, #{service_contract_id,jdbcType=INTEGER}, 
+      #{remote_principal_id,jdbcType=INTEGER}, #{is_anonymous_on,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.RemoteServiceBindings">
+    insert into remote_service_bindings
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="remote_service_binding_id != null">
+        remote_service_binding_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="remote_service_name != null">
+        remote_service_name,
+      </if>
+      <if test="service_contract_id != null">
+        service_contract_id,
+      </if>
+      <if test="remote_principal_id != null">
+        remote_principal_id,
+      </if>
+      <if test="is_anonymous_on != null">
+        is_anonymous_on,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remote_service_binding_id != null">
+        #{remote_service_binding_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="remote_service_name != null">
+        #{remote_service_name,jdbcType=VARCHAR},
+      </if>
+      <if test="service_contract_id != null">
+        #{service_contract_id,jdbcType=INTEGER},
+      </if>
+      <if test="remote_principal_id != null">
+        #{remote_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_anonymous_on != null">
+        #{is_anonymous_on,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

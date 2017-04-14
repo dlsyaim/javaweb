@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbScriptLevelMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbScriptLevel">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="script_id" jdbcType="INTEGER" property="script_id" />
+    <result column="script_name" jdbcType="VARCHAR" property="script_name" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="script_level" jdbcType="INTEGER" property="script_level" />
+    <result column="downgrade_start_level" jdbcType="INTEGER" property="downgrade_start_level" />
+    <result column="downgrade_target_level" jdbcType="INTEGER" property="downgrade_target_level" />
+    <result column="upgrade_start_level" jdbcType="INTEGER" property="upgrade_start_level" />
+    <result column="upgrade_target_level" jdbcType="INTEGER" property="upgrade_target_level" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbScriptLevel">
+    insert into dm_db_script_level (database_id, script_id, script_name, 
+      version, script_level, downgrade_start_level, 
+      downgrade_target_level, upgrade_start_level, 
+      upgrade_target_level)
+    values (#{database_id,jdbcType=INTEGER}, #{script_id,jdbcType=INTEGER}, #{script_name,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER}, #{script_level,jdbcType=INTEGER}, #{downgrade_start_level,jdbcType=INTEGER}, 
+      #{downgrade_target_level,jdbcType=INTEGER}, #{upgrade_start_level,jdbcType=INTEGER}, 
+      #{upgrade_target_level,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbScriptLevel">
+    insert into dm_db_script_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="script_id != null">
+        script_id,
+      </if>
+      <if test="script_name != null">
+        script_name,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="script_level != null">
+        script_level,
+      </if>
+      <if test="downgrade_start_level != null">
+        downgrade_start_level,
+      </if>
+      <if test="downgrade_target_level != null">
+        downgrade_target_level,
+      </if>
+      <if test="upgrade_start_level != null">
+        upgrade_start_level,
+      </if>
+      <if test="upgrade_target_level != null">
+        upgrade_target_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="script_id != null">
+        #{script_id,jdbcType=INTEGER},
+      </if>
+      <if test="script_name != null">
+        #{script_name,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="script_level != null">
+        #{script_level,jdbcType=INTEGER},
+      </if>
+      <if test="downgrade_start_level != null">
+        #{downgrade_start_level,jdbcType=INTEGER},
+      </if>
+      <if test="downgrade_target_level != null">
+        #{downgrade_target_level,jdbcType=INTEGER},
+      </if>
+      <if test="upgrade_start_level != null">
+        #{upgrade_start_level,jdbcType=INTEGER},
+      </if>
+      <if test="upgrade_target_level != null">
+        #{upgrade_target_level,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

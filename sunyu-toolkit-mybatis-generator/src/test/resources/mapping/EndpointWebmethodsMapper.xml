@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.EndpointWebmethodsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.EndpointWebmethods">
+    <result column="endpoint_id" jdbcType="INTEGER" property="endpoint_id" />
+    <result column="namespace" jdbcType="VARCHAR" property="namespace" />
+    <result column="method_alias" jdbcType="VARCHAR" property="method_alias" />
+    <result column="object_name" jdbcType="VARCHAR" property="object_name" />
+    <result column="result_schema" jdbcType="TINYINT" property="result_schema" />
+    <result column="result_schema_desc" jdbcType="VARCHAR" property="result_schema_desc" />
+    <result column="result_format" jdbcType="TINYINT" property="result_format" />
+    <result column="result_format_desc" jdbcType="VARCHAR" property="result_format_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.EndpointWebmethods">
+    insert into endpoint_webmethods (endpoint_id, namespace, method_alias, 
+      object_name, result_schema, result_schema_desc, 
+      result_format, result_format_desc)
+    values (#{endpoint_id,jdbcType=INTEGER}, #{namespace,jdbcType=VARCHAR}, #{method_alias,jdbcType=VARCHAR}, 
+      #{object_name,jdbcType=VARCHAR}, #{result_schema,jdbcType=TINYINT}, #{result_schema_desc,jdbcType=VARCHAR}, 
+      #{result_format,jdbcType=TINYINT}, #{result_format_desc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.EndpointWebmethods">
+    insert into endpoint_webmethods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="endpoint_id != null">
+        endpoint_id,
+      </if>
+      <if test="namespace != null">
+        namespace,
+      </if>
+      <if test="method_alias != null">
+        method_alias,
+      </if>
+      <if test="object_name != null">
+        object_name,
+      </if>
+      <if test="result_schema != null">
+        result_schema,
+      </if>
+      <if test="result_schema_desc != null">
+        result_schema_desc,
+      </if>
+      <if test="result_format != null">
+        result_format,
+      </if>
+      <if test="result_format_desc != null">
+        result_format_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="endpoint_id != null">
+        #{endpoint_id,jdbcType=INTEGER},
+      </if>
+      <if test="namespace != null">
+        #{namespace,jdbcType=VARCHAR},
+      </if>
+      <if test="method_alias != null">
+        #{method_alias,jdbcType=VARCHAR},
+      </if>
+      <if test="object_name != null">
+        #{object_name,jdbcType=VARCHAR},
+      </if>
+      <if test="result_schema != null">
+        #{result_schema,jdbcType=TINYINT},
+      </if>
+      <if test="result_schema_desc != null">
+        #{result_schema_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="result_format != null">
+        #{result_format,jdbcType=TINYINT},
+      </if>
+      <if test="result_format_desc != null">
+        #{result_format_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

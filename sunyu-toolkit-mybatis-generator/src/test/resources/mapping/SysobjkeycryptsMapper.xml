@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysobjkeycryptsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysobjkeycrypts">
+    <result column="class" jdbcType="TINYINT" property="class" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysobjkeycryptsWithBLOBs">
+    <result column="thumbprint" jdbcType="VARBINARY" property="thumbprint" />
+    <result column="crypto" jdbcType="BLOB" property="crypto" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    thumbprint, crypto
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysobjkeycryptsWithBLOBs">
+    insert into sysobjkeycrypts (class, id, type, 
+      status, thumbprint, crypto
+      )
+    values (#{class,jdbcType=TINYINT}, #{id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{status,jdbcType=INTEGER}, #{thumbprint,jdbcType=VARBINARY}, #{crypto,jdbcType=BLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysobjkeycryptsWithBLOBs">
+    insert into sysobjkeycrypts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="class != null">
+        class,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="thumbprint != null">
+        thumbprint,
+      </if>
+      <if test="crypto != null">
+        crypto,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="class != null">
+        #{class,jdbcType=TINYINT},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="thumbprint != null">
+        #{thumbprint,jdbcType=VARBINARY},
+      </if>
+      <if test="crypto != null">
+        #{crypto,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

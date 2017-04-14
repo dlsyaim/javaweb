@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmBrokerActivatedTasksMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmBrokerActivatedTasks">
+    <result column="spid" jdbcType="INTEGER" property="spid" />
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="queue_id" jdbcType="INTEGER" property="queue_id" />
+    <result column="procedure_name" jdbcType="VARCHAR" property="procedure_name" />
+    <result column="execute_as" jdbcType="INTEGER" property="execute_as" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmBrokerActivatedTasks">
+    insert into dm_broker_activated_tasks (spid, database_id, queue_id, 
+      procedure_name, execute_as)
+    values (#{spid,jdbcType=INTEGER}, #{database_id,jdbcType=SMALLINT}, #{queue_id,jdbcType=INTEGER}, 
+      #{procedure_name,jdbcType=VARCHAR}, #{execute_as,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmBrokerActivatedTasks">
+    insert into dm_broker_activated_tasks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="spid != null">
+        spid,
+      </if>
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="queue_id != null">
+        queue_id,
+      </if>
+      <if test="procedure_name != null">
+        procedure_name,
+      </if>
+      <if test="execute_as != null">
+        execute_as,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="spid != null">
+        #{spid,jdbcType=INTEGER},
+      </if>
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="queue_id != null">
+        #{queue_id,jdbcType=INTEGER},
+      </if>
+      <if test="procedure_name != null">
+        #{procedure_name,jdbcType=VARCHAR},
+      </if>
+      <if test="execute_as != null">
+        #{execute_as,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.HisSensorrealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.HisSensorreal">
+    <id column="SensorID" jdbcType="INTEGER" property="sensorID" />
+    <result column="LogicalStationID" jdbcType="INTEGER" property="logicalStationID" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="SensorTypeID" jdbcType="INTEGER" property="sensorTypeID" />
+    <result column="SourceType" jdbcType="CHAR" property="sourceType" />
+    <result column="AlarmFlag" jdbcType="INTEGER" property="alarmFlag" />
+    <result column="DataQuality" jdbcType="INTEGER" property="dataQuality" />
+    <result column="YestodayValue" jdbcType="DOUBLE" property="yestodayValue" />
+    <result column="DFirstValue" jdbcType="DOUBLE" property="DFirstValue" />
+    <result column="DFirstTime" jdbcType="TIMESTAMP" property="DFirstTime" />
+    <result column="DLastValue" jdbcType="DOUBLE" property="DLastValue" />
+    <result column="DLastTime" jdbcType="TIMESTAMP" property="DLastTime" />
+    <result column="DMinValue" jdbcType="DOUBLE" property="DMinValue" />
+    <result column="DMinTime" jdbcType="TIMESTAMP" property="DMinTime" />
+    <result column="DMaxValue" jdbcType="DOUBLE" property="DMaxValue" />
+    <result column="DMaxTime" jdbcType="TIMESTAMP" property="DMaxTime" />
+    <result column="DValue" jdbcType="DOUBLE" property="DValue" />
+    <result column="Created_date" jdbcType="TIMESTAMP" property="created_date" />
+    <result column="Modified_date" jdbcType="TIMESTAMP" property="modified_date" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.HisSensorreal">
+    <result column="rowversion" jdbcType="BINARY" property="rowversion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SensorID, LogicalStationID, Name, SensorTypeID, SourceType, AlarmFlag, DataQuality, 
+    YestodayValue, DFirstValue, DFirstTime, DLastValue, DLastTime, DMinValue, DMinTime, 
+    DMaxValue, DMaxTime, DValue, Created_date, Modified_date
+  </sql>
+  <sql id="Blob_Column_List">
+    rowversion
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from HIS_SensorReal
+    where SensorID = #{sensorID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HIS_SensorReal
+    where SensorID = #{sensorID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.HisSensorreal">
+    insert into HIS_SensorReal (SensorID, LogicalStationID, Name, 
+      SensorTypeID, SourceType, AlarmFlag, 
+      DataQuality, YestodayValue, DFirstValue, 
+      DFirstTime, DLastValue, DLastTime, 
+      DMinValue, DMinTime, DMaxValue, 
+      DMaxTime, DValue, Created_date, 
+      Modified_date, rowversion)
+    values (#{sensorID,jdbcType=INTEGER}, #{logicalStationID,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{sensorTypeID,jdbcType=INTEGER}, #{sourceType,jdbcType=CHAR}, #{alarmFlag,jdbcType=INTEGER}, 
+      #{dataQuality,jdbcType=INTEGER}, #{yestodayValue,jdbcType=DOUBLE}, #{DFirstValue,jdbcType=DOUBLE}, 
+      #{DFirstTime,jdbcType=TIMESTAMP}, #{DLastValue,jdbcType=DOUBLE}, #{DLastTime,jdbcType=TIMESTAMP}, 
+      #{DMinValue,jdbcType=DOUBLE}, #{DMinTime,jdbcType=TIMESTAMP}, #{DMaxValue,jdbcType=DOUBLE}, 
+      #{DMaxTime,jdbcType=TIMESTAMP}, #{DValue,jdbcType=DOUBLE}, #{created_date,jdbcType=TIMESTAMP}, 
+      #{modified_date,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.HisSensorreal">
+    insert into HIS_SensorReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sensorID != null">
+        SensorID,
+      </if>
+      <if test="logicalStationID != null">
+        LogicalStationID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="sensorTypeID != null">
+        SensorTypeID,
+      </if>
+      <if test="sourceType != null">
+        SourceType,
+      </if>
+      <if test="alarmFlag != null">
+        AlarmFlag,
+      </if>
+      <if test="dataQuality != null">
+        DataQuality,
+      </if>
+      <if test="yestodayValue != null">
+        YestodayValue,
+      </if>
+      <if test="DFirstValue != null">
+        DFirstValue,
+      </if>
+      <if test="DFirstTime != null">
+        DFirstTime,
+      </if>
+      <if test="DLastValue != null">
+        DLastValue,
+      </if>
+      <if test="DLastTime != null">
+        DLastTime,
+      </if>
+      <if test="DMinValue != null">
+        DMinValue,
+      </if>
+      <if test="DMinTime != null">
+        DMinTime,
+      </if>
+      <if test="DMaxValue != null">
+        DMaxValue,
+      </if>
+      <if test="DMaxTime != null">
+        DMaxTime,
+      </if>
+      <if test="DValue != null">
+        DValue,
+      </if>
+      <if test="created_date != null">
+        Created_date,
+      </if>
+      <if test="modified_date != null">
+        Modified_date,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sensorID != null">
+        #{sensorID,jdbcType=INTEGER},
+      </if>
+      <if test="logicalStationID != null">
+        #{logicalStationID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sensorTypeID != null">
+        #{sensorTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=CHAR},
+      </if>
+      <if test="alarmFlag != null">
+        #{alarmFlag,jdbcType=INTEGER},
+      </if>
+      <if test="dataQuality != null">
+        #{dataQuality,jdbcType=INTEGER},
+      </if>
+      <if test="yestodayValue != null">
+        #{yestodayValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DFirstValue != null">
+        #{DFirstValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DFirstTime != null">
+        #{DFirstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DLastValue != null">
+        #{DLastValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DLastTime != null">
+        #{DLastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DMinValue != null">
+        #{DMinValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DMinTime != null">
+        #{DMinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DMaxValue != null">
+        #{DMaxValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DMaxTime != null">
+        #{DMaxTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DValue != null">
+        #{DValue,jdbcType=DOUBLE},
+      </if>
+      <if test="created_date != null">
+        #{created_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified_date != null">
+        #{modified_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.HisSensorreal">
+    update HIS_SensorReal
+    <set>
+      <if test="logicalStationID != null">
+        LogicalStationID = #{logicalStationID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sensorTypeID != null">
+        SensorTypeID = #{sensorTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null">
+        SourceType = #{sourceType,jdbcType=CHAR},
+      </if>
+      <if test="alarmFlag != null">
+        AlarmFlag = #{alarmFlag,jdbcType=INTEGER},
+      </if>
+      <if test="dataQuality != null">
+        DataQuality = #{dataQuality,jdbcType=INTEGER},
+      </if>
+      <if test="yestodayValue != null">
+        YestodayValue = #{yestodayValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DFirstValue != null">
+        DFirstValue = #{DFirstValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DFirstTime != null">
+        DFirstTime = #{DFirstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DLastValue != null">
+        DLastValue = #{DLastValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DLastTime != null">
+        DLastTime = #{DLastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DMinValue != null">
+        DMinValue = #{DMinValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DMinTime != null">
+        DMinTime = #{DMinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DMaxValue != null">
+        DMaxValue = #{DMaxValue,jdbcType=DOUBLE},
+      </if>
+      <if test="DMaxTime != null">
+        DMaxTime = #{DMaxTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DValue != null">
+        DValue = #{DValue,jdbcType=DOUBLE},
+      </if>
+      <if test="created_date != null">
+        Created_date = #{created_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified_date != null">
+        Modified_date = #{modified_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=BINARY},
+      </if>
+    </set>
+    where SensorID = #{sensorID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ks.monitor.pojo.HisSensorreal">
+    update HIS_SensorReal
+    set LogicalStationID = #{logicalStationID,jdbcType=INTEGER},
+      Name = #{name,jdbcType=VARCHAR},
+      SensorTypeID = #{sensorTypeID,jdbcType=INTEGER},
+      SourceType = #{sourceType,jdbcType=CHAR},
+      AlarmFlag = #{alarmFlag,jdbcType=INTEGER},
+      DataQuality = #{dataQuality,jdbcType=INTEGER},
+      YestodayValue = #{yestodayValue,jdbcType=DOUBLE},
+      DFirstValue = #{DFirstValue,jdbcType=DOUBLE},
+      DFirstTime = #{DFirstTime,jdbcType=TIMESTAMP},
+      DLastValue = #{DLastValue,jdbcType=DOUBLE},
+      DLastTime = #{DLastTime,jdbcType=TIMESTAMP},
+      DMinValue = #{DMinValue,jdbcType=DOUBLE},
+      DMinTime = #{DMinTime,jdbcType=TIMESTAMP},
+      DMaxValue = #{DMaxValue,jdbcType=DOUBLE},
+      DMaxTime = #{DMaxTime,jdbcType=TIMESTAMP},
+      DValue = #{DValue,jdbcType=DOUBLE},
+      Created_date = #{created_date,jdbcType=TIMESTAMP},
+      Modified_date = #{modified_date,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=BINARY}
+    where SensorID = #{sensorID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.HisSensorreal">
+    update HIS_SensorReal
+    set LogicalStationID = #{logicalStationID,jdbcType=INTEGER},
+      Name = #{name,jdbcType=VARCHAR},
+      SensorTypeID = #{sensorTypeID,jdbcType=INTEGER},
+      SourceType = #{sourceType,jdbcType=CHAR},
+      AlarmFlag = #{alarmFlag,jdbcType=INTEGER},
+      DataQuality = #{dataQuality,jdbcType=INTEGER},
+      YestodayValue = #{yestodayValue,jdbcType=DOUBLE},
+      DFirstValue = #{DFirstValue,jdbcType=DOUBLE},
+      DFirstTime = #{DFirstTime,jdbcType=TIMESTAMP},
+      DLastValue = #{DLastValue,jdbcType=DOUBLE},
+      DLastTime = #{DLastTime,jdbcType=TIMESTAMP},
+      DMinValue = #{DMinValue,jdbcType=DOUBLE},
+      DMinTime = #{DMinTime,jdbcType=TIMESTAMP},
+      DMaxValue = #{DMaxValue,jdbcType=DOUBLE},
+      DMaxTime = #{DMaxTime,jdbcType=TIMESTAMP},
+      DValue = #{DValue,jdbcType=DOUBLE},
+      Created_date = #{created_date,jdbcType=TIMESTAMP},
+      Modified_date = #{modified_date,jdbcType=TIMESTAMP}
+    where SensorID = #{sensorID,jdbcType=INTEGER}
+  </update>
+</mapper>

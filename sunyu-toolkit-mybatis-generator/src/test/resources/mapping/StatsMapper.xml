@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.StatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Stats">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="stats_id" jdbcType="INTEGER" property="stats_id" />
+    <result column="auto_created" jdbcType="BIT" property="auto_created" />
+    <result column="user_created" jdbcType="BIT" property="user_created" />
+    <result column="no_recompute" jdbcType="BIT" property="no_recompute" />
+    <result column="has_filter" jdbcType="BIT" property="has_filter" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.Stats">
+    <result column="filter_definition" jdbcType="CLOB" property="filter_definition" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    filter_definition
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Stats">
+    insert into stats (object_id, name, stats_id, 
+      auto_created, user_created, no_recompute, 
+      has_filter, filter_definition)
+    values (#{object_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{stats_id,jdbcType=INTEGER}, 
+      #{auto_created,jdbcType=BIT}, #{user_created,jdbcType=BIT}, #{no_recompute,jdbcType=BIT}, 
+      #{has_filter,jdbcType=BIT}, #{filter_definition,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Stats">
+    insert into stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="stats_id != null">
+        stats_id,
+      </if>
+      <if test="auto_created != null">
+        auto_created,
+      </if>
+      <if test="user_created != null">
+        user_created,
+      </if>
+      <if test="no_recompute != null">
+        no_recompute,
+      </if>
+      <if test="has_filter != null">
+        has_filter,
+      </if>
+      <if test="filter_definition != null">
+        filter_definition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stats_id != null">
+        #{stats_id,jdbcType=INTEGER},
+      </if>
+      <if test="auto_created != null">
+        #{auto_created,jdbcType=BIT},
+      </if>
+      <if test="user_created != null">
+        #{user_created,jdbcType=BIT},
+      </if>
+      <if test="no_recompute != null">
+        #{no_recompute,jdbcType=BIT},
+      </if>
+      <if test="has_filter != null">
+        #{has_filter,jdbcType=BIT},
+      </if>
+      <if test="filter_definition != null">
+        #{filter_definition,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

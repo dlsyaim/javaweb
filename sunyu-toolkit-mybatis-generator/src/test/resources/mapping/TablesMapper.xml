@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TablesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Tables">
+    <result column="TABLE_CATALOG" jdbcType="VARCHAR" property="TABLE_CATALOG" />
+    <result column="TABLE_SCHEMA" jdbcType="VARCHAR" property="TABLE_SCHEMA" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="TABLE_NAME" />
+    <result column="TABLE_TYPE" jdbcType="VARCHAR" property="TABLE_TYPE" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Tables">
+    insert into TABLES (TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, 
+      TABLE_TYPE)
+    values (#{TABLE_CATALOG,jdbcType=VARCHAR}, #{TABLE_SCHEMA,jdbcType=VARCHAR}, #{TABLE_NAME,jdbcType=VARCHAR}, 
+      #{TABLE_TYPE,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Tables">
+    insert into TABLES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="TABLE_CATALOG != null">
+        TABLE_CATALOG,
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        TABLE_SCHEMA,
+      </if>
+      <if test="TABLE_NAME != null">
+        TABLE_NAME,
+      </if>
+      <if test="TABLE_TYPE != null">
+        TABLE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="TABLE_CATALOG != null">
+        #{TABLE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        #{TABLE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_NAME != null">
+        #{TABLE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_TYPE != null">
+        #{TABLE_TYPE,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Tables">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="schema_id" jdbcType="INTEGER" property="schema_id" />
+    <result column="parent_object_id" jdbcType="INTEGER" property="parent_object_id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="is_ms_shipped" jdbcType="BIT" property="is_ms_shipped" />
+    <result column="is_published" jdbcType="BIT" property="is_published" />
+    <result column="is_schema_published" jdbcType="BIT" property="is_schema_published" />
+    <result column="lob_data_space_id" jdbcType="INTEGER" property="lob_data_space_id" />
+    <result column="filestream_data_space_id" jdbcType="INTEGER" property="filestream_data_space_id" />
+    <result column="max_column_id_used" jdbcType="INTEGER" property="max_column_id_used" />
+    <result column="lock_on_bulk_load" jdbcType="BIT" property="lock_on_bulk_load" />
+    <result column="uses_ansi_nulls" jdbcType="BIT" property="uses_ansi_nulls" />
+    <result column="is_replicated" jdbcType="BIT" property="is_replicated" />
+    <result column="has_replication_filter" jdbcType="BIT" property="has_replication_filter" />
+    <result column="is_merge_published" jdbcType="BIT" property="is_merge_published" />
+    <result column="is_sync_tran_subscribed" jdbcType="BIT" property="is_sync_tran_subscribed" />
+    <result column="has_unchecked_assembly_data" jdbcType="BIT" property="has_unchecked_assembly_data" />
+    <result column="text_in_row_limit" jdbcType="INTEGER" property="text_in_row_limit" />
+    <result column="large_value_types_out_of_row" jdbcType="BIT" property="large_value_types_out_of_row" />
+    <result column="is_tracked_by_cdc" jdbcType="BIT" property="is_tracked_by_cdc" />
+    <result column="lock_escalation" jdbcType="TINYINT" property="lock_escalation" />
+    <result column="lock_escalation_desc" jdbcType="VARCHAR" property="lock_escalation_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Tables">
+    insert into tables (name, object_id, principal_id, 
+      schema_id, parent_object_id, type, 
+      type_desc, create_date, modify_date, 
+      is_ms_shipped, is_published, is_schema_published, 
+      lob_data_space_id, filestream_data_space_id, 
+      max_column_id_used, lock_on_bulk_load, uses_ansi_nulls, 
+      is_replicated, has_replication_filter, is_merge_published, 
+      is_sync_tran_subscribed, has_unchecked_assembly_data, 
+      text_in_row_limit, large_value_types_out_of_row, 
+      is_tracked_by_cdc, lock_escalation, lock_escalation_desc
+      )
+    values (#{name,jdbcType=VARCHAR}, #{object_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, 
+      #{schema_id,jdbcType=INTEGER}, #{parent_object_id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{type_desc,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, #{modify_date,jdbcType=TIMESTAMP}, 
+      #{is_ms_shipped,jdbcType=BIT}, #{is_published,jdbcType=BIT}, #{is_schema_published,jdbcType=BIT}, 
+      #{lob_data_space_id,jdbcType=INTEGER}, #{filestream_data_space_id,jdbcType=INTEGER}, 
+      #{max_column_id_used,jdbcType=INTEGER}, #{lock_on_bulk_load,jdbcType=BIT}, #{uses_ansi_nulls,jdbcType=BIT}, 
+      #{is_replicated,jdbcType=BIT}, #{has_replication_filter,jdbcType=BIT}, #{is_merge_published,jdbcType=BIT}, 
+      #{is_sync_tran_subscribed,jdbcType=BIT}, #{has_unchecked_assembly_data,jdbcType=BIT}, 
+      #{text_in_row_limit,jdbcType=INTEGER}, #{large_value_types_out_of_row,jdbcType=BIT}, 
+      #{is_tracked_by_cdc,jdbcType=BIT}, #{lock_escalation,jdbcType=TINYINT}, #{lock_escalation_desc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Tables">
+    insert into tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="schema_id != null">
+        schema_id,
+      </if>
+      <if test="parent_object_id != null">
+        parent_object_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="is_ms_shipped != null">
+        is_ms_shipped,
+      </if>
+      <if test="is_published != null">
+        is_published,
+      </if>
+      <if test="is_schema_published != null">
+        is_schema_published,
+      </if>
+      <if test="lob_data_space_id != null">
+        lob_data_space_id,
+      </if>
+      <if test="filestream_data_space_id != null">
+        filestream_data_space_id,
+      </if>
+      <if test="max_column_id_used != null">
+        max_column_id_used,
+      </if>
+      <if test="lock_on_bulk_load != null">
+        lock_on_bulk_load,
+      </if>
+      <if test="uses_ansi_nulls != null">
+        uses_ansi_nulls,
+      </if>
+      <if test="is_replicated != null">
+        is_replicated,
+      </if>
+      <if test="has_replication_filter != null">
+        has_replication_filter,
+      </if>
+      <if test="is_merge_published != null">
+        is_merge_published,
+      </if>
+      <if test="is_sync_tran_subscribed != null">
+        is_sync_tran_subscribed,
+      </if>
+      <if test="has_unchecked_assembly_data != null">
+        has_unchecked_assembly_data,
+      </if>
+      <if test="text_in_row_limit != null">
+        text_in_row_limit,
+      </if>
+      <if test="large_value_types_out_of_row != null">
+        large_value_types_out_of_row,
+      </if>
+      <if test="is_tracked_by_cdc != null">
+        is_tracked_by_cdc,
+      </if>
+      <if test="lock_escalation != null">
+        lock_escalation,
+      </if>
+      <if test="lock_escalation_desc != null">
+        lock_escalation_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="schema_id != null">
+        #{schema_id,jdbcType=INTEGER},
+      </if>
+      <if test="parent_object_id != null">
+        #{parent_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_ms_shipped != null">
+        #{is_ms_shipped,jdbcType=BIT},
+      </if>
+      <if test="is_published != null">
+        #{is_published,jdbcType=BIT},
+      </if>
+      <if test="is_schema_published != null">
+        #{is_schema_published,jdbcType=BIT},
+      </if>
+      <if test="lob_data_space_id != null">
+        #{lob_data_space_id,jdbcType=INTEGER},
+      </if>
+      <if test="filestream_data_space_id != null">
+        #{filestream_data_space_id,jdbcType=INTEGER},
+      </if>
+      <if test="max_column_id_used != null">
+        #{max_column_id_used,jdbcType=INTEGER},
+      </if>
+      <if test="lock_on_bulk_load != null">
+        #{lock_on_bulk_load,jdbcType=BIT},
+      </if>
+      <if test="uses_ansi_nulls != null">
+        #{uses_ansi_nulls,jdbcType=BIT},
+      </if>
+      <if test="is_replicated != null">
+        #{is_replicated,jdbcType=BIT},
+      </if>
+      <if test="has_replication_filter != null">
+        #{has_replication_filter,jdbcType=BIT},
+      </if>
+      <if test="is_merge_published != null">
+        #{is_merge_published,jdbcType=BIT},
+      </if>
+      <if test="is_sync_tran_subscribed != null">
+        #{is_sync_tran_subscribed,jdbcType=BIT},
+      </if>
+      <if test="has_unchecked_assembly_data != null">
+        #{has_unchecked_assembly_data,jdbcType=BIT},
+      </if>
+      <if test="text_in_row_limit != null">
+        #{text_in_row_limit,jdbcType=INTEGER},
+      </if>
+      <if test="large_value_types_out_of_row != null">
+        #{large_value_types_out_of_row,jdbcType=BIT},
+      </if>
+      <if test="is_tracked_by_cdc != null">
+        #{is_tracked_by_cdc,jdbcType=BIT},
+      </if>
+      <if test="lock_escalation != null">
+        #{lock_escalation,jdbcType=TINYINT},
+      </if>
+      <if test="lock_escalation_desc != null">
+        #{lock_escalation_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

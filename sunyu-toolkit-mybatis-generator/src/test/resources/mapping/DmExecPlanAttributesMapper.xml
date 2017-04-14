@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecPlanAttributesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecPlanAttributes">
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="is_cache_key" jdbcType="BIT" property="is_cache_key" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecPlanAttributes">
+    insert into dm_exec_plan_attributes (attribute, value, is_cache_key
+      )
+    values (#{attribute,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{is_cache_key,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecPlanAttributes">
+    insert into dm_exec_plan_attributes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="is_cache_key != null">
+        is_cache_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="is_cache_key != null">
+        #{is_cache_key,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

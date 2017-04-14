@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysasymkeysMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysasymkeys">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="bitlength" jdbcType="INTEGER" property="bitlength" />
+    <result column="algorithm" jdbcType="CHAR" property="algorithm" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="encrtype" jdbcType="CHAR" property="encrtype" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysasymkeysWithBLOBs">
+    <result column="thumbprint" jdbcType="VARBINARY" property="thumbprint" />
+    <result column="pkey" jdbcType="VARBINARY" property="pkey" />
+    <result column="pukey" jdbcType="BLOB" property="pukey" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    thumbprint, pkey, pukey
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysasymkeysWithBLOBs">
+    insert into sysasymkeys (id, name, bitlength, 
+      algorithm, modified, encrtype, 
+      thumbprint, pkey, pukey
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{bitlength,jdbcType=INTEGER}, 
+      #{algorithm,jdbcType=CHAR}, #{modified,jdbcType=TIMESTAMP}, #{encrtype,jdbcType=CHAR}, 
+      #{thumbprint,jdbcType=VARBINARY}, #{pkey,jdbcType=VARBINARY}, #{pukey,jdbcType=BLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysasymkeysWithBLOBs">
+    insert into sysasymkeys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="bitlength != null">
+        bitlength,
+      </if>
+      <if test="algorithm != null">
+        algorithm,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="encrtype != null">
+        encrtype,
+      </if>
+      <if test="thumbprint != null">
+        thumbprint,
+      </if>
+      <if test="pkey != null">
+        pkey,
+      </if>
+      <if test="pukey != null">
+        pukey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bitlength != null">
+        #{bitlength,jdbcType=INTEGER},
+      </if>
+      <if test="algorithm != null">
+        #{algorithm,jdbcType=CHAR},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="encrtype != null">
+        #{encrtype,jdbcType=CHAR},
+      </if>
+      <if test="thumbprint != null">
+        #{thumbprint,jdbcType=VARBINARY},
+      </if>
+      <if test="pkey != null">
+        #{pkey,jdbcType=VARBINARY},
+      </if>
+      <if test="pukey != null">
+        #{pukey,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

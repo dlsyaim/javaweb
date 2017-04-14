@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsLoadedModulesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsLoadedModules">
+    <result column="file_version" jdbcType="VARCHAR" property="file_version" />
+    <result column="product_version" jdbcType="VARCHAR" property="product_version" />
+    <result column="debug" jdbcType="BIT" property="debug" />
+    <result column="patched" jdbcType="BIT" property="patched" />
+    <result column="prerelease" jdbcType="BIT" property="prerelease" />
+    <result column="private_build" jdbcType="BIT" property="private_build" />
+    <result column="special_build" jdbcType="BIT" property="special_build" />
+    <result column="language" jdbcType="INTEGER" property="language" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsLoadedModules">
+    <result column="base_address" jdbcType="VARBINARY" property="base_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    base_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsLoadedModules">
+    insert into dm_os_loaded_modules (file_version, product_version, debug, 
+      patched, prerelease, private_build, 
+      special_build, language, company, 
+      description, name, base_address
+      )
+    values (#{file_version,jdbcType=VARCHAR}, #{product_version,jdbcType=VARCHAR}, #{debug,jdbcType=BIT}, 
+      #{patched,jdbcType=BIT}, #{prerelease,jdbcType=BIT}, #{private_build,jdbcType=BIT}, 
+      #{special_build,jdbcType=BIT}, #{language,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{base_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsLoadedModules">
+    insert into dm_os_loaded_modules
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="file_version != null">
+        file_version,
+      </if>
+      <if test="product_version != null">
+        product_version,
+      </if>
+      <if test="debug != null">
+        debug,
+      </if>
+      <if test="patched != null">
+        patched,
+      </if>
+      <if test="prerelease != null">
+        prerelease,
+      </if>
+      <if test="private_build != null">
+        private_build,
+      </if>
+      <if test="special_build != null">
+        special_build,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="base_address != null">
+        base_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="file_version != null">
+        #{file_version,jdbcType=VARCHAR},
+      </if>
+      <if test="product_version != null">
+        #{product_version,jdbcType=VARCHAR},
+      </if>
+      <if test="debug != null">
+        #{debug,jdbcType=BIT},
+      </if>
+      <if test="patched != null">
+        #{patched,jdbcType=BIT},
+      </if>
+      <if test="prerelease != null">
+        #{prerelease,jdbcType=BIT},
+      </if>
+      <if test="private_build != null">
+        #{private_build,jdbcType=BIT},
+      </if>
+      <if test="special_build != null">
+        #{special_build,jdbcType=BIT},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=INTEGER},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="base_address != null">
+        #{base_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

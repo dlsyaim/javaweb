@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsRingBuffersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsRingBuffers">
+    <result column="ring_buffer_type" jdbcType="VARCHAR" property="ring_buffer_type" />
+    <result column="timestamp" jdbcType="BIGINT" property="timestamp" />
+    <result column="record" jdbcType="VARCHAR" property="record" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsRingBuffers">
+    <result column="ring_buffer_address" jdbcType="VARBINARY" property="ring_buffer_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    ring_buffer_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsRingBuffers">
+    insert into dm_os_ring_buffers (ring_buffer_type, timestamp, record, 
+      ring_buffer_address)
+    values (#{ring_buffer_type,jdbcType=VARCHAR}, #{timestamp,jdbcType=BIGINT}, #{record,jdbcType=VARCHAR}, 
+      #{ring_buffer_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsRingBuffers">
+    insert into dm_os_ring_buffers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ring_buffer_type != null">
+        ring_buffer_type,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="ring_buffer_address != null">
+        ring_buffer_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ring_buffer_type != null">
+        #{ring_buffer_type,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=BIGINT},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="ring_buffer_address != null">
+        #{ring_buffer_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

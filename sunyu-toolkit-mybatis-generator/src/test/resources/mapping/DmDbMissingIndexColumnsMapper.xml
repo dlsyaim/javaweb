@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbMissingIndexColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbMissingIndexColumns">
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+    <result column="column_name" jdbcType="VARCHAR" property="column_name" />
+    <result column="column_usage" jdbcType="VARCHAR" property="column_usage" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbMissingIndexColumns">
+    insert into dm_db_missing_index_columns (column_id, column_name, column_usage
+      )
+    values (#{column_id,jdbcType=INTEGER}, #{column_name,jdbcType=VARCHAR}, #{column_usage,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbMissingIndexColumns">
+    insert into dm_db_missing_index_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="column_id != null">
+        column_id,
+      </if>
+      <if test="column_name != null">
+        column_name,
+      </if>
+      <if test="column_usage != null">
+        column_usage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+      <if test="column_name != null">
+        #{column_name,jdbcType=VARCHAR},
+      </if>
+      <if test="column_usage != null">
+        #{column_usage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

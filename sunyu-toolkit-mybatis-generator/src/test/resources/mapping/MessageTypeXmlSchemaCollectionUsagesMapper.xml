@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.MessageTypeXmlSchemaCollectionUsagesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.MessageTypeXmlSchemaCollectionUsages">
+    <result column="message_type_id" jdbcType="INTEGER" property="message_type_id" />
+    <result column="xml_collection_id" jdbcType="INTEGER" property="xml_collection_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.MessageTypeXmlSchemaCollectionUsages">
+    insert into message_type_xml_schema_collection_usages (message_type_id, xml_collection_id
+      )
+    values (#{message_type_id,jdbcType=INTEGER}, #{xml_collection_id,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.MessageTypeXmlSchemaCollectionUsages">
+    insert into message_type_xml_schema_collection_usages
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="message_type_id != null">
+        message_type_id,
+      </if>
+      <if test="xml_collection_id != null">
+        xml_collection_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="message_type_id != null">
+        #{message_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="xml_collection_id != null">
+        #{xml_collection_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

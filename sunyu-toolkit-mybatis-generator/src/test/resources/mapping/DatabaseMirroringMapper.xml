@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DatabaseMirroringMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DatabaseMirroring">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="mirroring_guid" jdbcType="CHAR" property="mirroring_guid" />
+    <result column="mirroring_state" jdbcType="TINYINT" property="mirroring_state" />
+    <result column="mirroring_state_desc" jdbcType="VARCHAR" property="mirroring_state_desc" />
+    <result column="mirroring_role" jdbcType="TINYINT" property="mirroring_role" />
+    <result column="mirroring_role_desc" jdbcType="VARCHAR" property="mirroring_role_desc" />
+    <result column="mirroring_role_sequence" jdbcType="INTEGER" property="mirroring_role_sequence" />
+    <result column="mirroring_safety_level" jdbcType="TINYINT" property="mirroring_safety_level" />
+    <result column="mirroring_safety_level_desc" jdbcType="VARCHAR" property="mirroring_safety_level_desc" />
+    <result column="mirroring_safety_sequence" jdbcType="INTEGER" property="mirroring_safety_sequence" />
+    <result column="mirroring_partner_name" jdbcType="VARCHAR" property="mirroring_partner_name" />
+    <result column="mirroring_partner_instance" jdbcType="VARCHAR" property="mirroring_partner_instance" />
+    <result column="mirroring_witness_name" jdbcType="VARCHAR" property="mirroring_witness_name" />
+    <result column="mirroring_witness_state" jdbcType="TINYINT" property="mirroring_witness_state" />
+    <result column="mirroring_witness_state_desc" jdbcType="VARCHAR" property="mirroring_witness_state_desc" />
+    <result column="mirroring_failover_lsn" jdbcType="NUMERIC" property="mirroring_failover_lsn" />
+    <result column="mirroring_connection_timeout" jdbcType="INTEGER" property="mirroring_connection_timeout" />
+    <result column="mirroring_redo_queue" jdbcType="INTEGER" property="mirroring_redo_queue" />
+    <result column="mirroring_redo_queue_type" jdbcType="VARCHAR" property="mirroring_redo_queue_type" />
+    <result column="mirroring_end_of_log_lsn" jdbcType="NUMERIC" property="mirroring_end_of_log_lsn" />
+    <result column="mirroring_replication_lsn" jdbcType="NUMERIC" property="mirroring_replication_lsn" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DatabaseMirroring">
+    insert into database_mirroring (database_id, mirroring_guid, mirroring_state, 
+      mirroring_state_desc, mirroring_role, mirroring_role_desc, 
+      mirroring_role_sequence, mirroring_safety_level, 
+      mirroring_safety_level_desc, mirroring_safety_sequence, 
+      mirroring_partner_name, mirroring_partner_instance, 
+      mirroring_witness_name, mirroring_witness_state, 
+      mirroring_witness_state_desc, mirroring_failover_lsn, 
+      mirroring_connection_timeout, mirroring_redo_queue, 
+      mirroring_redo_queue_type, mirroring_end_of_log_lsn, 
+      mirroring_replication_lsn)
+    values (#{database_id,jdbcType=INTEGER}, #{mirroring_guid,jdbcType=CHAR}, #{mirroring_state,jdbcType=TINYINT}, 
+      #{mirroring_state_desc,jdbcType=VARCHAR}, #{mirroring_role,jdbcType=TINYINT}, #{mirroring_role_desc,jdbcType=VARCHAR}, 
+      #{mirroring_role_sequence,jdbcType=INTEGER}, #{mirroring_safety_level,jdbcType=TINYINT}, 
+      #{mirroring_safety_level_desc,jdbcType=VARCHAR}, #{mirroring_safety_sequence,jdbcType=INTEGER}, 
+      #{mirroring_partner_name,jdbcType=VARCHAR}, #{mirroring_partner_instance,jdbcType=VARCHAR}, 
+      #{mirroring_witness_name,jdbcType=VARCHAR}, #{mirroring_witness_state,jdbcType=TINYINT}, 
+      #{mirroring_witness_state_desc,jdbcType=VARCHAR}, #{mirroring_failover_lsn,jdbcType=NUMERIC}, 
+      #{mirroring_connection_timeout,jdbcType=INTEGER}, #{mirroring_redo_queue,jdbcType=INTEGER}, 
+      #{mirroring_redo_queue_type,jdbcType=VARCHAR}, #{mirroring_end_of_log_lsn,jdbcType=NUMERIC}, 
+      #{mirroring_replication_lsn,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DatabaseMirroring">
+    insert into database_mirroring
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="mirroring_guid != null">
+        mirroring_guid,
+      </if>
+      <if test="mirroring_state != null">
+        mirroring_state,
+      </if>
+      <if test="mirroring_state_desc != null">
+        mirroring_state_desc,
+      </if>
+      <if test="mirroring_role != null">
+        mirroring_role,
+      </if>
+      <if test="mirroring_role_desc != null">
+        mirroring_role_desc,
+      </if>
+      <if test="mirroring_role_sequence != null">
+        mirroring_role_sequence,
+      </if>
+      <if test="mirroring_safety_level != null">
+        mirroring_safety_level,
+      </if>
+      <if test="mirroring_safety_level_desc != null">
+        mirroring_safety_level_desc,
+      </if>
+      <if test="mirroring_safety_sequence != null">
+        mirroring_safety_sequence,
+      </if>
+      <if test="mirroring_partner_name != null">
+        mirroring_partner_name,
+      </if>
+      <if test="mirroring_partner_instance != null">
+        mirroring_partner_instance,
+      </if>
+      <if test="mirroring_witness_name != null">
+        mirroring_witness_name,
+      </if>
+      <if test="mirroring_witness_state != null">
+        mirroring_witness_state,
+      </if>
+      <if test="mirroring_witness_state_desc != null">
+        mirroring_witness_state_desc,
+      </if>
+      <if test="mirroring_failover_lsn != null">
+        mirroring_failover_lsn,
+      </if>
+      <if test="mirroring_connection_timeout != null">
+        mirroring_connection_timeout,
+      </if>
+      <if test="mirroring_redo_queue != null">
+        mirroring_redo_queue,
+      </if>
+      <if test="mirroring_redo_queue_type != null">
+        mirroring_redo_queue_type,
+      </if>
+      <if test="mirroring_end_of_log_lsn != null">
+        mirroring_end_of_log_lsn,
+      </if>
+      <if test="mirroring_replication_lsn != null">
+        mirroring_replication_lsn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="mirroring_guid != null">
+        #{mirroring_guid,jdbcType=CHAR},
+      </if>
+      <if test="mirroring_state != null">
+        #{mirroring_state,jdbcType=TINYINT},
+      </if>
+      <if test="mirroring_state_desc != null">
+        #{mirroring_state_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_role != null">
+        #{mirroring_role,jdbcType=TINYINT},
+      </if>
+      <if test="mirroring_role_desc != null">
+        #{mirroring_role_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_role_sequence != null">
+        #{mirroring_role_sequence,jdbcType=INTEGER},
+      </if>
+      <if test="mirroring_safety_level != null">
+        #{mirroring_safety_level,jdbcType=TINYINT},
+      </if>
+      <if test="mirroring_safety_level_desc != null">
+        #{mirroring_safety_level_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_safety_sequence != null">
+        #{mirroring_safety_sequence,jdbcType=INTEGER},
+      </if>
+      <if test="mirroring_partner_name != null">
+        #{mirroring_partner_name,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_partner_instance != null">
+        #{mirroring_partner_instance,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_witness_name != null">
+        #{mirroring_witness_name,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_witness_state != null">
+        #{mirroring_witness_state,jdbcType=TINYINT},
+      </if>
+      <if test="mirroring_witness_state_desc != null">
+        #{mirroring_witness_state_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_failover_lsn != null">
+        #{mirroring_failover_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="mirroring_connection_timeout != null">
+        #{mirroring_connection_timeout,jdbcType=INTEGER},
+      </if>
+      <if test="mirroring_redo_queue != null">
+        #{mirroring_redo_queue,jdbcType=INTEGER},
+      </if>
+      <if test="mirroring_redo_queue_type != null">
+        #{mirroring_redo_queue_type,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_end_of_log_lsn != null">
+        #{mirroring_end_of_log_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="mirroring_replication_lsn != null">
+        #{mirroring_replication_lsn,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+</mapper>

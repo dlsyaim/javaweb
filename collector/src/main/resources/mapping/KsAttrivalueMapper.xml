@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsAttrivalueMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsAttrivalue">
+    <id column="AttrValID" jdbcType="BIGINT" property="attrValID" />
+    <result column="AttrID" jdbcType="BIGINT" property="attrID" />
+    <result column="AttValName" jdbcType="VARCHAR" property="attValName" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AttrValID, AttrID, AttValName, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_AttriValue
+    where AttrValID = #{attrValID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_AttriValue
+    where AttrValID = #{attrValID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsAttrivalue">
+    insert into KS_AttriValue (AttrValID, AttrID, AttValName, 
+      AddTime, Status)
+    values (#{attrValID,jdbcType=BIGINT}, #{attrID,jdbcType=BIGINT}, #{attValName,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsAttrivalue">
+    insert into KS_AttriValue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="attrValID != null">
+        AttrValID,
+      </if>
+      <if test="attrID != null">
+        AttrID,
+      </if>
+      <if test="attValName != null">
+        AttValName,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="attrValID != null">
+        #{attrValID,jdbcType=BIGINT},
+      </if>
+      <if test="attrID != null">
+        #{attrID,jdbcType=BIGINT},
+      </if>
+      <if test="attValName != null">
+        #{attValName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsAttrivalue">
+    update KS_AttriValue
+    <set>
+      <if test="attrID != null">
+        AttrID = #{attrID,jdbcType=BIGINT},
+      </if>
+      <if test="attValName != null">
+        AttValName = #{attValName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where AttrValID = #{attrValID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsAttrivalue">
+    update KS_AttriValue
+    set AttrID = #{attrID,jdbcType=BIGINT},
+      AttValName = #{attValName,jdbcType=VARCHAR},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where AttrValID = #{attrValID,jdbcType=BIGINT}
+  </update>
+</mapper>

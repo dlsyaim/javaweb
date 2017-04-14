@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.AssemblyFilesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.AssemblyFiles">
+    <result column="assembly_id" jdbcType="INTEGER" property="assembly_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="file_id" jdbcType="INTEGER" property="file_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.AssemblyFiles">
+    <result column="content" jdbcType="BLOB" property="content" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.AssemblyFiles">
+    insert into assembly_files (assembly_id, name, file_id, 
+      content)
+    values (#{assembly_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{file_id,jdbcType=INTEGER}, 
+      #{content,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.AssemblyFiles">
+    insert into assembly_files
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="assembly_id != null">
+        assembly_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="file_id != null">
+        file_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="assembly_id != null">
+        #{assembly_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="file_id != null">
+        #{file_id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

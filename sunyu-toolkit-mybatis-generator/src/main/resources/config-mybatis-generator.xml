@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动包位置 -->
+    <!--<classPathEntry
+            location="C:\Users\SunYu\.m2\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>-->
+
+    <properties resource="config-dataSource.properties"/>
+
+    <context id="myBatisGeneratorContext"
+             targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator type="org.mybatis.generator.internal.DefaultCommentGenerator">
+            <property name="suppressAllComments"
+                      value="true"/>
+            <property name="suppressDate"
+                      value="true"/>
+        </commentGenerator>
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="${jdbc.driverClassName}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+            <!-- 针对oracle数据库 -->
+            <property name="remarksReporting" value="true"></property>
+            <!-- 针对mysql数据库 -->
+            <property name="useInformationSchema" value="true"></property>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals"
+                      value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.ks.monitor.pojo"
+                            targetProject="src/test/java">
+            <property name="trimStrings"
+                      value="true"/>
+        </javaModelGenerator>
+        <!-- 生成的映射文件包名和位置 -->
+        <sqlMapGenerator targetPackage="mapping"
+                         targetProject="src/test/resources"/>
+        <!-- 生成Mapper的包名和位置 -->
+        <javaClientGenerator targetPackage="com.ks.monitor.mapper"
+                             targetProject="src/test/java"
+                             type="XMLMAPPER"/>
+
+        <!-- %代表生成所有表 -->
+        <table tableName="%"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 这个属性设置是否启用驼峰命名，还是直接使用数据库列名，true使用数据库列名，false使用驼峰命名 -->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!-- 要生成哪些表(更改tableName和domainObjectName就可以) -->
+        <!--<table tableName="sunyu_user"
+               domainObjectName="User"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>-->
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyscursortablesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syscursortables">
+    <result column="cursor_handle" jdbcType="INTEGER" property="cursor_handle" />
+    <result column="table_owner" jdbcType="VARCHAR" property="table_owner" />
+    <result column="table_name" jdbcType="VARCHAR" property="table_name" />
+    <result column="optimizer_hint" jdbcType="SMALLINT" property="optimizer_hint" />
+    <result column="lock_type" jdbcType="SMALLINT" property="lock_type" />
+    <result column="server_name" jdbcType="VARCHAR" property="server_name" />
+    <result column="objectid" jdbcType="INTEGER" property="objectid" />
+    <result column="dbid" jdbcType="INTEGER" property="dbid" />
+    <result column="dbname" jdbcType="VARCHAR" property="dbname" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syscursortables">
+    insert into syscursortables (cursor_handle, table_owner, table_name, 
+      optimizer_hint, lock_type, server_name, 
+      objectid, dbid, dbname
+      )
+    values (#{cursor_handle,jdbcType=INTEGER}, #{table_owner,jdbcType=VARCHAR}, #{table_name,jdbcType=VARCHAR}, 
+      #{optimizer_hint,jdbcType=SMALLINT}, #{lock_type,jdbcType=SMALLINT}, #{server_name,jdbcType=VARCHAR}, 
+      #{objectid,jdbcType=INTEGER}, #{dbid,jdbcType=INTEGER}, #{dbname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syscursortables">
+    insert into syscursortables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cursor_handle != null">
+        cursor_handle,
+      </if>
+      <if test="table_owner != null">
+        table_owner,
+      </if>
+      <if test="table_name != null">
+        table_name,
+      </if>
+      <if test="optimizer_hint != null">
+        optimizer_hint,
+      </if>
+      <if test="lock_type != null">
+        lock_type,
+      </if>
+      <if test="server_name != null">
+        server_name,
+      </if>
+      <if test="objectid != null">
+        objectid,
+      </if>
+      <if test="dbid != null">
+        dbid,
+      </if>
+      <if test="dbname != null">
+        dbname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cursor_handle != null">
+        #{cursor_handle,jdbcType=INTEGER},
+      </if>
+      <if test="table_owner != null">
+        #{table_owner,jdbcType=VARCHAR},
+      </if>
+      <if test="table_name != null">
+        #{table_name,jdbcType=VARCHAR},
+      </if>
+      <if test="optimizer_hint != null">
+        #{optimizer_hint,jdbcType=SMALLINT},
+      </if>
+      <if test="lock_type != null">
+        #{lock_type,jdbcType=SMALLINT},
+      </if>
+      <if test="server_name != null">
+        #{server_name,jdbcType=VARCHAR},
+      </if>
+      <if test="objectid != null">
+        #{objectid,jdbcType=INTEGER},
+      </if>
+      <if test="dbid != null">
+        #{dbid,jdbcType=INTEGER},
+      </if>
+      <if test="dbname != null">
+        #{dbname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

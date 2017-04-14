@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmFilestreamFileIoHandlesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmFilestreamFileIoHandles">
+    <result column="creation_request_id" jdbcType="INTEGER" property="creation_request_id" />
+    <result column="creation_irp_id" jdbcType="INTEGER" property="creation_irp_id" />
+    <result column="handle_id" jdbcType="INTEGER" property="handle_id" />
+    <result column="access_type" jdbcType="VARCHAR" property="access_type" />
+    <result column="logical_path" jdbcType="VARCHAR" property="logical_path" />
+    <result column="physical_path" jdbcType="VARCHAR" property="physical_path" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmFilestreamFileIoHandlesWithBLOBs">
+    <result column="handle_context_address" jdbcType="VARBINARY" property="handle_context_address" />
+    <result column="creation_client_thread_id" jdbcType="VARBINARY" property="creation_client_thread_id" />
+    <result column="creation_client_process_id" jdbcType="VARBINARY" property="creation_client_process_id" />
+    <result column="filestream_transaction_id" jdbcType="VARBINARY" property="filestream_transaction_id" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    handle_context_address, creation_client_thread_id, creation_client_process_id, filestream_transaction_id
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmFilestreamFileIoHandlesWithBLOBs">
+    insert into dm_filestream_file_io_handles (creation_request_id, creation_irp_id, 
+      handle_id, access_type, logical_path, 
+      physical_path, handle_context_address, 
+      creation_client_thread_id, creation_client_process_id, 
+      filestream_transaction_id)
+    values (#{creation_request_id,jdbcType=INTEGER}, #{creation_irp_id,jdbcType=INTEGER}, 
+      #{handle_id,jdbcType=INTEGER}, #{access_type,jdbcType=VARCHAR}, #{logical_path,jdbcType=VARCHAR}, 
+      #{physical_path,jdbcType=VARCHAR}, #{handle_context_address,jdbcType=VARBINARY}, 
+      #{creation_client_thread_id,jdbcType=VARBINARY}, #{creation_client_process_id,jdbcType=VARBINARY}, 
+      #{filestream_transaction_id,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmFilestreamFileIoHandlesWithBLOBs">
+    insert into dm_filestream_file_io_handles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="creation_request_id != null">
+        creation_request_id,
+      </if>
+      <if test="creation_irp_id != null">
+        creation_irp_id,
+      </if>
+      <if test="handle_id != null">
+        handle_id,
+      </if>
+      <if test="access_type != null">
+        access_type,
+      </if>
+      <if test="logical_path != null">
+        logical_path,
+      </if>
+      <if test="physical_path != null">
+        physical_path,
+      </if>
+      <if test="handle_context_address != null">
+        handle_context_address,
+      </if>
+      <if test="creation_client_thread_id != null">
+        creation_client_thread_id,
+      </if>
+      <if test="creation_client_process_id != null">
+        creation_client_process_id,
+      </if>
+      <if test="filestream_transaction_id != null">
+        filestream_transaction_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="creation_request_id != null">
+        #{creation_request_id,jdbcType=INTEGER},
+      </if>
+      <if test="creation_irp_id != null">
+        #{creation_irp_id,jdbcType=INTEGER},
+      </if>
+      <if test="handle_id != null">
+        #{handle_id,jdbcType=INTEGER},
+      </if>
+      <if test="access_type != null">
+        #{access_type,jdbcType=VARCHAR},
+      </if>
+      <if test="logical_path != null">
+        #{logical_path,jdbcType=VARCHAR},
+      </if>
+      <if test="physical_path != null">
+        #{physical_path,jdbcType=VARCHAR},
+      </if>
+      <if test="handle_context_address != null">
+        #{handle_context_address,jdbcType=VARBINARY},
+      </if>
+      <if test="creation_client_thread_id != null">
+        #{creation_client_thread_id,jdbcType=VARBINARY},
+      </if>
+      <if test="creation_client_process_id != null">
+        #{creation_client_process_id,jdbcType=VARBINARY},
+      </if>
+      <if test="filestream_transaction_id != null">
+        #{filestream_transaction_id,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

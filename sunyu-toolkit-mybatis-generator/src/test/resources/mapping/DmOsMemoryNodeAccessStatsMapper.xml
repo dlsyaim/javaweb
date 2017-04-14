@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryNodeAccessStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryNodeAccessStats">
+    <result column="local_node" jdbcType="INTEGER" property="local_node" />
+    <result column="remote_node" jdbcType="INTEGER" property="remote_node" />
+    <result column="page_class" jdbcType="VARCHAR" property="page_class" />
+    <result column="read_count" jdbcType="BIGINT" property="read_count" />
+    <result column="write_count" jdbcType="BIGINT" property="write_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryNodeAccessStats">
+    insert into dm_os_memory_node_access_stats (local_node, remote_node, page_class, 
+      read_count, write_count)
+    values (#{local_node,jdbcType=INTEGER}, #{remote_node,jdbcType=INTEGER}, #{page_class,jdbcType=VARCHAR}, 
+      #{read_count,jdbcType=BIGINT}, #{write_count,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryNodeAccessStats">
+    insert into dm_os_memory_node_access_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="local_node != null">
+        local_node,
+      </if>
+      <if test="remote_node != null">
+        remote_node,
+      </if>
+      <if test="page_class != null">
+        page_class,
+      </if>
+      <if test="read_count != null">
+        read_count,
+      </if>
+      <if test="write_count != null">
+        write_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="local_node != null">
+        #{local_node,jdbcType=INTEGER},
+      </if>
+      <if test="remote_node != null">
+        #{remote_node,jdbcType=INTEGER},
+      </if>
+      <if test="page_class != null">
+        #{page_class,jdbcType=VARCHAR},
+      </if>
+      <if test="read_count != null">
+        #{read_count,jdbcType=BIGINT},
+      </if>
+      <if test="write_count != null">
+        #{write_count,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

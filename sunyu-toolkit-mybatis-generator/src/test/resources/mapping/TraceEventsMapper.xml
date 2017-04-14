@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TraceEventsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.TraceEvents">
+    <result column="trace_event_id" jdbcType="SMALLINT" property="trace_event_id" />
+    <result column="category_id" jdbcType="SMALLINT" property="category_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.TraceEvents">
+    insert into trace_events (trace_event_id, category_id, name
+      )
+    values (#{trace_event_id,jdbcType=SMALLINT}, #{category_id,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.TraceEvents">
+    insert into trace_events
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="trace_event_id != null">
+        trace_event_id,
+      </if>
+      <if test="category_id != null">
+        category_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="trace_event_id != null">
+        #{trace_event_id,jdbcType=SMALLINT},
+      </if>
+      <if test="category_id != null">
+        #{category_id,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

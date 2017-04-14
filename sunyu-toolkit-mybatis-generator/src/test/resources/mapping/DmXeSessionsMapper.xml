@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmXeSessionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmXeSessions">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pending_buffers" jdbcType="INTEGER" property="pending_buffers" />
+    <result column="total_regular_buffers" jdbcType="INTEGER" property="total_regular_buffers" />
+    <result column="regular_buffer_size" jdbcType="BIGINT" property="regular_buffer_size" />
+    <result column="total_large_buffers" jdbcType="INTEGER" property="total_large_buffers" />
+    <result column="large_buffer_size" jdbcType="BIGINT" property="large_buffer_size" />
+    <result column="total_buffer_size" jdbcType="BIGINT" property="total_buffer_size" />
+    <result column="buffer_policy_flags" jdbcType="INTEGER" property="buffer_policy_flags" />
+    <result column="buffer_policy_desc" jdbcType="VARCHAR" property="buffer_policy_desc" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="flag_desc" jdbcType="VARCHAR" property="flag_desc" />
+    <result column="dropped_event_count" jdbcType="INTEGER" property="dropped_event_count" />
+    <result column="dropped_buffer_count" jdbcType="INTEGER" property="dropped_buffer_count" />
+    <result column="blocked_event_fire_time" jdbcType="INTEGER" property="blocked_event_fire_time" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="largest_event_dropped_size" jdbcType="INTEGER" property="largest_event_dropped_size" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmXeSessions">
+    <result column="address" jdbcType="VARBINARY" property="address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmXeSessions">
+    insert into dm_xe_sessions (name, pending_buffers, total_regular_buffers, 
+      regular_buffer_size, total_large_buffers, 
+      large_buffer_size, total_buffer_size, buffer_policy_flags, 
+      buffer_policy_desc, flags, flag_desc, 
+      dropped_event_count, dropped_buffer_count, 
+      blocked_event_fire_time, create_time, 
+      largest_event_dropped_size, address)
+    values (#{name,jdbcType=VARCHAR}, #{pending_buffers,jdbcType=INTEGER}, #{total_regular_buffers,jdbcType=INTEGER}, 
+      #{regular_buffer_size,jdbcType=BIGINT}, #{total_large_buffers,jdbcType=INTEGER}, 
+      #{large_buffer_size,jdbcType=BIGINT}, #{total_buffer_size,jdbcType=BIGINT}, #{buffer_policy_flags,jdbcType=INTEGER}, 
+      #{buffer_policy_desc,jdbcType=VARCHAR}, #{flags,jdbcType=INTEGER}, #{flag_desc,jdbcType=VARCHAR}, 
+      #{dropped_event_count,jdbcType=INTEGER}, #{dropped_buffer_count,jdbcType=INTEGER}, 
+      #{blocked_event_fire_time,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{largest_event_dropped_size,jdbcType=INTEGER}, #{address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmXeSessions">
+    insert into dm_xe_sessions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="pending_buffers != null">
+        pending_buffers,
+      </if>
+      <if test="total_regular_buffers != null">
+        total_regular_buffers,
+      </if>
+      <if test="regular_buffer_size != null">
+        regular_buffer_size,
+      </if>
+      <if test="total_large_buffers != null">
+        total_large_buffers,
+      </if>
+      <if test="large_buffer_size != null">
+        large_buffer_size,
+      </if>
+      <if test="total_buffer_size != null">
+        total_buffer_size,
+      </if>
+      <if test="buffer_policy_flags != null">
+        buffer_policy_flags,
+      </if>
+      <if test="buffer_policy_desc != null">
+        buffer_policy_desc,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="flag_desc != null">
+        flag_desc,
+      </if>
+      <if test="dropped_event_count != null">
+        dropped_event_count,
+      </if>
+      <if test="dropped_buffer_count != null">
+        dropped_buffer_count,
+      </if>
+      <if test="blocked_event_fire_time != null">
+        blocked_event_fire_time,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="largest_event_dropped_size != null">
+        largest_event_dropped_size,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pending_buffers != null">
+        #{pending_buffers,jdbcType=INTEGER},
+      </if>
+      <if test="total_regular_buffers != null">
+        #{total_regular_buffers,jdbcType=INTEGER},
+      </if>
+      <if test="regular_buffer_size != null">
+        #{regular_buffer_size,jdbcType=BIGINT},
+      </if>
+      <if test="total_large_buffers != null">
+        #{total_large_buffers,jdbcType=INTEGER},
+      </if>
+      <if test="large_buffer_size != null">
+        #{large_buffer_size,jdbcType=BIGINT},
+      </if>
+      <if test="total_buffer_size != null">
+        #{total_buffer_size,jdbcType=BIGINT},
+      </if>
+      <if test="buffer_policy_flags != null">
+        #{buffer_policy_flags,jdbcType=INTEGER},
+      </if>
+      <if test="buffer_policy_desc != null">
+        #{buffer_policy_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="flag_desc != null">
+        #{flag_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="dropped_event_count != null">
+        #{dropped_event_count,jdbcType=INTEGER},
+      </if>
+      <if test="dropped_buffer_count != null">
+        #{dropped_buffer_count,jdbcType=INTEGER},
+      </if>
+      <if test="blocked_event_fire_time != null">
+        #{blocked_event_fire_time,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="largest_event_dropped_size != null">
+        #{largest_event_dropped_size,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

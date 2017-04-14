@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServiceContractUsagesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ServiceContractUsages">
+    <result column="service_id" jdbcType="INTEGER" property="service_id" />
+    <result column="service_contract_id" jdbcType="INTEGER" property="service_contract_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ServiceContractUsages">
+    insert into service_contract_usages (service_id, service_contract_id)
+    values (#{service_id,jdbcType=INTEGER}, #{service_contract_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ServiceContractUsages">
+    insert into service_contract_usages
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="service_id != null">
+        service_id,
+      </if>
+      <if test="service_contract_id != null">
+        service_contract_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="service_id != null">
+        #{service_id,jdbcType=INTEGER},
+      </if>
+      <if test="service_contract_id != null">
+        #{service_contract_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

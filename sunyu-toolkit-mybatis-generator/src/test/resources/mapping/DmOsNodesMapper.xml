@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsNodesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsNodes">
+    <result column="node_id" jdbcType="SMALLINT" property="node_id" />
+    <result column="node_state_desc" jdbcType="VARCHAR" property="node_state_desc" />
+    <result column="memory_node_id" jdbcType="SMALLINT" property="memory_node_id" />
+    <result column="cpu_affinity_mask" jdbcType="BIGINT" property="cpu_affinity_mask" />
+    <result column="online_scheduler_count" jdbcType="SMALLINT" property="online_scheduler_count" />
+    <result column="idle_scheduler_count" jdbcType="SMALLINT" property="idle_scheduler_count" />
+    <result column="active_worker_count" jdbcType="INTEGER" property="active_worker_count" />
+    <result column="avg_load_balance" jdbcType="INTEGER" property="avg_load_balance" />
+    <result column="timer_task_affinity_mask" jdbcType="BIGINT" property="timer_task_affinity_mask" />
+    <result column="permanent_task_affinity_mask" jdbcType="BIGINT" property="permanent_task_affinity_mask" />
+    <result column="resource_monitor_state" jdbcType="BIT" property="resource_monitor_state" />
+    <result column="online_scheduler_mask" jdbcType="BIGINT" property="online_scheduler_mask" />
+    <result column="processor_group" jdbcType="SMALLINT" property="processor_group" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsNodesWithBLOBs">
+    <result column="memory_object_address" jdbcType="VARBINARY" property="memory_object_address" />
+    <result column="memory_clerk_address" jdbcType="VARBINARY" property="memory_clerk_address" />
+    <result column="io_completion_worker_address" jdbcType="VARBINARY" property="io_completion_worker_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_object_address, memory_clerk_address, io_completion_worker_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsNodesWithBLOBs">
+    insert into dm_os_nodes (node_id, node_state_desc, memory_node_id, 
+      cpu_affinity_mask, online_scheduler_count, 
+      idle_scheduler_count, active_worker_count, 
+      avg_load_balance, timer_task_affinity_mask, 
+      permanent_task_affinity_mask, resource_monitor_state, 
+      online_scheduler_mask, processor_group, 
+      memory_object_address, memory_clerk_address, 
+      io_completion_worker_address)
+    values (#{node_id,jdbcType=SMALLINT}, #{node_state_desc,jdbcType=VARCHAR}, #{memory_node_id,jdbcType=SMALLINT}, 
+      #{cpu_affinity_mask,jdbcType=BIGINT}, #{online_scheduler_count,jdbcType=SMALLINT}, 
+      #{idle_scheduler_count,jdbcType=SMALLINT}, #{active_worker_count,jdbcType=INTEGER}, 
+      #{avg_load_balance,jdbcType=INTEGER}, #{timer_task_affinity_mask,jdbcType=BIGINT}, 
+      #{permanent_task_affinity_mask,jdbcType=BIGINT}, #{resource_monitor_state,jdbcType=BIT}, 
+      #{online_scheduler_mask,jdbcType=BIGINT}, #{processor_group,jdbcType=SMALLINT}, 
+      #{memory_object_address,jdbcType=VARBINARY}, #{memory_clerk_address,jdbcType=VARBINARY}, 
+      #{io_completion_worker_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsNodesWithBLOBs">
+    insert into dm_os_nodes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="node_id != null">
+        node_id,
+      </if>
+      <if test="node_state_desc != null">
+        node_state_desc,
+      </if>
+      <if test="memory_node_id != null">
+        memory_node_id,
+      </if>
+      <if test="cpu_affinity_mask != null">
+        cpu_affinity_mask,
+      </if>
+      <if test="online_scheduler_count != null">
+        online_scheduler_count,
+      </if>
+      <if test="idle_scheduler_count != null">
+        idle_scheduler_count,
+      </if>
+      <if test="active_worker_count != null">
+        active_worker_count,
+      </if>
+      <if test="avg_load_balance != null">
+        avg_load_balance,
+      </if>
+      <if test="timer_task_affinity_mask != null">
+        timer_task_affinity_mask,
+      </if>
+      <if test="permanent_task_affinity_mask != null">
+        permanent_task_affinity_mask,
+      </if>
+      <if test="resource_monitor_state != null">
+        resource_monitor_state,
+      </if>
+      <if test="online_scheduler_mask != null">
+        online_scheduler_mask,
+      </if>
+      <if test="processor_group != null">
+        processor_group,
+      </if>
+      <if test="memory_object_address != null">
+        memory_object_address,
+      </if>
+      <if test="memory_clerk_address != null">
+        memory_clerk_address,
+      </if>
+      <if test="io_completion_worker_address != null">
+        io_completion_worker_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="node_id != null">
+        #{node_id,jdbcType=SMALLINT},
+      </if>
+      <if test="node_state_desc != null">
+        #{node_state_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="memory_node_id != null">
+        #{memory_node_id,jdbcType=SMALLINT},
+      </if>
+      <if test="cpu_affinity_mask != null">
+        #{cpu_affinity_mask,jdbcType=BIGINT},
+      </if>
+      <if test="online_scheduler_count != null">
+        #{online_scheduler_count,jdbcType=SMALLINT},
+      </if>
+      <if test="idle_scheduler_count != null">
+        #{idle_scheduler_count,jdbcType=SMALLINT},
+      </if>
+      <if test="active_worker_count != null">
+        #{active_worker_count,jdbcType=INTEGER},
+      </if>
+      <if test="avg_load_balance != null">
+        #{avg_load_balance,jdbcType=INTEGER},
+      </if>
+      <if test="timer_task_affinity_mask != null">
+        #{timer_task_affinity_mask,jdbcType=BIGINT},
+      </if>
+      <if test="permanent_task_affinity_mask != null">
+        #{permanent_task_affinity_mask,jdbcType=BIGINT},
+      </if>
+      <if test="resource_monitor_state != null">
+        #{resource_monitor_state,jdbcType=BIT},
+      </if>
+      <if test="online_scheduler_mask != null">
+        #{online_scheduler_mask,jdbcType=BIGINT},
+      </if>
+      <if test="processor_group != null">
+        #{processor_group,jdbcType=SMALLINT},
+      </if>
+      <if test="memory_object_address != null">
+        #{memory_object_address,jdbcType=VARBINARY},
+      </if>
+      <if test="memory_clerk_address != null">
+        #{memory_clerk_address,jdbcType=VARBINARY},
+      </if>
+      <if test="io_completion_worker_address != null">
+        #{io_completion_worker_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

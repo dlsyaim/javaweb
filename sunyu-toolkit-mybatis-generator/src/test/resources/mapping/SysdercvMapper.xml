@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysdercvMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysdercv">
+    <result column="diagid" jdbcType="CHAR" property="diagid" />
+    <result column="initiator" jdbcType="TINYINT" property="initiator" />
+    <result column="handle" jdbcType="CHAR" property="handle" />
+    <result column="rcvseq" jdbcType="BIGINT" property="rcvseq" />
+    <result column="rcvfrag" jdbcType="INTEGER" property="rcvfrag" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="state" jdbcType="CHAR" property="state" />
+    <result column="lifetime" jdbcType="TIMESTAMP" property="lifetime" />
+    <result column="contract" jdbcType="INTEGER" property="contract" />
+    <result column="svcid" jdbcType="INTEGER" property="svcid" />
+    <result column="convgroup" jdbcType="CHAR" property="convgroup" />
+    <result column="sysseq" jdbcType="BIGINT" property="sysseq" />
+    <result column="enddlgseq" jdbcType="BIGINT" property="enddlgseq" />
+    <result column="firstoorder" jdbcType="BIGINT" property="firstoorder" />
+    <result column="lastoorder" jdbcType="BIGINT" property="lastoorder" />
+    <result column="lastoorderfr" jdbcType="INTEGER" property="lastoorderfr" />
+    <result column="dlgtimer" jdbcType="TIMESTAMP" property="dlgtimer" />
+    <result column="dlgopened" jdbcType="TIMESTAMP" property="dlgopened" />
+    <result column="princid" jdbcType="INTEGER" property="princid" />
+    <result column="outseskeyid" jdbcType="CHAR" property="outseskeyid" />
+    <result column="farprincid" jdbcType="INTEGER" property="farprincid" />
+    <result column="inseskeyid" jdbcType="CHAR" property="inseskeyid" />
+    <result column="farsvc" jdbcType="VARCHAR" property="farsvc" />
+    <result column="farbrkrinst" jdbcType="VARCHAR" property="farbrkrinst" />
+    <result column="priority" jdbcType="TINYINT" property="priority" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysdercvWithBLOBs">
+    <result column="outseskey" jdbcType="VARBINARY" property="outseskey" />
+    <result column="inseskey" jdbcType="VARBINARY" property="inseskey" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    outseskey, inseskey
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysdercvWithBLOBs">
+    insert into sysdercv (diagid, initiator, handle, 
+      rcvseq, rcvfrag, status, 
+      state, lifetime, contract, 
+      svcid, convgroup, sysseq, 
+      enddlgseq, firstoorder, lastoorder, 
+      lastoorderfr, dlgtimer, dlgopened, 
+      princid, outseskeyid, farprincid, 
+      inseskeyid, farsvc, farbrkrinst, 
+      priority, outseskey, inseskey
+      )
+    values (#{diagid,jdbcType=CHAR}, #{initiator,jdbcType=TINYINT}, #{handle,jdbcType=CHAR}, 
+      #{rcvseq,jdbcType=BIGINT}, #{rcvfrag,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{state,jdbcType=CHAR}, #{lifetime,jdbcType=TIMESTAMP}, #{contract,jdbcType=INTEGER}, 
+      #{svcid,jdbcType=INTEGER}, #{convgroup,jdbcType=CHAR}, #{sysseq,jdbcType=BIGINT}, 
+      #{enddlgseq,jdbcType=BIGINT}, #{firstoorder,jdbcType=BIGINT}, #{lastoorder,jdbcType=BIGINT}, 
+      #{lastoorderfr,jdbcType=INTEGER}, #{dlgtimer,jdbcType=TIMESTAMP}, #{dlgopened,jdbcType=TIMESTAMP}, 
+      #{princid,jdbcType=INTEGER}, #{outseskeyid,jdbcType=CHAR}, #{farprincid,jdbcType=INTEGER}, 
+      #{inseskeyid,jdbcType=CHAR}, #{farsvc,jdbcType=VARCHAR}, #{farbrkrinst,jdbcType=VARCHAR}, 
+      #{priority,jdbcType=TINYINT}, #{outseskey,jdbcType=VARBINARY}, #{inseskey,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysdercvWithBLOBs">
+    insert into sysdercv
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="diagid != null">
+        diagid,
+      </if>
+      <if test="initiator != null">
+        initiator,
+      </if>
+      <if test="handle != null">
+        handle,
+      </if>
+      <if test="rcvseq != null">
+        rcvseq,
+      </if>
+      <if test="rcvfrag != null">
+        rcvfrag,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="lifetime != null">
+        lifetime,
+      </if>
+      <if test="contract != null">
+        contract,
+      </if>
+      <if test="svcid != null">
+        svcid,
+      </if>
+      <if test="convgroup != null">
+        convgroup,
+      </if>
+      <if test="sysseq != null">
+        sysseq,
+      </if>
+      <if test="enddlgseq != null">
+        enddlgseq,
+      </if>
+      <if test="firstoorder != null">
+        firstoorder,
+      </if>
+      <if test="lastoorder != null">
+        lastoorder,
+      </if>
+      <if test="lastoorderfr != null">
+        lastoorderfr,
+      </if>
+      <if test="dlgtimer != null">
+        dlgtimer,
+      </if>
+      <if test="dlgopened != null">
+        dlgopened,
+      </if>
+      <if test="princid != null">
+        princid,
+      </if>
+      <if test="outseskeyid != null">
+        outseskeyid,
+      </if>
+      <if test="farprincid != null">
+        farprincid,
+      </if>
+      <if test="inseskeyid != null">
+        inseskeyid,
+      </if>
+      <if test="farsvc != null">
+        farsvc,
+      </if>
+      <if test="farbrkrinst != null">
+        farbrkrinst,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="outseskey != null">
+        outseskey,
+      </if>
+      <if test="inseskey != null">
+        inseskey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="diagid != null">
+        #{diagid,jdbcType=CHAR},
+      </if>
+      <if test="initiator != null">
+        #{initiator,jdbcType=TINYINT},
+      </if>
+      <if test="handle != null">
+        #{handle,jdbcType=CHAR},
+      </if>
+      <if test="rcvseq != null">
+        #{rcvseq,jdbcType=BIGINT},
+      </if>
+      <if test="rcvfrag != null">
+        #{rcvfrag,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="lifetime != null">
+        #{lifetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contract != null">
+        #{contract,jdbcType=INTEGER},
+      </if>
+      <if test="svcid != null">
+        #{svcid,jdbcType=INTEGER},
+      </if>
+      <if test="convgroup != null">
+        #{convgroup,jdbcType=CHAR},
+      </if>
+      <if test="sysseq != null">
+        #{sysseq,jdbcType=BIGINT},
+      </if>
+      <if test="enddlgseq != null">
+        #{enddlgseq,jdbcType=BIGINT},
+      </if>
+      <if test="firstoorder != null">
+        #{firstoorder,jdbcType=BIGINT},
+      </if>
+      <if test="lastoorder != null">
+        #{lastoorder,jdbcType=BIGINT},
+      </if>
+      <if test="lastoorderfr != null">
+        #{lastoorderfr,jdbcType=INTEGER},
+      </if>
+      <if test="dlgtimer != null">
+        #{dlgtimer,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dlgopened != null">
+        #{dlgopened,jdbcType=TIMESTAMP},
+      </if>
+      <if test="princid != null">
+        #{princid,jdbcType=INTEGER},
+      </if>
+      <if test="outseskeyid != null">
+        #{outseskeyid,jdbcType=CHAR},
+      </if>
+      <if test="farprincid != null">
+        #{farprincid,jdbcType=INTEGER},
+      </if>
+      <if test="inseskeyid != null">
+        #{inseskeyid,jdbcType=CHAR},
+      </if>
+      <if test="farsvc != null">
+        #{farsvc,jdbcType=VARCHAR},
+      </if>
+      <if test="farbrkrinst != null">
+        #{farbrkrinst,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=TINYINT},
+      </if>
+      <if test="outseskey != null">
+        #{outseskey,jdbcType=VARBINARY},
+      </if>
+      <if test="inseskey != null">
+        #{inseskey,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

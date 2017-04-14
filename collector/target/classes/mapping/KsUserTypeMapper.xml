@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsUserTypeMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsUserType">
+    <id column="UserTypeID" jdbcType="BIGINT" property="userTypeID" />
+    <result column="UserTypeName" jdbcType="VARCHAR" property="userTypeName" />
+    <result column="AddTime" jdbcType="VARCHAR" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UserTypeID, UserTypeName, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_User_Type
+    where UserTypeID = #{userTypeID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_User_Type
+    where UserTypeID = #{userTypeID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsUserType">
+    insert into KS_User_Type (UserTypeID, UserTypeName, AddTime, 
+      Status)
+    values (#{userTypeID,jdbcType=BIGINT}, #{userTypeName,jdbcType=VARCHAR}, #{addTime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsUserType">
+    insert into KS_User_Type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userTypeID != null">
+        UserTypeID,
+      </if>
+      <if test="userTypeName != null">
+        UserTypeName,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userTypeID != null">
+        #{userTypeID,jdbcType=BIGINT},
+      </if>
+      <if test="userTypeName != null">
+        #{userTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsUserType">
+    update KS_User_Type
+    <set>
+      <if test="userTypeName != null">
+        UserTypeName = #{userTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where UserTypeID = #{userTypeID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsUserType">
+    update KS_User_Type
+    set UserTypeName = #{userTypeName,jdbcType=VARCHAR},
+      AddTime = #{addTime,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=SMALLINT}
+    where UserTypeID = #{userTypeID,jdbcType=BIGINT}
+  </update>
+</mapper>

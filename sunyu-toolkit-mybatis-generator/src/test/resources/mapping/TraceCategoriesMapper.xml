@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TraceCategoriesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.TraceCategories">
+    <result column="category_id" jdbcType="SMALLINT" property="category_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.TraceCategories">
+    insert into trace_categories (category_id, name, type
+      )
+    values (#{category_id,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.TraceCategories">
+    insert into trace_categories
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="category_id != null">
+        category_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="category_id != null">
+        #{category_id,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

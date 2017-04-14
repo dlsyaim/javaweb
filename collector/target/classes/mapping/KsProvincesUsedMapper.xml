@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsProvincesUsedMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsProvincesUsed">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="ProvinceID" jdbcType="BIGINT" property="provinceID" />
+    <result column="ProvinceName" jdbcType="VARCHAR" property="provinceName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ProvinceID, ProvinceName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Provinces_Used
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from KS_Provinces_Used
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsProvincesUsed">
+    insert into KS_Provinces_Used (ID, ProvinceID, ProvinceName
+      )
+    values (#{ID,jdbcType=INTEGER}, #{provinceID,jdbcType=BIGINT}, #{provinceName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsProvincesUsed">
+    insert into KS_Provinces_Used
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="provinceID != null">
+        ProvinceID,
+      </if>
+      <if test="provinceName != null">
+        ProvinceName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="provinceID != null">
+        #{provinceID,jdbcType=BIGINT},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsProvincesUsed">
+    update KS_Provinces_Used
+    <set>
+      <if test="provinceID != null">
+        ProvinceID = #{provinceID,jdbcType=BIGINT},
+      </if>
+      <if test="provinceName != null">
+        ProvinceName = #{provinceName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsProvincesUsed">
+    update KS_Provinces_Used
+    set ProvinceID = #{provinceID,jdbcType=BIGINT},
+      ProvinceName = #{provinceName,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

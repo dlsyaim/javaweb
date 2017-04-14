@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmSqlReferencedEntitiesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmSqlReferencedEntities">
+    <result column="referencing_minor_id" jdbcType="INTEGER" property="referencing_minor_id" />
+    <result column="referenced_server_name" jdbcType="VARCHAR" property="referenced_server_name" />
+    <result column="referenced_database_name" jdbcType="VARCHAR" property="referenced_database_name" />
+    <result column="referenced_schema_name" jdbcType="VARCHAR" property="referenced_schema_name" />
+    <result column="referenced_entity_name" jdbcType="VARCHAR" property="referenced_entity_name" />
+    <result column="referenced_minor_name" jdbcType="VARCHAR" property="referenced_minor_name" />
+    <result column="referenced_id" jdbcType="INTEGER" property="referenced_id" />
+    <result column="referenced_minor_id" jdbcType="INTEGER" property="referenced_minor_id" />
+    <result column="referenced_class" jdbcType="TINYINT" property="referenced_class" />
+    <result column="referenced_class_desc" jdbcType="VARCHAR" property="referenced_class_desc" />
+    <result column="is_caller_dependent" jdbcType="BIT" property="is_caller_dependent" />
+    <result column="is_ambiguous" jdbcType="BIT" property="is_ambiguous" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmSqlReferencedEntities">
+    insert into dm_sql_referenced_entities (referencing_minor_id, referenced_server_name, 
+      referenced_database_name, referenced_schema_name, 
+      referenced_entity_name, referenced_minor_name, 
+      referenced_id, referenced_minor_id, referenced_class, 
+      referenced_class_desc, is_caller_dependent, 
+      is_ambiguous)
+    values (#{referencing_minor_id,jdbcType=INTEGER}, #{referenced_server_name,jdbcType=VARCHAR}, 
+      #{referenced_database_name,jdbcType=VARCHAR}, #{referenced_schema_name,jdbcType=VARCHAR}, 
+      #{referenced_entity_name,jdbcType=VARCHAR}, #{referenced_minor_name,jdbcType=VARCHAR}, 
+      #{referenced_id,jdbcType=INTEGER}, #{referenced_minor_id,jdbcType=INTEGER}, #{referenced_class,jdbcType=TINYINT}, 
+      #{referenced_class_desc,jdbcType=VARCHAR}, #{is_caller_dependent,jdbcType=BIT}, 
+      #{is_ambiguous,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmSqlReferencedEntities">
+    insert into dm_sql_referenced_entities
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="referencing_minor_id != null">
+        referencing_minor_id,
+      </if>
+      <if test="referenced_server_name != null">
+        referenced_server_name,
+      </if>
+      <if test="referenced_database_name != null">
+        referenced_database_name,
+      </if>
+      <if test="referenced_schema_name != null">
+        referenced_schema_name,
+      </if>
+      <if test="referenced_entity_name != null">
+        referenced_entity_name,
+      </if>
+      <if test="referenced_minor_name != null">
+        referenced_minor_name,
+      </if>
+      <if test="referenced_id != null">
+        referenced_id,
+      </if>
+      <if test="referenced_minor_id != null">
+        referenced_minor_id,
+      </if>
+      <if test="referenced_class != null">
+        referenced_class,
+      </if>
+      <if test="referenced_class_desc != null">
+        referenced_class_desc,
+      </if>
+      <if test="is_caller_dependent != null">
+        is_caller_dependent,
+      </if>
+      <if test="is_ambiguous != null">
+        is_ambiguous,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="referencing_minor_id != null">
+        #{referencing_minor_id,jdbcType=INTEGER},
+      </if>
+      <if test="referenced_server_name != null">
+        #{referenced_server_name,jdbcType=VARCHAR},
+      </if>
+      <if test="referenced_database_name != null">
+        #{referenced_database_name,jdbcType=VARCHAR},
+      </if>
+      <if test="referenced_schema_name != null">
+        #{referenced_schema_name,jdbcType=VARCHAR},
+      </if>
+      <if test="referenced_entity_name != null">
+        #{referenced_entity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="referenced_minor_name != null">
+        #{referenced_minor_name,jdbcType=VARCHAR},
+      </if>
+      <if test="referenced_id != null">
+        #{referenced_id,jdbcType=INTEGER},
+      </if>
+      <if test="referenced_minor_id != null">
+        #{referenced_minor_id,jdbcType=INTEGER},
+      </if>
+      <if test="referenced_class != null">
+        #{referenced_class,jdbcType=TINYINT},
+      </if>
+      <if test="referenced_class_desc != null">
+        #{referenced_class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="is_caller_dependent != null">
+        #{is_caller_dependent,jdbcType=BIT},
+      </if>
+      <if test="is_ambiguous != null">
+        #{is_ambiguous,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsSoftbuttonrealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsSoftbuttonreal">
+    <id column="SoftButtonRealId" jdbcType="BIGINT" property="softButtonRealId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RealTime" jdbcType="TIMESTAMP" property="realTime" />
+    <result column="SoftButtonSet" jdbcType="BIT" property="softButtonSet" />
+    <result column="ConfirmSet" jdbcType="BIT" property="confirmSet" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SoftButtonRealId, EquipmentId, RealTime, SoftButtonSet, ConfirmSet
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_SoftButtonReal
+    where SoftButtonRealId = #{softButtonRealId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_SoftButtonReal
+    where SoftButtonRealId = #{softButtonRealId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsSoftbuttonreal">
+    insert into KS_SoftButtonReal (SoftButtonRealId, EquipmentId, RealTime, 
+      SoftButtonSet, ConfirmSet)
+    values (#{softButtonRealId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, #{realTime,jdbcType=TIMESTAMP}, 
+      #{softButtonSet,jdbcType=BIT}, #{confirmSet,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsSoftbuttonreal">
+    insert into KS_SoftButtonReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="softButtonRealId != null">
+        SoftButtonRealId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="realTime != null">
+        RealTime,
+      </if>
+      <if test="softButtonSet != null">
+        SoftButtonSet,
+      </if>
+      <if test="confirmSet != null">
+        ConfirmSet,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="softButtonRealId != null">
+        #{softButtonRealId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="softButtonSet != null">
+        #{softButtonSet,jdbcType=BIT},
+      </if>
+      <if test="confirmSet != null">
+        #{confirmSet,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsSoftbuttonreal">
+    update KS_SoftButtonReal
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        RealTime = #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="softButtonSet != null">
+        SoftButtonSet = #{softButtonSet,jdbcType=BIT},
+      </if>
+      <if test="confirmSet != null">
+        ConfirmSet = #{confirmSet,jdbcType=BIT},
+      </if>
+    </set>
+    where SoftButtonRealId = #{softButtonRealId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsSoftbuttonreal">
+    update KS_SoftButtonReal
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RealTime = #{realTime,jdbcType=TIMESTAMP},
+      SoftButtonSet = #{softButtonSet,jdbcType=BIT},
+      ConfirmSet = #{confirmSet,jdbcType=BIT}
+    where SoftButtonRealId = #{softButtonRealId,jdbcType=BIGINT}
+  </update>
+</mapper>

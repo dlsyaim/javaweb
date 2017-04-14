@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmIoVirtualFileStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmIoVirtualFileStats">
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="file_id" jdbcType="SMALLINT" property="file_id" />
+    <result column="sample_ms" jdbcType="INTEGER" property="sample_ms" />
+    <result column="num_of_reads" jdbcType="BIGINT" property="num_of_reads" />
+    <result column="num_of_bytes_read" jdbcType="BIGINT" property="num_of_bytes_read" />
+    <result column="io_stall_read_ms" jdbcType="BIGINT" property="io_stall_read_ms" />
+    <result column="num_of_writes" jdbcType="BIGINT" property="num_of_writes" />
+    <result column="num_of_bytes_written" jdbcType="BIGINT" property="num_of_bytes_written" />
+    <result column="io_stall_write_ms" jdbcType="BIGINT" property="io_stall_write_ms" />
+    <result column="io_stall" jdbcType="BIGINT" property="io_stall" />
+    <result column="size_on_disk_bytes" jdbcType="BIGINT" property="size_on_disk_bytes" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmIoVirtualFileStats">
+    <result column="file_handle" jdbcType="VARBINARY" property="file_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    file_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmIoVirtualFileStats">
+    insert into dm_io_virtual_file_stats (database_id, file_id, sample_ms, 
+      num_of_reads, num_of_bytes_read, io_stall_read_ms, 
+      num_of_writes, num_of_bytes_written, io_stall_write_ms, 
+      io_stall, size_on_disk_bytes, file_handle
+      )
+    values (#{database_id,jdbcType=SMALLINT}, #{file_id,jdbcType=SMALLINT}, #{sample_ms,jdbcType=INTEGER}, 
+      #{num_of_reads,jdbcType=BIGINT}, #{num_of_bytes_read,jdbcType=BIGINT}, #{io_stall_read_ms,jdbcType=BIGINT}, 
+      #{num_of_writes,jdbcType=BIGINT}, #{num_of_bytes_written,jdbcType=BIGINT}, #{io_stall_write_ms,jdbcType=BIGINT}, 
+      #{io_stall,jdbcType=BIGINT}, #{size_on_disk_bytes,jdbcType=BIGINT}, #{file_handle,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmIoVirtualFileStats">
+    insert into dm_io_virtual_file_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="file_id != null">
+        file_id,
+      </if>
+      <if test="sample_ms != null">
+        sample_ms,
+      </if>
+      <if test="num_of_reads != null">
+        num_of_reads,
+      </if>
+      <if test="num_of_bytes_read != null">
+        num_of_bytes_read,
+      </if>
+      <if test="io_stall_read_ms != null">
+        io_stall_read_ms,
+      </if>
+      <if test="num_of_writes != null">
+        num_of_writes,
+      </if>
+      <if test="num_of_bytes_written != null">
+        num_of_bytes_written,
+      </if>
+      <if test="io_stall_write_ms != null">
+        io_stall_write_ms,
+      </if>
+      <if test="io_stall != null">
+        io_stall,
+      </if>
+      <if test="size_on_disk_bytes != null">
+        size_on_disk_bytes,
+      </if>
+      <if test="file_handle != null">
+        file_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="file_id != null">
+        #{file_id,jdbcType=SMALLINT},
+      </if>
+      <if test="sample_ms != null">
+        #{sample_ms,jdbcType=INTEGER},
+      </if>
+      <if test="num_of_reads != null">
+        #{num_of_reads,jdbcType=BIGINT},
+      </if>
+      <if test="num_of_bytes_read != null">
+        #{num_of_bytes_read,jdbcType=BIGINT},
+      </if>
+      <if test="io_stall_read_ms != null">
+        #{io_stall_read_ms,jdbcType=BIGINT},
+      </if>
+      <if test="num_of_writes != null">
+        #{num_of_writes,jdbcType=BIGINT},
+      </if>
+      <if test="num_of_bytes_written != null">
+        #{num_of_bytes_written,jdbcType=BIGINT},
+      </if>
+      <if test="io_stall_write_ms != null">
+        #{io_stall_write_ms,jdbcType=BIGINT},
+      </if>
+      <if test="io_stall != null">
+        #{io_stall,jdbcType=BIGINT},
+      </if>
+      <if test="size_on_disk_bytes != null">
+        #{size_on_disk_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="file_handle != null">
+        #{file_handle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

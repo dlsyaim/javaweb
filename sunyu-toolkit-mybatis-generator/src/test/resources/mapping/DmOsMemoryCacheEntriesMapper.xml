@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryCacheEntriesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryCacheEntries">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="in_use_count" jdbcType="INTEGER" property="in_use_count" />
+    <result column="is_dirty" jdbcType="BIT" property="is_dirty" />
+    <result column="disk_ios_count" jdbcType="INTEGER" property="disk_ios_count" />
+    <result column="context_switches_count" jdbcType="INTEGER" property="context_switches_count" />
+    <result column="original_cost" jdbcType="INTEGER" property="original_cost" />
+    <result column="current_cost" jdbcType="INTEGER" property="current_cost" />
+    <result column="pages_allocated_count" jdbcType="BIGINT" property="pages_allocated_count" />
+    <result column="entry_data" jdbcType="VARCHAR" property="entry_data" />
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsMemoryCacheEntriesWithBLOBs">
+    <result column="cache_address" jdbcType="VARBINARY" property="cache_address" />
+    <result column="entry_address" jdbcType="VARBINARY" property="entry_address" />
+    <result column="entry_data_address" jdbcType="VARBINARY" property="entry_data_address" />
+    <result column="memory_object_address" jdbcType="VARBINARY" property="memory_object_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    cache_address, entry_address, entry_data_address, memory_object_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheEntriesWithBLOBs">
+    insert into dm_os_memory_cache_entries (name, type, in_use_count, 
+      is_dirty, disk_ios_count, context_switches_count, 
+      original_cost, current_cost, pages_allocated_count, 
+      entry_data, pool_id, cache_address, 
+      entry_address, entry_data_address, 
+      memory_object_address)
+    values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{in_use_count,jdbcType=INTEGER}, 
+      #{is_dirty,jdbcType=BIT}, #{disk_ios_count,jdbcType=INTEGER}, #{context_switches_count,jdbcType=INTEGER}, 
+      #{original_cost,jdbcType=INTEGER}, #{current_cost,jdbcType=INTEGER}, #{pages_allocated_count,jdbcType=BIGINT}, 
+      #{entry_data,jdbcType=VARCHAR}, #{pool_id,jdbcType=INTEGER}, #{cache_address,jdbcType=VARBINARY}, 
+      #{entry_address,jdbcType=VARBINARY}, #{entry_data_address,jdbcType=VARBINARY}, 
+      #{memory_object_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheEntriesWithBLOBs">
+    insert into dm_os_memory_cache_entries
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="in_use_count != null">
+        in_use_count,
+      </if>
+      <if test="is_dirty != null">
+        is_dirty,
+      </if>
+      <if test="disk_ios_count != null">
+        disk_ios_count,
+      </if>
+      <if test="context_switches_count != null">
+        context_switches_count,
+      </if>
+      <if test="original_cost != null">
+        original_cost,
+      </if>
+      <if test="current_cost != null">
+        current_cost,
+      </if>
+      <if test="pages_allocated_count != null">
+        pages_allocated_count,
+      </if>
+      <if test="entry_data != null">
+        entry_data,
+      </if>
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+      <if test="cache_address != null">
+        cache_address,
+      </if>
+      <if test="entry_address != null">
+        entry_address,
+      </if>
+      <if test="entry_data_address != null">
+        entry_data_address,
+      </if>
+      <if test="memory_object_address != null">
+        memory_object_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="in_use_count != null">
+        #{in_use_count,jdbcType=INTEGER},
+      </if>
+      <if test="is_dirty != null">
+        #{is_dirty,jdbcType=BIT},
+      </if>
+      <if test="disk_ios_count != null">
+        #{disk_ios_count,jdbcType=INTEGER},
+      </if>
+      <if test="context_switches_count != null">
+        #{context_switches_count,jdbcType=INTEGER},
+      </if>
+      <if test="original_cost != null">
+        #{original_cost,jdbcType=INTEGER},
+      </if>
+      <if test="current_cost != null">
+        #{current_cost,jdbcType=INTEGER},
+      </if>
+      <if test="pages_allocated_count != null">
+        #{pages_allocated_count,jdbcType=BIGINT},
+      </if>
+      <if test="entry_data != null">
+        #{entry_data,jdbcType=VARCHAR},
+      </if>
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+      <if test="cache_address != null">
+        #{cache_address,jdbcType=VARBINARY},
+      </if>
+      <if test="entry_address != null">
+        #{entry_address,jdbcType=VARBINARY},
+      </if>
+      <if test="entry_data_address != null">
+        #{entry_data_address,jdbcType=VARBINARY},
+      </if>
+      <if test="memory_object_address != null">
+        #{memory_object_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

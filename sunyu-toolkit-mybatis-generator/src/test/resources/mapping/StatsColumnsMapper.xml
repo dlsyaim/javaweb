@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.StatsColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.StatsColumns">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="stats_id" jdbcType="INTEGER" property="stats_id" />
+    <result column="stats_column_id" jdbcType="INTEGER" property="stats_column_id" />
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.StatsColumns">
+    insert into stats_columns (object_id, stats_id, stats_column_id, 
+      column_id)
+    values (#{object_id,jdbcType=INTEGER}, #{stats_id,jdbcType=INTEGER}, #{stats_column_id,jdbcType=INTEGER}, 
+      #{column_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.StatsColumns">
+    insert into stats_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="stats_id != null">
+        stats_id,
+      </if>
+      <if test="stats_column_id != null">
+        stats_column_id,
+      </if>
+      <if test="column_id != null">
+        column_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="stats_id != null">
+        #{stats_id,jdbcType=INTEGER},
+      </if>
+      <if test="stats_column_id != null">
+        #{stats_column_id,jdbcType=INTEGER},
+      </if>
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

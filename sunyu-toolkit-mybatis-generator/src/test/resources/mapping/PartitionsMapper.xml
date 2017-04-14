@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.PartitionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Partitions">
+    <result column="partition_id" jdbcType="BIGINT" property="partition_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="index_id" jdbcType="INTEGER" property="index_id" />
+    <result column="partition_number" jdbcType="INTEGER" property="partition_number" />
+    <result column="hobt_id" jdbcType="BIGINT" property="hobt_id" />
+    <result column="rows" jdbcType="BIGINT" property="rows" />
+    <result column="filestream_filegroup_id" jdbcType="SMALLINT" property="filestream_filegroup_id" />
+    <result column="data_compression" jdbcType="TINYINT" property="data_compression" />
+    <result column="data_compression_desc" jdbcType="VARCHAR" property="data_compression_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Partitions">
+    insert into partitions (partition_id, object_id, index_id, 
+      partition_number, hobt_id, rows, 
+      filestream_filegroup_id, data_compression, 
+      data_compression_desc)
+    values (#{partition_id,jdbcType=BIGINT}, #{object_id,jdbcType=INTEGER}, #{index_id,jdbcType=INTEGER}, 
+      #{partition_number,jdbcType=INTEGER}, #{hobt_id,jdbcType=BIGINT}, #{rows,jdbcType=BIGINT}, 
+      #{filestream_filegroup_id,jdbcType=SMALLINT}, #{data_compression,jdbcType=TINYINT}, 
+      #{data_compression_desc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Partitions">
+    insert into partitions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        partition_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="index_id != null">
+        index_id,
+      </if>
+      <if test="partition_number != null">
+        partition_number,
+      </if>
+      <if test="hobt_id != null">
+        hobt_id,
+      </if>
+      <if test="rows != null">
+        rows,
+      </if>
+      <if test="filestream_filegroup_id != null">
+        filestream_filegroup_id,
+      </if>
+      <if test="data_compression != null">
+        data_compression,
+      </if>
+      <if test="data_compression_desc != null">
+        data_compression_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        #{partition_id,jdbcType=BIGINT},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_id != null">
+        #{index_id,jdbcType=INTEGER},
+      </if>
+      <if test="partition_number != null">
+        #{partition_number,jdbcType=INTEGER},
+      </if>
+      <if test="hobt_id != null">
+        #{hobt_id,jdbcType=BIGINT},
+      </if>
+      <if test="rows != null">
+        #{rows,jdbcType=BIGINT},
+      </if>
+      <if test="filestream_filegroup_id != null">
+        #{filestream_filegroup_id,jdbcType=SMALLINT},
+      </if>
+      <if test="data_compression != null">
+        #{data_compression,jdbcType=TINYINT},
+      </if>
+      <if test="data_compression_desc != null">
+        #{data_compression_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

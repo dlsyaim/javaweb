@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SqlDependenciesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.SqlDependencies">
+    <result column="class" jdbcType="TINYINT" property="class" />
+    <result column="class_desc" jdbcType="VARCHAR" property="class_desc" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+    <result column="referenced_major_id" jdbcType="INTEGER" property="referenced_major_id" />
+    <result column="referenced_minor_id" jdbcType="INTEGER" property="referenced_minor_id" />
+    <result column="is_selected" jdbcType="BIT" property="is_selected" />
+    <result column="is_updated" jdbcType="BIT" property="is_updated" />
+    <result column="is_select_all" jdbcType="BIT" property="is_select_all" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SqlDependencies">
+    insert into sql_dependencies (class, class_desc, object_id, 
+      column_id, referenced_major_id, referenced_minor_id, 
+      is_selected, is_updated, is_select_all
+      )
+    values (#{class,jdbcType=TINYINT}, #{class_desc,jdbcType=VARCHAR}, #{object_id,jdbcType=INTEGER}, 
+      #{column_id,jdbcType=INTEGER}, #{referenced_major_id,jdbcType=INTEGER}, #{referenced_minor_id,jdbcType=INTEGER}, 
+      #{is_selected,jdbcType=BIT}, #{is_updated,jdbcType=BIT}, #{is_select_all,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SqlDependencies">
+    insert into sql_dependencies
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="class != null">
+        class,
+      </if>
+      <if test="class_desc != null">
+        class_desc,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="column_id != null">
+        column_id,
+      </if>
+      <if test="referenced_major_id != null">
+        referenced_major_id,
+      </if>
+      <if test="referenced_minor_id != null">
+        referenced_minor_id,
+      </if>
+      <if test="is_selected != null">
+        is_selected,
+      </if>
+      <if test="is_updated != null">
+        is_updated,
+      </if>
+      <if test="is_select_all != null">
+        is_select_all,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="class != null">
+        #{class,jdbcType=TINYINT},
+      </if>
+      <if test="class_desc != null">
+        #{class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+      <if test="referenced_major_id != null">
+        #{referenced_major_id,jdbcType=INTEGER},
+      </if>
+      <if test="referenced_minor_id != null">
+        #{referenced_minor_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_selected != null">
+        #{is_selected,jdbcType=BIT},
+      </if>
+      <if test="is_updated != null">
+        #{is_updated,jdbcType=BIT},
+      </if>
+      <if test="is_select_all != null">
+        #{is_select_all,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

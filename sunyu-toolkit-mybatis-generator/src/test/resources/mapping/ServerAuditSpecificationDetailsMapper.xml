@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServerAuditSpecificationDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ServerAuditSpecificationDetails">
+    <result column="server_specification_id" jdbcType="INTEGER" property="server_specification_id" />
+    <result column="audit_action_id" jdbcType="CHAR" property="audit_action_id" />
+    <result column="audit_action_name" jdbcType="VARCHAR" property="audit_action_name" />
+    <result column="class" jdbcType="TINYINT" property="class" />
+    <result column="class_desc" jdbcType="VARCHAR" property="class_desc" />
+    <result column="major_id" jdbcType="INTEGER" property="major_id" />
+    <result column="minor_id" jdbcType="INTEGER" property="minor_id" />
+    <result column="audited_principal_id" jdbcType="INTEGER" property="audited_principal_id" />
+    <result column="audited_result" jdbcType="VARCHAR" property="audited_result" />
+    <result column="is_group" jdbcType="BIT" property="is_group" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ServerAuditSpecificationDetails">
+    insert into server_audit_specification_details (server_specification_id, audit_action_id, 
+      audit_action_name, class, class_desc, 
+      major_id, minor_id, audited_principal_id, 
+      audited_result, is_group)
+    values (#{server_specification_id,jdbcType=INTEGER}, #{audit_action_id,jdbcType=CHAR}, 
+      #{audit_action_name,jdbcType=VARCHAR}, #{class,jdbcType=TINYINT}, #{class_desc,jdbcType=VARCHAR}, 
+      #{major_id,jdbcType=INTEGER}, #{minor_id,jdbcType=INTEGER}, #{audited_principal_id,jdbcType=INTEGER}, 
+      #{audited_result,jdbcType=VARCHAR}, #{is_group,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ServerAuditSpecificationDetails">
+    insert into server_audit_specification_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="server_specification_id != null">
+        server_specification_id,
+      </if>
+      <if test="audit_action_id != null">
+        audit_action_id,
+      </if>
+      <if test="audit_action_name != null">
+        audit_action_name,
+      </if>
+      <if test="class != null">
+        class,
+      </if>
+      <if test="class_desc != null">
+        class_desc,
+      </if>
+      <if test="major_id != null">
+        major_id,
+      </if>
+      <if test="minor_id != null">
+        minor_id,
+      </if>
+      <if test="audited_principal_id != null">
+        audited_principal_id,
+      </if>
+      <if test="audited_result != null">
+        audited_result,
+      </if>
+      <if test="is_group != null">
+        is_group,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="server_specification_id != null">
+        #{server_specification_id,jdbcType=INTEGER},
+      </if>
+      <if test="audit_action_id != null">
+        #{audit_action_id,jdbcType=CHAR},
+      </if>
+      <if test="audit_action_name != null">
+        #{audit_action_name,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=TINYINT},
+      </if>
+      <if test="class_desc != null">
+        #{class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="major_id != null">
+        #{major_id,jdbcType=INTEGER},
+      </if>
+      <if test="minor_id != null">
+        #{minor_id,jdbcType=INTEGER},
+      </if>
+      <if test="audited_principal_id != null">
+        #{audited_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="audited_result != null">
+        #{audited_result,jdbcType=VARCHAR},
+      </if>
+      <if test="is_group != null">
+        #{is_group,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

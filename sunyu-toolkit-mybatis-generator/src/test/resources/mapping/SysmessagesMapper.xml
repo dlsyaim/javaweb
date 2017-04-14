@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysmessagesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysmessages">
+    <result column="error" jdbcType="INTEGER" property="error" />
+    <result column="severity" jdbcType="TINYINT" property="severity" />
+    <result column="dlevel" jdbcType="SMALLINT" property="dlevel" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="msglangid" jdbcType="SMALLINT" property="msglangid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysmessages">
+    insert into sysmessages (error, severity, dlevel, 
+      description, msglangid)
+    values (#{error,jdbcType=INTEGER}, #{severity,jdbcType=TINYINT}, #{dlevel,jdbcType=SMALLINT}, 
+      #{description,jdbcType=VARCHAR}, #{msglangid,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysmessages">
+    insert into sysmessages
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="error != null">
+        error,
+      </if>
+      <if test="severity != null">
+        severity,
+      </if>
+      <if test="dlevel != null">
+        dlevel,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="msglangid != null">
+        msglangid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="error != null">
+        #{error,jdbcType=INTEGER},
+      </if>
+      <if test="severity != null">
+        #{severity,jdbcType=TINYINT},
+      </if>
+      <if test="dlevel != null">
+        #{dlevel,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="msglangid != null">
+        #{msglangid,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

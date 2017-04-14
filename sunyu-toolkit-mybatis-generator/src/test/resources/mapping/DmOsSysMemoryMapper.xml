@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsSysMemoryMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsSysMemory">
+    <result column="total_physical_memory_kb" jdbcType="BIGINT" property="total_physical_memory_kb" />
+    <result column="available_physical_memory_kb" jdbcType="BIGINT" property="available_physical_memory_kb" />
+    <result column="total_page_file_kb" jdbcType="BIGINT" property="total_page_file_kb" />
+    <result column="available_page_file_kb" jdbcType="BIGINT" property="available_page_file_kb" />
+    <result column="system_cache_kb" jdbcType="BIGINT" property="system_cache_kb" />
+    <result column="kernel_paged_pool_kb" jdbcType="BIGINT" property="kernel_paged_pool_kb" />
+    <result column="kernel_nonpaged_pool_kb" jdbcType="BIGINT" property="kernel_nonpaged_pool_kb" />
+    <result column="system_high_memory_signal_state" jdbcType="BIT" property="system_high_memory_signal_state" />
+    <result column="system_low_memory_signal_state" jdbcType="BIT" property="system_low_memory_signal_state" />
+    <result column="system_memory_state_desc" jdbcType="VARCHAR" property="system_memory_state_desc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsSysMemory">
+    insert into dm_os_sys_memory (total_physical_memory_kb, available_physical_memory_kb, 
+      total_page_file_kb, available_page_file_kb, 
+      system_cache_kb, kernel_paged_pool_kb, kernel_nonpaged_pool_kb, 
+      system_high_memory_signal_state, system_low_memory_signal_state, 
+      system_memory_state_desc)
+    values (#{total_physical_memory_kb,jdbcType=BIGINT}, #{available_physical_memory_kb,jdbcType=BIGINT}, 
+      #{total_page_file_kb,jdbcType=BIGINT}, #{available_page_file_kb,jdbcType=BIGINT}, 
+      #{system_cache_kb,jdbcType=BIGINT}, #{kernel_paged_pool_kb,jdbcType=BIGINT}, #{kernel_nonpaged_pool_kb,jdbcType=BIGINT}, 
+      #{system_high_memory_signal_state,jdbcType=BIT}, #{system_low_memory_signal_state,jdbcType=BIT}, 
+      #{system_memory_state_desc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsSysMemory">
+    insert into dm_os_sys_memory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="total_physical_memory_kb != null">
+        total_physical_memory_kb,
+      </if>
+      <if test="available_physical_memory_kb != null">
+        available_physical_memory_kb,
+      </if>
+      <if test="total_page_file_kb != null">
+        total_page_file_kb,
+      </if>
+      <if test="available_page_file_kb != null">
+        available_page_file_kb,
+      </if>
+      <if test="system_cache_kb != null">
+        system_cache_kb,
+      </if>
+      <if test="kernel_paged_pool_kb != null">
+        kernel_paged_pool_kb,
+      </if>
+      <if test="kernel_nonpaged_pool_kb != null">
+        kernel_nonpaged_pool_kb,
+      </if>
+      <if test="system_high_memory_signal_state != null">
+        system_high_memory_signal_state,
+      </if>
+      <if test="system_low_memory_signal_state != null">
+        system_low_memory_signal_state,
+      </if>
+      <if test="system_memory_state_desc != null">
+        system_memory_state_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="total_physical_memory_kb != null">
+        #{total_physical_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="available_physical_memory_kb != null">
+        #{available_physical_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="total_page_file_kb != null">
+        #{total_page_file_kb,jdbcType=BIGINT},
+      </if>
+      <if test="available_page_file_kb != null">
+        #{available_page_file_kb,jdbcType=BIGINT},
+      </if>
+      <if test="system_cache_kb != null">
+        #{system_cache_kb,jdbcType=BIGINT},
+      </if>
+      <if test="kernel_paged_pool_kb != null">
+        #{kernel_paged_pool_kb,jdbcType=BIGINT},
+      </if>
+      <if test="kernel_nonpaged_pool_kb != null">
+        #{kernel_nonpaged_pool_kb,jdbcType=BIGINT},
+      </if>
+      <if test="system_high_memory_signal_state != null">
+        #{system_high_memory_signal_state,jdbcType=BIT},
+      </if>
+      <if test="system_low_memory_signal_state != null">
+        #{system_low_memory_signal_state,jdbcType=BIT},
+      </if>
+      <if test="system_memory_state_desc != null">
+        #{system_memory_state_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

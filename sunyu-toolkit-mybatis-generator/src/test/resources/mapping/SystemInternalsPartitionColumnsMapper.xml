@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SystemInternalsPartitionColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.SystemInternalsPartitionColumns">
+    <result column="partition_id" jdbcType="BIGINT" property="partition_id" />
+    <result column="partition_column_id" jdbcType="INTEGER" property="partition_column_id" />
+    <result column="modified_count" jdbcType="BIGINT" property="modified_count" />
+    <result column="max_inrow_length" jdbcType="SMALLINT" property="max_inrow_length" />
+    <result column="is_replicated" jdbcType="BIT" property="is_replicated" />
+    <result column="is_logged_for_replication" jdbcType="BIT" property="is_logged_for_replication" />
+    <result column="is_dropped" jdbcType="BIT" property="is_dropped" />
+    <result column="system_type_id" jdbcType="TINYINT" property="system_type_id" />
+    <result column="max_length" jdbcType="SMALLINT" property="max_length" />
+    <result column="precision" jdbcType="TINYINT" property="precision" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="collation_name" jdbcType="VARCHAR" property="collation_name" />
+    <result column="is_filestream" jdbcType="BIT" property="is_filestream" />
+    <result column="key_ordinal" jdbcType="SMALLINT" property="key_ordinal" />
+    <result column="is_nullable" jdbcType="BIT" property="is_nullable" />
+    <result column="is_descending_key" jdbcType="BIT" property="is_descending_key" />
+    <result column="is_uniqueifier" jdbcType="BIT" property="is_uniqueifier" />
+    <result column="leaf_offset" jdbcType="SMALLINT" property="leaf_offset" />
+    <result column="internal_offset" jdbcType="SMALLINT" property="internal_offset" />
+    <result column="leaf_bit_position" jdbcType="TINYINT" property="leaf_bit_position" />
+    <result column="internal_bit_position" jdbcType="TINYINT" property="internal_bit_position" />
+    <result column="leaf_null_bit" jdbcType="SMALLINT" property="leaf_null_bit" />
+    <result column="internal_null_bit" jdbcType="SMALLINT" property="internal_null_bit" />
+    <result column="is_anti_matter" jdbcType="BIT" property="is_anti_matter" />
+    <result column="partition_column_guid" jdbcType="CHAR" property="partition_column_guid" />
+    <result column="is_sparse" jdbcType="BIT" property="is_sparse" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SystemInternalsPartitionColumns">
+    insert into system_internals_partition_columns (partition_id, partition_column_id, 
+      modified_count, max_inrow_length, is_replicated, 
+      is_logged_for_replication, is_dropped, system_type_id, 
+      max_length, precision, scale, 
+      collation_name, is_filestream, key_ordinal, 
+      is_nullable, is_descending_key, is_uniqueifier, 
+      leaf_offset, internal_offset, leaf_bit_position, 
+      internal_bit_position, leaf_null_bit, 
+      internal_null_bit, is_anti_matter, partition_column_guid, 
+      is_sparse)
+    values (#{partition_id,jdbcType=BIGINT}, #{partition_column_id,jdbcType=INTEGER}, 
+      #{modified_count,jdbcType=BIGINT}, #{max_inrow_length,jdbcType=SMALLINT}, #{is_replicated,jdbcType=BIT}, 
+      #{is_logged_for_replication,jdbcType=BIT}, #{is_dropped,jdbcType=BIT}, #{system_type_id,jdbcType=TINYINT}, 
+      #{max_length,jdbcType=SMALLINT}, #{precision,jdbcType=TINYINT}, #{scale,jdbcType=TINYINT}, 
+      #{collation_name,jdbcType=VARCHAR}, #{is_filestream,jdbcType=BIT}, #{key_ordinal,jdbcType=SMALLINT}, 
+      #{is_nullable,jdbcType=BIT}, #{is_descending_key,jdbcType=BIT}, #{is_uniqueifier,jdbcType=BIT}, 
+      #{leaf_offset,jdbcType=SMALLINT}, #{internal_offset,jdbcType=SMALLINT}, #{leaf_bit_position,jdbcType=TINYINT}, 
+      #{internal_bit_position,jdbcType=TINYINT}, #{leaf_null_bit,jdbcType=SMALLINT}, 
+      #{internal_null_bit,jdbcType=SMALLINT}, #{is_anti_matter,jdbcType=BIT}, #{partition_column_guid,jdbcType=CHAR}, 
+      #{is_sparse,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SystemInternalsPartitionColumns">
+    insert into system_internals_partition_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        partition_id,
+      </if>
+      <if test="partition_column_id != null">
+        partition_column_id,
+      </if>
+      <if test="modified_count != null">
+        modified_count,
+      </if>
+      <if test="max_inrow_length != null">
+        max_inrow_length,
+      </if>
+      <if test="is_replicated != null">
+        is_replicated,
+      </if>
+      <if test="is_logged_for_replication != null">
+        is_logged_for_replication,
+      </if>
+      <if test="is_dropped != null">
+        is_dropped,
+      </if>
+      <if test="system_type_id != null">
+        system_type_id,
+      </if>
+      <if test="max_length != null">
+        max_length,
+      </if>
+      <if test="precision != null">
+        precision,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="collation_name != null">
+        collation_name,
+      </if>
+      <if test="is_filestream != null">
+        is_filestream,
+      </if>
+      <if test="key_ordinal != null">
+        key_ordinal,
+      </if>
+      <if test="is_nullable != null">
+        is_nullable,
+      </if>
+      <if test="is_descending_key != null">
+        is_descending_key,
+      </if>
+      <if test="is_uniqueifier != null">
+        is_uniqueifier,
+      </if>
+      <if test="leaf_offset != null">
+        leaf_offset,
+      </if>
+      <if test="internal_offset != null">
+        internal_offset,
+      </if>
+      <if test="leaf_bit_position != null">
+        leaf_bit_position,
+      </if>
+      <if test="internal_bit_position != null">
+        internal_bit_position,
+      </if>
+      <if test="leaf_null_bit != null">
+        leaf_null_bit,
+      </if>
+      <if test="internal_null_bit != null">
+        internal_null_bit,
+      </if>
+      <if test="is_anti_matter != null">
+        is_anti_matter,
+      </if>
+      <if test="partition_column_guid != null">
+        partition_column_guid,
+      </if>
+      <if test="is_sparse != null">
+        is_sparse,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        #{partition_id,jdbcType=BIGINT},
+      </if>
+      <if test="partition_column_id != null">
+        #{partition_column_id,jdbcType=INTEGER},
+      </if>
+      <if test="modified_count != null">
+        #{modified_count,jdbcType=BIGINT},
+      </if>
+      <if test="max_inrow_length != null">
+        #{max_inrow_length,jdbcType=SMALLINT},
+      </if>
+      <if test="is_replicated != null">
+        #{is_replicated,jdbcType=BIT},
+      </if>
+      <if test="is_logged_for_replication != null">
+        #{is_logged_for_replication,jdbcType=BIT},
+      </if>
+      <if test="is_dropped != null">
+        #{is_dropped,jdbcType=BIT},
+      </if>
+      <if test="system_type_id != null">
+        #{system_type_id,jdbcType=TINYINT},
+      </if>
+      <if test="max_length != null">
+        #{max_length,jdbcType=SMALLINT},
+      </if>
+      <if test="precision != null">
+        #{precision,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="collation_name != null">
+        #{collation_name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_filestream != null">
+        #{is_filestream,jdbcType=BIT},
+      </if>
+      <if test="key_ordinal != null">
+        #{key_ordinal,jdbcType=SMALLINT},
+      </if>
+      <if test="is_nullable != null">
+        #{is_nullable,jdbcType=BIT},
+      </if>
+      <if test="is_descending_key != null">
+        #{is_descending_key,jdbcType=BIT},
+      </if>
+      <if test="is_uniqueifier != null">
+        #{is_uniqueifier,jdbcType=BIT},
+      </if>
+      <if test="leaf_offset != null">
+        #{leaf_offset,jdbcType=SMALLINT},
+      </if>
+      <if test="internal_offset != null">
+        #{internal_offset,jdbcType=SMALLINT},
+      </if>
+      <if test="leaf_bit_position != null">
+        #{leaf_bit_position,jdbcType=TINYINT},
+      </if>
+      <if test="internal_bit_position != null">
+        #{internal_bit_position,jdbcType=TINYINT},
+      </if>
+      <if test="leaf_null_bit != null">
+        #{leaf_null_bit,jdbcType=SMALLINT},
+      </if>
+      <if test="internal_null_bit != null">
+        #{internal_null_bit,jdbcType=SMALLINT},
+      </if>
+      <if test="is_anti_matter != null">
+        #{is_anti_matter,jdbcType=BIT},
+      </if>
+      <if test="partition_column_guid != null">
+        #{partition_column_guid,jdbcType=CHAR},
+      </if>
+      <if test="is_sparse != null">
+        #{is_sparse,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

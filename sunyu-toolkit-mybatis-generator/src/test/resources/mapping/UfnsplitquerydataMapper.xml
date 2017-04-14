@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.UfnsplitquerydataMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Ufnsplitquerydata">
+    <result column="SensorID" jdbcType="INTEGER" property="sensorID" />
+    <result column="ArchiveDate" jdbcType="TIMESTAMP" property="archiveDate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Ufnsplitquerydata">
+    insert into ufnSplitQueryData (SensorID, ArchiveDate)
+    values (#{sensorID,jdbcType=INTEGER}, #{archiveDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Ufnsplitquerydata">
+    insert into ufnSplitQueryData
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sensorID != null">
+        SensorID,
+      </if>
+      <if test="archiveDate != null">
+        ArchiveDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sensorID != null">
+        #{sensorID,jdbcType=INTEGER},
+      </if>
+      <if test="archiveDate != null">
+        #{archiveDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

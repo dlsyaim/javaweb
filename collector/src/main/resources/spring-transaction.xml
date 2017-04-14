@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 配置事务管理器，在需要事物的方法上，添加@Transaction -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource"
+                  ref="dataSource"/>
+    </bean>
+
+    <!-- 注解方式配置事物，如果配置proxy-target-class="true"那么需要引入CGLIB，在需要开启事务的方法上，增加@Transactional注解  -->
+    <tx:annotation-driven transaction-manager="transactionManager"
+                          proxy-target-class="false"/>
+
+    <!-- 拦截器方式配置事物 -->
+    <!--<tx:advice id="transactionAdvice"
+               transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*"
+                       propagation="REQUIRED" />
+            <tx:method name="update*"
+                       propagation="REQUIRED" />
+            <tx:method name="delete*"
+                       propagation="REQUIRED" />
+            <tx:method name="add*"
+                       propagation="REQUIRED" />
+            <tx:method name="modify*"
+                       propagation="REQUIRED" />
+            <tx:method name="remove*"
+                       propagation="REQUIRED" />
+            <tx:method name="insert*"
+                       propagation="REQUIRED" />
+
+            <tx:method name="*"
+                       propagation="SUPPORTS" />
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="transactionPointcut"
+                      expression="execution(* sunyu.service..*Impl.*(..))" />
+        <aop:advisor pointcut-ref="transactionPointcut"
+                     advice-ref="transactionAdvice" />
+    </aop:config>-->
+
+</beans>

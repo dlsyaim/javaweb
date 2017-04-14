@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDprcarrRelationsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDprcarrRelations">
+    <id column="RelID" jdbcType="BIGINT" property="relID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="AttrID" jdbcType="BIGINT" property="attrID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RelID, EquipMentID, AttrID, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_DPrcArr_Relations
+    where RelID = #{relID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_DPrcArr_Relations
+    where RelID = #{relID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDprcarrRelations">
+    insert into KS_DPrcArr_Relations (RelID, EquipMentID, AttrID, 
+      AddTime, Status)
+    values (#{relID,jdbcType=BIGINT}, #{equipMentID,jdbcType=BIGINT}, #{attrID,jdbcType=BIGINT}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDprcarrRelations">
+    insert into KS_DPrcArr_Relations
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="relID != null">
+        RelID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="attrID != null">
+        AttrID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="relID != null">
+        #{relID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="attrID != null">
+        #{attrID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDprcarrRelations">
+    update KS_DPrcArr_Relations
+    <set>
+      <if test="equipMentID != null">
+        EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="attrID != null">
+        AttrID = #{attrID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where RelID = #{relID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDprcarrRelations">
+    update KS_DPrcArr_Relations
+    set EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      AttrID = #{attrID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where RelID = #{relID,jdbcType=BIGINT}
+  </update>
+</mapper>

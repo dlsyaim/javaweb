@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FulltextDocumentTypesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FulltextDocumentTypes">
+    <result column="document_type" jdbcType="VARCHAR" property="document_type" />
+    <result column="class_id" jdbcType="CHAR" property="class_id" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FulltextDocumentTypes">
+    insert into fulltext_document_types (document_type, class_id, path, 
+      version, manufacturer)
+    values (#{document_type,jdbcType=VARCHAR}, #{class_id,jdbcType=CHAR}, #{path,jdbcType=VARCHAR}, 
+      #{version,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FulltextDocumentTypes">
+    insert into fulltext_document_types
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="document_type != null">
+        document_type,
+      </if>
+      <if test="class_id != null">
+        class_id,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="manufacturer != null">
+        manufacturer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="document_type != null">
+        #{document_type,jdbcType=VARCHAR},
+      </if>
+      <if test="class_id != null">
+        #{class_id,jdbcType=CHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null">
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmXeMapValuesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmXeMapValues">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="object_package_guid" jdbcType="CHAR" property="object_package_guid" />
+    <result column="map_key" jdbcType="INTEGER" property="map_key" />
+    <result column="map_value" jdbcType="VARCHAR" property="map_value" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmXeMapValues">
+    insert into dm_xe_map_values (name, object_package_guid, map_key, 
+      map_value)
+    values (#{name,jdbcType=VARCHAR}, #{object_package_guid,jdbcType=CHAR}, #{map_key,jdbcType=INTEGER}, 
+      #{map_value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmXeMapValues">
+    insert into dm_xe_map_values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="object_package_guid != null">
+        object_package_guid,
+      </if>
+      <if test="map_key != null">
+        map_key,
+      </if>
+      <if test="map_value != null">
+        map_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="object_package_guid != null">
+        #{object_package_guid,jdbcType=CHAR},
+      </if>
+      <if test="map_key != null">
+        #{map_key,jdbcType=INTEGER},
+      </if>
+      <if test="map_value != null">
+        #{map_value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

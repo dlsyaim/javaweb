@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsPrcarrRelationsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsPrcarrRelations">
+    <id column="RelID" jdbcType="BIGINT" property="relID" />
+    <result column="ProductID" jdbcType="BIGINT" property="productID" />
+    <result column="AttrID" jdbcType="BIGINT" property="attrID" />
+    <result column="AttrName" jdbcType="VARCHAR" property="attrName" />
+    <result column="AttrValID" jdbcType="BIGINT" property="attrValID" />
+    <result column="AttrValName" jdbcType="VARCHAR" property="attrValName" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RelID, ProductID, AttrID, AttrName, AttrValID, AttrValName, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_PrcArr_Relations
+    where RelID = #{relID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_PrcArr_Relations
+    where RelID = #{relID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsPrcarrRelations">
+    insert into KS_PrcArr_Relations (RelID, ProductID, AttrID, 
+      AttrName, AttrValID, AttrValName, 
+      AddTime, Status)
+    values (#{relID,jdbcType=BIGINT}, #{productID,jdbcType=BIGINT}, #{attrID,jdbcType=BIGINT}, 
+      #{attrName,jdbcType=VARCHAR}, #{attrValID,jdbcType=BIGINT}, #{attrValName,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsPrcarrRelations">
+    insert into KS_PrcArr_Relations
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="relID != null">
+        RelID,
+      </if>
+      <if test="productID != null">
+        ProductID,
+      </if>
+      <if test="attrID != null">
+        AttrID,
+      </if>
+      <if test="attrName != null">
+        AttrName,
+      </if>
+      <if test="attrValID != null">
+        AttrValID,
+      </if>
+      <if test="attrValName != null">
+        AttrValName,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="relID != null">
+        #{relID,jdbcType=BIGINT},
+      </if>
+      <if test="productID != null">
+        #{productID,jdbcType=BIGINT},
+      </if>
+      <if test="attrID != null">
+        #{attrID,jdbcType=BIGINT},
+      </if>
+      <if test="attrName != null">
+        #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="attrValID != null">
+        #{attrValID,jdbcType=BIGINT},
+      </if>
+      <if test="attrValName != null">
+        #{attrValName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsPrcarrRelations">
+    update KS_PrcArr_Relations
+    <set>
+      <if test="productID != null">
+        ProductID = #{productID,jdbcType=BIGINT},
+      </if>
+      <if test="attrID != null">
+        AttrID = #{attrID,jdbcType=BIGINT},
+      </if>
+      <if test="attrName != null">
+        AttrName = #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="attrValID != null">
+        AttrValID = #{attrValID,jdbcType=BIGINT},
+      </if>
+      <if test="attrValName != null">
+        AttrValName = #{attrValName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where RelID = #{relID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsPrcarrRelations">
+    update KS_PrcArr_Relations
+    set ProductID = #{productID,jdbcType=BIGINT},
+      AttrID = #{attrID,jdbcType=BIGINT},
+      AttrName = #{attrName,jdbcType=VARCHAR},
+      AttrValID = #{attrValID,jdbcType=BIGINT},
+      AttrValName = #{attrValName,jdbcType=VARCHAR},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where RelID = #{relID,jdbcType=BIGINT}
+  </update>
+</mapper>

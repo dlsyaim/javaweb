@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SystemInternalsPartitionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.SystemInternalsPartitions">
+    <result column="partition_id" jdbcType="BIGINT" property="partition_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="index_id" jdbcType="INTEGER" property="index_id" />
+    <result column="partition_number" jdbcType="INTEGER" property="partition_number" />
+    <result column="rows" jdbcType="BIGINT" property="rows" />
+    <result column="filestream_filegroup_id" jdbcType="SMALLINT" property="filestream_filegroup_id" />
+    <result column="is_orphaned" jdbcType="BIT" property="is_orphaned" />
+    <result column="dropped_lob_column_state" jdbcType="TINYINT" property="dropped_lob_column_state" />
+    <result column="is_unique" jdbcType="BIT" property="is_unique" />
+    <result column="is_replicated" jdbcType="BIT" property="is_replicated" />
+    <result column="is_logged_for_replication" jdbcType="BIT" property="is_logged_for_replication" />
+    <result column="max_null_bit_used" jdbcType="SMALLINT" property="max_null_bit_used" />
+    <result column="max_leaf_length" jdbcType="INTEGER" property="max_leaf_length" />
+    <result column="min_leaf_length" jdbcType="SMALLINT" property="min_leaf_length" />
+    <result column="max_internal_length" jdbcType="SMALLINT" property="max_internal_length" />
+    <result column="min_internal_length" jdbcType="SMALLINT" property="min_internal_length" />
+    <result column="allows_nullable_keys" jdbcType="BIT" property="allows_nullable_keys" />
+    <result column="allow_row_locks" jdbcType="BIT" property="allow_row_locks" />
+    <result column="allow_page_locks" jdbcType="BIT" property="allow_page_locks" />
+    <result column="is_data_row_format" jdbcType="BIT" property="is_data_row_format" />
+    <result column="is_not_versioned" jdbcType="BIT" property="is_not_versioned" />
+    <result column="filestream_guid" jdbcType="CHAR" property="filestream_guid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SystemInternalsPartitions">
+    insert into system_internals_partitions (partition_id, object_id, index_id, 
+      partition_number, rows, filestream_filegroup_id, 
+      is_orphaned, dropped_lob_column_state, is_unique, 
+      is_replicated, is_logged_for_replication, max_null_bit_used, 
+      max_leaf_length, min_leaf_length, max_internal_length, 
+      min_internal_length, allows_nullable_keys, 
+      allow_row_locks, allow_page_locks, is_data_row_format, 
+      is_not_versioned, filestream_guid)
+    values (#{partition_id,jdbcType=BIGINT}, #{object_id,jdbcType=INTEGER}, #{index_id,jdbcType=INTEGER}, 
+      #{partition_number,jdbcType=INTEGER}, #{rows,jdbcType=BIGINT}, #{filestream_filegroup_id,jdbcType=SMALLINT}, 
+      #{is_orphaned,jdbcType=BIT}, #{dropped_lob_column_state,jdbcType=TINYINT}, #{is_unique,jdbcType=BIT}, 
+      #{is_replicated,jdbcType=BIT}, #{is_logged_for_replication,jdbcType=BIT}, #{max_null_bit_used,jdbcType=SMALLINT}, 
+      #{max_leaf_length,jdbcType=INTEGER}, #{min_leaf_length,jdbcType=SMALLINT}, #{max_internal_length,jdbcType=SMALLINT}, 
+      #{min_internal_length,jdbcType=SMALLINT}, #{allows_nullable_keys,jdbcType=BIT}, 
+      #{allow_row_locks,jdbcType=BIT}, #{allow_page_locks,jdbcType=BIT}, #{is_data_row_format,jdbcType=BIT}, 
+      #{is_not_versioned,jdbcType=BIT}, #{filestream_guid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SystemInternalsPartitions">
+    insert into system_internals_partitions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        partition_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="index_id != null">
+        index_id,
+      </if>
+      <if test="partition_number != null">
+        partition_number,
+      </if>
+      <if test="rows != null">
+        rows,
+      </if>
+      <if test="filestream_filegroup_id != null">
+        filestream_filegroup_id,
+      </if>
+      <if test="is_orphaned != null">
+        is_orphaned,
+      </if>
+      <if test="dropped_lob_column_state != null">
+        dropped_lob_column_state,
+      </if>
+      <if test="is_unique != null">
+        is_unique,
+      </if>
+      <if test="is_replicated != null">
+        is_replicated,
+      </if>
+      <if test="is_logged_for_replication != null">
+        is_logged_for_replication,
+      </if>
+      <if test="max_null_bit_used != null">
+        max_null_bit_used,
+      </if>
+      <if test="max_leaf_length != null">
+        max_leaf_length,
+      </if>
+      <if test="min_leaf_length != null">
+        min_leaf_length,
+      </if>
+      <if test="max_internal_length != null">
+        max_internal_length,
+      </if>
+      <if test="min_internal_length != null">
+        min_internal_length,
+      </if>
+      <if test="allows_nullable_keys != null">
+        allows_nullable_keys,
+      </if>
+      <if test="allow_row_locks != null">
+        allow_row_locks,
+      </if>
+      <if test="allow_page_locks != null">
+        allow_page_locks,
+      </if>
+      <if test="is_data_row_format != null">
+        is_data_row_format,
+      </if>
+      <if test="is_not_versioned != null">
+        is_not_versioned,
+      </if>
+      <if test="filestream_guid != null">
+        filestream_guid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        #{partition_id,jdbcType=BIGINT},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_id != null">
+        #{index_id,jdbcType=INTEGER},
+      </if>
+      <if test="partition_number != null">
+        #{partition_number,jdbcType=INTEGER},
+      </if>
+      <if test="rows != null">
+        #{rows,jdbcType=BIGINT},
+      </if>
+      <if test="filestream_filegroup_id != null">
+        #{filestream_filegroup_id,jdbcType=SMALLINT},
+      </if>
+      <if test="is_orphaned != null">
+        #{is_orphaned,jdbcType=BIT},
+      </if>
+      <if test="dropped_lob_column_state != null">
+        #{dropped_lob_column_state,jdbcType=TINYINT},
+      </if>
+      <if test="is_unique != null">
+        #{is_unique,jdbcType=BIT},
+      </if>
+      <if test="is_replicated != null">
+        #{is_replicated,jdbcType=BIT},
+      </if>
+      <if test="is_logged_for_replication != null">
+        #{is_logged_for_replication,jdbcType=BIT},
+      </if>
+      <if test="max_null_bit_used != null">
+        #{max_null_bit_used,jdbcType=SMALLINT},
+      </if>
+      <if test="max_leaf_length != null">
+        #{max_leaf_length,jdbcType=INTEGER},
+      </if>
+      <if test="min_leaf_length != null">
+        #{min_leaf_length,jdbcType=SMALLINT},
+      </if>
+      <if test="max_internal_length != null">
+        #{max_internal_length,jdbcType=SMALLINT},
+      </if>
+      <if test="min_internal_length != null">
+        #{min_internal_length,jdbcType=SMALLINT},
+      </if>
+      <if test="allows_nullable_keys != null">
+        #{allows_nullable_keys,jdbcType=BIT},
+      </if>
+      <if test="allow_row_locks != null">
+        #{allow_row_locks,jdbcType=BIT},
+      </if>
+      <if test="allow_page_locks != null">
+        #{allow_page_locks,jdbcType=BIT},
+      </if>
+      <if test="is_data_row_format != null">
+        #{is_data_row_format,jdbcType=BIT},
+      </if>
+      <if test="is_not_versioned != null">
+        #{is_not_versioned,jdbcType=BIT},
+      </if>
+      <if test="filestream_guid != null">
+        #{filestream_guid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

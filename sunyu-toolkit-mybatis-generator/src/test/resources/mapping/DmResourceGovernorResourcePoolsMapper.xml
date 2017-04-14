@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmResourceGovernorResourcePoolsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmResourceGovernorResourcePools">
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="statistics_start_time" jdbcType="TIMESTAMP" property="statistics_start_time" />
+    <result column="total_cpu_usage_ms" jdbcType="BIGINT" property="total_cpu_usage_ms" />
+    <result column="cache_memory_kb" jdbcType="BIGINT" property="cache_memory_kb" />
+    <result column="compile_memory_kb" jdbcType="BIGINT" property="compile_memory_kb" />
+    <result column="used_memgrant_kb" jdbcType="BIGINT" property="used_memgrant_kb" />
+    <result column="total_memgrant_count" jdbcType="BIGINT" property="total_memgrant_count" />
+    <result column="total_memgrant_timeout_count" jdbcType="BIGINT" property="total_memgrant_timeout_count" />
+    <result column="active_memgrant_count" jdbcType="INTEGER" property="active_memgrant_count" />
+    <result column="active_memgrant_kb" jdbcType="BIGINT" property="active_memgrant_kb" />
+    <result column="memgrant_waiter_count" jdbcType="INTEGER" property="memgrant_waiter_count" />
+    <result column="max_memory_kb" jdbcType="BIGINT" property="max_memory_kb" />
+    <result column="used_memory_kb" jdbcType="BIGINT" property="used_memory_kb" />
+    <result column="target_memory_kb" jdbcType="BIGINT" property="target_memory_kb" />
+    <result column="out_of_memory_count" jdbcType="BIGINT" property="out_of_memory_count" />
+    <result column="min_cpu_percent" jdbcType="INTEGER" property="min_cpu_percent" />
+    <result column="max_cpu_percent" jdbcType="INTEGER" property="max_cpu_percent" />
+    <result column="min_memory_percent" jdbcType="INTEGER" property="min_memory_percent" />
+    <result column="max_memory_percent" jdbcType="INTEGER" property="max_memory_percent" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmResourceGovernorResourcePools">
+    insert into dm_resource_governor_resource_pools (pool_id, name, statistics_start_time, 
+      total_cpu_usage_ms, cache_memory_kb, compile_memory_kb, 
+      used_memgrant_kb, total_memgrant_count, total_memgrant_timeout_count, 
+      active_memgrant_count, active_memgrant_kb, 
+      memgrant_waiter_count, max_memory_kb, used_memory_kb, 
+      target_memory_kb, out_of_memory_count, min_cpu_percent, 
+      max_cpu_percent, min_memory_percent, max_memory_percent
+      )
+    values (#{pool_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{statistics_start_time,jdbcType=TIMESTAMP}, 
+      #{total_cpu_usage_ms,jdbcType=BIGINT}, #{cache_memory_kb,jdbcType=BIGINT}, #{compile_memory_kb,jdbcType=BIGINT}, 
+      #{used_memgrant_kb,jdbcType=BIGINT}, #{total_memgrant_count,jdbcType=BIGINT}, #{total_memgrant_timeout_count,jdbcType=BIGINT}, 
+      #{active_memgrant_count,jdbcType=INTEGER}, #{active_memgrant_kb,jdbcType=BIGINT}, 
+      #{memgrant_waiter_count,jdbcType=INTEGER}, #{max_memory_kb,jdbcType=BIGINT}, #{used_memory_kb,jdbcType=BIGINT}, 
+      #{target_memory_kb,jdbcType=BIGINT}, #{out_of_memory_count,jdbcType=BIGINT}, #{min_cpu_percent,jdbcType=INTEGER}, 
+      #{max_cpu_percent,jdbcType=INTEGER}, #{min_memory_percent,jdbcType=INTEGER}, #{max_memory_percent,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmResourceGovernorResourcePools">
+    insert into dm_resource_governor_resource_pools
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="statistics_start_time != null">
+        statistics_start_time,
+      </if>
+      <if test="total_cpu_usage_ms != null">
+        total_cpu_usage_ms,
+      </if>
+      <if test="cache_memory_kb != null">
+        cache_memory_kb,
+      </if>
+      <if test="compile_memory_kb != null">
+        compile_memory_kb,
+      </if>
+      <if test="used_memgrant_kb != null">
+        used_memgrant_kb,
+      </if>
+      <if test="total_memgrant_count != null">
+        total_memgrant_count,
+      </if>
+      <if test="total_memgrant_timeout_count != null">
+        total_memgrant_timeout_count,
+      </if>
+      <if test="active_memgrant_count != null">
+        active_memgrant_count,
+      </if>
+      <if test="active_memgrant_kb != null">
+        active_memgrant_kb,
+      </if>
+      <if test="memgrant_waiter_count != null">
+        memgrant_waiter_count,
+      </if>
+      <if test="max_memory_kb != null">
+        max_memory_kb,
+      </if>
+      <if test="used_memory_kb != null">
+        used_memory_kb,
+      </if>
+      <if test="target_memory_kb != null">
+        target_memory_kb,
+      </if>
+      <if test="out_of_memory_count != null">
+        out_of_memory_count,
+      </if>
+      <if test="min_cpu_percent != null">
+        min_cpu_percent,
+      </if>
+      <if test="max_cpu_percent != null">
+        max_cpu_percent,
+      </if>
+      <if test="min_memory_percent != null">
+        min_memory_percent,
+      </if>
+      <if test="max_memory_percent != null">
+        max_memory_percent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="statistics_start_time != null">
+        #{statistics_start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="total_cpu_usage_ms != null">
+        #{total_cpu_usage_ms,jdbcType=BIGINT},
+      </if>
+      <if test="cache_memory_kb != null">
+        #{cache_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="compile_memory_kb != null">
+        #{compile_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="used_memgrant_kb != null">
+        #{used_memgrant_kb,jdbcType=BIGINT},
+      </if>
+      <if test="total_memgrant_count != null">
+        #{total_memgrant_count,jdbcType=BIGINT},
+      </if>
+      <if test="total_memgrant_timeout_count != null">
+        #{total_memgrant_timeout_count,jdbcType=BIGINT},
+      </if>
+      <if test="active_memgrant_count != null">
+        #{active_memgrant_count,jdbcType=INTEGER},
+      </if>
+      <if test="active_memgrant_kb != null">
+        #{active_memgrant_kb,jdbcType=BIGINT},
+      </if>
+      <if test="memgrant_waiter_count != null">
+        #{memgrant_waiter_count,jdbcType=INTEGER},
+      </if>
+      <if test="max_memory_kb != null">
+        #{max_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="used_memory_kb != null">
+        #{used_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="target_memory_kb != null">
+        #{target_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="out_of_memory_count != null">
+        #{out_of_memory_count,jdbcType=BIGINT},
+      </if>
+      <if test="min_cpu_percent != null">
+        #{min_cpu_percent,jdbcType=INTEGER},
+      </if>
+      <if test="max_cpu_percent != null">
+        #{max_cpu_percent,jdbcType=INTEGER},
+      </if>
+      <if test="min_memory_percent != null">
+        #{min_memory_percent,jdbcType=INTEGER},
+      </if>
+      <if test="max_memory_percent != null">
+        #{max_memory_percent,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

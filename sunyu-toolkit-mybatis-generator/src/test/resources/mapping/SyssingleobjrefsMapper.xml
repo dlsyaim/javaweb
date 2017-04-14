@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyssingleobjrefsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syssingleobjrefs">
+    <result column="class" jdbcType="TINYINT" property="class" />
+    <result column="depid" jdbcType="INTEGER" property="depid" />
+    <result column="depsubid" jdbcType="INTEGER" property="depsubid" />
+    <result column="indepid" jdbcType="INTEGER" property="indepid" />
+    <result column="indepsubid" jdbcType="INTEGER" property="indepsubid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syssingleobjrefs">
+    insert into syssingleobjrefs (class, depid, depsubid, 
+      indepid, indepsubid, status
+      )
+    values (#{class,jdbcType=TINYINT}, #{depid,jdbcType=INTEGER}, #{depsubid,jdbcType=INTEGER}, 
+      #{indepid,jdbcType=INTEGER}, #{indepsubid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syssingleobjrefs">
+    insert into syssingleobjrefs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="class != null">
+        class,
+      </if>
+      <if test="depid != null">
+        depid,
+      </if>
+      <if test="depsubid != null">
+        depsubid,
+      </if>
+      <if test="indepid != null">
+        indepid,
+      </if>
+      <if test="indepsubid != null">
+        indepsubid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="class != null">
+        #{class,jdbcType=TINYINT},
+      </if>
+      <if test="depid != null">
+        #{depid,jdbcType=INTEGER},
+      </if>
+      <if test="depsubid != null">
+        #{depsubid,jdbcType=INTEGER},
+      </if>
+      <if test="indepid != null">
+        #{indepid,jdbcType=INTEGER},
+      </if>
+      <if test="indepsubid != null">
+        #{indepsubid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

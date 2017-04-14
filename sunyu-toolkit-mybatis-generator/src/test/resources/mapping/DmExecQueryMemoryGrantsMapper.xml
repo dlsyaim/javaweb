@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecQueryMemoryGrantsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecQueryMemoryGrants">
+    <result column="session_id" jdbcType="SMALLINT" property="session_id" />
+    <result column="request_id" jdbcType="INTEGER" property="request_id" />
+    <result column="scheduler_id" jdbcType="INTEGER" property="scheduler_id" />
+    <result column="dop" jdbcType="SMALLINT" property="dop" />
+    <result column="request_time" jdbcType="TIMESTAMP" property="request_time" />
+    <result column="grant_time" jdbcType="TIMESTAMP" property="grant_time" />
+    <result column="requested_memory_kb" jdbcType="BIGINT" property="requested_memory_kb" />
+    <result column="granted_memory_kb" jdbcType="BIGINT" property="granted_memory_kb" />
+    <result column="required_memory_kb" jdbcType="BIGINT" property="required_memory_kb" />
+    <result column="used_memory_kb" jdbcType="BIGINT" property="used_memory_kb" />
+    <result column="max_used_memory_kb" jdbcType="BIGINT" property="max_used_memory_kb" />
+    <result column="query_cost" jdbcType="DOUBLE" property="query_cost" />
+    <result column="timeout_sec" jdbcType="INTEGER" property="timeout_sec" />
+    <result column="resource_semaphore_id" jdbcType="SMALLINT" property="resource_semaphore_id" />
+    <result column="queue_id" jdbcType="SMALLINT" property="queue_id" />
+    <result column="wait_order" jdbcType="INTEGER" property="wait_order" />
+    <result column="is_next_candidate" jdbcType="BIT" property="is_next_candidate" />
+    <result column="wait_time_ms" jdbcType="BIGINT" property="wait_time_ms" />
+    <result column="group_id" jdbcType="INTEGER" property="group_id" />
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+    <result column="is_small" jdbcType="BIT" property="is_small" />
+    <result column="ideal_memory_kb" jdbcType="BIGINT" property="ideal_memory_kb" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecQueryMemoryGrantsWithBLOBs">
+    <result column="plan_handle" jdbcType="VARBINARY" property="plan_handle" />
+    <result column="sql_handle" jdbcType="VARBINARY" property="sql_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    plan_handle, sql_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecQueryMemoryGrantsWithBLOBs">
+    insert into dm_exec_query_memory_grants (session_id, request_id, scheduler_id, 
+      dop, request_time, grant_time, 
+      requested_memory_kb, granted_memory_kb, required_memory_kb, 
+      used_memory_kb, max_used_memory_kb, query_cost, 
+      timeout_sec, resource_semaphore_id, queue_id, 
+      wait_order, is_next_candidate, wait_time_ms, 
+      group_id, pool_id, is_small, 
+      ideal_memory_kb, plan_handle, sql_handle
+      )
+    values (#{session_id,jdbcType=SMALLINT}, #{request_id,jdbcType=INTEGER}, #{scheduler_id,jdbcType=INTEGER}, 
+      #{dop,jdbcType=SMALLINT}, #{request_time,jdbcType=TIMESTAMP}, #{grant_time,jdbcType=TIMESTAMP}, 
+      #{requested_memory_kb,jdbcType=BIGINT}, #{granted_memory_kb,jdbcType=BIGINT}, #{required_memory_kb,jdbcType=BIGINT}, 
+      #{used_memory_kb,jdbcType=BIGINT}, #{max_used_memory_kb,jdbcType=BIGINT}, #{query_cost,jdbcType=DOUBLE}, 
+      #{timeout_sec,jdbcType=INTEGER}, #{resource_semaphore_id,jdbcType=SMALLINT}, #{queue_id,jdbcType=SMALLINT}, 
+      #{wait_order,jdbcType=INTEGER}, #{is_next_candidate,jdbcType=BIT}, #{wait_time_ms,jdbcType=BIGINT}, 
+      #{group_id,jdbcType=INTEGER}, #{pool_id,jdbcType=INTEGER}, #{is_small,jdbcType=BIT}, 
+      #{ideal_memory_kb,jdbcType=BIGINT}, #{plan_handle,jdbcType=VARBINARY}, #{sql_handle,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecQueryMemoryGrantsWithBLOBs">
+    insert into dm_exec_query_memory_grants
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="request_id != null">
+        request_id,
+      </if>
+      <if test="scheduler_id != null">
+        scheduler_id,
+      </if>
+      <if test="dop != null">
+        dop,
+      </if>
+      <if test="request_time != null">
+        request_time,
+      </if>
+      <if test="grant_time != null">
+        grant_time,
+      </if>
+      <if test="requested_memory_kb != null">
+        requested_memory_kb,
+      </if>
+      <if test="granted_memory_kb != null">
+        granted_memory_kb,
+      </if>
+      <if test="required_memory_kb != null">
+        required_memory_kb,
+      </if>
+      <if test="used_memory_kb != null">
+        used_memory_kb,
+      </if>
+      <if test="max_used_memory_kb != null">
+        max_used_memory_kb,
+      </if>
+      <if test="query_cost != null">
+        query_cost,
+      </if>
+      <if test="timeout_sec != null">
+        timeout_sec,
+      </if>
+      <if test="resource_semaphore_id != null">
+        resource_semaphore_id,
+      </if>
+      <if test="queue_id != null">
+        queue_id,
+      </if>
+      <if test="wait_order != null">
+        wait_order,
+      </if>
+      <if test="is_next_candidate != null">
+        is_next_candidate,
+      </if>
+      <if test="wait_time_ms != null">
+        wait_time_ms,
+      </if>
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+      <if test="is_small != null">
+        is_small,
+      </if>
+      <if test="ideal_memory_kb != null">
+        ideal_memory_kb,
+      </if>
+      <if test="plan_handle != null">
+        plan_handle,
+      </if>
+      <if test="sql_handle != null">
+        sql_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=SMALLINT},
+      </if>
+      <if test="request_id != null">
+        #{request_id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduler_id != null">
+        #{scheduler_id,jdbcType=INTEGER},
+      </if>
+      <if test="dop != null">
+        #{dop,jdbcType=SMALLINT},
+      </if>
+      <if test="request_time != null">
+        #{request_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grant_time != null">
+        #{grant_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requested_memory_kb != null">
+        #{requested_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="granted_memory_kb != null">
+        #{granted_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="required_memory_kb != null">
+        #{required_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="used_memory_kb != null">
+        #{used_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="max_used_memory_kb != null">
+        #{max_used_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="query_cost != null">
+        #{query_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="timeout_sec != null">
+        #{timeout_sec,jdbcType=INTEGER},
+      </if>
+      <if test="resource_semaphore_id != null">
+        #{resource_semaphore_id,jdbcType=SMALLINT},
+      </if>
+      <if test="queue_id != null">
+        #{queue_id,jdbcType=SMALLINT},
+      </if>
+      <if test="wait_order != null">
+        #{wait_order,jdbcType=INTEGER},
+      </if>
+      <if test="is_next_candidate != null">
+        #{is_next_candidate,jdbcType=BIT},
+      </if>
+      <if test="wait_time_ms != null">
+        #{wait_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_small != null">
+        #{is_small,jdbcType=BIT},
+      </if>
+      <if test="ideal_memory_kb != null">
+        #{ideal_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="plan_handle != null">
+        #{plan_handle,jdbcType=VARBINARY},
+      </if>
+      <if test="sql_handle != null">
+        #{sql_handle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

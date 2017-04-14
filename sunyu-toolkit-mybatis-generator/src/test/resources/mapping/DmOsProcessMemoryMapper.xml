@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsProcessMemoryMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsProcessMemory">
+    <result column="physical_memory_in_use_kb" jdbcType="BIGINT" property="physical_memory_in_use_kb" />
+    <result column="large_page_allocations_kb" jdbcType="BIGINT" property="large_page_allocations_kb" />
+    <result column="locked_page_allocations_kb" jdbcType="BIGINT" property="locked_page_allocations_kb" />
+    <result column="total_virtual_address_space_kb" jdbcType="BIGINT" property="total_virtual_address_space_kb" />
+    <result column="virtual_address_space_reserved_kb" jdbcType="BIGINT" property="virtual_address_space_reserved_kb" />
+    <result column="virtual_address_space_committed_kb" jdbcType="BIGINT" property="virtual_address_space_committed_kb" />
+    <result column="virtual_address_space_available_kb" jdbcType="BIGINT" property="virtual_address_space_available_kb" />
+    <result column="page_fault_count" jdbcType="BIGINT" property="page_fault_count" />
+    <result column="memory_utilization_percentage" jdbcType="INTEGER" property="memory_utilization_percentage" />
+    <result column="available_commit_limit_kb" jdbcType="BIGINT" property="available_commit_limit_kb" />
+    <result column="process_physical_memory_low" jdbcType="BIT" property="process_physical_memory_low" />
+    <result column="process_virtual_memory_low" jdbcType="BIT" property="process_virtual_memory_low" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsProcessMemory">
+    insert into dm_os_process_memory (physical_memory_in_use_kb, large_page_allocations_kb, 
+      locked_page_allocations_kb, total_virtual_address_space_kb, 
+      virtual_address_space_reserved_kb, virtual_address_space_committed_kb, 
+      virtual_address_space_available_kb, page_fault_count, 
+      memory_utilization_percentage, available_commit_limit_kb, 
+      process_physical_memory_low, process_virtual_memory_low
+      )
+    values (#{physical_memory_in_use_kb,jdbcType=BIGINT}, #{large_page_allocations_kb,jdbcType=BIGINT}, 
+      #{locked_page_allocations_kb,jdbcType=BIGINT}, #{total_virtual_address_space_kb,jdbcType=BIGINT}, 
+      #{virtual_address_space_reserved_kb,jdbcType=BIGINT}, #{virtual_address_space_committed_kb,jdbcType=BIGINT}, 
+      #{virtual_address_space_available_kb,jdbcType=BIGINT}, #{page_fault_count,jdbcType=BIGINT}, 
+      #{memory_utilization_percentage,jdbcType=INTEGER}, #{available_commit_limit_kb,jdbcType=BIGINT}, 
+      #{process_physical_memory_low,jdbcType=BIT}, #{process_virtual_memory_low,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsProcessMemory">
+    insert into dm_os_process_memory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="physical_memory_in_use_kb != null">
+        physical_memory_in_use_kb,
+      </if>
+      <if test="large_page_allocations_kb != null">
+        large_page_allocations_kb,
+      </if>
+      <if test="locked_page_allocations_kb != null">
+        locked_page_allocations_kb,
+      </if>
+      <if test="total_virtual_address_space_kb != null">
+        total_virtual_address_space_kb,
+      </if>
+      <if test="virtual_address_space_reserved_kb != null">
+        virtual_address_space_reserved_kb,
+      </if>
+      <if test="virtual_address_space_committed_kb != null">
+        virtual_address_space_committed_kb,
+      </if>
+      <if test="virtual_address_space_available_kb != null">
+        virtual_address_space_available_kb,
+      </if>
+      <if test="page_fault_count != null">
+        page_fault_count,
+      </if>
+      <if test="memory_utilization_percentage != null">
+        memory_utilization_percentage,
+      </if>
+      <if test="available_commit_limit_kb != null">
+        available_commit_limit_kb,
+      </if>
+      <if test="process_physical_memory_low != null">
+        process_physical_memory_low,
+      </if>
+      <if test="process_virtual_memory_low != null">
+        process_virtual_memory_low,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="physical_memory_in_use_kb != null">
+        #{physical_memory_in_use_kb,jdbcType=BIGINT},
+      </if>
+      <if test="large_page_allocations_kb != null">
+        #{large_page_allocations_kb,jdbcType=BIGINT},
+      </if>
+      <if test="locked_page_allocations_kb != null">
+        #{locked_page_allocations_kb,jdbcType=BIGINT},
+      </if>
+      <if test="total_virtual_address_space_kb != null">
+        #{total_virtual_address_space_kb,jdbcType=BIGINT},
+      </if>
+      <if test="virtual_address_space_reserved_kb != null">
+        #{virtual_address_space_reserved_kb,jdbcType=BIGINT},
+      </if>
+      <if test="virtual_address_space_committed_kb != null">
+        #{virtual_address_space_committed_kb,jdbcType=BIGINT},
+      </if>
+      <if test="virtual_address_space_available_kb != null">
+        #{virtual_address_space_available_kb,jdbcType=BIGINT},
+      </if>
+      <if test="page_fault_count != null">
+        #{page_fault_count,jdbcType=BIGINT},
+      </if>
+      <if test="memory_utilization_percentage != null">
+        #{memory_utilization_percentage,jdbcType=INTEGER},
+      </if>
+      <if test="available_commit_limit_kb != null">
+        #{available_commit_limit_kb,jdbcType=BIGINT},
+      </if>
+      <if test="process_physical_memory_low != null">
+        #{process_physical_memory_low,jdbcType=BIT},
+      </if>
+      <if test="process_virtual_memory_low != null">
+        #{process_virtual_memory_low,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

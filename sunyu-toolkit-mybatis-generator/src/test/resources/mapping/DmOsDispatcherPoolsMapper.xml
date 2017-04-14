@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsDispatcherPoolsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsDispatcherPools">
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="dispatcher_count" jdbcType="INTEGER" property="dispatcher_count" />
+    <result column="dispatcher_ideal_count" jdbcType="INTEGER" property="dispatcher_ideal_count" />
+    <result column="dispatcher_timeout_ms" jdbcType="INTEGER" property="dispatcher_timeout_ms" />
+    <result column="dispatcher_waiting_count" jdbcType="INTEGER" property="dispatcher_waiting_count" />
+    <result column="queue_length" jdbcType="INTEGER" property="queue_length" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsDispatcherPools">
+    <result column="dispatcher_pool_address" jdbcType="VARBINARY" property="dispatcher_pool_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    dispatcher_pool_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsDispatcherPools">
+    insert into dm_os_dispatcher_pools (type, name, dispatcher_count, 
+      dispatcher_ideal_count, dispatcher_timeout_ms, 
+      dispatcher_waiting_count, queue_length, 
+      dispatcher_pool_address)
+    values (#{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{dispatcher_count,jdbcType=INTEGER}, 
+      #{dispatcher_ideal_count,jdbcType=INTEGER}, #{dispatcher_timeout_ms,jdbcType=INTEGER}, 
+      #{dispatcher_waiting_count,jdbcType=INTEGER}, #{queue_length,jdbcType=INTEGER}, 
+      #{dispatcher_pool_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsDispatcherPools">
+    insert into dm_os_dispatcher_pools
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="dispatcher_count != null">
+        dispatcher_count,
+      </if>
+      <if test="dispatcher_ideal_count != null">
+        dispatcher_ideal_count,
+      </if>
+      <if test="dispatcher_timeout_ms != null">
+        dispatcher_timeout_ms,
+      </if>
+      <if test="dispatcher_waiting_count != null">
+        dispatcher_waiting_count,
+      </if>
+      <if test="queue_length != null">
+        queue_length,
+      </if>
+      <if test="dispatcher_pool_address != null">
+        dispatcher_pool_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatcher_count != null">
+        #{dispatcher_count,jdbcType=INTEGER},
+      </if>
+      <if test="dispatcher_ideal_count != null">
+        #{dispatcher_ideal_count,jdbcType=INTEGER},
+      </if>
+      <if test="dispatcher_timeout_ms != null">
+        #{dispatcher_timeout_ms,jdbcType=INTEGER},
+      </if>
+      <if test="dispatcher_waiting_count != null">
+        #{dispatcher_waiting_count,jdbcType=INTEGER},
+      </if>
+      <if test="queue_length != null">
+        #{queue_length,jdbcType=INTEGER},
+      </if>
+      <if test="dispatcher_pool_address != null">
+        #{dispatcher_pool_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

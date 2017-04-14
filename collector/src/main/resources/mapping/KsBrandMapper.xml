@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsBrandMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsBrand">
+    <id column="BrandID" jdbcType="BIGINT" property="brandID" />
+    <result column="BrandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="BrandLogo" jdbcType="VARCHAR" property="brandLogo" />
+    <result column="BriefnItroduction" jdbcType="VARCHAR" property="briefnItroduction" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BrandID, BrandName, BrandLogo, BriefnItroduction
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Brand
+    where BrandID = #{brandID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_Brand
+    where BrandID = #{brandID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsBrand">
+    insert into KS_Brand (BrandID, BrandName, BrandLogo, 
+      BriefnItroduction)
+    values (#{brandID,jdbcType=BIGINT}, #{brandName,jdbcType=VARCHAR}, #{brandLogo,jdbcType=VARCHAR}, 
+      #{briefnItroduction,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsBrand">
+    insert into KS_Brand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="brandID != null">
+        BrandID,
+      </if>
+      <if test="brandName != null">
+        BrandName,
+      </if>
+      <if test="brandLogo != null">
+        BrandLogo,
+      </if>
+      <if test="briefnItroduction != null">
+        BriefnItroduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="brandID != null">
+        #{brandID,jdbcType=BIGINT},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandLogo != null">
+        #{brandLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="briefnItroduction != null">
+        #{briefnItroduction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsBrand">
+    update KS_Brand
+    <set>
+      <if test="brandName != null">
+        BrandName = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandLogo != null">
+        BrandLogo = #{brandLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="briefnItroduction != null">
+        BriefnItroduction = #{briefnItroduction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BrandID = #{brandID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsBrand">
+    update KS_Brand
+    set BrandName = #{brandName,jdbcType=VARCHAR},
+      BrandLogo = #{brandLogo,jdbcType=VARCHAR},
+      BriefnItroduction = #{briefnItroduction,jdbcType=VARCHAR}
+    where BrandID = #{brandID,jdbcType=BIGINT}
+  </update>
+</mapper>

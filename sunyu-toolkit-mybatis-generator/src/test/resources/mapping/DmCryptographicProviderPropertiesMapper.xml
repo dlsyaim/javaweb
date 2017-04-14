@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmCryptographicProviderPropertiesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmCryptographicProviderProperties">
+    <result column="provider_id" jdbcType="INTEGER" property="provider_id" />
+    <result column="guid" jdbcType="CHAR" property="guid" />
+    <result column="provider_version" jdbcType="VARCHAR" property="provider_version" />
+    <result column="sqlcrypt_version" jdbcType="VARCHAR" property="sqlcrypt_version" />
+    <result column="friendly_name" jdbcType="VARCHAR" property="friendly_name" />
+    <result column="authentication_type" jdbcType="VARCHAR" property="authentication_type" />
+    <result column="symmetric_key_support" jdbcType="TINYINT" property="symmetric_key_support" />
+    <result column="symmetric_key_persistance" jdbcType="TINYINT" property="symmetric_key_persistance" />
+    <result column="symmetric_key_export" jdbcType="TINYINT" property="symmetric_key_export" />
+    <result column="symmetric_key_import" jdbcType="TINYINT" property="symmetric_key_import" />
+    <result column="asymmetric_key_support" jdbcType="TINYINT" property="asymmetric_key_support" />
+    <result column="asymmetric_key_persistance" jdbcType="TINYINT" property="asymmetric_key_persistance" />
+    <result column="asymmetric_key_export" jdbcType="TINYINT" property="asymmetric_key_export" />
+    <result column="asymmetric_key_import" jdbcType="TINYINT" property="asymmetric_key_import" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmCryptographicProviderProperties">
+    insert into dm_cryptographic_provider_properties (provider_id, guid, provider_version, 
+      sqlcrypt_version, friendly_name, authentication_type, 
+      symmetric_key_support, symmetric_key_persistance, 
+      symmetric_key_export, symmetric_key_import, 
+      asymmetric_key_support, asymmetric_key_persistance, 
+      asymmetric_key_export, asymmetric_key_import
+      )
+    values (#{provider_id,jdbcType=INTEGER}, #{guid,jdbcType=CHAR}, #{provider_version,jdbcType=VARCHAR}, 
+      #{sqlcrypt_version,jdbcType=VARCHAR}, #{friendly_name,jdbcType=VARCHAR}, #{authentication_type,jdbcType=VARCHAR}, 
+      #{symmetric_key_support,jdbcType=TINYINT}, #{symmetric_key_persistance,jdbcType=TINYINT}, 
+      #{symmetric_key_export,jdbcType=TINYINT}, #{symmetric_key_import,jdbcType=TINYINT}, 
+      #{asymmetric_key_support,jdbcType=TINYINT}, #{asymmetric_key_persistance,jdbcType=TINYINT}, 
+      #{asymmetric_key_export,jdbcType=TINYINT}, #{asymmetric_key_import,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmCryptographicProviderProperties">
+    insert into dm_cryptographic_provider_properties
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="provider_id != null">
+        provider_id,
+      </if>
+      <if test="guid != null">
+        guid,
+      </if>
+      <if test="provider_version != null">
+        provider_version,
+      </if>
+      <if test="sqlcrypt_version != null">
+        sqlcrypt_version,
+      </if>
+      <if test="friendly_name != null">
+        friendly_name,
+      </if>
+      <if test="authentication_type != null">
+        authentication_type,
+      </if>
+      <if test="symmetric_key_support != null">
+        symmetric_key_support,
+      </if>
+      <if test="symmetric_key_persistance != null">
+        symmetric_key_persistance,
+      </if>
+      <if test="symmetric_key_export != null">
+        symmetric_key_export,
+      </if>
+      <if test="symmetric_key_import != null">
+        symmetric_key_import,
+      </if>
+      <if test="asymmetric_key_support != null">
+        asymmetric_key_support,
+      </if>
+      <if test="asymmetric_key_persistance != null">
+        asymmetric_key_persistance,
+      </if>
+      <if test="asymmetric_key_export != null">
+        asymmetric_key_export,
+      </if>
+      <if test="asymmetric_key_import != null">
+        asymmetric_key_import,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="provider_id != null">
+        #{provider_id,jdbcType=INTEGER},
+      </if>
+      <if test="guid != null">
+        #{guid,jdbcType=CHAR},
+      </if>
+      <if test="provider_version != null">
+        #{provider_version,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlcrypt_version != null">
+        #{sqlcrypt_version,jdbcType=VARCHAR},
+      </if>
+      <if test="friendly_name != null">
+        #{friendly_name,jdbcType=VARCHAR},
+      </if>
+      <if test="authentication_type != null">
+        #{authentication_type,jdbcType=VARCHAR},
+      </if>
+      <if test="symmetric_key_support != null">
+        #{symmetric_key_support,jdbcType=TINYINT},
+      </if>
+      <if test="symmetric_key_persistance != null">
+        #{symmetric_key_persistance,jdbcType=TINYINT},
+      </if>
+      <if test="symmetric_key_export != null">
+        #{symmetric_key_export,jdbcType=TINYINT},
+      </if>
+      <if test="symmetric_key_import != null">
+        #{symmetric_key_import,jdbcType=TINYINT},
+      </if>
+      <if test="asymmetric_key_support != null">
+        #{asymmetric_key_support,jdbcType=TINYINT},
+      </if>
+      <if test="asymmetric_key_persistance != null">
+        #{asymmetric_key_persistance,jdbcType=TINYINT},
+      </if>
+      <if test="asymmetric_key_export != null">
+        #{asymmetric_key_export,jdbcType=TINYINT},
+      </if>
+      <if test="asymmetric_key_import != null">
+        #{asymmetric_key_import,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

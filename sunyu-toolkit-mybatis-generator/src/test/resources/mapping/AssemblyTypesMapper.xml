@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.AssemblyTypesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.AssemblyTypes">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="system_type_id" jdbcType="TINYINT" property="system_type_id" />
+    <result column="user_type_id" jdbcType="INTEGER" property="user_type_id" />
+    <result column="schema_id" jdbcType="INTEGER" property="schema_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="max_length" jdbcType="SMALLINT" property="max_length" />
+    <result column="precision" jdbcType="TINYINT" property="precision" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="collation_name" jdbcType="VARCHAR" property="collation_name" />
+    <result column="is_nullable" jdbcType="BIT" property="is_nullable" />
+    <result column="is_user_defined" jdbcType="BIT" property="is_user_defined" />
+    <result column="is_assembly_type" jdbcType="BIT" property="is_assembly_type" />
+    <result column="default_object_id" jdbcType="INTEGER" property="default_object_id" />
+    <result column="rule_object_id" jdbcType="INTEGER" property="rule_object_id" />
+    <result column="assembly_id" jdbcType="INTEGER" property="assembly_id" />
+    <result column="assembly_class" jdbcType="VARCHAR" property="assembly_class" />
+    <result column="is_binary_ordered" jdbcType="BIT" property="is_binary_ordered" />
+    <result column="is_fixed_length" jdbcType="BIT" property="is_fixed_length" />
+    <result column="prog_id" jdbcType="VARCHAR" property="prog_id" />
+    <result column="assembly_qualified_name" jdbcType="VARCHAR" property="assembly_qualified_name" />
+    <result column="is_table_type" jdbcType="BIT" property="is_table_type" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.AssemblyTypes">
+    insert into assembly_types (name, system_type_id, user_type_id, 
+      schema_id, principal_id, max_length, 
+      precision, scale, collation_name, 
+      is_nullable, is_user_defined, is_assembly_type, 
+      default_object_id, rule_object_id, assembly_id, 
+      assembly_class, is_binary_ordered, is_fixed_length, 
+      prog_id, assembly_qualified_name, is_table_type
+      )
+    values (#{name,jdbcType=VARCHAR}, #{system_type_id,jdbcType=TINYINT}, #{user_type_id,jdbcType=INTEGER}, 
+      #{schema_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, #{max_length,jdbcType=SMALLINT}, 
+      #{precision,jdbcType=TINYINT}, #{scale,jdbcType=TINYINT}, #{collation_name,jdbcType=VARCHAR}, 
+      #{is_nullable,jdbcType=BIT}, #{is_user_defined,jdbcType=BIT}, #{is_assembly_type,jdbcType=BIT}, 
+      #{default_object_id,jdbcType=INTEGER}, #{rule_object_id,jdbcType=INTEGER}, #{assembly_id,jdbcType=INTEGER}, 
+      #{assembly_class,jdbcType=VARCHAR}, #{is_binary_ordered,jdbcType=BIT}, #{is_fixed_length,jdbcType=BIT}, 
+      #{prog_id,jdbcType=VARCHAR}, #{assembly_qualified_name,jdbcType=VARCHAR}, #{is_table_type,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.AssemblyTypes">
+    insert into assembly_types
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="system_type_id != null">
+        system_type_id,
+      </if>
+      <if test="user_type_id != null">
+        user_type_id,
+      </if>
+      <if test="schema_id != null">
+        schema_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="max_length != null">
+        max_length,
+      </if>
+      <if test="precision != null">
+        precision,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="collation_name != null">
+        collation_name,
+      </if>
+      <if test="is_nullable != null">
+        is_nullable,
+      </if>
+      <if test="is_user_defined != null">
+        is_user_defined,
+      </if>
+      <if test="is_assembly_type != null">
+        is_assembly_type,
+      </if>
+      <if test="default_object_id != null">
+        default_object_id,
+      </if>
+      <if test="rule_object_id != null">
+        rule_object_id,
+      </if>
+      <if test="assembly_id != null">
+        assembly_id,
+      </if>
+      <if test="assembly_class != null">
+        assembly_class,
+      </if>
+      <if test="is_binary_ordered != null">
+        is_binary_ordered,
+      </if>
+      <if test="is_fixed_length != null">
+        is_fixed_length,
+      </if>
+      <if test="prog_id != null">
+        prog_id,
+      </if>
+      <if test="assembly_qualified_name != null">
+        assembly_qualified_name,
+      </if>
+      <if test="is_table_type != null">
+        is_table_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="system_type_id != null">
+        #{system_type_id,jdbcType=TINYINT},
+      </if>
+      <if test="user_type_id != null">
+        #{user_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="schema_id != null">
+        #{schema_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="max_length != null">
+        #{max_length,jdbcType=SMALLINT},
+      </if>
+      <if test="precision != null">
+        #{precision,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="collation_name != null">
+        #{collation_name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_nullable != null">
+        #{is_nullable,jdbcType=BIT},
+      </if>
+      <if test="is_user_defined != null">
+        #{is_user_defined,jdbcType=BIT},
+      </if>
+      <if test="is_assembly_type != null">
+        #{is_assembly_type,jdbcType=BIT},
+      </if>
+      <if test="default_object_id != null">
+        #{default_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="rule_object_id != null">
+        #{rule_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="assembly_id != null">
+        #{assembly_id,jdbcType=INTEGER},
+      </if>
+      <if test="assembly_class != null">
+        #{assembly_class,jdbcType=VARCHAR},
+      </if>
+      <if test="is_binary_ordered != null">
+        #{is_binary_ordered,jdbcType=BIT},
+      </if>
+      <if test="is_fixed_length != null">
+        #{is_fixed_length,jdbcType=BIT},
+      </if>
+      <if test="prog_id != null">
+        #{prog_id,jdbcType=VARCHAR},
+      </if>
+      <if test="assembly_qualified_name != null">
+        #{assembly_qualified_name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_table_type != null">
+        #{is_table_type,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

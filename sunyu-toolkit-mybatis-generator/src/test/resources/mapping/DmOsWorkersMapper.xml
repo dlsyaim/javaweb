@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsWorkersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsWorkers">
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_preemptive" jdbcType="BIT" property="is_preemptive" />
+    <result column="is_fiber" jdbcType="BIT" property="is_fiber" />
+    <result column="is_sick" jdbcType="BIT" property="is_sick" />
+    <result column="is_in_cc_exception" jdbcType="BIT" property="is_in_cc_exception" />
+    <result column="is_fatal_exception" jdbcType="BIT" property="is_fatal_exception" />
+    <result column="is_inside_catch" jdbcType="BIT" property="is_inside_catch" />
+    <result column="is_in_polling_io_completion_routine" jdbcType="BIT" property="is_in_polling_io_completion_routine" />
+    <result column="context_switch_count" jdbcType="INTEGER" property="context_switch_count" />
+    <result column="pending_io_count" jdbcType="INTEGER" property="pending_io_count" />
+    <result column="pending_io_byte_count" jdbcType="BIGINT" property="pending_io_byte_count" />
+    <result column="pending_io_byte_average" jdbcType="INTEGER" property="pending_io_byte_average" />
+    <result column="wait_started_ms_ticks" jdbcType="BIGINT" property="wait_started_ms_ticks" />
+    <result column="wait_resumed_ms_ticks" jdbcType="BIGINT" property="wait_resumed_ms_ticks" />
+    <result column="task_bound_ms_ticks" jdbcType="BIGINT" property="task_bound_ms_ticks" />
+    <result column="worker_created_ms_ticks" jdbcType="BIGINT" property="worker_created_ms_ticks" />
+    <result column="exception_num" jdbcType="INTEGER" property="exception_num" />
+    <result column="exception_severity" jdbcType="INTEGER" property="exception_severity" />
+    <result column="locale" jdbcType="INTEGER" property="locale" />
+    <result column="affinity" jdbcType="BIGINT" property="affinity" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="start_quantum" jdbcType="BIGINT" property="start_quantum" />
+    <result column="end_quantum" jdbcType="BIGINT" property="end_quantum" />
+    <result column="last_wait_type" jdbcType="VARCHAR" property="last_wait_type" />
+    <result column="return_code" jdbcType="INTEGER" property="return_code" />
+    <result column="quantum_used" jdbcType="BIGINT" property="quantum_used" />
+    <result column="max_quantum" jdbcType="BIGINT" property="max_quantum" />
+    <result column="boost_count" jdbcType="INTEGER" property="boost_count" />
+    <result column="tasks_processed_count" jdbcType="INTEGER" property="tasks_processed_count" />
+    <result column="processor_group" jdbcType="SMALLINT" property="processor_group" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsWorkersWithBLOBs">
+    <result column="worker_address" jdbcType="VARBINARY" property="worker_address" />
+    <result column="exception_address" jdbcType="VARBINARY" property="exception_address" />
+    <result column="fiber_address" jdbcType="VARBINARY" property="fiber_address" />
+    <result column="task_address" jdbcType="VARBINARY" property="task_address" />
+    <result column="memory_object_address" jdbcType="VARBINARY" property="memory_object_address" />
+    <result column="thread_address" jdbcType="VARBINARY" property="thread_address" />
+    <result column="signal_worker_address" jdbcType="VARBINARY" property="signal_worker_address" />
+    <result column="scheduler_address" jdbcType="VARBINARY" property="scheduler_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    worker_address, exception_address, fiber_address, task_address, memory_object_address, 
+    thread_address, signal_worker_address, scheduler_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsWorkersWithBLOBs">
+    insert into dm_os_workers (status, is_preemptive, is_fiber, 
+      is_sick, is_in_cc_exception, is_fatal_exception, 
+      is_inside_catch, is_in_polling_io_completion_routine, 
+      context_switch_count, pending_io_count, 
+      pending_io_byte_count, pending_io_byte_average, 
+      wait_started_ms_ticks, wait_resumed_ms_ticks, 
+      task_bound_ms_ticks, worker_created_ms_ticks, 
+      exception_num, exception_severity, locale, 
+      affinity, state, start_quantum, 
+      end_quantum, last_wait_type, return_code, 
+      quantum_used, max_quantum, boost_count, 
+      tasks_processed_count, processor_group, 
+      worker_address, exception_address, 
+      fiber_address, task_address, memory_object_address, 
+      thread_address, signal_worker_address, 
+      scheduler_address)
+    values (#{status,jdbcType=INTEGER}, #{is_preemptive,jdbcType=BIT}, #{is_fiber,jdbcType=BIT}, 
+      #{is_sick,jdbcType=BIT}, #{is_in_cc_exception,jdbcType=BIT}, #{is_fatal_exception,jdbcType=BIT}, 
+      #{is_inside_catch,jdbcType=BIT}, #{is_in_polling_io_completion_routine,jdbcType=BIT}, 
+      #{context_switch_count,jdbcType=INTEGER}, #{pending_io_count,jdbcType=INTEGER}, 
+      #{pending_io_byte_count,jdbcType=BIGINT}, #{pending_io_byte_average,jdbcType=INTEGER}, 
+      #{wait_started_ms_ticks,jdbcType=BIGINT}, #{wait_resumed_ms_ticks,jdbcType=BIGINT}, 
+      #{task_bound_ms_ticks,jdbcType=BIGINT}, #{worker_created_ms_ticks,jdbcType=BIGINT}, 
+      #{exception_num,jdbcType=INTEGER}, #{exception_severity,jdbcType=INTEGER}, #{locale,jdbcType=INTEGER}, 
+      #{affinity,jdbcType=BIGINT}, #{state,jdbcType=VARCHAR}, #{start_quantum,jdbcType=BIGINT}, 
+      #{end_quantum,jdbcType=BIGINT}, #{last_wait_type,jdbcType=VARCHAR}, #{return_code,jdbcType=INTEGER}, 
+      #{quantum_used,jdbcType=BIGINT}, #{max_quantum,jdbcType=BIGINT}, #{boost_count,jdbcType=INTEGER}, 
+      #{tasks_processed_count,jdbcType=INTEGER}, #{processor_group,jdbcType=SMALLINT}, 
+      #{worker_address,jdbcType=VARBINARY}, #{exception_address,jdbcType=VARBINARY}, 
+      #{fiber_address,jdbcType=VARBINARY}, #{task_address,jdbcType=VARBINARY}, #{memory_object_address,jdbcType=VARBINARY}, 
+      #{thread_address,jdbcType=VARBINARY}, #{signal_worker_address,jdbcType=VARBINARY}, 
+      #{scheduler_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsWorkersWithBLOBs">
+    insert into dm_os_workers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        status,
+      </if>
+      <if test="is_preemptive != null">
+        is_preemptive,
+      </if>
+      <if test="is_fiber != null">
+        is_fiber,
+      </if>
+      <if test="is_sick != null">
+        is_sick,
+      </if>
+      <if test="is_in_cc_exception != null">
+        is_in_cc_exception,
+      </if>
+      <if test="is_fatal_exception != null">
+        is_fatal_exception,
+      </if>
+      <if test="is_inside_catch != null">
+        is_inside_catch,
+      </if>
+      <if test="is_in_polling_io_completion_routine != null">
+        is_in_polling_io_completion_routine,
+      </if>
+      <if test="context_switch_count != null">
+        context_switch_count,
+      </if>
+      <if test="pending_io_count != null">
+        pending_io_count,
+      </if>
+      <if test="pending_io_byte_count != null">
+        pending_io_byte_count,
+      </if>
+      <if test="pending_io_byte_average != null">
+        pending_io_byte_average,
+      </if>
+      <if test="wait_started_ms_ticks != null">
+        wait_started_ms_ticks,
+      </if>
+      <if test="wait_resumed_ms_ticks != null">
+        wait_resumed_ms_ticks,
+      </if>
+      <if test="task_bound_ms_ticks != null">
+        task_bound_ms_ticks,
+      </if>
+      <if test="worker_created_ms_ticks != null">
+        worker_created_ms_ticks,
+      </if>
+      <if test="exception_num != null">
+        exception_num,
+      </if>
+      <if test="exception_severity != null">
+        exception_severity,
+      </if>
+      <if test="locale != null">
+        locale,
+      </if>
+      <if test="affinity != null">
+        affinity,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="start_quantum != null">
+        start_quantum,
+      </if>
+      <if test="end_quantum != null">
+        end_quantum,
+      </if>
+      <if test="last_wait_type != null">
+        last_wait_type,
+      </if>
+      <if test="return_code != null">
+        return_code,
+      </if>
+      <if test="quantum_used != null">
+        quantum_used,
+      </if>
+      <if test="max_quantum != null">
+        max_quantum,
+      </if>
+      <if test="boost_count != null">
+        boost_count,
+      </if>
+      <if test="tasks_processed_count != null">
+        tasks_processed_count,
+      </if>
+      <if test="processor_group != null">
+        processor_group,
+      </if>
+      <if test="worker_address != null">
+        worker_address,
+      </if>
+      <if test="exception_address != null">
+        exception_address,
+      </if>
+      <if test="fiber_address != null">
+        fiber_address,
+      </if>
+      <if test="task_address != null">
+        task_address,
+      </if>
+      <if test="memory_object_address != null">
+        memory_object_address,
+      </if>
+      <if test="thread_address != null">
+        thread_address,
+      </if>
+      <if test="signal_worker_address != null">
+        signal_worker_address,
+      </if>
+      <if test="scheduler_address != null">
+        scheduler_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="is_preemptive != null">
+        #{is_preemptive,jdbcType=BIT},
+      </if>
+      <if test="is_fiber != null">
+        #{is_fiber,jdbcType=BIT},
+      </if>
+      <if test="is_sick != null">
+        #{is_sick,jdbcType=BIT},
+      </if>
+      <if test="is_in_cc_exception != null">
+        #{is_in_cc_exception,jdbcType=BIT},
+      </if>
+      <if test="is_fatal_exception != null">
+        #{is_fatal_exception,jdbcType=BIT},
+      </if>
+      <if test="is_inside_catch != null">
+        #{is_inside_catch,jdbcType=BIT},
+      </if>
+      <if test="is_in_polling_io_completion_routine != null">
+        #{is_in_polling_io_completion_routine,jdbcType=BIT},
+      </if>
+      <if test="context_switch_count != null">
+        #{context_switch_count,jdbcType=INTEGER},
+      </if>
+      <if test="pending_io_count != null">
+        #{pending_io_count,jdbcType=INTEGER},
+      </if>
+      <if test="pending_io_byte_count != null">
+        #{pending_io_byte_count,jdbcType=BIGINT},
+      </if>
+      <if test="pending_io_byte_average != null">
+        #{pending_io_byte_average,jdbcType=INTEGER},
+      </if>
+      <if test="wait_started_ms_ticks != null">
+        #{wait_started_ms_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="wait_resumed_ms_ticks != null">
+        #{wait_resumed_ms_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="task_bound_ms_ticks != null">
+        #{task_bound_ms_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="worker_created_ms_ticks != null">
+        #{worker_created_ms_ticks,jdbcType=BIGINT},
+      </if>
+      <if test="exception_num != null">
+        #{exception_num,jdbcType=INTEGER},
+      </if>
+      <if test="exception_severity != null">
+        #{exception_severity,jdbcType=INTEGER},
+      </if>
+      <if test="locale != null">
+        #{locale,jdbcType=INTEGER},
+      </if>
+      <if test="affinity != null">
+        #{affinity,jdbcType=BIGINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="start_quantum != null">
+        #{start_quantum,jdbcType=BIGINT},
+      </if>
+      <if test="end_quantum != null">
+        #{end_quantum,jdbcType=BIGINT},
+      </if>
+      <if test="last_wait_type != null">
+        #{last_wait_type,jdbcType=VARCHAR},
+      </if>
+      <if test="return_code != null">
+        #{return_code,jdbcType=INTEGER},
+      </if>
+      <if test="quantum_used != null">
+        #{quantum_used,jdbcType=BIGINT},
+      </if>
+      <if test="max_quantum != null">
+        #{max_quantum,jdbcType=BIGINT},
+      </if>
+      <if test="boost_count != null">
+        #{boost_count,jdbcType=INTEGER},
+      </if>
+      <if test="tasks_processed_count != null">
+        #{tasks_processed_count,jdbcType=INTEGER},
+      </if>
+      <if test="processor_group != null">
+        #{processor_group,jdbcType=SMALLINT},
+      </if>
+      <if test="worker_address != null">
+        #{worker_address,jdbcType=VARBINARY},
+      </if>
+      <if test="exception_address != null">
+        #{exception_address,jdbcType=VARBINARY},
+      </if>
+      <if test="fiber_address != null">
+        #{fiber_address,jdbcType=VARBINARY},
+      </if>
+      <if test="task_address != null">
+        #{task_address,jdbcType=VARBINARY},
+      </if>
+      <if test="memory_object_address != null">
+        #{memory_object_address,jdbcType=VARBINARY},
+      </if>
+      <if test="thread_address != null">
+        #{thread_address,jdbcType=VARBINARY},
+      </if>
+      <if test="signal_worker_address != null">
+        #{signal_worker_address,jdbcType=VARBINARY},
+      </if>
+      <if test="scheduler_address != null">
+        #{scheduler_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

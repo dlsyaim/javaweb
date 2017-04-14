@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmClrLoadedAssembliesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmClrLoadedAssemblies">
+    <result column="assembly_id" jdbcType="INTEGER" property="assembly_id" />
+    <result column="load_time" jdbcType="TIMESTAMP" property="load_time" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmClrLoadedAssemblies">
+    <result column="appdomain_address" jdbcType="VARBINARY" property="appdomain_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    appdomain_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmClrLoadedAssemblies">
+    insert into dm_clr_loaded_assemblies (assembly_id, load_time, appdomain_address
+      )
+    values (#{assembly_id,jdbcType=INTEGER}, #{load_time,jdbcType=TIMESTAMP}, #{appdomain_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmClrLoadedAssemblies">
+    insert into dm_clr_loaded_assemblies
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="assembly_id != null">
+        assembly_id,
+      </if>
+      <if test="load_time != null">
+        load_time,
+      </if>
+      <if test="appdomain_address != null">
+        appdomain_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="assembly_id != null">
+        #{assembly_id,jdbcType=INTEGER},
+      </if>
+      <if test="load_time != null">
+        #{load_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appdomain_address != null">
+        #{appdomain_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

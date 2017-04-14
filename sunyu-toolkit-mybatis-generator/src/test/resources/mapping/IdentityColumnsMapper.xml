@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.IdentityColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.IdentityColumns">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+    <result column="system_type_id" jdbcType="TINYINT" property="system_type_id" />
+    <result column="user_type_id" jdbcType="INTEGER" property="user_type_id" />
+    <result column="max_length" jdbcType="SMALLINT" property="max_length" />
+    <result column="precision" jdbcType="TINYINT" property="precision" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="collation_name" jdbcType="VARCHAR" property="collation_name" />
+    <result column="is_nullable" jdbcType="BIT" property="is_nullable" />
+    <result column="is_ansi_padded" jdbcType="BIT" property="is_ansi_padded" />
+    <result column="is_rowguidcol" jdbcType="BIT" property="is_rowguidcol" />
+    <result column="is_identity" jdbcType="BIT" property="is_identity" />
+    <result column="is_filestream" jdbcType="BIT" property="is_filestream" />
+    <result column="is_replicated" jdbcType="BIT" property="is_replicated" />
+    <result column="is_non_sql_subscribed" jdbcType="BIT" property="is_non_sql_subscribed" />
+    <result column="is_merge_published" jdbcType="BIT" property="is_merge_published" />
+    <result column="is_dts_replicated" jdbcType="BIT" property="is_dts_replicated" />
+    <result column="is_xml_document" jdbcType="BIT" property="is_xml_document" />
+    <result column="xml_collection_id" jdbcType="INTEGER" property="xml_collection_id" />
+    <result column="default_object_id" jdbcType="INTEGER" property="default_object_id" />
+    <result column="rule_object_id" jdbcType="INTEGER" property="rule_object_id" />
+    <result column="seed_value" jdbcType="VARCHAR" property="seed_value" />
+    <result column="increment_value" jdbcType="VARCHAR" property="increment_value" />
+    <result column="last_value" jdbcType="VARCHAR" property="last_value" />
+    <result column="is_not_for_replication" jdbcType="BIT" property="is_not_for_replication" />
+    <result column="is_computed" jdbcType="BIT" property="is_computed" />
+    <result column="is_sparse" jdbcType="BIT" property="is_sparse" />
+    <result column="is_column_set" jdbcType="BIT" property="is_column_set" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.IdentityColumns">
+    insert into identity_columns (object_id, name, column_id, 
+      system_type_id, user_type_id, max_length, 
+      precision, scale, collation_name, 
+      is_nullable, is_ansi_padded, is_rowguidcol, 
+      is_identity, is_filestream, is_replicated, 
+      is_non_sql_subscribed, is_merge_published, is_dts_replicated, 
+      is_xml_document, xml_collection_id, default_object_id, 
+      rule_object_id, seed_value, increment_value, 
+      last_value, is_not_for_replication, is_computed, 
+      is_sparse, is_column_set)
+    values (#{object_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{column_id,jdbcType=INTEGER}, 
+      #{system_type_id,jdbcType=TINYINT}, #{user_type_id,jdbcType=INTEGER}, #{max_length,jdbcType=SMALLINT}, 
+      #{precision,jdbcType=TINYINT}, #{scale,jdbcType=TINYINT}, #{collation_name,jdbcType=VARCHAR}, 
+      #{is_nullable,jdbcType=BIT}, #{is_ansi_padded,jdbcType=BIT}, #{is_rowguidcol,jdbcType=BIT}, 
+      #{is_identity,jdbcType=BIT}, #{is_filestream,jdbcType=BIT}, #{is_replicated,jdbcType=BIT}, 
+      #{is_non_sql_subscribed,jdbcType=BIT}, #{is_merge_published,jdbcType=BIT}, #{is_dts_replicated,jdbcType=BIT}, 
+      #{is_xml_document,jdbcType=BIT}, #{xml_collection_id,jdbcType=INTEGER}, #{default_object_id,jdbcType=INTEGER}, 
+      #{rule_object_id,jdbcType=INTEGER}, #{seed_value,jdbcType=VARCHAR}, #{increment_value,jdbcType=VARCHAR}, 
+      #{last_value,jdbcType=VARCHAR}, #{is_not_for_replication,jdbcType=BIT}, #{is_computed,jdbcType=BIT}, 
+      #{is_sparse,jdbcType=BIT}, #{is_column_set,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.IdentityColumns">
+    insert into identity_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="column_id != null">
+        column_id,
+      </if>
+      <if test="system_type_id != null">
+        system_type_id,
+      </if>
+      <if test="user_type_id != null">
+        user_type_id,
+      </if>
+      <if test="max_length != null">
+        max_length,
+      </if>
+      <if test="precision != null">
+        precision,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="collation_name != null">
+        collation_name,
+      </if>
+      <if test="is_nullable != null">
+        is_nullable,
+      </if>
+      <if test="is_ansi_padded != null">
+        is_ansi_padded,
+      </if>
+      <if test="is_rowguidcol != null">
+        is_rowguidcol,
+      </if>
+      <if test="is_identity != null">
+        is_identity,
+      </if>
+      <if test="is_filestream != null">
+        is_filestream,
+      </if>
+      <if test="is_replicated != null">
+        is_replicated,
+      </if>
+      <if test="is_non_sql_subscribed != null">
+        is_non_sql_subscribed,
+      </if>
+      <if test="is_merge_published != null">
+        is_merge_published,
+      </if>
+      <if test="is_dts_replicated != null">
+        is_dts_replicated,
+      </if>
+      <if test="is_xml_document != null">
+        is_xml_document,
+      </if>
+      <if test="xml_collection_id != null">
+        xml_collection_id,
+      </if>
+      <if test="default_object_id != null">
+        default_object_id,
+      </if>
+      <if test="rule_object_id != null">
+        rule_object_id,
+      </if>
+      <if test="seed_value != null">
+        seed_value,
+      </if>
+      <if test="increment_value != null">
+        increment_value,
+      </if>
+      <if test="last_value != null">
+        last_value,
+      </if>
+      <if test="is_not_for_replication != null">
+        is_not_for_replication,
+      </if>
+      <if test="is_computed != null">
+        is_computed,
+      </if>
+      <if test="is_sparse != null">
+        is_sparse,
+      </if>
+      <if test="is_column_set != null">
+        is_column_set,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+      <if test="system_type_id != null">
+        #{system_type_id,jdbcType=TINYINT},
+      </if>
+      <if test="user_type_id != null">
+        #{user_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="max_length != null">
+        #{max_length,jdbcType=SMALLINT},
+      </if>
+      <if test="precision != null">
+        #{precision,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="collation_name != null">
+        #{collation_name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_nullable != null">
+        #{is_nullable,jdbcType=BIT},
+      </if>
+      <if test="is_ansi_padded != null">
+        #{is_ansi_padded,jdbcType=BIT},
+      </if>
+      <if test="is_rowguidcol != null">
+        #{is_rowguidcol,jdbcType=BIT},
+      </if>
+      <if test="is_identity != null">
+        #{is_identity,jdbcType=BIT},
+      </if>
+      <if test="is_filestream != null">
+        #{is_filestream,jdbcType=BIT},
+      </if>
+      <if test="is_replicated != null">
+        #{is_replicated,jdbcType=BIT},
+      </if>
+      <if test="is_non_sql_subscribed != null">
+        #{is_non_sql_subscribed,jdbcType=BIT},
+      </if>
+      <if test="is_merge_published != null">
+        #{is_merge_published,jdbcType=BIT},
+      </if>
+      <if test="is_dts_replicated != null">
+        #{is_dts_replicated,jdbcType=BIT},
+      </if>
+      <if test="is_xml_document != null">
+        #{is_xml_document,jdbcType=BIT},
+      </if>
+      <if test="xml_collection_id != null">
+        #{xml_collection_id,jdbcType=INTEGER},
+      </if>
+      <if test="default_object_id != null">
+        #{default_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="rule_object_id != null">
+        #{rule_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="seed_value != null">
+        #{seed_value,jdbcType=VARCHAR},
+      </if>
+      <if test="increment_value != null">
+        #{increment_value,jdbcType=VARCHAR},
+      </if>
+      <if test="last_value != null">
+        #{last_value,jdbcType=VARCHAR},
+      </if>
+      <if test="is_not_for_replication != null">
+        #{is_not_for_replication,jdbcType=BIT},
+      </if>
+      <if test="is_computed != null">
+        #{is_computed,jdbcType=BIT},
+      </if>
+      <if test="is_sparse != null">
+        #{is_sparse,jdbcType=BIT},
+      </if>
+      <if test="is_column_set != null">
+        #{is_column_set,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

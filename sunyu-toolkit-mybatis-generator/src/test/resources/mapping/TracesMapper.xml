@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TracesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Traces">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="max_size" jdbcType="BIGINT" property="max_size" />
+    <result column="stop_time" jdbcType="TIMESTAMP" property="stop_time" />
+    <result column="max_files" jdbcType="INTEGER" property="max_files" />
+    <result column="is_rowset" jdbcType="BIT" property="is_rowset" />
+    <result column="is_rollover" jdbcType="BIT" property="is_rollover" />
+    <result column="is_shutdown" jdbcType="BIT" property="is_shutdown" />
+    <result column="is_default" jdbcType="BIT" property="is_default" />
+    <result column="buffer_count" jdbcType="INTEGER" property="buffer_count" />
+    <result column="buffer_size" jdbcType="INTEGER" property="buffer_size" />
+    <result column="file_position" jdbcType="BIGINT" property="file_position" />
+    <result column="reader_spid" jdbcType="INTEGER" property="reader_spid" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="start_time" />
+    <result column="last_event_time" jdbcType="TIMESTAMP" property="last_event_time" />
+    <result column="event_count" jdbcType="BIGINT" property="event_count" />
+    <result column="dropped_event_count" jdbcType="INTEGER" property="dropped_event_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Traces">
+    insert into traces (id, status, path, 
+      max_size, stop_time, max_files, 
+      is_rowset, is_rollover, is_shutdown, 
+      is_default, buffer_count, buffer_size, 
+      file_position, reader_spid, start_time, 
+      last_event_time, event_count, dropped_event_count
+      )
+    values (#{id,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR}, 
+      #{max_size,jdbcType=BIGINT}, #{stop_time,jdbcType=TIMESTAMP}, #{max_files,jdbcType=INTEGER}, 
+      #{is_rowset,jdbcType=BIT}, #{is_rollover,jdbcType=BIT}, #{is_shutdown,jdbcType=BIT}, 
+      #{is_default,jdbcType=BIT}, #{buffer_count,jdbcType=INTEGER}, #{buffer_size,jdbcType=INTEGER}, 
+      #{file_position,jdbcType=BIGINT}, #{reader_spid,jdbcType=INTEGER}, #{start_time,jdbcType=TIMESTAMP}, 
+      #{last_event_time,jdbcType=TIMESTAMP}, #{event_count,jdbcType=BIGINT}, #{dropped_event_count,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Traces">
+    insert into traces
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="max_size != null">
+        max_size,
+      </if>
+      <if test="stop_time != null">
+        stop_time,
+      </if>
+      <if test="max_files != null">
+        max_files,
+      </if>
+      <if test="is_rowset != null">
+        is_rowset,
+      </if>
+      <if test="is_rollover != null">
+        is_rollover,
+      </if>
+      <if test="is_shutdown != null">
+        is_shutdown,
+      </if>
+      <if test="is_default != null">
+        is_default,
+      </if>
+      <if test="buffer_count != null">
+        buffer_count,
+      </if>
+      <if test="buffer_size != null">
+        buffer_size,
+      </if>
+      <if test="file_position != null">
+        file_position,
+      </if>
+      <if test="reader_spid != null">
+        reader_spid,
+      </if>
+      <if test="start_time != null">
+        start_time,
+      </if>
+      <if test="last_event_time != null">
+        last_event_time,
+      </if>
+      <if test="event_count != null">
+        event_count,
+      </if>
+      <if test="dropped_event_count != null">
+        dropped_event_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="max_size != null">
+        #{max_size,jdbcType=BIGINT},
+      </if>
+      <if test="stop_time != null">
+        #{stop_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="max_files != null">
+        #{max_files,jdbcType=INTEGER},
+      </if>
+      <if test="is_rowset != null">
+        #{is_rowset,jdbcType=BIT},
+      </if>
+      <if test="is_rollover != null">
+        #{is_rollover,jdbcType=BIT},
+      </if>
+      <if test="is_shutdown != null">
+        #{is_shutdown,jdbcType=BIT},
+      </if>
+      <if test="is_default != null">
+        #{is_default,jdbcType=BIT},
+      </if>
+      <if test="buffer_count != null">
+        #{buffer_count,jdbcType=INTEGER},
+      </if>
+      <if test="buffer_size != null">
+        #{buffer_size,jdbcType=INTEGER},
+      </if>
+      <if test="file_position != null">
+        #{file_position,jdbcType=BIGINT},
+      </if>
+      <if test="reader_spid != null">
+        #{reader_spid,jdbcType=INTEGER},
+      </if>
+      <if test="start_time != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_event_time != null">
+        #{last_event_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="event_count != null">
+        #{event_count,jdbcType=BIGINT},
+      </if>
+      <if test="dropped_event_count != null">
+        #{dropped_event_count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

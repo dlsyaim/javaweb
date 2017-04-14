@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsEquipmentMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsEquipment">
+    <id column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="RamCode" jdbcType="VARCHAR" property="ramCode" />
+    <result column="EquipMentName" jdbcType="VARCHAR" property="equipMentName" />
+    <result column="ProductID" jdbcType="BIGINT" property="productID" />
+    <result column="SiteID" jdbcType="BIGINT" property="siteID" />
+    <result column="UserNatureID" jdbcType="BIGINT" property="userNatureID" />
+    <result column="InTableID" jdbcType="BIGINT" property="inTableID" />
+    <result column="RtuID" jdbcType="BIGINT" property="rtuID" />
+    <result column="AgreeMentID" jdbcType="BIGINT" property="agreeMentID" />
+    <result column="DtuID" jdbcType="BIGINT" property="dtuID" />
+    <result column="InterFaceID" jdbcType="BIGINT" property="interFaceID" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="AssociatedEID" jdbcType="BIGINT" property="associatedEID" />
+    <result column="FlowRange" jdbcType="VARCHAR" property="flowRange" />
+    <result column="AddValue" jdbcType="DOUBLE" property="addValue" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EquipMentID, RamCode, EquipMentName, ProductID, SiteID, UserNatureID, InTableID, 
+    RtuID, AgreeMentID, DtuID, InterFaceID, ManagerID, AssociatedEID, FlowRange, AddValue, 
+    AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_EquipMent
+    where EquipMentID = #{equipMentID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_EquipMent
+    where EquipMentID = #{equipMentID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsEquipment">
+    insert into KS_EquipMent (EquipMentID, RamCode, EquipMentName, 
+      ProductID, SiteID, UserNatureID, 
+      InTableID, RtuID, AgreeMentID, 
+      DtuID, InterFaceID, ManagerID, 
+      AssociatedEID, FlowRange, AddValue, 
+      AddTime, Status)
+    values (#{equipMentID,jdbcType=BIGINT}, #{ramCode,jdbcType=VARCHAR}, #{equipMentName,jdbcType=VARCHAR}, 
+      #{productID,jdbcType=BIGINT}, #{siteID,jdbcType=BIGINT}, #{userNatureID,jdbcType=BIGINT}, 
+      #{inTableID,jdbcType=BIGINT}, #{rtuID,jdbcType=BIGINT}, #{agreeMentID,jdbcType=BIGINT}, 
+      #{dtuID,jdbcType=BIGINT}, #{interFaceID,jdbcType=BIGINT}, #{managerID,jdbcType=BIGINT}, 
+      #{associatedEID,jdbcType=BIGINT}, #{flowRange,jdbcType=VARCHAR}, #{addValue,jdbcType=DOUBLE}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsEquipment">
+    insert into KS_EquipMent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="ramCode != null">
+        RamCode,
+      </if>
+      <if test="equipMentName != null">
+        EquipMentName,
+      </if>
+      <if test="productID != null">
+        ProductID,
+      </if>
+      <if test="siteID != null">
+        SiteID,
+      </if>
+      <if test="userNatureID != null">
+        UserNatureID,
+      </if>
+      <if test="inTableID != null">
+        InTableID,
+      </if>
+      <if test="rtuID != null">
+        RtuID,
+      </if>
+      <if test="agreeMentID != null">
+        AgreeMentID,
+      </if>
+      <if test="dtuID != null">
+        DtuID,
+      </if>
+      <if test="interFaceID != null">
+        InterFaceID,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="associatedEID != null">
+        AssociatedEID,
+      </if>
+      <if test="flowRange != null">
+        FlowRange,
+      </if>
+      <if test="addValue != null">
+        AddValue,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="equipMentName != null">
+        #{equipMentName,jdbcType=VARCHAR},
+      </if>
+      <if test="productID != null">
+        #{productID,jdbcType=BIGINT},
+      </if>
+      <if test="siteID != null">
+        #{siteID,jdbcType=BIGINT},
+      </if>
+      <if test="userNatureID != null">
+        #{userNatureID,jdbcType=BIGINT},
+      </if>
+      <if test="inTableID != null">
+        #{inTableID,jdbcType=BIGINT},
+      </if>
+      <if test="rtuID != null">
+        #{rtuID,jdbcType=BIGINT},
+      </if>
+      <if test="agreeMentID != null">
+        #{agreeMentID,jdbcType=BIGINT},
+      </if>
+      <if test="dtuID != null">
+        #{dtuID,jdbcType=BIGINT},
+      </if>
+      <if test="interFaceID != null">
+        #{interFaceID,jdbcType=BIGINT},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="associatedEID != null">
+        #{associatedEID,jdbcType=BIGINT},
+      </if>
+      <if test="flowRange != null">
+        #{flowRange,jdbcType=VARCHAR},
+      </if>
+      <if test="addValue != null">
+        #{addValue,jdbcType=DOUBLE},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsEquipment">
+    update KS_EquipMent
+    <set>
+      <if test="ramCode != null">
+        RamCode = #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="equipMentName != null">
+        EquipMentName = #{equipMentName,jdbcType=VARCHAR},
+      </if>
+      <if test="productID != null">
+        ProductID = #{productID,jdbcType=BIGINT},
+      </if>
+      <if test="siteID != null">
+        SiteID = #{siteID,jdbcType=BIGINT},
+      </if>
+      <if test="userNatureID != null">
+        UserNatureID = #{userNatureID,jdbcType=BIGINT},
+      </if>
+      <if test="inTableID != null">
+        InTableID = #{inTableID,jdbcType=BIGINT},
+      </if>
+      <if test="rtuID != null">
+        RtuID = #{rtuID,jdbcType=BIGINT},
+      </if>
+      <if test="agreeMentID != null">
+        AgreeMentID = #{agreeMentID,jdbcType=BIGINT},
+      </if>
+      <if test="dtuID != null">
+        DtuID = #{dtuID,jdbcType=BIGINT},
+      </if>
+      <if test="interFaceID != null">
+        InterFaceID = #{interFaceID,jdbcType=BIGINT},
+      </if>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="associatedEID != null">
+        AssociatedEID = #{associatedEID,jdbcType=BIGINT},
+      </if>
+      <if test="flowRange != null">
+        FlowRange = #{flowRange,jdbcType=VARCHAR},
+      </if>
+      <if test="addValue != null">
+        AddValue = #{addValue,jdbcType=DOUBLE},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where EquipMentID = #{equipMentID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsEquipment">
+    update KS_EquipMent
+    set RamCode = #{ramCode,jdbcType=VARCHAR},
+      EquipMentName = #{equipMentName,jdbcType=VARCHAR},
+      ProductID = #{productID,jdbcType=BIGINT},
+      SiteID = #{siteID,jdbcType=BIGINT},
+      UserNatureID = #{userNatureID,jdbcType=BIGINT},
+      InTableID = #{inTableID,jdbcType=BIGINT},
+      RtuID = #{rtuID,jdbcType=BIGINT},
+      AgreeMentID = #{agreeMentID,jdbcType=BIGINT},
+      DtuID = #{dtuID,jdbcType=BIGINT},
+      InterFaceID = #{interFaceID,jdbcType=BIGINT},
+      ManagerID = #{managerID,jdbcType=BIGINT},
+      AssociatedEID = #{associatedEID,jdbcType=BIGINT},
+      FlowRange = #{flowRange,jdbcType=VARCHAR},
+      AddValue = #{addValue,jdbcType=DOUBLE},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where EquipMentID = #{equipMentID,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryClerksMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryClerks">
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="memory_node_id" jdbcType="SMALLINT" property="memory_node_id" />
+    <result column="single_pages_kb" jdbcType="BIGINT" property="single_pages_kb" />
+    <result column="multi_pages_kb" jdbcType="BIGINT" property="multi_pages_kb" />
+    <result column="virtual_memory_reserved_kb" jdbcType="BIGINT" property="virtual_memory_reserved_kb" />
+    <result column="virtual_memory_committed_kb" jdbcType="BIGINT" property="virtual_memory_committed_kb" />
+    <result column="awe_allocated_kb" jdbcType="BIGINT" property="awe_allocated_kb" />
+    <result column="shared_memory_reserved_kb" jdbcType="BIGINT" property="shared_memory_reserved_kb" />
+    <result column="shared_memory_committed_kb" jdbcType="BIGINT" property="shared_memory_committed_kb" />
+    <result column="page_size_bytes" jdbcType="BIGINT" property="page_size_bytes" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsMemoryClerksWithBLOBs">
+    <result column="memory_clerk_address" jdbcType="VARBINARY" property="memory_clerk_address" />
+    <result column="page_allocator_address" jdbcType="VARBINARY" property="page_allocator_address" />
+    <result column="host_address" jdbcType="VARBINARY" property="host_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_clerk_address, page_allocator_address, host_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryClerksWithBLOBs">
+    insert into dm_os_memory_clerks (type, name, memory_node_id, 
+      single_pages_kb, multi_pages_kb, virtual_memory_reserved_kb, 
+      virtual_memory_committed_kb, awe_allocated_kb, 
+      shared_memory_reserved_kb, shared_memory_committed_kb, 
+      page_size_bytes, memory_clerk_address, 
+      page_allocator_address, host_address
+      )
+    values (#{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{memory_node_id,jdbcType=SMALLINT}, 
+      #{single_pages_kb,jdbcType=BIGINT}, #{multi_pages_kb,jdbcType=BIGINT}, #{virtual_memory_reserved_kb,jdbcType=BIGINT}, 
+      #{virtual_memory_committed_kb,jdbcType=BIGINT}, #{awe_allocated_kb,jdbcType=BIGINT}, 
+      #{shared_memory_reserved_kb,jdbcType=BIGINT}, #{shared_memory_committed_kb,jdbcType=BIGINT}, 
+      #{page_size_bytes,jdbcType=BIGINT}, #{memory_clerk_address,jdbcType=VARBINARY}, 
+      #{page_allocator_address,jdbcType=VARBINARY}, #{host_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryClerksWithBLOBs">
+    insert into dm_os_memory_clerks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="memory_node_id != null">
+        memory_node_id,
+      </if>
+      <if test="single_pages_kb != null">
+        single_pages_kb,
+      </if>
+      <if test="multi_pages_kb != null">
+        multi_pages_kb,
+      </if>
+      <if test="virtual_memory_reserved_kb != null">
+        virtual_memory_reserved_kb,
+      </if>
+      <if test="virtual_memory_committed_kb != null">
+        virtual_memory_committed_kb,
+      </if>
+      <if test="awe_allocated_kb != null">
+        awe_allocated_kb,
+      </if>
+      <if test="shared_memory_reserved_kb != null">
+        shared_memory_reserved_kb,
+      </if>
+      <if test="shared_memory_committed_kb != null">
+        shared_memory_committed_kb,
+      </if>
+      <if test="page_size_bytes != null">
+        page_size_bytes,
+      </if>
+      <if test="memory_clerk_address != null">
+        memory_clerk_address,
+      </if>
+      <if test="page_allocator_address != null">
+        page_allocator_address,
+      </if>
+      <if test="host_address != null">
+        host_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="memory_node_id != null">
+        #{memory_node_id,jdbcType=SMALLINT},
+      </if>
+      <if test="single_pages_kb != null">
+        #{single_pages_kb,jdbcType=BIGINT},
+      </if>
+      <if test="multi_pages_kb != null">
+        #{multi_pages_kb,jdbcType=BIGINT},
+      </if>
+      <if test="virtual_memory_reserved_kb != null">
+        #{virtual_memory_reserved_kb,jdbcType=BIGINT},
+      </if>
+      <if test="virtual_memory_committed_kb != null">
+        #{virtual_memory_committed_kb,jdbcType=BIGINT},
+      </if>
+      <if test="awe_allocated_kb != null">
+        #{awe_allocated_kb,jdbcType=BIGINT},
+      </if>
+      <if test="shared_memory_reserved_kb != null">
+        #{shared_memory_reserved_kb,jdbcType=BIGINT},
+      </if>
+      <if test="shared_memory_committed_kb != null">
+        #{shared_memory_committed_kb,jdbcType=BIGINT},
+      </if>
+      <if test="page_size_bytes != null">
+        #{page_size_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="memory_clerk_address != null">
+        #{memory_clerk_address,jdbcType=VARBINARY},
+      </if>
+      <if test="page_allocator_address != null">
+        #{page_allocator_address,jdbcType=VARBINARY},
+      </if>
+      <if test="host_address != null">
+        #{host_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

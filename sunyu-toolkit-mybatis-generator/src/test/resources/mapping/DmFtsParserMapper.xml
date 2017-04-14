@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmFtsParserMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmFtsParser">
+    <result column="group_id" jdbcType="INTEGER" property="group_id" />
+    <result column="phrase_id" jdbcType="INTEGER" property="phrase_id" />
+    <result column="occurrence" jdbcType="INTEGER" property="occurrence" />
+    <result column="special_term" jdbcType="VARCHAR" property="special_term" />
+    <result column="display_term" jdbcType="VARCHAR" property="display_term" />
+    <result column="expansion_type" jdbcType="INTEGER" property="expansion_type" />
+    <result column="source_term" jdbcType="VARCHAR" property="source_term" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmFtsParser">
+    <result column="keyword" jdbcType="VARBINARY" property="keyword" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    keyword
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmFtsParser">
+    insert into dm_fts_parser (group_id, phrase_id, occurrence, 
+      special_term, display_term, expansion_type, 
+      source_term, keyword)
+    values (#{group_id,jdbcType=INTEGER}, #{phrase_id,jdbcType=INTEGER}, #{occurrence,jdbcType=INTEGER}, 
+      #{special_term,jdbcType=VARCHAR}, #{display_term,jdbcType=VARCHAR}, #{expansion_type,jdbcType=INTEGER}, 
+      #{source_term,jdbcType=VARCHAR}, #{keyword,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmFtsParser">
+    insert into dm_fts_parser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="phrase_id != null">
+        phrase_id,
+      </if>
+      <if test="occurrence != null">
+        occurrence,
+      </if>
+      <if test="special_term != null">
+        special_term,
+      </if>
+      <if test="display_term != null">
+        display_term,
+      </if>
+      <if test="expansion_type != null">
+        expansion_type,
+      </if>
+      <if test="source_term != null">
+        source_term,
+      </if>
+      <if test="keyword != null">
+        keyword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+      <if test="phrase_id != null">
+        #{phrase_id,jdbcType=INTEGER},
+      </if>
+      <if test="occurrence != null">
+        #{occurrence,jdbcType=INTEGER},
+      </if>
+      <if test="special_term != null">
+        #{special_term,jdbcType=VARCHAR},
+      </if>
+      <if test="display_term != null">
+        #{display_term,jdbcType=VARCHAR},
+      </if>
+      <if test="expansion_type != null">
+        #{expansion_type,jdbcType=INTEGER},
+      </if>
+      <if test="source_term != null">
+        #{source_term,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null">
+        #{keyword,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

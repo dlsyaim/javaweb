@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.RoutinesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Routines">
+    <result column="SPECIFIC_CATALOG" jdbcType="VARCHAR" property="SPECIFIC_CATALOG" />
+    <result column="SPECIFIC_SCHEMA" jdbcType="VARCHAR" property="SPECIFIC_SCHEMA" />
+    <result column="SPECIFIC_NAME" jdbcType="VARCHAR" property="SPECIFIC_NAME" />
+    <result column="ROUTINE_CATALOG" jdbcType="VARCHAR" property="ROUTINE_CATALOG" />
+    <result column="ROUTINE_SCHEMA" jdbcType="VARCHAR" property="ROUTINE_SCHEMA" />
+    <result column="ROUTINE_NAME" jdbcType="VARCHAR" property="ROUTINE_NAME" />
+    <result column="ROUTINE_TYPE" jdbcType="VARCHAR" property="ROUTINE_TYPE" />
+    <result column="MODULE_CATALOG" jdbcType="VARCHAR" property="MODULE_CATALOG" />
+    <result column="MODULE_SCHEMA" jdbcType="VARCHAR" property="MODULE_SCHEMA" />
+    <result column="MODULE_NAME" jdbcType="VARCHAR" property="MODULE_NAME" />
+    <result column="UDT_CATALOG" jdbcType="VARCHAR" property="UDT_CATALOG" />
+    <result column="UDT_SCHEMA" jdbcType="VARCHAR" property="UDT_SCHEMA" />
+    <result column="UDT_NAME" jdbcType="VARCHAR" property="UDT_NAME" />
+    <result column="DATA_TYPE" jdbcType="VARCHAR" property="DATA_TYPE" />
+    <result column="CHARACTER_MAXIMUM_LENGTH" jdbcType="INTEGER" property="CHARACTER_MAXIMUM_LENGTH" />
+    <result column="CHARACTER_OCTET_LENGTH" jdbcType="INTEGER" property="CHARACTER_OCTET_LENGTH" />
+    <result column="COLLATION_CATALOG" jdbcType="VARCHAR" property="COLLATION_CATALOG" />
+    <result column="COLLATION_SCHEMA" jdbcType="VARCHAR" property="COLLATION_SCHEMA" />
+    <result column="COLLATION_NAME" jdbcType="VARCHAR" property="COLLATION_NAME" />
+    <result column="CHARACTER_SET_CATALOG" jdbcType="VARCHAR" property="CHARACTER_SET_CATALOG" />
+    <result column="CHARACTER_SET_SCHEMA" jdbcType="VARCHAR" property="CHARACTER_SET_SCHEMA" />
+    <result column="CHARACTER_SET_NAME" jdbcType="VARCHAR" property="CHARACTER_SET_NAME" />
+    <result column="NUMERIC_PRECISION" jdbcType="TINYINT" property="NUMERIC_PRECISION" />
+    <result column="NUMERIC_PRECISION_RADIX" jdbcType="SMALLINT" property="NUMERIC_PRECISION_RADIX" />
+    <result column="NUMERIC_SCALE" jdbcType="INTEGER" property="NUMERIC_SCALE" />
+    <result column="DATETIME_PRECISION" jdbcType="SMALLINT" property="DATETIME_PRECISION" />
+    <result column="INTERVAL_TYPE" jdbcType="VARCHAR" property="INTERVAL_TYPE" />
+    <result column="INTERVAL_PRECISION" jdbcType="SMALLINT" property="INTERVAL_PRECISION" />
+    <result column="TYPE_UDT_CATALOG" jdbcType="VARCHAR" property="TYPE_UDT_CATALOG" />
+    <result column="TYPE_UDT_SCHEMA" jdbcType="VARCHAR" property="TYPE_UDT_SCHEMA" />
+    <result column="TYPE_UDT_NAME" jdbcType="VARCHAR" property="TYPE_UDT_NAME" />
+    <result column="SCOPE_CATALOG" jdbcType="VARCHAR" property="SCOPE_CATALOG" />
+    <result column="SCOPE_SCHEMA" jdbcType="VARCHAR" property="SCOPE_SCHEMA" />
+    <result column="SCOPE_NAME" jdbcType="VARCHAR" property="SCOPE_NAME" />
+    <result column="MAXIMUM_CARDINALITY" jdbcType="BIGINT" property="MAXIMUM_CARDINALITY" />
+    <result column="DTD_IDENTIFIER" jdbcType="VARCHAR" property="DTD_IDENTIFIER" />
+    <result column="ROUTINE_BODY" jdbcType="VARCHAR" property="ROUTINE_BODY" />
+    <result column="ROUTINE_DEFINITION" jdbcType="VARCHAR" property="ROUTINE_DEFINITION" />
+    <result column="EXTERNAL_NAME" jdbcType="VARCHAR" property="EXTERNAL_NAME" />
+    <result column="EXTERNAL_LANGUAGE" jdbcType="VARCHAR" property="EXTERNAL_LANGUAGE" />
+    <result column="PARAMETER_STYLE" jdbcType="VARCHAR" property="PARAMETER_STYLE" />
+    <result column="IS_DETERMINISTIC" jdbcType="VARCHAR" property="IS_DETERMINISTIC" />
+    <result column="SQL_DATA_ACCESS" jdbcType="VARCHAR" property="SQL_DATA_ACCESS" />
+    <result column="IS_NULL_CALL" jdbcType="VARCHAR" property="IS_NULL_CALL" />
+    <result column="SQL_PATH" jdbcType="VARCHAR" property="SQL_PATH" />
+    <result column="SCHEMA_LEVEL_ROUTINE" jdbcType="VARCHAR" property="SCHEMA_LEVEL_ROUTINE" />
+    <result column="MAX_DYNAMIC_RESULT_SETS" jdbcType="SMALLINT" property="MAX_DYNAMIC_RESULT_SETS" />
+    <result column="IS_USER_DEFINED_CAST" jdbcType="VARCHAR" property="IS_USER_DEFINED_CAST" />
+    <result column="IS_IMPLICITLY_INVOCABLE" jdbcType="VARCHAR" property="IS_IMPLICITLY_INVOCABLE" />
+    <result column="CREATED" jdbcType="TIMESTAMP" property="CREATED" />
+    <result column="LAST_ALTERED" jdbcType="TIMESTAMP" property="LAST_ALTERED" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Routines">
+    insert into ROUTINES (SPECIFIC_CATALOG, SPECIFIC_SCHEMA, 
+      SPECIFIC_NAME, ROUTINE_CATALOG, ROUTINE_SCHEMA, 
+      ROUTINE_NAME, ROUTINE_TYPE, MODULE_CATALOG, 
+      MODULE_SCHEMA, MODULE_NAME, UDT_CATALOG, 
+      UDT_SCHEMA, UDT_NAME, DATA_TYPE, 
+      CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, 
+      COLLATION_CATALOG, COLLATION_SCHEMA, COLLATION_NAME, 
+      CHARACTER_SET_CATALOG, CHARACTER_SET_SCHEMA, 
+      CHARACTER_SET_NAME, NUMERIC_PRECISION, 
+      NUMERIC_PRECISION_RADIX, NUMERIC_SCALE, 
+      DATETIME_PRECISION, INTERVAL_TYPE, INTERVAL_PRECISION, 
+      TYPE_UDT_CATALOG, TYPE_UDT_SCHEMA, TYPE_UDT_NAME, 
+      SCOPE_CATALOG, SCOPE_SCHEMA, SCOPE_NAME, 
+      MAXIMUM_CARDINALITY, DTD_IDENTIFIER, ROUTINE_BODY, 
+      ROUTINE_DEFINITION, EXTERNAL_NAME, EXTERNAL_LANGUAGE, 
+      PARAMETER_STYLE, IS_DETERMINISTIC, SQL_DATA_ACCESS, 
+      IS_NULL_CALL, SQL_PATH, SCHEMA_LEVEL_ROUTINE, 
+      MAX_DYNAMIC_RESULT_SETS, IS_USER_DEFINED_CAST, 
+      IS_IMPLICITLY_INVOCABLE, CREATED, LAST_ALTERED
+      )
+    values (#{SPECIFIC_CATALOG,jdbcType=VARCHAR}, #{SPECIFIC_SCHEMA,jdbcType=VARCHAR}, 
+      #{SPECIFIC_NAME,jdbcType=VARCHAR}, #{ROUTINE_CATALOG,jdbcType=VARCHAR}, #{ROUTINE_SCHEMA,jdbcType=VARCHAR}, 
+      #{ROUTINE_NAME,jdbcType=VARCHAR}, #{ROUTINE_TYPE,jdbcType=VARCHAR}, #{MODULE_CATALOG,jdbcType=VARCHAR}, 
+      #{MODULE_SCHEMA,jdbcType=VARCHAR}, #{MODULE_NAME,jdbcType=VARCHAR}, #{UDT_CATALOG,jdbcType=VARCHAR}, 
+      #{UDT_SCHEMA,jdbcType=VARCHAR}, #{UDT_NAME,jdbcType=VARCHAR}, #{DATA_TYPE,jdbcType=VARCHAR}, 
+      #{CHARACTER_MAXIMUM_LENGTH,jdbcType=INTEGER}, #{CHARACTER_OCTET_LENGTH,jdbcType=INTEGER}, 
+      #{COLLATION_CATALOG,jdbcType=VARCHAR}, #{COLLATION_SCHEMA,jdbcType=VARCHAR}, #{COLLATION_NAME,jdbcType=VARCHAR}, 
+      #{CHARACTER_SET_CATALOG,jdbcType=VARCHAR}, #{CHARACTER_SET_SCHEMA,jdbcType=VARCHAR}, 
+      #{CHARACTER_SET_NAME,jdbcType=VARCHAR}, #{NUMERIC_PRECISION,jdbcType=TINYINT}, 
+      #{NUMERIC_PRECISION_RADIX,jdbcType=SMALLINT}, #{NUMERIC_SCALE,jdbcType=INTEGER}, 
+      #{DATETIME_PRECISION,jdbcType=SMALLINT}, #{INTERVAL_TYPE,jdbcType=VARCHAR}, #{INTERVAL_PRECISION,jdbcType=SMALLINT}, 
+      #{TYPE_UDT_CATALOG,jdbcType=VARCHAR}, #{TYPE_UDT_SCHEMA,jdbcType=VARCHAR}, #{TYPE_UDT_NAME,jdbcType=VARCHAR}, 
+      #{SCOPE_CATALOG,jdbcType=VARCHAR}, #{SCOPE_SCHEMA,jdbcType=VARCHAR}, #{SCOPE_NAME,jdbcType=VARCHAR}, 
+      #{MAXIMUM_CARDINALITY,jdbcType=BIGINT}, #{DTD_IDENTIFIER,jdbcType=VARCHAR}, #{ROUTINE_BODY,jdbcType=VARCHAR}, 
+      #{ROUTINE_DEFINITION,jdbcType=VARCHAR}, #{EXTERNAL_NAME,jdbcType=VARCHAR}, #{EXTERNAL_LANGUAGE,jdbcType=VARCHAR}, 
+      #{PARAMETER_STYLE,jdbcType=VARCHAR}, #{IS_DETERMINISTIC,jdbcType=VARCHAR}, #{SQL_DATA_ACCESS,jdbcType=VARCHAR}, 
+      #{IS_NULL_CALL,jdbcType=VARCHAR}, #{SQL_PATH,jdbcType=VARCHAR}, #{SCHEMA_LEVEL_ROUTINE,jdbcType=VARCHAR}, 
+      #{MAX_DYNAMIC_RESULT_SETS,jdbcType=SMALLINT}, #{IS_USER_DEFINED_CAST,jdbcType=VARCHAR}, 
+      #{IS_IMPLICITLY_INVOCABLE,jdbcType=VARCHAR}, #{CREATED,jdbcType=TIMESTAMP}, #{LAST_ALTERED,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Routines">
+    insert into ROUTINES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="SPECIFIC_CATALOG != null">
+        SPECIFIC_CATALOG,
+      </if>
+      <if test="SPECIFIC_SCHEMA != null">
+        SPECIFIC_SCHEMA,
+      </if>
+      <if test="SPECIFIC_NAME != null">
+        SPECIFIC_NAME,
+      </if>
+      <if test="ROUTINE_CATALOG != null">
+        ROUTINE_CATALOG,
+      </if>
+      <if test="ROUTINE_SCHEMA != null">
+        ROUTINE_SCHEMA,
+      </if>
+      <if test="ROUTINE_NAME != null">
+        ROUTINE_NAME,
+      </if>
+      <if test="ROUTINE_TYPE != null">
+        ROUTINE_TYPE,
+      </if>
+      <if test="MODULE_CATALOG != null">
+        MODULE_CATALOG,
+      </if>
+      <if test="MODULE_SCHEMA != null">
+        MODULE_SCHEMA,
+      </if>
+      <if test="MODULE_NAME != null">
+        MODULE_NAME,
+      </if>
+      <if test="UDT_CATALOG != null">
+        UDT_CATALOG,
+      </if>
+      <if test="UDT_SCHEMA != null">
+        UDT_SCHEMA,
+      </if>
+      <if test="UDT_NAME != null">
+        UDT_NAME,
+      </if>
+      <if test="DATA_TYPE != null">
+        DATA_TYPE,
+      </if>
+      <if test="CHARACTER_MAXIMUM_LENGTH != null">
+        CHARACTER_MAXIMUM_LENGTH,
+      </if>
+      <if test="CHARACTER_OCTET_LENGTH != null">
+        CHARACTER_OCTET_LENGTH,
+      </if>
+      <if test="COLLATION_CATALOG != null">
+        COLLATION_CATALOG,
+      </if>
+      <if test="COLLATION_SCHEMA != null">
+        COLLATION_SCHEMA,
+      </if>
+      <if test="COLLATION_NAME != null">
+        COLLATION_NAME,
+      </if>
+      <if test="CHARACTER_SET_CATALOG != null">
+        CHARACTER_SET_CATALOG,
+      </if>
+      <if test="CHARACTER_SET_SCHEMA != null">
+        CHARACTER_SET_SCHEMA,
+      </if>
+      <if test="CHARACTER_SET_NAME != null">
+        CHARACTER_SET_NAME,
+      </if>
+      <if test="NUMERIC_PRECISION != null">
+        NUMERIC_PRECISION,
+      </if>
+      <if test="NUMERIC_PRECISION_RADIX != null">
+        NUMERIC_PRECISION_RADIX,
+      </if>
+      <if test="NUMERIC_SCALE != null">
+        NUMERIC_SCALE,
+      </if>
+      <if test="DATETIME_PRECISION != null">
+        DATETIME_PRECISION,
+      </if>
+      <if test="INTERVAL_TYPE != null">
+        INTERVAL_TYPE,
+      </if>
+      <if test="INTERVAL_PRECISION != null">
+        INTERVAL_PRECISION,
+      </if>
+      <if test="TYPE_UDT_CATALOG != null">
+        TYPE_UDT_CATALOG,
+      </if>
+      <if test="TYPE_UDT_SCHEMA != null">
+        TYPE_UDT_SCHEMA,
+      </if>
+      <if test="TYPE_UDT_NAME != null">
+        TYPE_UDT_NAME,
+      </if>
+      <if test="SCOPE_CATALOG != null">
+        SCOPE_CATALOG,
+      </if>
+      <if test="SCOPE_SCHEMA != null">
+        SCOPE_SCHEMA,
+      </if>
+      <if test="SCOPE_NAME != null">
+        SCOPE_NAME,
+      </if>
+      <if test="MAXIMUM_CARDINALITY != null">
+        MAXIMUM_CARDINALITY,
+      </if>
+      <if test="DTD_IDENTIFIER != null">
+        DTD_IDENTIFIER,
+      </if>
+      <if test="ROUTINE_BODY != null">
+        ROUTINE_BODY,
+      </if>
+      <if test="ROUTINE_DEFINITION != null">
+        ROUTINE_DEFINITION,
+      </if>
+      <if test="EXTERNAL_NAME != null">
+        EXTERNAL_NAME,
+      </if>
+      <if test="EXTERNAL_LANGUAGE != null">
+        EXTERNAL_LANGUAGE,
+      </if>
+      <if test="PARAMETER_STYLE != null">
+        PARAMETER_STYLE,
+      </if>
+      <if test="IS_DETERMINISTIC != null">
+        IS_DETERMINISTIC,
+      </if>
+      <if test="SQL_DATA_ACCESS != null">
+        SQL_DATA_ACCESS,
+      </if>
+      <if test="IS_NULL_CALL != null">
+        IS_NULL_CALL,
+      </if>
+      <if test="SQL_PATH != null">
+        SQL_PATH,
+      </if>
+      <if test="SCHEMA_LEVEL_ROUTINE != null">
+        SCHEMA_LEVEL_ROUTINE,
+      </if>
+      <if test="MAX_DYNAMIC_RESULT_SETS != null">
+        MAX_DYNAMIC_RESULT_SETS,
+      </if>
+      <if test="IS_USER_DEFINED_CAST != null">
+        IS_USER_DEFINED_CAST,
+      </if>
+      <if test="IS_IMPLICITLY_INVOCABLE != null">
+        IS_IMPLICITLY_INVOCABLE,
+      </if>
+      <if test="CREATED != null">
+        CREATED,
+      </if>
+      <if test="LAST_ALTERED != null">
+        LAST_ALTERED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="SPECIFIC_CATALOG != null">
+        #{SPECIFIC_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="SPECIFIC_SCHEMA != null">
+        #{SPECIFIC_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="SPECIFIC_NAME != null">
+        #{SPECIFIC_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROUTINE_CATALOG != null">
+        #{ROUTINE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="ROUTINE_SCHEMA != null">
+        #{ROUTINE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="ROUTINE_NAME != null">
+        #{ROUTINE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROUTINE_TYPE != null">
+        #{ROUTINE_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="MODULE_CATALOG != null">
+        #{MODULE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="MODULE_SCHEMA != null">
+        #{MODULE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="MODULE_NAME != null">
+        #{MODULE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="UDT_CATALOG != null">
+        #{UDT_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="UDT_SCHEMA != null">
+        #{UDT_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="UDT_NAME != null">
+        #{UDT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="DATA_TYPE != null">
+        #{DATA_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_MAXIMUM_LENGTH != null">
+        #{CHARACTER_MAXIMUM_LENGTH,jdbcType=INTEGER},
+      </if>
+      <if test="CHARACTER_OCTET_LENGTH != null">
+        #{CHARACTER_OCTET_LENGTH,jdbcType=INTEGER},
+      </if>
+      <if test="COLLATION_CATALOG != null">
+        #{COLLATION_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLATION_SCHEMA != null">
+        #{COLLATION_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLATION_NAME != null">
+        #{COLLATION_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_CATALOG != null">
+        #{CHARACTER_SET_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_SCHEMA != null">
+        #{CHARACTER_SET_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_NAME != null">
+        #{CHARACTER_SET_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="NUMERIC_PRECISION != null">
+        #{NUMERIC_PRECISION,jdbcType=TINYINT},
+      </if>
+      <if test="NUMERIC_PRECISION_RADIX != null">
+        #{NUMERIC_PRECISION_RADIX,jdbcType=SMALLINT},
+      </if>
+      <if test="NUMERIC_SCALE != null">
+        #{NUMERIC_SCALE,jdbcType=INTEGER},
+      </if>
+      <if test="DATETIME_PRECISION != null">
+        #{DATETIME_PRECISION,jdbcType=SMALLINT},
+      </if>
+      <if test="INTERVAL_TYPE != null">
+        #{INTERVAL_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="INTERVAL_PRECISION != null">
+        #{INTERVAL_PRECISION,jdbcType=SMALLINT},
+      </if>
+      <if test="TYPE_UDT_CATALOG != null">
+        #{TYPE_UDT_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="TYPE_UDT_SCHEMA != null">
+        #{TYPE_UDT_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="TYPE_UDT_NAME != null">
+        #{TYPE_UDT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="SCOPE_CATALOG != null">
+        #{SCOPE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="SCOPE_SCHEMA != null">
+        #{SCOPE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="SCOPE_NAME != null">
+        #{SCOPE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="MAXIMUM_CARDINALITY != null">
+        #{MAXIMUM_CARDINALITY,jdbcType=BIGINT},
+      </if>
+      <if test="DTD_IDENTIFIER != null">
+        #{DTD_IDENTIFIER,jdbcType=VARCHAR},
+      </if>
+      <if test="ROUTINE_BODY != null">
+        #{ROUTINE_BODY,jdbcType=VARCHAR},
+      </if>
+      <if test="ROUTINE_DEFINITION != null">
+        #{ROUTINE_DEFINITION,jdbcType=VARCHAR},
+      </if>
+      <if test="EXTERNAL_NAME != null">
+        #{EXTERNAL_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="EXTERNAL_LANGUAGE != null">
+        #{EXTERNAL_LANGUAGE,jdbcType=VARCHAR},
+      </if>
+      <if test="PARAMETER_STYLE != null">
+        #{PARAMETER_STYLE,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_DETERMINISTIC != null">
+        #{IS_DETERMINISTIC,jdbcType=VARCHAR},
+      </if>
+      <if test="SQL_DATA_ACCESS != null">
+        #{SQL_DATA_ACCESS,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_NULL_CALL != null">
+        #{IS_NULL_CALL,jdbcType=VARCHAR},
+      </if>
+      <if test="SQL_PATH != null">
+        #{SQL_PATH,jdbcType=VARCHAR},
+      </if>
+      <if test="SCHEMA_LEVEL_ROUTINE != null">
+        #{SCHEMA_LEVEL_ROUTINE,jdbcType=VARCHAR},
+      </if>
+      <if test="MAX_DYNAMIC_RESULT_SETS != null">
+        #{MAX_DYNAMIC_RESULT_SETS,jdbcType=SMALLINT},
+      </if>
+      <if test="IS_USER_DEFINED_CAST != null">
+        #{IS_USER_DEFINED_CAST,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_IMPLICITLY_INVOCABLE != null">
+        #{IS_IMPLICITLY_INVOCABLE,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATED != null">
+        #{CREATED,jdbcType=TIMESTAMP},
+      </if>
+      <if test="LAST_ALTERED != null">
+        #{LAST_ALTERED,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

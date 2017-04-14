@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysallocunitsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysallocunits">
+    <result column="auid" jdbcType="BIGINT" property="auid" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="ownerid" jdbcType="BIGINT" property="ownerid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="fgid" jdbcType="SMALLINT" property="fgid" />
+    <result column="pcused" jdbcType="BIGINT" property="pcused" />
+    <result column="pcdata" jdbcType="BIGINT" property="pcdata" />
+    <result column="pcreserved" jdbcType="BIGINT" property="pcreserved" />
+    <result column="dbfragid" jdbcType="INTEGER" property="dbfragid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysallocunitsWithBLOBs">
+    <result column="pgfirst" jdbcType="BINARY" property="pgfirst" />
+    <result column="pgroot" jdbcType="BINARY" property="pgroot" />
+    <result column="pgfirstiam" jdbcType="BINARY" property="pgfirstiam" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    pgfirst, pgroot, pgfirstiam
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysallocunitsWithBLOBs">
+    insert into sysallocunits (auid, type, ownerid, 
+      status, fgid, pcused, 
+      pcdata, pcreserved, dbfragid, 
+      pgfirst, pgroot, pgfirstiam
+      )
+    values (#{auid,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, #{ownerid,jdbcType=BIGINT}, 
+      #{status,jdbcType=INTEGER}, #{fgid,jdbcType=SMALLINT}, #{pcused,jdbcType=BIGINT}, 
+      #{pcdata,jdbcType=BIGINT}, #{pcreserved,jdbcType=BIGINT}, #{dbfragid,jdbcType=INTEGER}, 
+      #{pgfirst,jdbcType=BINARY}, #{pgroot,jdbcType=BINARY}, #{pgfirstiam,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysallocunitsWithBLOBs">
+    insert into sysallocunits
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="auid != null">
+        auid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="ownerid != null">
+        ownerid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="fgid != null">
+        fgid,
+      </if>
+      <if test="pcused != null">
+        pcused,
+      </if>
+      <if test="pcdata != null">
+        pcdata,
+      </if>
+      <if test="pcreserved != null">
+        pcreserved,
+      </if>
+      <if test="dbfragid != null">
+        dbfragid,
+      </if>
+      <if test="pgfirst != null">
+        pgfirst,
+      </if>
+      <if test="pgroot != null">
+        pgroot,
+      </if>
+      <if test="pgfirstiam != null">
+        pgfirstiam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="auid != null">
+        #{auid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="ownerid != null">
+        #{ownerid,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="fgid != null">
+        #{fgid,jdbcType=SMALLINT},
+      </if>
+      <if test="pcused != null">
+        #{pcused,jdbcType=BIGINT},
+      </if>
+      <if test="pcdata != null">
+        #{pcdata,jdbcType=BIGINT},
+      </if>
+      <if test="pcreserved != null">
+        #{pcreserved,jdbcType=BIGINT},
+      </if>
+      <if test="dbfragid != null">
+        #{dbfragid,jdbcType=INTEGER},
+      </if>
+      <if test="pgfirst != null">
+        #{pgfirst,jdbcType=BINARY},
+      </if>
+      <if test="pgroot != null">
+        #{pgroot,jdbcType=BINARY},
+      </if>
+      <if test="pgfirstiam != null">
+        #{pgfirstiam,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KeyColumnUsageMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KeyColumnUsage">
+    <result column="CONSTRAINT_CATALOG" jdbcType="VARCHAR" property="CONSTRAINT_CATALOG" />
+    <result column="CONSTRAINT_SCHEMA" jdbcType="VARCHAR" property="CONSTRAINT_SCHEMA" />
+    <result column="CONSTRAINT_NAME" jdbcType="VARCHAR" property="CONSTRAINT_NAME" />
+    <result column="TABLE_CATALOG" jdbcType="VARCHAR" property="TABLE_CATALOG" />
+    <result column="TABLE_SCHEMA" jdbcType="VARCHAR" property="TABLE_SCHEMA" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="TABLE_NAME" />
+    <result column="COLUMN_NAME" jdbcType="VARCHAR" property="COLUMN_NAME" />
+    <result column="ORDINAL_POSITION" jdbcType="INTEGER" property="ORDINAL_POSITION" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KeyColumnUsage">
+    insert into KEY_COLUMN_USAGE (CONSTRAINT_CATALOG, CONSTRAINT_SCHEMA, 
+      CONSTRAINT_NAME, TABLE_CATALOG, TABLE_SCHEMA, 
+      TABLE_NAME, COLUMN_NAME, ORDINAL_POSITION
+      )
+    values (#{CONSTRAINT_CATALOG,jdbcType=VARCHAR}, #{CONSTRAINT_SCHEMA,jdbcType=VARCHAR}, 
+      #{CONSTRAINT_NAME,jdbcType=VARCHAR}, #{TABLE_CATALOG,jdbcType=VARCHAR}, #{TABLE_SCHEMA,jdbcType=VARCHAR}, 
+      #{TABLE_NAME,jdbcType=VARCHAR}, #{COLUMN_NAME,jdbcType=VARCHAR}, #{ORDINAL_POSITION,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KeyColumnUsage">
+    insert into KEY_COLUMN_USAGE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="CONSTRAINT_CATALOG != null">
+        CONSTRAINT_CATALOG,
+      </if>
+      <if test="CONSTRAINT_SCHEMA != null">
+        CONSTRAINT_SCHEMA,
+      </if>
+      <if test="CONSTRAINT_NAME != null">
+        CONSTRAINT_NAME,
+      </if>
+      <if test="TABLE_CATALOG != null">
+        TABLE_CATALOG,
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        TABLE_SCHEMA,
+      </if>
+      <if test="TABLE_NAME != null">
+        TABLE_NAME,
+      </if>
+      <if test="COLUMN_NAME != null">
+        COLUMN_NAME,
+      </if>
+      <if test="ORDINAL_POSITION != null">
+        ORDINAL_POSITION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="CONSTRAINT_CATALOG != null">
+        #{CONSTRAINT_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSTRAINT_SCHEMA != null">
+        #{CONSTRAINT_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSTRAINT_NAME != null">
+        #{CONSTRAINT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_CATALOG != null">
+        #{TABLE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        #{TABLE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_NAME != null">
+        #{TABLE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="COLUMN_NAME != null">
+        #{COLUMN_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ORDINAL_POSITION != null">
+        #{ORDINAL_POSITION,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

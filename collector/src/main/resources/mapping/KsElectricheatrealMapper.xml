@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsElectricheatrealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsElectricheatreal">
+    <id column="ElectricHeatRealId" jdbcType="BIGINT" property="electricHeatRealId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RealTime" jdbcType="TIMESTAMP" property="realTime" />
+    <result column="Manual" jdbcType="BIT" property="manual" />
+    <result column="ElectricHeatRunSet" jdbcType="BIT" property="electricHeatRunSet" />
+    <result column="SetConfirm" jdbcType="BIT" property="setConfirm" />
+    <result column="AutoTemperatureLowSet" jdbcType="DOUBLE" property="autoTemperatureLowSet" />
+    <result column="AutoTemperatureHiSet" jdbcType="DOUBLE" property="autoTemperatureHiSet" />
+    <result column="ElectricHeatHeatState" jdbcType="BIT" property="electricHeatHeatState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ElectricHeatRealId, EquipmentId, RealTime, Manual, ElectricHeatRunSet, SetConfirm, 
+    AutoTemperatureLowSet, AutoTemperatureHiSet, ElectricHeatHeatState
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_ElectricHeatReal
+    where ElectricHeatRealId = #{electricHeatRealId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_ElectricHeatReal
+    where ElectricHeatRealId = #{electricHeatRealId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsElectricheatreal">
+    insert into KS_ElectricHeatReal (ElectricHeatRealId, EquipmentId, RealTime, 
+      Manual, ElectricHeatRunSet, SetConfirm, 
+      AutoTemperatureLowSet, AutoTemperatureHiSet, 
+      ElectricHeatHeatState)
+    values (#{electricHeatRealId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, #{realTime,jdbcType=TIMESTAMP}, 
+      #{manual,jdbcType=BIT}, #{electricHeatRunSet,jdbcType=BIT}, #{setConfirm,jdbcType=BIT}, 
+      #{autoTemperatureLowSet,jdbcType=DOUBLE}, #{autoTemperatureHiSet,jdbcType=DOUBLE}, 
+      #{electricHeatHeatState,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsElectricheatreal">
+    insert into KS_ElectricHeatReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="electricHeatRealId != null">
+        ElectricHeatRealId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="realTime != null">
+        RealTime,
+      </if>
+      <if test="manual != null">
+        Manual,
+      </if>
+      <if test="electricHeatRunSet != null">
+        ElectricHeatRunSet,
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm,
+      </if>
+      <if test="autoTemperatureLowSet != null">
+        AutoTemperatureLowSet,
+      </if>
+      <if test="autoTemperatureHiSet != null">
+        AutoTemperatureHiSet,
+      </if>
+      <if test="electricHeatHeatState != null">
+        ElectricHeatHeatState,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="electricHeatRealId != null">
+        #{electricHeatRealId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manual != null">
+        #{manual,jdbcType=BIT},
+      </if>
+      <if test="electricHeatRunSet != null">
+        #{electricHeatRunSet,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        #{setConfirm,jdbcType=BIT},
+      </if>
+      <if test="autoTemperatureLowSet != null">
+        #{autoTemperatureLowSet,jdbcType=DOUBLE},
+      </if>
+      <if test="autoTemperatureHiSet != null">
+        #{autoTemperatureHiSet,jdbcType=DOUBLE},
+      </if>
+      <if test="electricHeatHeatState != null">
+        #{electricHeatHeatState,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsElectricheatreal">
+    update KS_ElectricHeatReal
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        RealTime = #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manual != null">
+        Manual = #{manual,jdbcType=BIT},
+      </if>
+      <if test="electricHeatRunSet != null">
+        ElectricHeatRunSet = #{electricHeatRunSet,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm = #{setConfirm,jdbcType=BIT},
+      </if>
+      <if test="autoTemperatureLowSet != null">
+        AutoTemperatureLowSet = #{autoTemperatureLowSet,jdbcType=DOUBLE},
+      </if>
+      <if test="autoTemperatureHiSet != null">
+        AutoTemperatureHiSet = #{autoTemperatureHiSet,jdbcType=DOUBLE},
+      </if>
+      <if test="electricHeatHeatState != null">
+        ElectricHeatHeatState = #{electricHeatHeatState,jdbcType=BIT},
+      </if>
+    </set>
+    where ElectricHeatRealId = #{electricHeatRealId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsElectricheatreal">
+    update KS_ElectricHeatReal
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RealTime = #{realTime,jdbcType=TIMESTAMP},
+      Manual = #{manual,jdbcType=BIT},
+      ElectricHeatRunSet = #{electricHeatRunSet,jdbcType=BIT},
+      SetConfirm = #{setConfirm,jdbcType=BIT},
+      AutoTemperatureLowSet = #{autoTemperatureLowSet,jdbcType=DOUBLE},
+      AutoTemperatureHiSet = #{autoTemperatureHiSet,jdbcType=DOUBLE},
+      ElectricHeatHeatState = #{electricHeatHeatState,jdbcType=BIT}
+    where ElectricHeatRealId = #{electricHeatRealId,jdbcType=BIGINT}
+  </update>
+</mapper>

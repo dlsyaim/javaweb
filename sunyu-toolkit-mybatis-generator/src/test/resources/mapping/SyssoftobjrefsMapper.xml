@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyssoftobjrefsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syssoftobjrefs">
+    <result column="depclass" jdbcType="TINYINT" property="depclass" />
+    <result column="depid" jdbcType="INTEGER" property="depid" />
+    <result column="indepclass" jdbcType="TINYINT" property="indepclass" />
+    <result column="indepname" jdbcType="VARCHAR" property="indepname" />
+    <result column="indepschema" jdbcType="VARCHAR" property="indepschema" />
+    <result column="indepdb" jdbcType="VARCHAR" property="indepdb" />
+    <result column="indepserver" jdbcType="VARCHAR" property="indepserver" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syssoftobjrefs">
+    insert into syssoftobjrefs (depclass, depid, indepclass, 
+      indepname, indepschema, indepdb, 
+      indepserver, number, status
+      )
+    values (#{depclass,jdbcType=TINYINT}, #{depid,jdbcType=INTEGER}, #{indepclass,jdbcType=TINYINT}, 
+      #{indepname,jdbcType=VARCHAR}, #{indepschema,jdbcType=VARCHAR}, #{indepdb,jdbcType=VARCHAR}, 
+      #{indepserver,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syssoftobjrefs">
+    insert into syssoftobjrefs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="depclass != null">
+        depclass,
+      </if>
+      <if test="depid != null">
+        depid,
+      </if>
+      <if test="indepclass != null">
+        indepclass,
+      </if>
+      <if test="indepname != null">
+        indepname,
+      </if>
+      <if test="indepschema != null">
+        indepschema,
+      </if>
+      <if test="indepdb != null">
+        indepdb,
+      </if>
+      <if test="indepserver != null">
+        indepserver,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="depclass != null">
+        #{depclass,jdbcType=TINYINT},
+      </if>
+      <if test="depid != null">
+        #{depid,jdbcType=INTEGER},
+      </if>
+      <if test="indepclass != null">
+        #{indepclass,jdbcType=TINYINT},
+      </if>
+      <if test="indepname != null">
+        #{indepname,jdbcType=VARCHAR},
+      </if>
+      <if test="indepschema != null">
+        #{indepschema,jdbcType=VARCHAR},
+      </if>
+      <if test="indepdb != null">
+        #{indepdb,jdbcType=VARCHAR},
+      </if>
+      <if test="indepserver != null">
+        #{indepserver,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

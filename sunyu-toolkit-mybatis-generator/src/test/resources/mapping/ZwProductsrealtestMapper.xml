@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ZwProductsrealtestMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ZwProductsrealtest">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="PricDecimal" jdbcType="DECIMAL" property="pricDecimal" />
+    <result column="QuantDecimal" jdbcType="DECIMAL" property="quantDecimal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, Name, PricDecimal, QuantDecimal
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZW_ProductsRealTest
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZW_ProductsRealTest
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ZwProductsrealtest">
+    insert into ZW_ProductsRealTest (id, Name, PricDecimal, 
+      QuantDecimal)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pricDecimal,jdbcType=DECIMAL}, 
+      #{quantDecimal,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ZwProductsrealtest">
+    insert into ZW_ProductsRealTest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="pricDecimal != null">
+        PricDecimal,
+      </if>
+      <if test="quantDecimal != null">
+        QuantDecimal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pricDecimal != null">
+        #{pricDecimal,jdbcType=DECIMAL},
+      </if>
+      <if test="quantDecimal != null">
+        #{quantDecimal,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.ZwProductsrealtest">
+    update ZW_ProductsRealTest
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pricDecimal != null">
+        PricDecimal = #{pricDecimal,jdbcType=DECIMAL},
+      </if>
+      <if test="quantDecimal != null">
+        QuantDecimal = #{quantDecimal,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.ZwProductsrealtest">
+    update ZW_ProductsRealTest
+    set Name = #{name,jdbcType=VARCHAR},
+      PricDecimal = #{pricDecimal,jdbcType=DECIMAL},
+      QuantDecimal = #{quantDecimal,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

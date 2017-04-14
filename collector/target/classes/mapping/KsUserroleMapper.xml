@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsUserroleMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsUserrole">
+    <id column="RoleID" jdbcType="BIGINT" property="roleID" />
+    <result column="RoleParentID" jdbcType="BIGINT" property="roleParentID" />
+    <result column="RoleName" jdbcType="VARCHAR" property="roleName" />
+    <result column="RoleVal" jdbcType="BIGINT" property="roleVal" />
+    <result column="AddUser" jdbcType="VARCHAR" property="addUser" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Dept" jdbcType="BIGINT" property="dept" />
+    <result column="OrderBy" jdbcType="BIGINT" property="orderBy" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RoleID, RoleParentID, RoleName, RoleVal, AddUser, AddTime, Dept, OrderBy, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_UserRole
+    where RoleID = #{roleID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_UserRole
+    where RoleID = #{roleID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsUserrole">
+    insert into KS_UserRole (RoleID, RoleParentID, RoleName, 
+      RoleVal, AddUser, AddTime, 
+      Dept, OrderBy, Status
+      )
+    values (#{roleID,jdbcType=BIGINT}, #{roleParentID,jdbcType=BIGINT}, #{roleName,jdbcType=VARCHAR}, 
+      #{roleVal,jdbcType=BIGINT}, #{addUser,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{dept,jdbcType=BIGINT}, #{orderBy,jdbcType=BIGINT}, #{status,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsUserrole">
+    insert into KS_UserRole
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleID != null">
+        RoleID,
+      </if>
+      <if test="roleParentID != null">
+        RoleParentID,
+      </if>
+      <if test="roleName != null">
+        RoleName,
+      </if>
+      <if test="roleVal != null">
+        RoleVal,
+      </if>
+      <if test="addUser != null">
+        AddUser,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="dept != null">
+        Dept,
+      </if>
+      <if test="orderBy != null">
+        OrderBy,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleID != null">
+        #{roleID,jdbcType=BIGINT},
+      </if>
+      <if test="roleParentID != null">
+        #{roleParentID,jdbcType=BIGINT},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleVal != null">
+        #{roleVal,jdbcType=BIGINT},
+      </if>
+      <if test="addUser != null">
+        #{addUser,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=BIGINT},
+      </if>
+      <if test="orderBy != null">
+        #{orderBy,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsUserrole">
+    update KS_UserRole
+    <set>
+      <if test="roleParentID != null">
+        RoleParentID = #{roleParentID,jdbcType=BIGINT},
+      </if>
+      <if test="roleName != null">
+        RoleName = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleVal != null">
+        RoleVal = #{roleVal,jdbcType=BIGINT},
+      </if>
+      <if test="addUser != null">
+        AddUser = #{addUser,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dept != null">
+        Dept = #{dept,jdbcType=BIGINT},
+      </if>
+      <if test="orderBy != null">
+        OrderBy = #{orderBy,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where RoleID = #{roleID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsUserrole">
+    update KS_UserRole
+    set RoleParentID = #{roleParentID,jdbcType=BIGINT},
+      RoleName = #{roleName,jdbcType=VARCHAR},
+      RoleVal = #{roleVal,jdbcType=BIGINT},
+      AddUser = #{addUser,jdbcType=VARCHAR},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Dept = #{dept,jdbcType=BIGINT},
+      OrderBy = #{orderBy,jdbcType=BIGINT},
+      Status = #{status,jdbcType=SMALLINT}
+    where RoleID = #{roleID,jdbcType=BIGINT}
+  </update>
+</mapper>

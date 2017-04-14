@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Servers">
+    <result column="server_id" jdbcType="INTEGER" property="server_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="product" jdbcType="VARCHAR" property="product" />
+    <result column="provider" jdbcType="VARCHAR" property="provider" />
+    <result column="data_source" jdbcType="VARCHAR" property="data_source" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="provider_string" jdbcType="VARCHAR" property="provider_string" />
+    <result column="catalog" jdbcType="VARCHAR" property="catalog" />
+    <result column="connect_timeout" jdbcType="INTEGER" property="connect_timeout" />
+    <result column="query_timeout" jdbcType="INTEGER" property="query_timeout" />
+    <result column="is_linked" jdbcType="BIT" property="is_linked" />
+    <result column="is_remote_login_enabled" jdbcType="BIT" property="is_remote_login_enabled" />
+    <result column="is_rpc_out_enabled" jdbcType="BIT" property="is_rpc_out_enabled" />
+    <result column="is_data_access_enabled" jdbcType="BIT" property="is_data_access_enabled" />
+    <result column="is_collation_compatible" jdbcType="BIT" property="is_collation_compatible" />
+    <result column="uses_remote_collation" jdbcType="BIT" property="uses_remote_collation" />
+    <result column="collation_name" jdbcType="VARCHAR" property="collation_name" />
+    <result column="lazy_schema_validation" jdbcType="BIT" property="lazy_schema_validation" />
+    <result column="is_system" jdbcType="BIT" property="is_system" />
+    <result column="is_publisher" jdbcType="BIT" property="is_publisher" />
+    <result column="is_subscriber" jdbcType="BIT" property="is_subscriber" />
+    <result column="is_distributor" jdbcType="BIT" property="is_distributor" />
+    <result column="is_nonsql_subscriber" jdbcType="BIT" property="is_nonsql_subscriber" />
+    <result column="is_remote_proc_transaction_promotion_enabled" jdbcType="BIT" property="is_remote_proc_transaction_promotion_enabled" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Servers">
+    insert into servers (server_id, name, product, 
+      provider, data_source, location, 
+      provider_string, catalog, connect_timeout, 
+      query_timeout, is_linked, is_remote_login_enabled, 
+      is_rpc_out_enabled, is_data_access_enabled, is_collation_compatible, 
+      uses_remote_collation, collation_name, lazy_schema_validation, 
+      is_system, is_publisher, is_subscriber, 
+      is_distributor, is_nonsql_subscriber, is_remote_proc_transaction_promotion_enabled, 
+      modify_date)
+    values (#{server_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR}, 
+      #{provider,jdbcType=VARCHAR}, #{data_source,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
+      #{provider_string,jdbcType=VARCHAR}, #{catalog,jdbcType=VARCHAR}, #{connect_timeout,jdbcType=INTEGER}, 
+      #{query_timeout,jdbcType=INTEGER}, #{is_linked,jdbcType=BIT}, #{is_remote_login_enabled,jdbcType=BIT}, 
+      #{is_rpc_out_enabled,jdbcType=BIT}, #{is_data_access_enabled,jdbcType=BIT}, #{is_collation_compatible,jdbcType=BIT}, 
+      #{uses_remote_collation,jdbcType=BIT}, #{collation_name,jdbcType=VARCHAR}, #{lazy_schema_validation,jdbcType=BIT}, 
+      #{is_system,jdbcType=BIT}, #{is_publisher,jdbcType=BIT}, #{is_subscriber,jdbcType=BIT}, 
+      #{is_distributor,jdbcType=BIT}, #{is_nonsql_subscriber,jdbcType=BIT}, #{is_remote_proc_transaction_promotion_enabled,jdbcType=BIT}, 
+      #{modify_date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Servers">
+    insert into servers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="server_id != null">
+        server_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="product != null">
+        product,
+      </if>
+      <if test="provider != null">
+        provider,
+      </if>
+      <if test="data_source != null">
+        data_source,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="provider_string != null">
+        provider_string,
+      </if>
+      <if test="catalog != null">
+        catalog,
+      </if>
+      <if test="connect_timeout != null">
+        connect_timeout,
+      </if>
+      <if test="query_timeout != null">
+        query_timeout,
+      </if>
+      <if test="is_linked != null">
+        is_linked,
+      </if>
+      <if test="is_remote_login_enabled != null">
+        is_remote_login_enabled,
+      </if>
+      <if test="is_rpc_out_enabled != null">
+        is_rpc_out_enabled,
+      </if>
+      <if test="is_data_access_enabled != null">
+        is_data_access_enabled,
+      </if>
+      <if test="is_collation_compatible != null">
+        is_collation_compatible,
+      </if>
+      <if test="uses_remote_collation != null">
+        uses_remote_collation,
+      </if>
+      <if test="collation_name != null">
+        collation_name,
+      </if>
+      <if test="lazy_schema_validation != null">
+        lazy_schema_validation,
+      </if>
+      <if test="is_system != null">
+        is_system,
+      </if>
+      <if test="is_publisher != null">
+        is_publisher,
+      </if>
+      <if test="is_subscriber != null">
+        is_subscriber,
+      </if>
+      <if test="is_distributor != null">
+        is_distributor,
+      </if>
+      <if test="is_nonsql_subscriber != null">
+        is_nonsql_subscriber,
+      </if>
+      <if test="is_remote_proc_transaction_promotion_enabled != null">
+        is_remote_proc_transaction_promotion_enabled,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="server_id != null">
+        #{server_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="product != null">
+        #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null">
+        #{provider,jdbcType=VARCHAR},
+      </if>
+      <if test="data_source != null">
+        #{data_source,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="provider_string != null">
+        #{provider_string,jdbcType=VARCHAR},
+      </if>
+      <if test="catalog != null">
+        #{catalog,jdbcType=VARCHAR},
+      </if>
+      <if test="connect_timeout != null">
+        #{connect_timeout,jdbcType=INTEGER},
+      </if>
+      <if test="query_timeout != null">
+        #{query_timeout,jdbcType=INTEGER},
+      </if>
+      <if test="is_linked != null">
+        #{is_linked,jdbcType=BIT},
+      </if>
+      <if test="is_remote_login_enabled != null">
+        #{is_remote_login_enabled,jdbcType=BIT},
+      </if>
+      <if test="is_rpc_out_enabled != null">
+        #{is_rpc_out_enabled,jdbcType=BIT},
+      </if>
+      <if test="is_data_access_enabled != null">
+        #{is_data_access_enabled,jdbcType=BIT},
+      </if>
+      <if test="is_collation_compatible != null">
+        #{is_collation_compatible,jdbcType=BIT},
+      </if>
+      <if test="uses_remote_collation != null">
+        #{uses_remote_collation,jdbcType=BIT},
+      </if>
+      <if test="collation_name != null">
+        #{collation_name,jdbcType=VARCHAR},
+      </if>
+      <if test="lazy_schema_validation != null">
+        #{lazy_schema_validation,jdbcType=BIT},
+      </if>
+      <if test="is_system != null">
+        #{is_system,jdbcType=BIT},
+      </if>
+      <if test="is_publisher != null">
+        #{is_publisher,jdbcType=BIT},
+      </if>
+      <if test="is_subscriber != null">
+        #{is_subscriber,jdbcType=BIT},
+      </if>
+      <if test="is_distributor != null">
+        #{is_distributor,jdbcType=BIT},
+      </if>
+      <if test="is_nonsql_subscriber != null">
+        #{is_nonsql_subscriber,jdbcType=BIT},
+      </if>
+      <if test="is_remote_proc_transaction_promotion_enabled != null">
+        #{is_remote_proc_transaction_promotion_enabled,jdbcType=BIT},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

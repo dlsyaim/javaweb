@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.AllSqlModulesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.AllSqlModules">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="uses_ansi_nulls" jdbcType="BIT" property="uses_ansi_nulls" />
+    <result column="uses_quoted_identifier" jdbcType="BIT" property="uses_quoted_identifier" />
+    <result column="is_schema_bound" jdbcType="BIT" property="is_schema_bound" />
+    <result column="uses_database_collation" jdbcType="BIT" property="uses_database_collation" />
+    <result column="is_recompiled" jdbcType="BIT" property="is_recompiled" />
+    <result column="null_on_null_input" jdbcType="BIT" property="null_on_null_input" />
+    <result column="execute_as_principal_id" jdbcType="INTEGER" property="execute_as_principal_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.AllSqlModules">
+    <result column="definition" jdbcType="CLOB" property="definition" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    definition
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.AllSqlModules">
+    insert into all_sql_modules (object_id, uses_ansi_nulls, uses_quoted_identifier, 
+      is_schema_bound, uses_database_collation, is_recompiled, 
+      null_on_null_input, execute_as_principal_id, 
+      definition)
+    values (#{object_id,jdbcType=INTEGER}, #{uses_ansi_nulls,jdbcType=BIT}, #{uses_quoted_identifier,jdbcType=BIT}, 
+      #{is_schema_bound,jdbcType=BIT}, #{uses_database_collation,jdbcType=BIT}, #{is_recompiled,jdbcType=BIT}, 
+      #{null_on_null_input,jdbcType=BIT}, #{execute_as_principal_id,jdbcType=INTEGER}, 
+      #{definition,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.AllSqlModules">
+    insert into all_sql_modules
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="uses_ansi_nulls != null">
+        uses_ansi_nulls,
+      </if>
+      <if test="uses_quoted_identifier != null">
+        uses_quoted_identifier,
+      </if>
+      <if test="is_schema_bound != null">
+        is_schema_bound,
+      </if>
+      <if test="uses_database_collation != null">
+        uses_database_collation,
+      </if>
+      <if test="is_recompiled != null">
+        is_recompiled,
+      </if>
+      <if test="null_on_null_input != null">
+        null_on_null_input,
+      </if>
+      <if test="execute_as_principal_id != null">
+        execute_as_principal_id,
+      </if>
+      <if test="definition != null">
+        definition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="uses_ansi_nulls != null">
+        #{uses_ansi_nulls,jdbcType=BIT},
+      </if>
+      <if test="uses_quoted_identifier != null">
+        #{uses_quoted_identifier,jdbcType=BIT},
+      </if>
+      <if test="is_schema_bound != null">
+        #{is_schema_bound,jdbcType=BIT},
+      </if>
+      <if test="uses_database_collation != null">
+        #{uses_database_collation,jdbcType=BIT},
+      </if>
+      <if test="is_recompiled != null">
+        #{is_recompiled,jdbcType=BIT},
+      </if>
+      <if test="null_on_null_input != null">
+        #{null_on_null_input,jdbcType=BIT},
+      </if>
+      <if test="execute_as_principal_id != null">
+        #{execute_as_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="definition != null">
+        #{definition,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

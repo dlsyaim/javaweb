@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TriggerEventTypesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.TriggerEventTypes">
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="type_name" jdbcType="VARCHAR" property="type_name" />
+    <result column="parent_type" jdbcType="INTEGER" property="parent_type" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.TriggerEventTypes">
+    insert into trigger_event_types (type, type_name, parent_type
+      )
+    values (#{type,jdbcType=INTEGER}, #{type_name,jdbcType=VARCHAR}, #{parent_type,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.TriggerEventTypes">
+    insert into trigger_event_types
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_name != null">
+        type_name,
+      </if>
+      <if test="parent_type != null">
+        parent_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="type_name != null">
+        #{type_name,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_type != null">
+        #{parent_type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

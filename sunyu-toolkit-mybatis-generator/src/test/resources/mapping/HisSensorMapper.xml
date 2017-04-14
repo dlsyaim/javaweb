@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.HisSensorMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.HisSensor">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="ItemNo" jdbcType="VARCHAR" property="itemNo" />
+    <result column="LogicalStationID" jdbcType="INTEGER" property="logicalStationID" />
+    <result column="SensorTypeID" jdbcType="INTEGER" property="sensorTypeID" />
+    <result column="DecodeFunc" jdbcType="VARCHAR" property="decodeFunc" />
+    <result column="TransForm" jdbcType="VARCHAR" property="transForm" />
+    <result column="Channel" jdbcType="VARCHAR" property="channel" />
+    <result column="OrderID" jdbcType="INTEGER" property="orderID" />
+    <result column="ParentSensorID" jdbcType="INTEGER" property="parentSensorID" />
+    <result column="AlarmMinValue" jdbcType="DOUBLE" property="alarmMinValue" />
+    <result column="AlarmMaxValue" jdbcType="DOUBLE" property="alarmMaxValue" />
+    <result column="IsDelete" jdbcType="BIT" property="isDelete" />
+    <result column="PreCode" jdbcType="VARCHAR" property="preCode" />
+    <result column="EndCode" jdbcType="VARCHAR" property="endCode" />
+    <result column="Amplify" jdbcType="DOUBLE" property="amplify" />
+    <result column="Modified_date" jdbcType="TIMESTAMP" property="modified_date" />
+    <result column="Created_date" jdbcType="TIMESTAMP" property="created_date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Name, ItemNo, LogicalStationID, SensorTypeID, DecodeFunc, TransForm, Channel, 
+    OrderID, ParentSensorID, AlarmMinValue, AlarmMaxValue, IsDelete, PreCode, EndCode, 
+    Amplify, Modified_date, Created_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HIS_Sensor
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HIS_Sensor
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.HisSensor">
+    insert into HIS_Sensor (ID, Name, ItemNo, 
+      LogicalStationID, SensorTypeID, DecodeFunc, 
+      TransForm, Channel, OrderID, 
+      ParentSensorID, AlarmMinValue, AlarmMaxValue, 
+      IsDelete, PreCode, EndCode, 
+      Amplify, Modified_date, Created_date
+      )
+    values (#{ID,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{itemNo,jdbcType=VARCHAR}, 
+      #{logicalStationID,jdbcType=INTEGER}, #{sensorTypeID,jdbcType=INTEGER}, #{decodeFunc,jdbcType=VARCHAR}, 
+      #{transForm,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, #{orderID,jdbcType=INTEGER}, 
+      #{parentSensorID,jdbcType=INTEGER}, #{alarmMinValue,jdbcType=DOUBLE}, #{alarmMaxValue,jdbcType=DOUBLE}, 
+      #{isDelete,jdbcType=BIT}, #{preCode,jdbcType=VARCHAR}, #{endCode,jdbcType=VARCHAR}, 
+      #{amplify,jdbcType=DOUBLE}, #{modified_date,jdbcType=TIMESTAMP}, #{created_date,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.HisSensor">
+    insert into HIS_Sensor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="itemNo != null">
+        ItemNo,
+      </if>
+      <if test="logicalStationID != null">
+        LogicalStationID,
+      </if>
+      <if test="sensorTypeID != null">
+        SensorTypeID,
+      </if>
+      <if test="decodeFunc != null">
+        DecodeFunc,
+      </if>
+      <if test="transForm != null">
+        TransForm,
+      </if>
+      <if test="channel != null">
+        Channel,
+      </if>
+      <if test="orderID != null">
+        OrderID,
+      </if>
+      <if test="parentSensorID != null">
+        ParentSensorID,
+      </if>
+      <if test="alarmMinValue != null">
+        AlarmMinValue,
+      </if>
+      <if test="alarmMaxValue != null">
+        AlarmMaxValue,
+      </if>
+      <if test="isDelete != null">
+        IsDelete,
+      </if>
+      <if test="preCode != null">
+        PreCode,
+      </if>
+      <if test="endCode != null">
+        EndCode,
+      </if>
+      <if test="amplify != null">
+        Amplify,
+      </if>
+      <if test="modified_date != null">
+        Modified_date,
+      </if>
+      <if test="created_date != null">
+        Created_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="itemNo != null">
+        #{itemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="logicalStationID != null">
+        #{logicalStationID,jdbcType=INTEGER},
+      </if>
+      <if test="sensorTypeID != null">
+        #{sensorTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="decodeFunc != null">
+        #{decodeFunc,jdbcType=VARCHAR},
+      </if>
+      <if test="transForm != null">
+        #{transForm,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="orderID != null">
+        #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="parentSensorID != null">
+        #{parentSensorID,jdbcType=INTEGER},
+      </if>
+      <if test="alarmMinValue != null">
+        #{alarmMinValue,jdbcType=DOUBLE},
+      </if>
+      <if test="alarmMaxValue != null">
+        #{alarmMaxValue,jdbcType=DOUBLE},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="preCode != null">
+        #{preCode,jdbcType=VARCHAR},
+      </if>
+      <if test="endCode != null">
+        #{endCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amplify != null">
+        #{amplify,jdbcType=DOUBLE},
+      </if>
+      <if test="modified_date != null">
+        #{modified_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created_date != null">
+        #{created_date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.HisSensor">
+    update HIS_Sensor
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="itemNo != null">
+        ItemNo = #{itemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="logicalStationID != null">
+        LogicalStationID = #{logicalStationID,jdbcType=INTEGER},
+      </if>
+      <if test="sensorTypeID != null">
+        SensorTypeID = #{sensorTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="decodeFunc != null">
+        DecodeFunc = #{decodeFunc,jdbcType=VARCHAR},
+      </if>
+      <if test="transForm != null">
+        TransForm = #{transForm,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        Channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="orderID != null">
+        OrderID = #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="parentSensorID != null">
+        ParentSensorID = #{parentSensorID,jdbcType=INTEGER},
+      </if>
+      <if test="alarmMinValue != null">
+        AlarmMinValue = #{alarmMinValue,jdbcType=DOUBLE},
+      </if>
+      <if test="alarmMaxValue != null">
+        AlarmMaxValue = #{alarmMaxValue,jdbcType=DOUBLE},
+      </if>
+      <if test="isDelete != null">
+        IsDelete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="preCode != null">
+        PreCode = #{preCode,jdbcType=VARCHAR},
+      </if>
+      <if test="endCode != null">
+        EndCode = #{endCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amplify != null">
+        Amplify = #{amplify,jdbcType=DOUBLE},
+      </if>
+      <if test="modified_date != null">
+        Modified_date = #{modified_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created_date != null">
+        Created_date = #{created_date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.HisSensor">
+    update HIS_Sensor
+    set Name = #{name,jdbcType=VARCHAR},
+      ItemNo = #{itemNo,jdbcType=VARCHAR},
+      LogicalStationID = #{logicalStationID,jdbcType=INTEGER},
+      SensorTypeID = #{sensorTypeID,jdbcType=INTEGER},
+      DecodeFunc = #{decodeFunc,jdbcType=VARCHAR},
+      TransForm = #{transForm,jdbcType=VARCHAR},
+      Channel = #{channel,jdbcType=VARCHAR},
+      OrderID = #{orderID,jdbcType=INTEGER},
+      ParentSensorID = #{parentSensorID,jdbcType=INTEGER},
+      AlarmMinValue = #{alarmMinValue,jdbcType=DOUBLE},
+      AlarmMaxValue = #{alarmMaxValue,jdbcType=DOUBLE},
+      IsDelete = #{isDelete,jdbcType=BIT},
+      PreCode = #{preCode,jdbcType=VARCHAR},
+      EndCode = #{endCode,jdbcType=VARCHAR},
+      Amplify = #{amplify,jdbcType=DOUBLE},
+      Modified_date = #{modified_date,jdbcType=TIMESTAMP},
+      Created_date = #{created_date,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

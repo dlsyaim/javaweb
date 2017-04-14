@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DefaultConstraintsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DefaultConstraints">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="schema_id" jdbcType="INTEGER" property="schema_id" />
+    <result column="parent_object_id" jdbcType="INTEGER" property="parent_object_id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="is_ms_shipped" jdbcType="BIT" property="is_ms_shipped" />
+    <result column="is_published" jdbcType="BIT" property="is_published" />
+    <result column="is_schema_published" jdbcType="BIT" property="is_schema_published" />
+    <result column="parent_column_id" jdbcType="INTEGER" property="parent_column_id" />
+    <result column="is_system_named" jdbcType="BIT" property="is_system_named" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DefaultConstraints">
+    <result column="definition" jdbcType="CLOB" property="definition" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    definition
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DefaultConstraints">
+    insert into default_constraints (name, object_id, principal_id, 
+      schema_id, parent_object_id, type, 
+      type_desc, create_date, modify_date, 
+      is_ms_shipped, is_published, is_schema_published, 
+      parent_column_id, is_system_named, definition
+      )
+    values (#{name,jdbcType=VARCHAR}, #{object_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, 
+      #{schema_id,jdbcType=INTEGER}, #{parent_object_id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{type_desc,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, #{modify_date,jdbcType=TIMESTAMP}, 
+      #{is_ms_shipped,jdbcType=BIT}, #{is_published,jdbcType=BIT}, #{is_schema_published,jdbcType=BIT}, 
+      #{parent_column_id,jdbcType=INTEGER}, #{is_system_named,jdbcType=BIT}, #{definition,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DefaultConstraints">
+    insert into default_constraints
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="schema_id != null">
+        schema_id,
+      </if>
+      <if test="parent_object_id != null">
+        parent_object_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="is_ms_shipped != null">
+        is_ms_shipped,
+      </if>
+      <if test="is_published != null">
+        is_published,
+      </if>
+      <if test="is_schema_published != null">
+        is_schema_published,
+      </if>
+      <if test="parent_column_id != null">
+        parent_column_id,
+      </if>
+      <if test="is_system_named != null">
+        is_system_named,
+      </if>
+      <if test="definition != null">
+        definition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="schema_id != null">
+        #{schema_id,jdbcType=INTEGER},
+      </if>
+      <if test="parent_object_id != null">
+        #{parent_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_ms_shipped != null">
+        #{is_ms_shipped,jdbcType=BIT},
+      </if>
+      <if test="is_published != null">
+        #{is_published,jdbcType=BIT},
+      </if>
+      <if test="is_schema_published != null">
+        #{is_schema_published,jdbcType=BIT},
+      </if>
+      <if test="parent_column_id != null">
+        #{parent_column_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_system_named != null">
+        #{is_system_named,jdbcType=BIT},
+      </if>
+      <if test="definition != null">
+        #{definition,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

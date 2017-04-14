@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsSiteMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsSite">
+    <id column="SiteID" jdbcType="BIGINT" property="siteID" />
+    <result column="SiteName" jdbcType="VARCHAR" property="siteName" />
+    <result column="UserID" jdbcType="BIGINT" property="userID" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SiteID, SiteName, UserID, ManagerID, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Site
+    where SiteID = #{siteID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_Site
+    where SiteID = #{siteID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsSite">
+    insert into KS_Site (SiteID, SiteName, UserID, 
+      ManagerID, AddTime, Status
+      )
+    values (#{siteID,jdbcType=BIGINT}, #{siteName,jdbcType=VARCHAR}, #{userID,jdbcType=BIGINT}, 
+      #{managerID,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsSite">
+    insert into KS_Site
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="siteID != null">
+        SiteID,
+      </if>
+      <if test="siteName != null">
+        SiteName,
+      </if>
+      <if test="userID != null">
+        UserID,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="siteID != null">
+        #{siteID,jdbcType=BIGINT},
+      </if>
+      <if test="siteName != null">
+        #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="userID != null">
+        #{userID,jdbcType=BIGINT},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsSite">
+    update KS_Site
+    <set>
+      <if test="siteName != null">
+        SiteName = #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="userID != null">
+        UserID = #{userID,jdbcType=BIGINT},
+      </if>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where SiteID = #{siteID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsSite">
+    update KS_Site
+    set SiteName = #{siteName,jdbcType=VARCHAR},
+      UserID = #{userID,jdbcType=BIGINT},
+      ManagerID = #{managerID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where SiteID = #{siteID,jdbcType=BIGINT}
+  </update>
+</mapper>

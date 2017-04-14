@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnEnumcurrentprincipalsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnEnumcurrentprincipals">
+    <result column="db_name" jdbcType="VARCHAR" property="db_name" />
+    <result column="current_principal" jdbcType="VARCHAR" property="current_principal" />
+    <result column="mirroring_role" jdbcType="INTEGER" property="mirroring_role" />
+    <result column="mirroring_state" jdbcType="INTEGER" property="mirroring_state" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnEnumcurrentprincipals">
+    insert into fn_EnumCurrentPrincipals (db_name, current_principal, mirroring_role, 
+      mirroring_state)
+    values (#{db_name,jdbcType=VARCHAR}, #{current_principal,jdbcType=VARCHAR}, #{mirroring_role,jdbcType=INTEGER}, 
+      #{mirroring_state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnEnumcurrentprincipals">
+    insert into fn_EnumCurrentPrincipals
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="db_name != null">
+        db_name,
+      </if>
+      <if test="current_principal != null">
+        current_principal,
+      </if>
+      <if test="mirroring_role != null">
+        mirroring_role,
+      </if>
+      <if test="mirroring_state != null">
+        mirroring_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="db_name != null">
+        #{db_name,jdbcType=VARCHAR},
+      </if>
+      <if test="current_principal != null">
+        #{current_principal,jdbcType=VARCHAR},
+      </if>
+      <if test="mirroring_role != null">
+        #{mirroring_role,jdbcType=INTEGER},
+      </if>
+      <if test="mirroring_state != null">
+        #{mirroring_state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

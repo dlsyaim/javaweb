@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmCryptographicProviderKeysMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmCryptographicProviderKeys">
+    <result column="key_id" jdbcType="INTEGER" property="key_id" />
+    <result column="key_name" jdbcType="VARCHAR" property="key_name" />
+    <result column="algorithm_id" jdbcType="INTEGER" property="algorithm_id" />
+    <result column="algorithm_tag" jdbcType="VARCHAR" property="algorithm_tag" />
+    <result column="key_type" jdbcType="VARCHAR" property="key_type" />
+    <result column="key_length" jdbcType="INTEGER" property="key_length" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmCryptographicProviderKeys">
+    <result column="key_thumbprint" jdbcType="VARBINARY" property="key_thumbprint" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    key_thumbprint
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmCryptographicProviderKeys">
+    insert into dm_cryptographic_provider_keys (key_id, key_name, algorithm_id, 
+      algorithm_tag, key_type, key_length, 
+      key_thumbprint)
+    values (#{key_id,jdbcType=INTEGER}, #{key_name,jdbcType=VARCHAR}, #{algorithm_id,jdbcType=INTEGER}, 
+      #{algorithm_tag,jdbcType=VARCHAR}, #{key_type,jdbcType=VARCHAR}, #{key_length,jdbcType=INTEGER}, 
+      #{key_thumbprint,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmCryptographicProviderKeys">
+    insert into dm_cryptographic_provider_keys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="key_id != null">
+        key_id,
+      </if>
+      <if test="key_name != null">
+        key_name,
+      </if>
+      <if test="algorithm_id != null">
+        algorithm_id,
+      </if>
+      <if test="algorithm_tag != null">
+        algorithm_tag,
+      </if>
+      <if test="key_type != null">
+        key_type,
+      </if>
+      <if test="key_length != null">
+        key_length,
+      </if>
+      <if test="key_thumbprint != null">
+        key_thumbprint,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="key_id != null">
+        #{key_id,jdbcType=INTEGER},
+      </if>
+      <if test="key_name != null">
+        #{key_name,jdbcType=VARCHAR},
+      </if>
+      <if test="algorithm_id != null">
+        #{algorithm_id,jdbcType=INTEGER},
+      </if>
+      <if test="algorithm_tag != null">
+        #{algorithm_tag,jdbcType=VARCHAR},
+      </if>
+      <if test="key_type != null">
+        #{key_type,jdbcType=VARCHAR},
+      </if>
+      <if test="key_length != null">
+        #{key_length,jdbcType=INTEGER},
+      </if>
+      <if test="key_thumbprint != null">
+        #{key_thumbprint,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

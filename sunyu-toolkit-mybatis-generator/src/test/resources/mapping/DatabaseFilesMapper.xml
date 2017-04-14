@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DatabaseFilesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DatabaseFiles">
+    <result column="file_id" jdbcType="INTEGER" property="file_id" />
+    <result column="file_guid" jdbcType="CHAR" property="file_guid" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="data_space_id" jdbcType="INTEGER" property="data_space_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="physical_name" jdbcType="VARCHAR" property="physical_name" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="state_desc" jdbcType="VARCHAR" property="state_desc" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="max_size" jdbcType="INTEGER" property="max_size" />
+    <result column="growth" jdbcType="INTEGER" property="growth" />
+    <result column="is_media_read_only" jdbcType="BIT" property="is_media_read_only" />
+    <result column="is_read_only" jdbcType="BIT" property="is_read_only" />
+    <result column="is_sparse" jdbcType="BIT" property="is_sparse" />
+    <result column="is_percent_growth" jdbcType="BIT" property="is_percent_growth" />
+    <result column="is_name_reserved" jdbcType="BIT" property="is_name_reserved" />
+    <result column="create_lsn" jdbcType="NUMERIC" property="create_lsn" />
+    <result column="drop_lsn" jdbcType="NUMERIC" property="drop_lsn" />
+    <result column="read_only_lsn" jdbcType="NUMERIC" property="read_only_lsn" />
+    <result column="read_write_lsn" jdbcType="NUMERIC" property="read_write_lsn" />
+    <result column="differential_base_lsn" jdbcType="NUMERIC" property="differential_base_lsn" />
+    <result column="differential_base_guid" jdbcType="CHAR" property="differential_base_guid" />
+    <result column="differential_base_time" jdbcType="TIMESTAMP" property="differential_base_time" />
+    <result column="redo_start_lsn" jdbcType="NUMERIC" property="redo_start_lsn" />
+    <result column="redo_start_fork_guid" jdbcType="CHAR" property="redo_start_fork_guid" />
+    <result column="redo_target_lsn" jdbcType="NUMERIC" property="redo_target_lsn" />
+    <result column="redo_target_fork_guid" jdbcType="CHAR" property="redo_target_fork_guid" />
+    <result column="backup_lsn" jdbcType="NUMERIC" property="backup_lsn" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DatabaseFiles">
+    insert into database_files (file_id, file_guid, type, 
+      type_desc, data_space_id, name, 
+      physical_name, state, state_desc, 
+      size, max_size, growth, 
+      is_media_read_only, is_read_only, is_sparse, 
+      is_percent_growth, is_name_reserved, create_lsn, 
+      drop_lsn, read_only_lsn, read_write_lsn, 
+      differential_base_lsn, differential_base_guid, 
+      differential_base_time, redo_start_lsn, 
+      redo_start_fork_guid, redo_target_lsn, redo_target_fork_guid, 
+      backup_lsn)
+    values (#{file_id,jdbcType=INTEGER}, #{file_guid,jdbcType=CHAR}, #{type,jdbcType=TINYINT}, 
+      #{type_desc,jdbcType=VARCHAR}, #{data_space_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{physical_name,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT}, #{state_desc,jdbcType=VARCHAR}, 
+      #{size,jdbcType=INTEGER}, #{max_size,jdbcType=INTEGER}, #{growth,jdbcType=INTEGER}, 
+      #{is_media_read_only,jdbcType=BIT}, #{is_read_only,jdbcType=BIT}, #{is_sparse,jdbcType=BIT}, 
+      #{is_percent_growth,jdbcType=BIT}, #{is_name_reserved,jdbcType=BIT}, #{create_lsn,jdbcType=NUMERIC}, 
+      #{drop_lsn,jdbcType=NUMERIC}, #{read_only_lsn,jdbcType=NUMERIC}, #{read_write_lsn,jdbcType=NUMERIC}, 
+      #{differential_base_lsn,jdbcType=NUMERIC}, #{differential_base_guid,jdbcType=CHAR}, 
+      #{differential_base_time,jdbcType=TIMESTAMP}, #{redo_start_lsn,jdbcType=NUMERIC}, 
+      #{redo_start_fork_guid,jdbcType=CHAR}, #{redo_target_lsn,jdbcType=NUMERIC}, #{redo_target_fork_guid,jdbcType=CHAR}, 
+      #{backup_lsn,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DatabaseFiles">
+    insert into database_files
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="file_id != null">
+        file_id,
+      </if>
+      <if test="file_guid != null">
+        file_guid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="data_space_id != null">
+        data_space_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="physical_name != null">
+        physical_name,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="state_desc != null">
+        state_desc,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="max_size != null">
+        max_size,
+      </if>
+      <if test="growth != null">
+        growth,
+      </if>
+      <if test="is_media_read_only != null">
+        is_media_read_only,
+      </if>
+      <if test="is_read_only != null">
+        is_read_only,
+      </if>
+      <if test="is_sparse != null">
+        is_sparse,
+      </if>
+      <if test="is_percent_growth != null">
+        is_percent_growth,
+      </if>
+      <if test="is_name_reserved != null">
+        is_name_reserved,
+      </if>
+      <if test="create_lsn != null">
+        create_lsn,
+      </if>
+      <if test="drop_lsn != null">
+        drop_lsn,
+      </if>
+      <if test="read_only_lsn != null">
+        read_only_lsn,
+      </if>
+      <if test="read_write_lsn != null">
+        read_write_lsn,
+      </if>
+      <if test="differential_base_lsn != null">
+        differential_base_lsn,
+      </if>
+      <if test="differential_base_guid != null">
+        differential_base_guid,
+      </if>
+      <if test="differential_base_time != null">
+        differential_base_time,
+      </if>
+      <if test="redo_start_lsn != null">
+        redo_start_lsn,
+      </if>
+      <if test="redo_start_fork_guid != null">
+        redo_start_fork_guid,
+      </if>
+      <if test="redo_target_lsn != null">
+        redo_target_lsn,
+      </if>
+      <if test="redo_target_fork_guid != null">
+        redo_target_fork_guid,
+      </if>
+      <if test="backup_lsn != null">
+        backup_lsn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="file_id != null">
+        #{file_id,jdbcType=INTEGER},
+      </if>
+      <if test="file_guid != null">
+        #{file_guid,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="data_space_id != null">
+        #{data_space_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="physical_name != null">
+        #{physical_name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="state_desc != null">
+        #{state_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="max_size != null">
+        #{max_size,jdbcType=INTEGER},
+      </if>
+      <if test="growth != null">
+        #{growth,jdbcType=INTEGER},
+      </if>
+      <if test="is_media_read_only != null">
+        #{is_media_read_only,jdbcType=BIT},
+      </if>
+      <if test="is_read_only != null">
+        #{is_read_only,jdbcType=BIT},
+      </if>
+      <if test="is_sparse != null">
+        #{is_sparse,jdbcType=BIT},
+      </if>
+      <if test="is_percent_growth != null">
+        #{is_percent_growth,jdbcType=BIT},
+      </if>
+      <if test="is_name_reserved != null">
+        #{is_name_reserved,jdbcType=BIT},
+      </if>
+      <if test="create_lsn != null">
+        #{create_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="drop_lsn != null">
+        #{drop_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="read_only_lsn != null">
+        #{read_only_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="read_write_lsn != null">
+        #{read_write_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="differential_base_lsn != null">
+        #{differential_base_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="differential_base_guid != null">
+        #{differential_base_guid,jdbcType=CHAR},
+      </if>
+      <if test="differential_base_time != null">
+        #{differential_base_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="redo_start_lsn != null">
+        #{redo_start_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="redo_start_fork_guid != null">
+        #{redo_start_fork_guid,jdbcType=CHAR},
+      </if>
+      <if test="redo_target_lsn != null">
+        #{redo_target_lsn,jdbcType=NUMERIC},
+      </if>
+      <if test="redo_target_fork_guid != null">
+        #{redo_target_fork_guid,jdbcType=CHAR},
+      </if>
+      <if test="backup_lsn != null">
+        #{backup_lsn,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+</mapper>

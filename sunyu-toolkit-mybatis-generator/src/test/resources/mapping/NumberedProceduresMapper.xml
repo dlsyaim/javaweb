@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.NumberedProceduresMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.NumberedProcedures">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="procedure_number" jdbcType="SMALLINT" property="procedure_number" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.NumberedProcedures">
+    <result column="definition" jdbcType="CLOB" property="definition" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    definition
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.NumberedProcedures">
+    insert into numbered_procedures (object_id, procedure_number, definition
+      )
+    values (#{object_id,jdbcType=INTEGER}, #{procedure_number,jdbcType=SMALLINT}, #{definition,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.NumberedProcedures">
+    insert into numbered_procedures
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="procedure_number != null">
+        procedure_number,
+      </if>
+      <if test="definition != null">
+        definition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="procedure_number != null">
+        #{procedure_number,jdbcType=SMALLINT},
+      </if>
+      <if test="definition != null">
+        #{definition,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

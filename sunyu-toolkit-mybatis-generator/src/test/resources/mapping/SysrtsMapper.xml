@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysrtsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysrts">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remsvc" jdbcType="VARCHAR" property="remsvc" />
+    <result column="brkrinst" jdbcType="VARCHAR" property="brkrinst" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="miraddr" jdbcType="VARCHAR" property="miraddr" />
+    <result column="lifetime" jdbcType="TIMESTAMP" property="lifetime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysrts">
+    insert into sysrts (id, name, remsvc, 
+      brkrinst, addr, miraddr, 
+      lifetime)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remsvc,jdbcType=VARCHAR}, 
+      #{brkrinst,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{miraddr,jdbcType=VARCHAR}, 
+      #{lifetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysrts">
+    insert into sysrts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="remsvc != null">
+        remsvc,
+      </if>
+      <if test="brkrinst != null">
+        brkrinst,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="miraddr != null">
+        miraddr,
+      </if>
+      <if test="lifetime != null">
+        lifetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remsvc != null">
+        #{remsvc,jdbcType=VARCHAR},
+      </if>
+      <if test="brkrinst != null">
+        #{brkrinst,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="miraddr != null">
+        #{miraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="lifetime != null">
+        #{lifetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

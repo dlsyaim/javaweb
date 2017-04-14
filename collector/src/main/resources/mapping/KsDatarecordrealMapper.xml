@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDatarecordrealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDatarecordreal">
+    <id column="RecID" jdbcType="BIGINT" property="recID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="RamCode" jdbcType="VARCHAR" property="ramCode" />
+    <result column="StaRecCumAmt" jdbcType="DOUBLE" property="staRecCumAmt" />
+    <result column="StaRecInsCumAmt" jdbcType="DOUBLE" property="staRecInsCumAmt" />
+    <result column="WorRecCumAmt" jdbcType="DOUBLE" property="worRecCumAmt" />
+    <result column="WorRecInsCumAmt" jdbcType="DOUBLE" property="worRecInsCumAmt" />
+    <result column="RecPressure" jdbcType="DOUBLE" property="recPressure" />
+    <result column="RecTemperature" jdbcType="DOUBLE" property="recTemperature" />
+    <result column="RecConcentration" jdbcType="DOUBLE" property="recConcentration" />
+    <result column="ColTime" jdbcType="TIMESTAMP" property="colTime" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RecID, EquipMentID, RamCode, StaRecCumAmt, StaRecInsCumAmt, WorRecCumAmt, WorRecInsCumAmt, 
+    RecPressure, RecTemperature, RecConcentration, ColTime, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_DataRecordReal
+    where RecID = #{recID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_DataRecordReal
+    where RecID = #{recID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDatarecordreal">
+    insert into KS_DataRecordReal (RecID, EquipMentID, RamCode, 
+      StaRecCumAmt, StaRecInsCumAmt, WorRecCumAmt, 
+      WorRecInsCumAmt, RecPressure, RecTemperature, 
+      RecConcentration, ColTime, AddTime, 
+      Status)
+    values (#{recID,jdbcType=BIGINT}, #{equipMentID,jdbcType=BIGINT}, #{ramCode,jdbcType=VARCHAR}, 
+      #{staRecCumAmt,jdbcType=DOUBLE}, #{staRecInsCumAmt,jdbcType=DOUBLE}, #{worRecCumAmt,jdbcType=DOUBLE}, 
+      #{worRecInsCumAmt,jdbcType=DOUBLE}, #{recPressure,jdbcType=DOUBLE}, #{recTemperature,jdbcType=DOUBLE}, 
+      #{recConcentration,jdbcType=DOUBLE}, #{colTime,jdbcType=TIMESTAMP}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDatarecordreal">
+    insert into KS_DataRecordReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recID != null">
+        RecID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="ramCode != null">
+        RamCode,
+      </if>
+      <if test="staRecCumAmt != null">
+        StaRecCumAmt,
+      </if>
+      <if test="staRecInsCumAmt != null">
+        StaRecInsCumAmt,
+      </if>
+      <if test="worRecCumAmt != null">
+        WorRecCumAmt,
+      </if>
+      <if test="worRecInsCumAmt != null">
+        WorRecInsCumAmt,
+      </if>
+      <if test="recPressure != null">
+        RecPressure,
+      </if>
+      <if test="recTemperature != null">
+        RecTemperature,
+      </if>
+      <if test="recConcentration != null">
+        RecConcentration,
+      </if>
+      <if test="colTime != null">
+        ColTime,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recID != null">
+        #{recID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staRecCumAmt != null">
+        #{staRecCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="staRecInsCumAmt != null">
+        #{staRecInsCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="worRecCumAmt != null">
+        #{worRecCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="worRecInsCumAmt != null">
+        #{worRecInsCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="recPressure != null">
+        #{recPressure,jdbcType=DOUBLE},
+      </if>
+      <if test="recTemperature != null">
+        #{recTemperature,jdbcType=DOUBLE},
+      </if>
+      <if test="recConcentration != null">
+        #{recConcentration,jdbcType=DOUBLE},
+      </if>
+      <if test="colTime != null">
+        #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDatarecordreal">
+    update KS_DataRecordReal
+    <set>
+      <if test="equipMentID != null">
+        EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        RamCode = #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staRecCumAmt != null">
+        StaRecCumAmt = #{staRecCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="staRecInsCumAmt != null">
+        StaRecInsCumAmt = #{staRecInsCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="worRecCumAmt != null">
+        WorRecCumAmt = #{worRecCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="worRecInsCumAmt != null">
+        WorRecInsCumAmt = #{worRecInsCumAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="recPressure != null">
+        RecPressure = #{recPressure,jdbcType=DOUBLE},
+      </if>
+      <if test="recTemperature != null">
+        RecTemperature = #{recTemperature,jdbcType=DOUBLE},
+      </if>
+      <if test="recConcentration != null">
+        RecConcentration = #{recConcentration,jdbcType=DOUBLE},
+      </if>
+      <if test="colTime != null">
+        ColTime = #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where RecID = #{recID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDatarecordreal">
+    update KS_DataRecordReal
+    set EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      RamCode = #{ramCode,jdbcType=VARCHAR},
+      StaRecCumAmt = #{staRecCumAmt,jdbcType=DOUBLE},
+      StaRecInsCumAmt = #{staRecInsCumAmt,jdbcType=DOUBLE},
+      WorRecCumAmt = #{worRecCumAmt,jdbcType=DOUBLE},
+      WorRecInsCumAmt = #{worRecInsCumAmt,jdbcType=DOUBLE},
+      RecPressure = #{recPressure,jdbcType=DOUBLE},
+      RecTemperature = #{recTemperature,jdbcType=DOUBLE},
+      RecConcentration = #{recConcentration,jdbcType=DOUBLE},
+      ColTime = #{colTime,jdbcType=TIMESTAMP},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where RecID = #{recID,jdbcType=BIGINT}
+  </update>
+</mapper>

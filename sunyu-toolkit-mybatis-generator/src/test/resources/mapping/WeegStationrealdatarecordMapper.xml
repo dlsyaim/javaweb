@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.WeegStationrealdatarecordMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.WeegStationrealdatarecord">
+    <id column="DevSerial" jdbcType="VARCHAR" property="devSerial" />
+    <result column="RecID" jdbcType="BIGINT" property="recID" />
+    <result column="ClientSerial" jdbcType="VARCHAR" property="clientSerial" />
+    <result column="ClientName" jdbcType="VARCHAR" property="clientName" />
+    <result column="DevName" jdbcType="VARCHAR" property="devName" />
+    <result column="ChunnelSerial" jdbcType="VARCHAR" property="chunnelSerial" />
+    <result column="ChunnelName" jdbcType="VARCHAR" property="chunnelName" />
+    <result column="devdata1" jdbcType="VARCHAR" property="devdata1" />
+    <result column="devdata2" jdbcType="VARCHAR" property="devdata2" />
+    <result column="devdata3" jdbcType="VARCHAR" property="devdata3" />
+    <result column="devdata4" jdbcType="VARCHAR" property="devdata4" />
+    <result column="devdata5" jdbcType="VARCHAR" property="devdata5" />
+    <result column="devdata6" jdbcType="VARCHAR" property="devdata6" />
+    <result column="devdata7" jdbcType="VARCHAR" property="devdata7" />
+    <result column="devdata8" jdbcType="VARCHAR" property="devdata8" />
+    <result column="devdata9" jdbcType="VARCHAR" property="devdata9" />
+    <result column="devdata10" jdbcType="VARCHAR" property="devdata10" />
+    <result column="updatedaytime" jdbcType="TIMESTAMP" property="updatedaytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DevSerial, RecID, ClientSerial, ClientName, DevName, ChunnelSerial, ChunnelName, 
+    devdata1, devdata2, devdata3, devdata4, devdata5, devdata6, devdata7, devdata8, devdata9, 
+    devdata10, updatedaytime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Weeg_StationRealDataRecord
+    where DevSerial = #{devSerial,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from Weeg_StationRealDataRecord
+    where DevSerial = #{devSerial,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.WeegStationrealdatarecord">
+    insert into Weeg_StationRealDataRecord (DevSerial, RecID, ClientSerial, 
+      ClientName, DevName, ChunnelSerial, 
+      ChunnelName, devdata1, devdata2, 
+      devdata3, devdata4, devdata5, 
+      devdata6, devdata7, devdata8, 
+      devdata9, devdata10, updatedaytime
+      )
+    values (#{devSerial,jdbcType=VARCHAR}, #{recID,jdbcType=BIGINT}, #{clientSerial,jdbcType=VARCHAR}, 
+      #{clientName,jdbcType=VARCHAR}, #{devName,jdbcType=VARCHAR}, #{chunnelSerial,jdbcType=VARCHAR}, 
+      #{chunnelName,jdbcType=VARCHAR}, #{devdata1,jdbcType=VARCHAR}, #{devdata2,jdbcType=VARCHAR}, 
+      #{devdata3,jdbcType=VARCHAR}, #{devdata4,jdbcType=VARCHAR}, #{devdata5,jdbcType=VARCHAR}, 
+      #{devdata6,jdbcType=VARCHAR}, #{devdata7,jdbcType=VARCHAR}, #{devdata8,jdbcType=VARCHAR}, 
+      #{devdata9,jdbcType=VARCHAR}, #{devdata10,jdbcType=VARCHAR}, #{updatedaytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.WeegStationrealdatarecord">
+    insert into Weeg_StationRealDataRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="devSerial != null">
+        DevSerial,
+      </if>
+      <if test="recID != null">
+        RecID,
+      </if>
+      <if test="clientSerial != null">
+        ClientSerial,
+      </if>
+      <if test="clientName != null">
+        ClientName,
+      </if>
+      <if test="devName != null">
+        DevName,
+      </if>
+      <if test="chunnelSerial != null">
+        ChunnelSerial,
+      </if>
+      <if test="chunnelName != null">
+        ChunnelName,
+      </if>
+      <if test="devdata1 != null">
+        devdata1,
+      </if>
+      <if test="devdata2 != null">
+        devdata2,
+      </if>
+      <if test="devdata3 != null">
+        devdata3,
+      </if>
+      <if test="devdata4 != null">
+        devdata4,
+      </if>
+      <if test="devdata5 != null">
+        devdata5,
+      </if>
+      <if test="devdata6 != null">
+        devdata6,
+      </if>
+      <if test="devdata7 != null">
+        devdata7,
+      </if>
+      <if test="devdata8 != null">
+        devdata8,
+      </if>
+      <if test="devdata9 != null">
+        devdata9,
+      </if>
+      <if test="devdata10 != null">
+        devdata10,
+      </if>
+      <if test="updatedaytime != null">
+        updatedaytime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="devSerial != null">
+        #{devSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="recID != null">
+        #{recID,jdbcType=BIGINT},
+      </if>
+      <if test="clientSerial != null">
+        #{clientSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="clientName != null">
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="devName != null">
+        #{devName,jdbcType=VARCHAR},
+      </if>
+      <if test="chunnelSerial != null">
+        #{chunnelSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="chunnelName != null">
+        #{chunnelName,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata1 != null">
+        #{devdata1,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata2 != null">
+        #{devdata2,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata3 != null">
+        #{devdata3,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata4 != null">
+        #{devdata4,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata5 != null">
+        #{devdata5,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata6 != null">
+        #{devdata6,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata7 != null">
+        #{devdata7,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata8 != null">
+        #{devdata8,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata9 != null">
+        #{devdata9,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata10 != null">
+        #{devdata10,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedaytime != null">
+        #{updatedaytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.WeegStationrealdatarecord">
+    update Weeg_StationRealDataRecord
+    <set>
+      <if test="recID != null">
+        RecID = #{recID,jdbcType=BIGINT},
+      </if>
+      <if test="clientSerial != null">
+        ClientSerial = #{clientSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="clientName != null">
+        ClientName = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="devName != null">
+        DevName = #{devName,jdbcType=VARCHAR},
+      </if>
+      <if test="chunnelSerial != null">
+        ChunnelSerial = #{chunnelSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="chunnelName != null">
+        ChunnelName = #{chunnelName,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata1 != null">
+        devdata1 = #{devdata1,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata2 != null">
+        devdata2 = #{devdata2,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata3 != null">
+        devdata3 = #{devdata3,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata4 != null">
+        devdata4 = #{devdata4,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata5 != null">
+        devdata5 = #{devdata5,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata6 != null">
+        devdata6 = #{devdata6,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata7 != null">
+        devdata7 = #{devdata7,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata8 != null">
+        devdata8 = #{devdata8,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata9 != null">
+        devdata9 = #{devdata9,jdbcType=VARCHAR},
+      </if>
+      <if test="devdata10 != null">
+        devdata10 = #{devdata10,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedaytime != null">
+        updatedaytime = #{updatedaytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DevSerial = #{devSerial,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.WeegStationrealdatarecord">
+    update Weeg_StationRealDataRecord
+    set RecID = #{recID,jdbcType=BIGINT},
+      ClientSerial = #{clientSerial,jdbcType=VARCHAR},
+      ClientName = #{clientName,jdbcType=VARCHAR},
+      DevName = #{devName,jdbcType=VARCHAR},
+      ChunnelSerial = #{chunnelSerial,jdbcType=VARCHAR},
+      ChunnelName = #{chunnelName,jdbcType=VARCHAR},
+      devdata1 = #{devdata1,jdbcType=VARCHAR},
+      devdata2 = #{devdata2,jdbcType=VARCHAR},
+      devdata3 = #{devdata3,jdbcType=VARCHAR},
+      devdata4 = #{devdata4,jdbcType=VARCHAR},
+      devdata5 = #{devdata5,jdbcType=VARCHAR},
+      devdata6 = #{devdata6,jdbcType=VARCHAR},
+      devdata7 = #{devdata7,jdbcType=VARCHAR},
+      devdata8 = #{devdata8,jdbcType=VARCHAR},
+      devdata9 = #{devdata9,jdbcType=VARCHAR},
+      devdata10 = #{devdata10,jdbcType=VARCHAR},
+      updatedaytime = #{updatedaytime,jdbcType=TIMESTAMP}
+    where DevSerial = #{devSerial,jdbcType=VARCHAR}
+  </update>
+</mapper>

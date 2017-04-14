@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryCacheCountersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryCacheCounters">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="single_pages_kb" jdbcType="BIGINT" property="single_pages_kb" />
+    <result column="multi_pages_kb" jdbcType="BIGINT" property="multi_pages_kb" />
+    <result column="single_pages_in_use_kb" jdbcType="BIGINT" property="single_pages_in_use_kb" />
+    <result column="multi_pages_in_use_kb" jdbcType="BIGINT" property="multi_pages_in_use_kb" />
+    <result column="entries_count" jdbcType="BIGINT" property="entries_count" />
+    <result column="entries_in_use_count" jdbcType="BIGINT" property="entries_in_use_count" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsMemoryCacheCounters">
+    <result column="cache_address" jdbcType="VARBINARY" property="cache_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    cache_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheCounters">
+    insert into dm_os_memory_cache_counters (name, type, single_pages_kb, 
+      multi_pages_kb, single_pages_in_use_kb, multi_pages_in_use_kb, 
+      entries_count, entries_in_use_count, cache_address
+      )
+    values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{single_pages_kb,jdbcType=BIGINT}, 
+      #{multi_pages_kb,jdbcType=BIGINT}, #{single_pages_in_use_kb,jdbcType=BIGINT}, #{multi_pages_in_use_kb,jdbcType=BIGINT}, 
+      #{entries_count,jdbcType=BIGINT}, #{entries_in_use_count,jdbcType=BIGINT}, #{cache_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheCounters">
+    insert into dm_os_memory_cache_counters
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="single_pages_kb != null">
+        single_pages_kb,
+      </if>
+      <if test="multi_pages_kb != null">
+        multi_pages_kb,
+      </if>
+      <if test="single_pages_in_use_kb != null">
+        single_pages_in_use_kb,
+      </if>
+      <if test="multi_pages_in_use_kb != null">
+        multi_pages_in_use_kb,
+      </if>
+      <if test="entries_count != null">
+        entries_count,
+      </if>
+      <if test="entries_in_use_count != null">
+        entries_in_use_count,
+      </if>
+      <if test="cache_address != null">
+        cache_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="single_pages_kb != null">
+        #{single_pages_kb,jdbcType=BIGINT},
+      </if>
+      <if test="multi_pages_kb != null">
+        #{multi_pages_kb,jdbcType=BIGINT},
+      </if>
+      <if test="single_pages_in_use_kb != null">
+        #{single_pages_in_use_kb,jdbcType=BIGINT},
+      </if>
+      <if test="multi_pages_in_use_kb != null">
+        #{multi_pages_in_use_kb,jdbcType=BIGINT},
+      </if>
+      <if test="entries_count != null">
+        #{entries_count,jdbcType=BIGINT},
+      </if>
+      <if test="entries_in_use_count != null">
+        #{entries_in_use_count,jdbcType=BIGINT},
+      </if>
+      <if test="cache_address != null">
+        #{cache_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

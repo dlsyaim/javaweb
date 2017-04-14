@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsPressureMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsPressure">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Code" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.KsPressure">
+    <result column="geom" jdbcType="BLOB" property="geom" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Name, Code
+  </sql>
+  <sql id="Blob_Column_List">
+    geom
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from KS_Pressure
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from KS_Pressure
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsPressure">
+    insert into KS_Pressure (ID, Name, Code, 
+      geom)
+    values (#{ID,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{geom,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsPressure">
+    insert into KS_Pressure
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="code != null">
+        Code,
+      </if>
+      <if test="geom != null">
+        geom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="geom != null">
+        #{geom,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsPressure">
+    update KS_Pressure
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        Code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="geom != null">
+        geom = #{geom,jdbcType=BLOB},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ks.monitor.pojo.KsPressure">
+    update KS_Pressure
+    set Name = #{name,jdbcType=VARCHAR},
+      Code = #{code,jdbcType=VARCHAR},
+      geom = #{geom,jdbcType=BLOB}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsPressure">
+    update KS_Pressure
+    set Name = #{name,jdbcType=VARCHAR},
+      Code = #{code,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsTimesetMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsTimeset">
+    <id column="TimeSetId" jdbcType="BIGINT" property="timeSetId" />
+    <result column="CollectionTime" jdbcType="INTEGER" property="collectionTime" />
+    <result column="BatteryCollectionTime" jdbcType="INTEGER" property="batteryCollectionTime" />
+    <result column="BatteryUpLoadTime" jdbcType="INTEGER" property="batteryUpLoadTime" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TimeSetId, CollectionTime, BatteryCollectionTime, BatteryUpLoadTime, ManagerID, AddTime, 
+    Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_TimeSet
+    where TimeSetId = #{timeSetId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_TimeSet
+    where TimeSetId = #{timeSetId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsTimeset">
+    insert into KS_TimeSet (TimeSetId, CollectionTime, BatteryCollectionTime, 
+      BatteryUpLoadTime, ManagerID, AddTime, 
+      Status)
+    values (#{timeSetId,jdbcType=BIGINT}, #{collectionTime,jdbcType=INTEGER}, #{batteryCollectionTime,jdbcType=INTEGER}, 
+      #{batteryUpLoadTime,jdbcType=INTEGER}, #{managerID,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsTimeset">
+    insert into KS_TimeSet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="timeSetId != null">
+        TimeSetId,
+      </if>
+      <if test="collectionTime != null">
+        CollectionTime,
+      </if>
+      <if test="batteryCollectionTime != null">
+        BatteryCollectionTime,
+      </if>
+      <if test="batteryUpLoadTime != null">
+        BatteryUpLoadTime,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="timeSetId != null">
+        #{timeSetId,jdbcType=BIGINT},
+      </if>
+      <if test="collectionTime != null">
+        #{collectionTime,jdbcType=INTEGER},
+      </if>
+      <if test="batteryCollectionTime != null">
+        #{batteryCollectionTime,jdbcType=INTEGER},
+      </if>
+      <if test="batteryUpLoadTime != null">
+        #{batteryUpLoadTime,jdbcType=INTEGER},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsTimeset">
+    update KS_TimeSet
+    <set>
+      <if test="collectionTime != null">
+        CollectionTime = #{collectionTime,jdbcType=INTEGER},
+      </if>
+      <if test="batteryCollectionTime != null">
+        BatteryCollectionTime = #{batteryCollectionTime,jdbcType=INTEGER},
+      </if>
+      <if test="batteryUpLoadTime != null">
+        BatteryUpLoadTime = #{batteryUpLoadTime,jdbcType=INTEGER},
+      </if>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where TimeSetId = #{timeSetId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsTimeset">
+    update KS_TimeSet
+    set CollectionTime = #{collectionTime,jdbcType=INTEGER},
+      BatteryCollectionTime = #{batteryCollectionTime,jdbcType=INTEGER},
+      BatteryUpLoadTime = #{batteryUpLoadTime,jdbcType=INTEGER},
+      ManagerID = #{managerID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where TimeSetId = #{timeSetId,jdbcType=BIGINT}
+  </update>
+</mapper>

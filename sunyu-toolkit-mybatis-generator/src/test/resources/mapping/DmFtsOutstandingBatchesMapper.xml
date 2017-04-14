@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmFtsOutstandingBatchesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmFtsOutstandingBatches">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="catalog_id" jdbcType="INTEGER" property="catalog_id" />
+    <result column="table_id" jdbcType="INTEGER" property="table_id" />
+    <result column="batch_id" jdbcType="INTEGER" property="batch_id" />
+    <result column="hr_batch" jdbcType="INTEGER" property="hr_batch" />
+    <result column="is_retry_batch" jdbcType="BIT" property="is_retry_batch" />
+    <result column="retry_hints" jdbcType="INTEGER" property="retry_hints" />
+    <result column="retry_hints_description" jdbcType="VARCHAR" property="retry_hints_description" />
+    <result column="doc_failed" jdbcType="BIGINT" property="doc_failed" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmFtsOutstandingBatchesWithBLOBs">
+    <result column="memory_address" jdbcType="VARBINARY" property="memory_address" />
+    <result column="crawl_memory_address" jdbcType="VARBINARY" property="crawl_memory_address" />
+    <result column="memregion_memory_address" jdbcType="VARBINARY" property="memregion_memory_address" />
+    <result column="batch_timestamp" jdbcType="BINARY" property="batch_timestamp" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_address, crawl_memory_address, memregion_memory_address, batch_timestamp
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmFtsOutstandingBatchesWithBLOBs">
+    insert into dm_fts_outstanding_batches (database_id, catalog_id, table_id, 
+      batch_id, hr_batch, is_retry_batch, 
+      retry_hints, retry_hints_description, doc_failed, 
+      memory_address, crawl_memory_address, 
+      memregion_memory_address, batch_timestamp
+      )
+    values (#{database_id,jdbcType=INTEGER}, #{catalog_id,jdbcType=INTEGER}, #{table_id,jdbcType=INTEGER}, 
+      #{batch_id,jdbcType=INTEGER}, #{hr_batch,jdbcType=INTEGER}, #{is_retry_batch,jdbcType=BIT}, 
+      #{retry_hints,jdbcType=INTEGER}, #{retry_hints_description,jdbcType=VARCHAR}, #{doc_failed,jdbcType=BIGINT}, 
+      #{memory_address,jdbcType=VARBINARY}, #{crawl_memory_address,jdbcType=VARBINARY}, 
+      #{memregion_memory_address,jdbcType=VARBINARY}, #{batch_timestamp,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmFtsOutstandingBatchesWithBLOBs">
+    insert into dm_fts_outstanding_batches
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="catalog_id != null">
+        catalog_id,
+      </if>
+      <if test="table_id != null">
+        table_id,
+      </if>
+      <if test="batch_id != null">
+        batch_id,
+      </if>
+      <if test="hr_batch != null">
+        hr_batch,
+      </if>
+      <if test="is_retry_batch != null">
+        is_retry_batch,
+      </if>
+      <if test="retry_hints != null">
+        retry_hints,
+      </if>
+      <if test="retry_hints_description != null">
+        retry_hints_description,
+      </if>
+      <if test="doc_failed != null">
+        doc_failed,
+      </if>
+      <if test="memory_address != null">
+        memory_address,
+      </if>
+      <if test="crawl_memory_address != null">
+        crawl_memory_address,
+      </if>
+      <if test="memregion_memory_address != null">
+        memregion_memory_address,
+      </if>
+      <if test="batch_timestamp != null">
+        batch_timestamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="catalog_id != null">
+        #{catalog_id,jdbcType=INTEGER},
+      </if>
+      <if test="table_id != null">
+        #{table_id,jdbcType=INTEGER},
+      </if>
+      <if test="batch_id != null">
+        #{batch_id,jdbcType=INTEGER},
+      </if>
+      <if test="hr_batch != null">
+        #{hr_batch,jdbcType=INTEGER},
+      </if>
+      <if test="is_retry_batch != null">
+        #{is_retry_batch,jdbcType=BIT},
+      </if>
+      <if test="retry_hints != null">
+        #{retry_hints,jdbcType=INTEGER},
+      </if>
+      <if test="retry_hints_description != null">
+        #{retry_hints_description,jdbcType=VARCHAR},
+      </if>
+      <if test="doc_failed != null">
+        #{doc_failed,jdbcType=BIGINT},
+      </if>
+      <if test="memory_address != null">
+        #{memory_address,jdbcType=VARBINARY},
+      </if>
+      <if test="crawl_memory_address != null">
+        #{crawl_memory_address,jdbcType=VARBINARY},
+      </if>
+      <if test="memregion_memory_address != null">
+        #{memregion_memory_address,jdbcType=VARBINARY},
+      </if>
+      <if test="batch_timestamp != null">
+        #{batch_timestamp,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.XmlSchemaCollectionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.XmlSchemaCollections">
+    <result column="xml_collection_id" jdbcType="INTEGER" property="xml_collection_id" />
+    <result column="schema_id" jdbcType="INTEGER" property="schema_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.XmlSchemaCollections">
+    insert into xml_schema_collections (xml_collection_id, schema_id, principal_id, 
+      name, create_date, modify_date
+      )
+    values (#{xml_collection_id,jdbcType=INTEGER}, #{schema_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, #{modify_date,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.XmlSchemaCollections">
+    insert into xml_schema_collections
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xml_collection_id != null">
+        xml_collection_id,
+      </if>
+      <if test="schema_id != null">
+        schema_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xml_collection_id != null">
+        #{xml_collection_id,jdbcType=INTEGER},
+      </if>
+      <if test="schema_id != null">
+        #{schema_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

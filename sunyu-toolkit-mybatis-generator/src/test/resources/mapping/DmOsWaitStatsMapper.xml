@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsWaitStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsWaitStats">
+    <result column="wait_type" jdbcType="VARCHAR" property="wait_type" />
+    <result column="waiting_tasks_count" jdbcType="BIGINT" property="waiting_tasks_count" />
+    <result column="wait_time_ms" jdbcType="BIGINT" property="wait_time_ms" />
+    <result column="max_wait_time_ms" jdbcType="BIGINT" property="max_wait_time_ms" />
+    <result column="signal_wait_time_ms" jdbcType="BIGINT" property="signal_wait_time_ms" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsWaitStats">
+    insert into dm_os_wait_stats (wait_type, waiting_tasks_count, wait_time_ms, 
+      max_wait_time_ms, signal_wait_time_ms)
+    values (#{wait_type,jdbcType=VARCHAR}, #{waiting_tasks_count,jdbcType=BIGINT}, #{wait_time_ms,jdbcType=BIGINT}, 
+      #{max_wait_time_ms,jdbcType=BIGINT}, #{signal_wait_time_ms,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsWaitStats">
+    insert into dm_os_wait_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wait_type != null">
+        wait_type,
+      </if>
+      <if test="waiting_tasks_count != null">
+        waiting_tasks_count,
+      </if>
+      <if test="wait_time_ms != null">
+        wait_time_ms,
+      </if>
+      <if test="max_wait_time_ms != null">
+        max_wait_time_ms,
+      </if>
+      <if test="signal_wait_time_ms != null">
+        signal_wait_time_ms,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wait_type != null">
+        #{wait_type,jdbcType=VARCHAR},
+      </if>
+      <if test="waiting_tasks_count != null">
+        #{waiting_tasks_count,jdbcType=BIGINT},
+      </if>
+      <if test="wait_time_ms != null">
+        #{wait_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="max_wait_time_ms != null">
+        #{max_wait_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="signal_wait_time_ms != null">
+        #{signal_wait_time_ms,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

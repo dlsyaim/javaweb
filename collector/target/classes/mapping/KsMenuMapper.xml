@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsMenuMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsMenu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="menuPage" jdbcType="VARCHAR" property="menuPage" />
+    <result column="menuName" jdbcType="VARCHAR" property="menuName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, menuPage, menuName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from KS_Menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsMenu">
+    insert into KS_Menu (id, menuPage, menuName
+      )
+    values (#{id,jdbcType=INTEGER}, #{menuPage,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsMenu">
+    insert into KS_Menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menuPage != null">
+        menuPage,
+      </if>
+      <if test="menuName != null">
+        menuName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menuPage != null">
+        #{menuPage,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsMenu">
+    update KS_Menu
+    <set>
+      <if test="menuPage != null">
+        menuPage = #{menuPage,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        menuName = #{menuName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsMenu">
+    update KS_Menu
+    set menuPage = #{menuPage,jdbcType=VARCHAR},
+      menuName = #{menuName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

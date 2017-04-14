@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsBufferDescriptorsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsBufferDescriptors">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="file_id" jdbcType="INTEGER" property="file_id" />
+    <result column="page_id" jdbcType="INTEGER" property="page_id" />
+    <result column="page_level" jdbcType="INTEGER" property="page_level" />
+    <result column="allocation_unit_id" jdbcType="BIGINT" property="allocation_unit_id" />
+    <result column="page_type" jdbcType="VARCHAR" property="page_type" />
+    <result column="row_count" jdbcType="INTEGER" property="row_count" />
+    <result column="free_space_in_bytes" jdbcType="INTEGER" property="free_space_in_bytes" />
+    <result column="is_modified" jdbcType="BIT" property="is_modified" />
+    <result column="numa_node" jdbcType="INTEGER" property="numa_node" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsBufferDescriptors">
+    insert into dm_os_buffer_descriptors (database_id, file_id, page_id, 
+      page_level, allocation_unit_id, page_type, 
+      row_count, free_space_in_bytes, is_modified, 
+      numa_node)
+    values (#{database_id,jdbcType=INTEGER}, #{file_id,jdbcType=INTEGER}, #{page_id,jdbcType=INTEGER}, 
+      #{page_level,jdbcType=INTEGER}, #{allocation_unit_id,jdbcType=BIGINT}, #{page_type,jdbcType=VARCHAR}, 
+      #{row_count,jdbcType=INTEGER}, #{free_space_in_bytes,jdbcType=INTEGER}, #{is_modified,jdbcType=BIT}, 
+      #{numa_node,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsBufferDescriptors">
+    insert into dm_os_buffer_descriptors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="file_id != null">
+        file_id,
+      </if>
+      <if test="page_id != null">
+        page_id,
+      </if>
+      <if test="page_level != null">
+        page_level,
+      </if>
+      <if test="allocation_unit_id != null">
+        allocation_unit_id,
+      </if>
+      <if test="page_type != null">
+        page_type,
+      </if>
+      <if test="row_count != null">
+        row_count,
+      </if>
+      <if test="free_space_in_bytes != null">
+        free_space_in_bytes,
+      </if>
+      <if test="is_modified != null">
+        is_modified,
+      </if>
+      <if test="numa_node != null">
+        numa_node,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="file_id != null">
+        #{file_id,jdbcType=INTEGER},
+      </if>
+      <if test="page_id != null">
+        #{page_id,jdbcType=INTEGER},
+      </if>
+      <if test="page_level != null">
+        #{page_level,jdbcType=INTEGER},
+      </if>
+      <if test="allocation_unit_id != null">
+        #{allocation_unit_id,jdbcType=BIGINT},
+      </if>
+      <if test="page_type != null">
+        #{page_type,jdbcType=VARCHAR},
+      </if>
+      <if test="row_count != null">
+        #{row_count,jdbcType=INTEGER},
+      </if>
+      <if test="free_space_in_bytes != null">
+        #{free_space_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="is_modified != null">
+        #{is_modified,jdbcType=BIT},
+      </if>
+      <if test="numa_node != null">
+        #{numa_node,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsInfraredrealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsInfraredreal">
+    <id column="InfraredRealID" jdbcType="BIGINT" property="infraredRealID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="RamCode" jdbcType="VARCHAR" property="ramCode" />
+    <result column="InfraredStatus" jdbcType="SMALLINT" property="infraredStatus" />
+    <result column="Electric" jdbcType="SMALLINT" property="electric" />
+    <result column="Door" jdbcType="SMALLINT" property="door" />
+    <result column="ColTime" jdbcType="TIMESTAMP" property="colTime" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    InfraredRealID, EquipMentID, RamCode, InfraredStatus, Electric, Door, ColTime, AddTime, 
+    Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_InfraredReal
+    where InfraredRealID = #{infraredRealID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_InfraredReal
+    where InfraredRealID = #{infraredRealID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsInfraredreal">
+    insert into KS_InfraredReal (InfraredRealID, EquipMentID, RamCode, 
+      InfraredStatus, Electric, Door, 
+      ColTime, AddTime, Status
+      )
+    values (#{infraredRealID,jdbcType=BIGINT}, #{equipMentID,jdbcType=BIGINT}, #{ramCode,jdbcType=VARCHAR}, 
+      #{infraredStatus,jdbcType=SMALLINT}, #{electric,jdbcType=SMALLINT}, #{door,jdbcType=SMALLINT}, 
+      #{colTime,jdbcType=TIMESTAMP}, #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsInfraredreal">
+    insert into KS_InfraredReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="infraredRealID != null">
+        InfraredRealID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="ramCode != null">
+        RamCode,
+      </if>
+      <if test="infraredStatus != null">
+        InfraredStatus,
+      </if>
+      <if test="electric != null">
+        Electric,
+      </if>
+      <if test="door != null">
+        Door,
+      </if>
+      <if test="colTime != null">
+        ColTime,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="infraredRealID != null">
+        #{infraredRealID,jdbcType=BIGINT},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="infraredStatus != null">
+        #{infraredStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="electric != null">
+        #{electric,jdbcType=SMALLINT},
+      </if>
+      <if test="door != null">
+        #{door,jdbcType=SMALLINT},
+      </if>
+      <if test="colTime != null">
+        #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsInfraredreal">
+    update KS_InfraredReal
+    <set>
+      <if test="equipMentID != null">
+        EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="ramCode != null">
+        RamCode = #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="infraredStatus != null">
+        InfraredStatus = #{infraredStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="electric != null">
+        Electric = #{electric,jdbcType=SMALLINT},
+      </if>
+      <if test="door != null">
+        Door = #{door,jdbcType=SMALLINT},
+      </if>
+      <if test="colTime != null">
+        ColTime = #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where InfraredRealID = #{infraredRealID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsInfraredreal">
+    update KS_InfraredReal
+    set EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      RamCode = #{ramCode,jdbcType=VARCHAR},
+      InfraredStatus = #{infraredStatus,jdbcType=SMALLINT},
+      Electric = #{electric,jdbcType=SMALLINT},
+      Door = #{door,jdbcType=SMALLINT},
+      ColTime = #{colTime,jdbcType=TIMESTAMP},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where InfraredRealID = #{infraredRealID,jdbcType=BIGINT}
+  </update>
+</mapper>

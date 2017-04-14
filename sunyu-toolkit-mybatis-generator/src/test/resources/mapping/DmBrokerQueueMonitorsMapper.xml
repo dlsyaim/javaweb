@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmBrokerQueueMonitorsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmBrokerQueueMonitors">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="queue_id" jdbcType="INTEGER" property="queue_id" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="last_empty_rowset_time" jdbcType="TIMESTAMP" property="last_empty_rowset_time" />
+    <result column="last_activated_time" jdbcType="TIMESTAMP" property="last_activated_time" />
+    <result column="tasks_waiting" jdbcType="INTEGER" property="tasks_waiting" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmBrokerQueueMonitors">
+    insert into dm_broker_queue_monitors (database_id, queue_id, state, 
+      last_empty_rowset_time, last_activated_time, 
+      tasks_waiting)
+    values (#{database_id,jdbcType=INTEGER}, #{queue_id,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, 
+      #{last_empty_rowset_time,jdbcType=TIMESTAMP}, #{last_activated_time,jdbcType=TIMESTAMP}, 
+      #{tasks_waiting,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmBrokerQueueMonitors">
+    insert into dm_broker_queue_monitors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="queue_id != null">
+        queue_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="last_empty_rowset_time != null">
+        last_empty_rowset_time,
+      </if>
+      <if test="last_activated_time != null">
+        last_activated_time,
+      </if>
+      <if test="tasks_waiting != null">
+        tasks_waiting,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="queue_id != null">
+        #{queue_id,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="last_empty_rowset_time != null">
+        #{last_empty_rowset_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_activated_time != null">
+        #{last_activated_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tasks_waiting != null">
+        #{tasks_waiting,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

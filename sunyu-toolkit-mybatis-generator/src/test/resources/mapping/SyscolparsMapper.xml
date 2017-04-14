@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyscolparsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syscolpars">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="number" jdbcType="SMALLINT" property="number" />
+    <result column="colid" jdbcType="INTEGER" property="colid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="xtype" jdbcType="TINYINT" property="xtype" />
+    <result column="utype" jdbcType="INTEGER" property="utype" />
+    <result column="length" jdbcType="SMALLINT" property="length" />
+    <result column="prec" jdbcType="TINYINT" property="prec" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="collationid" jdbcType="INTEGER" property="collationid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="maxinrow" jdbcType="SMALLINT" property="maxinrow" />
+    <result column="xmlns" jdbcType="INTEGER" property="xmlns" />
+    <result column="dflt" jdbcType="INTEGER" property="dflt" />
+    <result column="chk" jdbcType="INTEGER" property="chk" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.Syscolpars">
+    <result column="idtval" jdbcType="VARBINARY" property="idtval" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    idtval
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syscolpars">
+    insert into syscolpars (id, number, colid, 
+      name, xtype, utype, 
+      length, prec, scale, 
+      collationid, status, maxinrow, 
+      xmlns, dflt, chk, idtval
+      )
+    values (#{id,jdbcType=INTEGER}, #{number,jdbcType=SMALLINT}, #{colid,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{xtype,jdbcType=TINYINT}, #{utype,jdbcType=INTEGER}, 
+      #{length,jdbcType=SMALLINT}, #{prec,jdbcType=TINYINT}, #{scale,jdbcType=TINYINT}, 
+      #{collationid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{maxinrow,jdbcType=SMALLINT}, 
+      #{xmlns,jdbcType=INTEGER}, #{dflt,jdbcType=INTEGER}, #{chk,jdbcType=INTEGER}, #{idtval,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syscolpars">
+    insert into syscolpars
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="colid != null">
+        colid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="xtype != null">
+        xtype,
+      </if>
+      <if test="utype != null">
+        utype,
+      </if>
+      <if test="length != null">
+        length,
+      </if>
+      <if test="prec != null">
+        prec,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="collationid != null">
+        collationid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="maxinrow != null">
+        maxinrow,
+      </if>
+      <if test="xmlns != null">
+        xmlns,
+      </if>
+      <if test="dflt != null">
+        dflt,
+      </if>
+      <if test="chk != null">
+        chk,
+      </if>
+      <if test="idtval != null">
+        idtval,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=SMALLINT},
+      </if>
+      <if test="colid != null">
+        #{colid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xtype != null">
+        #{xtype,jdbcType=TINYINT},
+      </if>
+      <if test="utype != null">
+        #{utype,jdbcType=INTEGER},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=SMALLINT},
+      </if>
+      <if test="prec != null">
+        #{prec,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="collationid != null">
+        #{collationid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="maxinrow != null">
+        #{maxinrow,jdbcType=SMALLINT},
+      </if>
+      <if test="xmlns != null">
+        #{xmlns,jdbcType=INTEGER},
+      </if>
+      <if test="dflt != null">
+        #{dflt,jdbcType=INTEGER},
+      </if>
+      <if test="chk != null">
+        #{chk,jdbcType=INTEGER},
+      </if>
+      <if test="idtval != null">
+        #{idtval,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

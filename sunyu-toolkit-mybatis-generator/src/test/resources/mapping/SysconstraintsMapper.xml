@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysconstraintsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysconstraints">
+    <result column="constid" jdbcType="INTEGER" property="constid" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="colid" jdbcType="SMALLINT" property="colid" />
+    <result column="spare1" jdbcType="TINYINT" property="spare1" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="actions" jdbcType="INTEGER" property="actions" />
+    <result column="error" jdbcType="INTEGER" property="error" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysconstraints">
+    insert into sysconstraints (constid, id, colid, 
+      spare1, status, actions, 
+      error)
+    values (#{constid,jdbcType=INTEGER}, #{id,jdbcType=INTEGER}, #{colid,jdbcType=SMALLINT}, 
+      #{spare1,jdbcType=TINYINT}, #{status,jdbcType=INTEGER}, #{actions,jdbcType=INTEGER}, 
+      #{error,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysconstraints">
+    insert into sysconstraints
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="constid != null">
+        constid,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="colid != null">
+        colid,
+      </if>
+      <if test="spare1 != null">
+        spare1,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="actions != null">
+        actions,
+      </if>
+      <if test="error != null">
+        error,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="constid != null">
+        #{constid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="colid != null">
+        #{colid,jdbcType=SMALLINT},
+      </if>
+      <if test="spare1 != null">
+        #{spare1,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="actions != null">
+        #{actions,jdbcType=INTEGER},
+      </if>
+      <if test="error != null">
+        #{error,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

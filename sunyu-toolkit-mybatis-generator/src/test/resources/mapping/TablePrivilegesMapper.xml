@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TablePrivilegesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.TablePrivileges">
+    <result column="GRANTOR" jdbcType="VARCHAR" property="GRANTOR" />
+    <result column="GRANTEE" jdbcType="VARCHAR" property="GRANTEE" />
+    <result column="TABLE_CATALOG" jdbcType="VARCHAR" property="TABLE_CATALOG" />
+    <result column="TABLE_SCHEMA" jdbcType="VARCHAR" property="TABLE_SCHEMA" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="TABLE_NAME" />
+    <result column="PRIVILEGE_TYPE" jdbcType="VARCHAR" property="PRIVILEGE_TYPE" />
+    <result column="IS_GRANTABLE" jdbcType="VARCHAR" property="IS_GRANTABLE" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.TablePrivileges">
+    insert into TABLE_PRIVILEGES (GRANTOR, GRANTEE, TABLE_CATALOG, 
+      TABLE_SCHEMA, TABLE_NAME, PRIVILEGE_TYPE, 
+      IS_GRANTABLE)
+    values (#{GRANTOR,jdbcType=VARCHAR}, #{GRANTEE,jdbcType=VARCHAR}, #{TABLE_CATALOG,jdbcType=VARCHAR}, 
+      #{TABLE_SCHEMA,jdbcType=VARCHAR}, #{TABLE_NAME,jdbcType=VARCHAR}, #{PRIVILEGE_TYPE,jdbcType=VARCHAR}, 
+      #{IS_GRANTABLE,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.TablePrivileges">
+    insert into TABLE_PRIVILEGES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="GRANTOR != null">
+        GRANTOR,
+      </if>
+      <if test="GRANTEE != null">
+        GRANTEE,
+      </if>
+      <if test="TABLE_CATALOG != null">
+        TABLE_CATALOG,
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        TABLE_SCHEMA,
+      </if>
+      <if test="TABLE_NAME != null">
+        TABLE_NAME,
+      </if>
+      <if test="PRIVILEGE_TYPE != null">
+        PRIVILEGE_TYPE,
+      </if>
+      <if test="IS_GRANTABLE != null">
+        IS_GRANTABLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="GRANTOR != null">
+        #{GRANTOR,jdbcType=VARCHAR},
+      </if>
+      <if test="GRANTEE != null">
+        #{GRANTEE,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_CATALOG != null">
+        #{TABLE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        #{TABLE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_NAME != null">
+        #{TABLE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="PRIVILEGE_TYPE != null">
+        #{PRIVILEGE_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_GRANTABLE != null">
+        #{IS_GRANTABLE,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsSublatchesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsSublatches">
+    <result column="partition_id" jdbcType="INTEGER" property="partition_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsSublatches">
+    <result column="superlatch_address" jdbcType="VARBINARY" property="superlatch_address" />
+    <result column="sublatch_address" jdbcType="VARBINARY" property="sublatch_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    superlatch_address, sublatch_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsSublatches">
+    insert into dm_os_sublatches (partition_id, superlatch_address, 
+      sublatch_address)
+    values (#{partition_id,jdbcType=INTEGER}, #{superlatch_address,jdbcType=VARBINARY}, 
+      #{sublatch_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsSublatches">
+    insert into dm_os_sublatches
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        partition_id,
+      </if>
+      <if test="superlatch_address != null">
+        superlatch_address,
+      </if>
+      <if test="sublatch_address != null">
+        sublatch_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="partition_id != null">
+        #{partition_id,jdbcType=INTEGER},
+      </if>
+      <if test="superlatch_address != null">
+        #{superlatch_address,jdbcType=VARBINARY},
+      </if>
+      <if test="sublatch_address != null">
+        #{sublatch_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

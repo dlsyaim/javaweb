@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsGasliquidvalverealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsGasliquidvalvereal">
+    <id column="GasLiquidValveRealId" jdbcType="BIGINT" property="gasLiquidValveRealId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RealTime" jdbcType="TIMESTAMP" property="realTime" />
+    <result column="OpenState" jdbcType="BIT" property="openState" />
+    <result column="CloseState" jdbcType="BIT" property="closeState" />
+    <result column="Fault" jdbcType="BIT" property="fault" />
+    <result column="Local" jdbcType="BIT" property="local" />
+    <result column="OpenSet" jdbcType="BIT" property="openSet" />
+    <result column="CloseSet" jdbcType="BIT" property="closeSet" />
+    <result column="EmergencySet" jdbcType="BIT" property="emergencySet" />
+    <result column="ConfirmSet" jdbcType="BIT" property="confirmSet" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    GasLiquidValveRealId, EquipmentId, RealTime, OpenState, CloseState, Fault, Local, 
+    OpenSet, CloseSet, EmergencySet, ConfirmSet
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_GasLiquidValveReal
+    where GasLiquidValveRealId = #{gasLiquidValveRealId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_GasLiquidValveReal
+    where GasLiquidValveRealId = #{gasLiquidValveRealId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsGasliquidvalvereal">
+    insert into KS_GasLiquidValveReal (GasLiquidValveRealId, EquipmentId, 
+      RealTime, OpenState, CloseState, 
+      Fault, Local, OpenSet, CloseSet, 
+      EmergencySet, ConfirmSet)
+    values (#{gasLiquidValveRealId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, 
+      #{realTime,jdbcType=TIMESTAMP}, #{openState,jdbcType=BIT}, #{closeState,jdbcType=BIT}, 
+      #{fault,jdbcType=BIT}, #{local,jdbcType=BIT}, #{openSet,jdbcType=BIT}, #{closeSet,jdbcType=BIT}, 
+      #{emergencySet,jdbcType=BIT}, #{confirmSet,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsGasliquidvalvereal">
+    insert into KS_GasLiquidValveReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gasLiquidValveRealId != null">
+        GasLiquidValveRealId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="realTime != null">
+        RealTime,
+      </if>
+      <if test="openState != null">
+        OpenState,
+      </if>
+      <if test="closeState != null">
+        CloseState,
+      </if>
+      <if test="fault != null">
+        Fault,
+      </if>
+      <if test="local != null">
+        Local,
+      </if>
+      <if test="openSet != null">
+        OpenSet,
+      </if>
+      <if test="closeSet != null">
+        CloseSet,
+      </if>
+      <if test="emergencySet != null">
+        EmergencySet,
+      </if>
+      <if test="confirmSet != null">
+        ConfirmSet,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gasLiquidValveRealId != null">
+        #{gasLiquidValveRealId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openState != null">
+        #{openState,jdbcType=BIT},
+      </if>
+      <if test="closeState != null">
+        #{closeState,jdbcType=BIT},
+      </if>
+      <if test="fault != null">
+        #{fault,jdbcType=BIT},
+      </if>
+      <if test="local != null">
+        #{local,jdbcType=BIT},
+      </if>
+      <if test="openSet != null">
+        #{openSet,jdbcType=BIT},
+      </if>
+      <if test="closeSet != null">
+        #{closeSet,jdbcType=BIT},
+      </if>
+      <if test="emergencySet != null">
+        #{emergencySet,jdbcType=BIT},
+      </if>
+      <if test="confirmSet != null">
+        #{confirmSet,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsGasliquidvalvereal">
+    update KS_GasLiquidValveReal
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        RealTime = #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openState != null">
+        OpenState = #{openState,jdbcType=BIT},
+      </if>
+      <if test="closeState != null">
+        CloseState = #{closeState,jdbcType=BIT},
+      </if>
+      <if test="fault != null">
+        Fault = #{fault,jdbcType=BIT},
+      </if>
+      <if test="local != null">
+        Local = #{local,jdbcType=BIT},
+      </if>
+      <if test="openSet != null">
+        OpenSet = #{openSet,jdbcType=BIT},
+      </if>
+      <if test="closeSet != null">
+        CloseSet = #{closeSet,jdbcType=BIT},
+      </if>
+      <if test="emergencySet != null">
+        EmergencySet = #{emergencySet,jdbcType=BIT},
+      </if>
+      <if test="confirmSet != null">
+        ConfirmSet = #{confirmSet,jdbcType=BIT},
+      </if>
+    </set>
+    where GasLiquidValveRealId = #{gasLiquidValveRealId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsGasliquidvalvereal">
+    update KS_GasLiquidValveReal
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RealTime = #{realTime,jdbcType=TIMESTAMP},
+      OpenState = #{openState,jdbcType=BIT},
+      CloseState = #{closeState,jdbcType=BIT},
+      Fault = #{fault,jdbcType=BIT},
+      Local = #{local,jdbcType=BIT},
+      OpenSet = #{openSet,jdbcType=BIT},
+      CloseSet = #{closeSet,jdbcType=BIT},
+      EmergencySet = #{emergencySet,jdbcType=BIT},
+      ConfirmSet = #{confirmSet,jdbcType=BIT}
+    where GasLiquidValveRealId = #{gasLiquidValveRealId,jdbcType=BIGINT}
+  </update>
+</mapper>

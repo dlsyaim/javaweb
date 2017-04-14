@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecTextQueryPlanMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecTextQueryPlan">
+    <result column="dbid" jdbcType="SMALLINT" property="dbid" />
+    <result column="objectid" jdbcType="INTEGER" property="objectid" />
+    <result column="number" jdbcType="SMALLINT" property="number" />
+    <result column="encrypted" jdbcType="BIT" property="encrypted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecTextQueryPlan">
+    <result column="query_plan" jdbcType="CLOB" property="query_plan" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    query_plan
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecTextQueryPlan">
+    insert into dm_exec_text_query_plan (dbid, objectid, number, 
+      encrypted, query_plan)
+    values (#{dbid,jdbcType=SMALLINT}, #{objectid,jdbcType=INTEGER}, #{number,jdbcType=SMALLINT}, 
+      #{encrypted,jdbcType=BIT}, #{query_plan,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecTextQueryPlan">
+    insert into dm_exec_text_query_plan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dbid != null">
+        dbid,
+      </if>
+      <if test="objectid != null">
+        objectid,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="encrypted != null">
+        encrypted,
+      </if>
+      <if test="query_plan != null">
+        query_plan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dbid != null">
+        #{dbid,jdbcType=SMALLINT},
+      </if>
+      <if test="objectid != null">
+        #{objectid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=SMALLINT},
+      </if>
+      <if test="encrypted != null">
+        #{encrypted,jdbcType=BIT},
+      </if>
+      <if test="query_plan != null">
+        #{query_plan,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

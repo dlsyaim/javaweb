@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsWebsiteMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsWebsite">
+    <id column="WebSiteID" jdbcType="BIGINT" property="webSiteID" />
+    <result column="WebSiteName" jdbcType="VARCHAR" property="webSiteName" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    WebSiteID, WebSiteName, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_WebSite
+    where WebSiteID = #{webSiteID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_WebSite
+    where WebSiteID = #{webSiteID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsWebsite">
+    insert into KS_WebSite (WebSiteID, WebSiteName, AddTime, 
+      Status)
+    values (#{webSiteID,jdbcType=BIGINT}, #{webSiteName,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsWebsite">
+    insert into KS_WebSite
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="webSiteID != null">
+        WebSiteID,
+      </if>
+      <if test="webSiteName != null">
+        WebSiteName,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="webSiteID != null">
+        #{webSiteID,jdbcType=BIGINT},
+      </if>
+      <if test="webSiteName != null">
+        #{webSiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsWebsite">
+    update KS_WebSite
+    <set>
+      <if test="webSiteName != null">
+        WebSiteName = #{webSiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where WebSiteID = #{webSiteID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsWebsite">
+    update KS_WebSite
+    set WebSiteName = #{webSiteName,jdbcType=VARCHAR},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where WebSiteID = #{webSiteID,jdbcType=BIGINT}
+  </update>
+</mapper>

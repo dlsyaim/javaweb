@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnTraceGetfilterinfoMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnTraceGetfilterinfo">
+    <result column="columnid" jdbcType="INTEGER" property="columnid" />
+    <result column="logical_operator" jdbcType="INTEGER" property="logical_operator" />
+    <result column="comparison_operator" jdbcType="INTEGER" property="comparison_operator" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnTraceGetfilterinfo">
+    insert into fn_trace_getfilterinfo (columnid, logical_operator, comparison_operator, 
+      value)
+    values (#{columnid,jdbcType=INTEGER}, #{logical_operator,jdbcType=INTEGER}, #{comparison_operator,jdbcType=INTEGER}, 
+      #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnTraceGetfilterinfo">
+    insert into fn_trace_getfilterinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="columnid != null">
+        columnid,
+      </if>
+      <if test="logical_operator != null">
+        logical_operator,
+      </if>
+      <if test="comparison_operator != null">
+        comparison_operator,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="columnid != null">
+        #{columnid,jdbcType=INTEGER},
+      </if>
+      <if test="logical_operator != null">
+        #{logical_operator,jdbcType=INTEGER},
+      </if>
+      <if test="comparison_operator != null">
+        #{comparison_operator,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

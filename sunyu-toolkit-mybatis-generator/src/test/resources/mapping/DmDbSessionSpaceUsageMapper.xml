@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbSessionSpaceUsageMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbSessionSpaceUsage">
+    <result column="session_id" jdbcType="SMALLINT" property="session_id" />
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="user_objects_alloc_page_count" jdbcType="BIGINT" property="user_objects_alloc_page_count" />
+    <result column="user_objects_dealloc_page_count" jdbcType="BIGINT" property="user_objects_dealloc_page_count" />
+    <result column="internal_objects_alloc_page_count" jdbcType="BIGINT" property="internal_objects_alloc_page_count" />
+    <result column="internal_objects_dealloc_page_count" jdbcType="BIGINT" property="internal_objects_dealloc_page_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbSessionSpaceUsage">
+    insert into dm_db_session_space_usage (session_id, database_id, user_objects_alloc_page_count, 
+      user_objects_dealloc_page_count, internal_objects_alloc_page_count, 
+      internal_objects_dealloc_page_count)
+    values (#{session_id,jdbcType=SMALLINT}, #{database_id,jdbcType=SMALLINT}, #{user_objects_alloc_page_count,jdbcType=BIGINT}, 
+      #{user_objects_dealloc_page_count,jdbcType=BIGINT}, #{internal_objects_alloc_page_count,jdbcType=BIGINT}, 
+      #{internal_objects_dealloc_page_count,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbSessionSpaceUsage">
+    insert into dm_db_session_space_usage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="user_objects_alloc_page_count != null">
+        user_objects_alloc_page_count,
+      </if>
+      <if test="user_objects_dealloc_page_count != null">
+        user_objects_dealloc_page_count,
+      </if>
+      <if test="internal_objects_alloc_page_count != null">
+        internal_objects_alloc_page_count,
+      </if>
+      <if test="internal_objects_dealloc_page_count != null">
+        internal_objects_dealloc_page_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=SMALLINT},
+      </if>
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="user_objects_alloc_page_count != null">
+        #{user_objects_alloc_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="user_objects_dealloc_page_count != null">
+        #{user_objects_dealloc_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="internal_objects_alloc_page_count != null">
+        #{internal_objects_alloc_page_count,jdbcType=BIGINT},
+      </if>
+      <if test="internal_objects_dealloc_page_count != null">
+        #{internal_objects_dealloc_page_count,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

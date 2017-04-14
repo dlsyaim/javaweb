@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysdependsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysdepends">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="depid" jdbcType="INTEGER" property="depid" />
+    <result column="number" jdbcType="SMALLINT" property="number" />
+    <result column="depnumber" jdbcType="SMALLINT" property="depnumber" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="deptype" jdbcType="TINYINT" property="deptype" />
+    <result column="depdbid" jdbcType="SMALLINT" property="depdbid" />
+    <result column="depsiteid" jdbcType="SMALLINT" property="depsiteid" />
+    <result column="selall" jdbcType="BIT" property="selall" />
+    <result column="resultobj" jdbcType="BIT" property="resultobj" />
+    <result column="readobj" jdbcType="BIT" property="readobj" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysdepends">
+    insert into sysdepends (id, depid, number, 
+      depnumber, status, deptype, 
+      depdbid, depsiteid, selall, 
+      resultobj, readobj)
+    values (#{id,jdbcType=INTEGER}, #{depid,jdbcType=INTEGER}, #{number,jdbcType=SMALLINT}, 
+      #{depnumber,jdbcType=SMALLINT}, #{status,jdbcType=SMALLINT}, #{deptype,jdbcType=TINYINT}, 
+      #{depdbid,jdbcType=SMALLINT}, #{depsiteid,jdbcType=SMALLINT}, #{selall,jdbcType=BIT}, 
+      #{resultobj,jdbcType=BIT}, #{readobj,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysdepends">
+    insert into sysdepends
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="depid != null">
+        depid,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="depnumber != null">
+        depnumber,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="deptype != null">
+        deptype,
+      </if>
+      <if test="depdbid != null">
+        depdbid,
+      </if>
+      <if test="depsiteid != null">
+        depsiteid,
+      </if>
+      <if test="selall != null">
+        selall,
+      </if>
+      <if test="resultobj != null">
+        resultobj,
+      </if>
+      <if test="readobj != null">
+        readobj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="depid != null">
+        #{depid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=SMALLINT},
+      </if>
+      <if test="depnumber != null">
+        #{depnumber,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="deptype != null">
+        #{deptype,jdbcType=TINYINT},
+      </if>
+      <if test="depdbid != null">
+        #{depdbid,jdbcType=SMALLINT},
+      </if>
+      <if test="depsiteid != null">
+        #{depsiteid,jdbcType=SMALLINT},
+      </if>
+      <if test="selall != null">
+        #{selall,jdbcType=BIT},
+      </if>
+      <if test="resultobj != null">
+        #{resultobj,jdbcType=BIT},
+      </if>
+      <if test="readobj != null">
+        #{readobj,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsUserstationMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsUserstation">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="RamCode" jdbcType="VARCHAR" property="ramCode" />
+    <result column="WarnType" jdbcType="INTEGER" property="warnType" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.KsUserstation">
+    <result column="geom" jdbcType="BLOB" property="geom" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Name, RamCode, WarnType
+  </sql>
+  <sql id="Blob_Column_List">
+    geom
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from KS_UserStation
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from KS_UserStation
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsUserstation">
+    insert into KS_UserStation (ID, Name, RamCode, 
+      WarnType, geom)
+    values (#{ID,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{ramCode,jdbcType=VARCHAR}, 
+      #{warnType,jdbcType=INTEGER}, #{geom,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsUserstation">
+    insert into KS_UserStation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="ramCode != null">
+        RamCode,
+      </if>
+      <if test="warnType != null">
+        WarnType,
+      </if>
+      <if test="geom != null">
+        geom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ramCode != null">
+        #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnType != null">
+        #{warnType,jdbcType=INTEGER},
+      </if>
+      <if test="geom != null">
+        #{geom,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsUserstation">
+    update KS_UserStation
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ramCode != null">
+        RamCode = #{ramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnType != null">
+        WarnType = #{warnType,jdbcType=INTEGER},
+      </if>
+      <if test="geom != null">
+        geom = #{geom,jdbcType=BLOB},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ks.monitor.pojo.KsUserstation">
+    update KS_UserStation
+    set Name = #{name,jdbcType=VARCHAR},
+      RamCode = #{ramCode,jdbcType=VARCHAR},
+      WarnType = #{warnType,jdbcType=INTEGER},
+      geom = #{geom,jdbcType=BLOB}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsUserstation">
+    update KS_UserStation
+    set Name = #{name,jdbcType=VARCHAR},
+      RamCode = #{ramCode,jdbcType=VARCHAR},
+      WarnType = #{warnType,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.TraceColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.TraceColumns">
+    <result column="trace_column_id" jdbcType="SMALLINT" property="trace_column_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type_name" jdbcType="VARCHAR" property="type_name" />
+    <result column="max_size" jdbcType="INTEGER" property="max_size" />
+    <result column="is_filterable" jdbcType="BIT" property="is_filterable" />
+    <result column="is_repeatable" jdbcType="BIT" property="is_repeatable" />
+    <result column="is_repeated_base" jdbcType="BIT" property="is_repeated_base" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.TraceColumns">
+    insert into trace_columns (trace_column_id, name, type_name, 
+      max_size, is_filterable, is_repeatable, 
+      is_repeated_base)
+    values (#{trace_column_id,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}, #{type_name,jdbcType=VARCHAR}, 
+      #{max_size,jdbcType=INTEGER}, #{is_filterable,jdbcType=BIT}, #{is_repeatable,jdbcType=BIT}, 
+      #{is_repeated_base,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.TraceColumns">
+    insert into trace_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="trace_column_id != null">
+        trace_column_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type_name != null">
+        type_name,
+      </if>
+      <if test="max_size != null">
+        max_size,
+      </if>
+      <if test="is_filterable != null">
+        is_filterable,
+      </if>
+      <if test="is_repeatable != null">
+        is_repeatable,
+      </if>
+      <if test="is_repeated_base != null">
+        is_repeated_base,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="trace_column_id != null">
+        #{trace_column_id,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type_name != null">
+        #{type_name,jdbcType=VARCHAR},
+      </if>
+      <if test="max_size != null">
+        #{max_size,jdbcType=INTEGER},
+      </if>
+      <if test="is_filterable != null">
+        #{is_filterable,jdbcType=BIT},
+      </if>
+      <if test="is_repeatable != null">
+        #{is_repeatable,jdbcType=BIT},
+      </if>
+      <if test="is_repeated_base != null">
+        #{is_repeated_base,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

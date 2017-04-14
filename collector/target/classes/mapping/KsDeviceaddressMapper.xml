@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDeviceaddressMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDeviceaddress">
+    <id column="DeviceAddressID" jdbcType="BIGINT" property="deviceAddressID" />
+    <result column="DeviceAddressName" jdbcType="VARCHAR" property="deviceAddressName" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DeviceAddressID, DeviceAddressName, ManagerID, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_DeviceAddress
+    where DeviceAddressID = #{deviceAddressID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_DeviceAddress
+    where DeviceAddressID = #{deviceAddressID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDeviceaddress">
+    insert into KS_DeviceAddress (DeviceAddressID, DeviceAddressName, 
+      ManagerID, AddTime, Status
+      )
+    values (#{deviceAddressID,jdbcType=BIGINT}, #{deviceAddressName,jdbcType=VARCHAR}, 
+      #{managerID,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDeviceaddress">
+    insert into KS_DeviceAddress
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceAddressID != null">
+        DeviceAddressID,
+      </if>
+      <if test="deviceAddressName != null">
+        DeviceAddressName,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceAddressID != null">
+        #{deviceAddressID,jdbcType=BIGINT},
+      </if>
+      <if test="deviceAddressName != null">
+        #{deviceAddressName,jdbcType=VARCHAR},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDeviceaddress">
+    update KS_DeviceAddress
+    <set>
+      <if test="deviceAddressName != null">
+        DeviceAddressName = #{deviceAddressName,jdbcType=VARCHAR},
+      </if>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where DeviceAddressID = #{deviceAddressID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDeviceaddress">
+    update KS_DeviceAddress
+    set DeviceAddressName = #{deviceAddressName,jdbcType=VARCHAR},
+      ManagerID = #{managerID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where DeviceAddressID = #{deviceAddressID,jdbcType=BIGINT}
+  </update>
+</mapper>

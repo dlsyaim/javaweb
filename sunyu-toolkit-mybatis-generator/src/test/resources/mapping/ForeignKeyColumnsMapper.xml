@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ForeignKeyColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ForeignKeyColumns">
+    <result column="constraint_object_id" jdbcType="INTEGER" property="constraint_object_id" />
+    <result column="constraint_column_id" jdbcType="INTEGER" property="constraint_column_id" />
+    <result column="parent_object_id" jdbcType="INTEGER" property="parent_object_id" />
+    <result column="parent_column_id" jdbcType="INTEGER" property="parent_column_id" />
+    <result column="referenced_object_id" jdbcType="INTEGER" property="referenced_object_id" />
+    <result column="referenced_column_id" jdbcType="INTEGER" property="referenced_column_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ForeignKeyColumns">
+    insert into foreign_key_columns (constraint_object_id, constraint_column_id, 
+      parent_object_id, parent_column_id, referenced_object_id, 
+      referenced_column_id)
+    values (#{constraint_object_id,jdbcType=INTEGER}, #{constraint_column_id,jdbcType=INTEGER}, 
+      #{parent_object_id,jdbcType=INTEGER}, #{parent_column_id,jdbcType=INTEGER}, #{referenced_object_id,jdbcType=INTEGER}, 
+      #{referenced_column_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ForeignKeyColumns">
+    insert into foreign_key_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="constraint_object_id != null">
+        constraint_object_id,
+      </if>
+      <if test="constraint_column_id != null">
+        constraint_column_id,
+      </if>
+      <if test="parent_object_id != null">
+        parent_object_id,
+      </if>
+      <if test="parent_column_id != null">
+        parent_column_id,
+      </if>
+      <if test="referenced_object_id != null">
+        referenced_object_id,
+      </if>
+      <if test="referenced_column_id != null">
+        referenced_column_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="constraint_object_id != null">
+        #{constraint_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="constraint_column_id != null">
+        #{constraint_column_id,jdbcType=INTEGER},
+      </if>
+      <if test="parent_object_id != null">
+        #{parent_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="parent_column_id != null">
+        #{parent_column_id,jdbcType=INTEGER},
+      </if>
+      <if test="referenced_object_id != null">
+        #{referenced_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="referenced_column_id != null">
+        #{referenced_column_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

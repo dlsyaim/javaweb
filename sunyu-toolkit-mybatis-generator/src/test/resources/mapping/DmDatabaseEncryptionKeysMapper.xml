@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDatabaseEncryptionKeysMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDatabaseEncryptionKeys">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="encryption_state" jdbcType="INTEGER" property="encryption_state" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="regenerate_date" jdbcType="TIMESTAMP" property="regenerate_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="set_date" jdbcType="TIMESTAMP" property="set_date" />
+    <result column="opened_date" jdbcType="TIMESTAMP" property="opened_date" />
+    <result column="key_algorithm" jdbcType="VARCHAR" property="key_algorithm" />
+    <result column="key_length" jdbcType="INTEGER" property="key_length" />
+    <result column="percent_complete" jdbcType="REAL" property="percent_complete" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmDatabaseEncryptionKeys">
+    <result column="encryptor_thumbprint" jdbcType="VARBINARY" property="encryptor_thumbprint" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    encryptor_thumbprint
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDatabaseEncryptionKeys">
+    insert into dm_database_encryption_keys (database_id, encryption_state, create_date, 
+      regenerate_date, modify_date, set_date, 
+      opened_date, key_algorithm, key_length, 
+      percent_complete, encryptor_thumbprint)
+    values (#{database_id,jdbcType=INTEGER}, #{encryption_state,jdbcType=INTEGER}, #{create_date,jdbcType=TIMESTAMP}, 
+      #{regenerate_date,jdbcType=TIMESTAMP}, #{modify_date,jdbcType=TIMESTAMP}, #{set_date,jdbcType=TIMESTAMP}, 
+      #{opened_date,jdbcType=TIMESTAMP}, #{key_algorithm,jdbcType=VARCHAR}, #{key_length,jdbcType=INTEGER}, 
+      #{percent_complete,jdbcType=REAL}, #{encryptor_thumbprint,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDatabaseEncryptionKeys">
+    insert into dm_database_encryption_keys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="encryption_state != null">
+        encryption_state,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="regenerate_date != null">
+        regenerate_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="set_date != null">
+        set_date,
+      </if>
+      <if test="opened_date != null">
+        opened_date,
+      </if>
+      <if test="key_algorithm != null">
+        key_algorithm,
+      </if>
+      <if test="key_length != null">
+        key_length,
+      </if>
+      <if test="percent_complete != null">
+        percent_complete,
+      </if>
+      <if test="encryptor_thumbprint != null">
+        encryptor_thumbprint,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="encryption_state != null">
+        #{encryption_state,jdbcType=INTEGER},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regenerate_date != null">
+        #{regenerate_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="set_date != null">
+        #{set_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opened_date != null">
+        #{opened_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="key_algorithm != null">
+        #{key_algorithm,jdbcType=VARCHAR},
+      </if>
+      <if test="key_length != null">
+        #{key_length,jdbcType=INTEGER},
+      </if>
+      <if test="percent_complete != null">
+        #{percent_complete,jdbcType=REAL},
+      </if>
+      <if test="encryptor_thumbprint != null">
+        #{encryptor_thumbprint,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

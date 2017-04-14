@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyslockinfoMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syslockinfo">
+    <result column="rsc_text" jdbcType="CHAR" property="rsc_text" />
+    <result column="rsc_dbid" jdbcType="SMALLINT" property="rsc_dbid" />
+    <result column="rsc_indid" jdbcType="SMALLINT" property="rsc_indid" />
+    <result column="rsc_objid" jdbcType="INTEGER" property="rsc_objid" />
+    <result column="rsc_type" jdbcType="TINYINT" property="rsc_type" />
+    <result column="rsc_flag" jdbcType="TINYINT" property="rsc_flag" />
+    <result column="req_mode" jdbcType="TINYINT" property="req_mode" />
+    <result column="req_status" jdbcType="TINYINT" property="req_status" />
+    <result column="req_refcnt" jdbcType="SMALLINT" property="req_refcnt" />
+    <result column="req_cryrefcnt" jdbcType="SMALLINT" property="req_cryrefcnt" />
+    <result column="req_lifetime" jdbcType="INTEGER" property="req_lifetime" />
+    <result column="req_spid" jdbcType="INTEGER" property="req_spid" />
+    <result column="req_ecid" jdbcType="INTEGER" property="req_ecid" />
+    <result column="req_ownertype" jdbcType="SMALLINT" property="req_ownertype" />
+    <result column="req_transactionID" jdbcType="BIGINT" property="req_transactionID" />
+    <result column="req_transactionUOW" jdbcType="CHAR" property="req_transactionUOW" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SyslockinfoWithBLOBs">
+    <result column="rsc_bin" jdbcType="BINARY" property="rsc_bin" />
+    <result column="rsc_valblk" jdbcType="BINARY" property="rsc_valblk" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    rsc_bin, rsc_valblk
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SyslockinfoWithBLOBs">
+    insert into syslockinfo (rsc_text, rsc_dbid, rsc_indid, 
+      rsc_objid, rsc_type, rsc_flag, 
+      req_mode, req_status, req_refcnt, 
+      req_cryrefcnt, req_lifetime, req_spid, 
+      req_ecid, req_ownertype, req_transactionID, 
+      req_transactionUOW, rsc_bin, rsc_valblk
+      )
+    values (#{rsc_text,jdbcType=CHAR}, #{rsc_dbid,jdbcType=SMALLINT}, #{rsc_indid,jdbcType=SMALLINT}, 
+      #{rsc_objid,jdbcType=INTEGER}, #{rsc_type,jdbcType=TINYINT}, #{rsc_flag,jdbcType=TINYINT}, 
+      #{req_mode,jdbcType=TINYINT}, #{req_status,jdbcType=TINYINT}, #{req_refcnt,jdbcType=SMALLINT}, 
+      #{req_cryrefcnt,jdbcType=SMALLINT}, #{req_lifetime,jdbcType=INTEGER}, #{req_spid,jdbcType=INTEGER}, 
+      #{req_ecid,jdbcType=INTEGER}, #{req_ownertype,jdbcType=SMALLINT}, #{req_transactionID,jdbcType=BIGINT}, 
+      #{req_transactionUOW,jdbcType=CHAR}, #{rsc_bin,jdbcType=BINARY}, #{rsc_valblk,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SyslockinfoWithBLOBs">
+    insert into syslockinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rsc_text != null">
+        rsc_text,
+      </if>
+      <if test="rsc_dbid != null">
+        rsc_dbid,
+      </if>
+      <if test="rsc_indid != null">
+        rsc_indid,
+      </if>
+      <if test="rsc_objid != null">
+        rsc_objid,
+      </if>
+      <if test="rsc_type != null">
+        rsc_type,
+      </if>
+      <if test="rsc_flag != null">
+        rsc_flag,
+      </if>
+      <if test="req_mode != null">
+        req_mode,
+      </if>
+      <if test="req_status != null">
+        req_status,
+      </if>
+      <if test="req_refcnt != null">
+        req_refcnt,
+      </if>
+      <if test="req_cryrefcnt != null">
+        req_cryrefcnt,
+      </if>
+      <if test="req_lifetime != null">
+        req_lifetime,
+      </if>
+      <if test="req_spid != null">
+        req_spid,
+      </if>
+      <if test="req_ecid != null">
+        req_ecid,
+      </if>
+      <if test="req_ownertype != null">
+        req_ownertype,
+      </if>
+      <if test="req_transactionID != null">
+        req_transactionID,
+      </if>
+      <if test="req_transactionUOW != null">
+        req_transactionUOW,
+      </if>
+      <if test="rsc_bin != null">
+        rsc_bin,
+      </if>
+      <if test="rsc_valblk != null">
+        rsc_valblk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rsc_text != null">
+        #{rsc_text,jdbcType=CHAR},
+      </if>
+      <if test="rsc_dbid != null">
+        #{rsc_dbid,jdbcType=SMALLINT},
+      </if>
+      <if test="rsc_indid != null">
+        #{rsc_indid,jdbcType=SMALLINT},
+      </if>
+      <if test="rsc_objid != null">
+        #{rsc_objid,jdbcType=INTEGER},
+      </if>
+      <if test="rsc_type != null">
+        #{rsc_type,jdbcType=TINYINT},
+      </if>
+      <if test="rsc_flag != null">
+        #{rsc_flag,jdbcType=TINYINT},
+      </if>
+      <if test="req_mode != null">
+        #{req_mode,jdbcType=TINYINT},
+      </if>
+      <if test="req_status != null">
+        #{req_status,jdbcType=TINYINT},
+      </if>
+      <if test="req_refcnt != null">
+        #{req_refcnt,jdbcType=SMALLINT},
+      </if>
+      <if test="req_cryrefcnt != null">
+        #{req_cryrefcnt,jdbcType=SMALLINT},
+      </if>
+      <if test="req_lifetime != null">
+        #{req_lifetime,jdbcType=INTEGER},
+      </if>
+      <if test="req_spid != null">
+        #{req_spid,jdbcType=INTEGER},
+      </if>
+      <if test="req_ecid != null">
+        #{req_ecid,jdbcType=INTEGER},
+      </if>
+      <if test="req_ownertype != null">
+        #{req_ownertype,jdbcType=SMALLINT},
+      </if>
+      <if test="req_transactionID != null">
+        #{req_transactionID,jdbcType=BIGINT},
+      </if>
+      <if test="req_transactionUOW != null">
+        #{req_transactionUOW,jdbcType=CHAR},
+      </if>
+      <if test="rsc_bin != null">
+        #{rsc_bin,jdbcType=BINARY},
+      </if>
+      <if test="rsc_valblk != null">
+        #{rsc_valblk,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

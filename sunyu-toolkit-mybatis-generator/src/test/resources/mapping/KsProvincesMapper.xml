@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsProvincesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsProvinces">
+    <id column="ProvinceID" jdbcType="BIGINT" property="provinceID" />
+    <result column="ProvinceName" jdbcType="VARCHAR" property="provinceName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ProvinceID, ProvinceName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Provinces
+    where ProvinceID = #{provinceID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_Provinces
+    where ProvinceID = #{provinceID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsProvinces">
+    insert into KS_Provinces (ProvinceID, ProvinceName)
+    values (#{provinceID,jdbcType=BIGINT}, #{provinceName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsProvinces">
+    insert into KS_Provinces
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="provinceID != null">
+        ProvinceID,
+      </if>
+      <if test="provinceName != null">
+        ProvinceName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="provinceID != null">
+        #{provinceID,jdbcType=BIGINT},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsProvinces">
+    update KS_Provinces
+    <set>
+      <if test="provinceName != null">
+        ProvinceName = #{provinceName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProvinceID = #{provinceID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsProvinces">
+    update KS_Provinces
+    set ProvinceName = #{provinceName,jdbcType=VARCHAR}
+    where ProvinceID = #{provinceID,jdbcType=BIGINT}
+  </update>
+</mapper>

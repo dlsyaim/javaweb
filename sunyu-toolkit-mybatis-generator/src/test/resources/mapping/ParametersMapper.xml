@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ParametersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Parameters">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parameter_id" jdbcType="INTEGER" property="parameter_id" />
+    <result column="system_type_id" jdbcType="TINYINT" property="system_type_id" />
+    <result column="user_type_id" jdbcType="INTEGER" property="user_type_id" />
+    <result column="max_length" jdbcType="SMALLINT" property="max_length" />
+    <result column="precision" jdbcType="TINYINT" property="precision" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="is_output" jdbcType="BIT" property="is_output" />
+    <result column="is_cursor_ref" jdbcType="BIT" property="is_cursor_ref" />
+    <result column="has_default_value" jdbcType="BIT" property="has_default_value" />
+    <result column="is_xml_document" jdbcType="BIT" property="is_xml_document" />
+    <result column="default_value" jdbcType="VARCHAR" property="default_value" />
+    <result column="xml_collection_id" jdbcType="INTEGER" property="xml_collection_id" />
+    <result column="is_readonly" jdbcType="BIT" property="is_readonly" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Parameters">
+    insert into parameters (object_id, name, parameter_id, 
+      system_type_id, user_type_id, max_length, 
+      precision, scale, is_output, 
+      is_cursor_ref, has_default_value, is_xml_document, 
+      default_value, xml_collection_id, is_readonly
+      )
+    values (#{object_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parameter_id,jdbcType=INTEGER}, 
+      #{system_type_id,jdbcType=TINYINT}, #{user_type_id,jdbcType=INTEGER}, #{max_length,jdbcType=SMALLINT}, 
+      #{precision,jdbcType=TINYINT}, #{scale,jdbcType=TINYINT}, #{is_output,jdbcType=BIT}, 
+      #{is_cursor_ref,jdbcType=BIT}, #{has_default_value,jdbcType=BIT}, #{is_xml_document,jdbcType=BIT}, 
+      #{default_value,jdbcType=VARCHAR}, #{xml_collection_id,jdbcType=INTEGER}, #{is_readonly,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Parameters">
+    insert into parameters
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="parameter_id != null">
+        parameter_id,
+      </if>
+      <if test="system_type_id != null">
+        system_type_id,
+      </if>
+      <if test="user_type_id != null">
+        user_type_id,
+      </if>
+      <if test="max_length != null">
+        max_length,
+      </if>
+      <if test="precision != null">
+        precision,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="is_output != null">
+        is_output,
+      </if>
+      <if test="is_cursor_ref != null">
+        is_cursor_ref,
+      </if>
+      <if test="has_default_value != null">
+        has_default_value,
+      </if>
+      <if test="is_xml_document != null">
+        is_xml_document,
+      </if>
+      <if test="default_value != null">
+        default_value,
+      </if>
+      <if test="xml_collection_id != null">
+        xml_collection_id,
+      </if>
+      <if test="is_readonly != null">
+        is_readonly,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter_id != null">
+        #{parameter_id,jdbcType=INTEGER},
+      </if>
+      <if test="system_type_id != null">
+        #{system_type_id,jdbcType=TINYINT},
+      </if>
+      <if test="user_type_id != null">
+        #{user_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="max_length != null">
+        #{max_length,jdbcType=SMALLINT},
+      </if>
+      <if test="precision != null">
+        #{precision,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="is_output != null">
+        #{is_output,jdbcType=BIT},
+      </if>
+      <if test="is_cursor_ref != null">
+        #{is_cursor_ref,jdbcType=BIT},
+      </if>
+      <if test="has_default_value != null">
+        #{has_default_value,jdbcType=BIT},
+      </if>
+      <if test="is_xml_document != null">
+        #{is_xml_document,jdbcType=BIT},
+      </if>
+      <if test="default_value != null">
+        #{default_value,jdbcType=VARCHAR},
+      </if>
+      <if test="xml_collection_id != null">
+        #{xml_collection_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_readonly != null">
+        #{is_readonly,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Parameters">
+    <result column="SPECIFIC_CATALOG" jdbcType="VARCHAR" property="SPECIFIC_CATALOG" />
+    <result column="SPECIFIC_SCHEMA" jdbcType="VARCHAR" property="SPECIFIC_SCHEMA" />
+    <result column="SPECIFIC_NAME" jdbcType="VARCHAR" property="SPECIFIC_NAME" />
+    <result column="ORDINAL_POSITION" jdbcType="INTEGER" property="ORDINAL_POSITION" />
+    <result column="PARAMETER_MODE" jdbcType="VARCHAR" property="PARAMETER_MODE" />
+    <result column="IS_RESULT" jdbcType="VARCHAR" property="IS_RESULT" />
+    <result column="AS_LOCATOR" jdbcType="VARCHAR" property="AS_LOCATOR" />
+    <result column="PARAMETER_NAME" jdbcType="VARCHAR" property="PARAMETER_NAME" />
+    <result column="DATA_TYPE" jdbcType="VARCHAR" property="DATA_TYPE" />
+    <result column="CHARACTER_MAXIMUM_LENGTH" jdbcType="INTEGER" property="CHARACTER_MAXIMUM_LENGTH" />
+    <result column="CHARACTER_OCTET_LENGTH" jdbcType="INTEGER" property="CHARACTER_OCTET_LENGTH" />
+    <result column="COLLATION_CATALOG" jdbcType="VARCHAR" property="COLLATION_CATALOG" />
+    <result column="COLLATION_SCHEMA" jdbcType="VARCHAR" property="COLLATION_SCHEMA" />
+    <result column="COLLATION_NAME" jdbcType="VARCHAR" property="COLLATION_NAME" />
+    <result column="CHARACTER_SET_CATALOG" jdbcType="VARCHAR" property="CHARACTER_SET_CATALOG" />
+    <result column="CHARACTER_SET_SCHEMA" jdbcType="VARCHAR" property="CHARACTER_SET_SCHEMA" />
+    <result column="CHARACTER_SET_NAME" jdbcType="VARCHAR" property="CHARACTER_SET_NAME" />
+    <result column="NUMERIC_PRECISION" jdbcType="TINYINT" property="NUMERIC_PRECISION" />
+    <result column="NUMERIC_PRECISION_RADIX" jdbcType="SMALLINT" property="NUMERIC_PRECISION_RADIX" />
+    <result column="NUMERIC_SCALE" jdbcType="INTEGER" property="NUMERIC_SCALE" />
+    <result column="DATETIME_PRECISION" jdbcType="SMALLINT" property="DATETIME_PRECISION" />
+    <result column="INTERVAL_TYPE" jdbcType="VARCHAR" property="INTERVAL_TYPE" />
+    <result column="INTERVAL_PRECISION" jdbcType="SMALLINT" property="INTERVAL_PRECISION" />
+    <result column="USER_DEFINED_TYPE_CATALOG" jdbcType="VARCHAR" property="USER_DEFINED_TYPE_CATALOG" />
+    <result column="USER_DEFINED_TYPE_SCHEMA" jdbcType="VARCHAR" property="USER_DEFINED_TYPE_SCHEMA" />
+    <result column="USER_DEFINED_TYPE_NAME" jdbcType="VARCHAR" property="USER_DEFINED_TYPE_NAME" />
+    <result column="SCOPE_CATALOG" jdbcType="VARCHAR" property="SCOPE_CATALOG" />
+    <result column="SCOPE_SCHEMA" jdbcType="VARCHAR" property="SCOPE_SCHEMA" />
+    <result column="SCOPE_NAME" jdbcType="VARCHAR" property="SCOPE_NAME" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Parameters">
+    insert into PARAMETERS (SPECIFIC_CATALOG, SPECIFIC_SCHEMA, 
+      SPECIFIC_NAME, ORDINAL_POSITION, PARAMETER_MODE, 
+      IS_RESULT, AS_LOCATOR, PARAMETER_NAME, 
+      DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, 
+      COLLATION_CATALOG, COLLATION_SCHEMA, COLLATION_NAME, 
+      CHARACTER_SET_CATALOG, CHARACTER_SET_SCHEMA, 
+      CHARACTER_SET_NAME, NUMERIC_PRECISION, 
+      NUMERIC_PRECISION_RADIX, NUMERIC_SCALE, 
+      DATETIME_PRECISION, INTERVAL_TYPE, INTERVAL_PRECISION, 
+      USER_DEFINED_TYPE_CATALOG, USER_DEFINED_TYPE_SCHEMA, 
+      USER_DEFINED_TYPE_NAME, SCOPE_CATALOG, 
+      SCOPE_SCHEMA, SCOPE_NAME)
+    values (#{SPECIFIC_CATALOG,jdbcType=VARCHAR}, #{SPECIFIC_SCHEMA,jdbcType=VARCHAR}, 
+      #{SPECIFIC_NAME,jdbcType=VARCHAR}, #{ORDINAL_POSITION,jdbcType=INTEGER}, #{PARAMETER_MODE,jdbcType=VARCHAR}, 
+      #{IS_RESULT,jdbcType=VARCHAR}, #{AS_LOCATOR,jdbcType=VARCHAR}, #{PARAMETER_NAME,jdbcType=VARCHAR}, 
+      #{DATA_TYPE,jdbcType=VARCHAR}, #{CHARACTER_MAXIMUM_LENGTH,jdbcType=INTEGER}, #{CHARACTER_OCTET_LENGTH,jdbcType=INTEGER}, 
+      #{COLLATION_CATALOG,jdbcType=VARCHAR}, #{COLLATION_SCHEMA,jdbcType=VARCHAR}, #{COLLATION_NAME,jdbcType=VARCHAR}, 
+      #{CHARACTER_SET_CATALOG,jdbcType=VARCHAR}, #{CHARACTER_SET_SCHEMA,jdbcType=VARCHAR}, 
+      #{CHARACTER_SET_NAME,jdbcType=VARCHAR}, #{NUMERIC_PRECISION,jdbcType=TINYINT}, 
+      #{NUMERIC_PRECISION_RADIX,jdbcType=SMALLINT}, #{NUMERIC_SCALE,jdbcType=INTEGER}, 
+      #{DATETIME_PRECISION,jdbcType=SMALLINT}, #{INTERVAL_TYPE,jdbcType=VARCHAR}, #{INTERVAL_PRECISION,jdbcType=SMALLINT}, 
+      #{USER_DEFINED_TYPE_CATALOG,jdbcType=VARCHAR}, #{USER_DEFINED_TYPE_SCHEMA,jdbcType=VARCHAR}, 
+      #{USER_DEFINED_TYPE_NAME,jdbcType=VARCHAR}, #{SCOPE_CATALOG,jdbcType=VARCHAR}, 
+      #{SCOPE_SCHEMA,jdbcType=VARCHAR}, #{SCOPE_NAME,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Parameters">
+    insert into PARAMETERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="SPECIFIC_CATALOG != null">
+        SPECIFIC_CATALOG,
+      </if>
+      <if test="SPECIFIC_SCHEMA != null">
+        SPECIFIC_SCHEMA,
+      </if>
+      <if test="SPECIFIC_NAME != null">
+        SPECIFIC_NAME,
+      </if>
+      <if test="ORDINAL_POSITION != null">
+        ORDINAL_POSITION,
+      </if>
+      <if test="PARAMETER_MODE != null">
+        PARAMETER_MODE,
+      </if>
+      <if test="IS_RESULT != null">
+        IS_RESULT,
+      </if>
+      <if test="AS_LOCATOR != null">
+        AS_LOCATOR,
+      </if>
+      <if test="PARAMETER_NAME != null">
+        PARAMETER_NAME,
+      </if>
+      <if test="DATA_TYPE != null">
+        DATA_TYPE,
+      </if>
+      <if test="CHARACTER_MAXIMUM_LENGTH != null">
+        CHARACTER_MAXIMUM_LENGTH,
+      </if>
+      <if test="CHARACTER_OCTET_LENGTH != null">
+        CHARACTER_OCTET_LENGTH,
+      </if>
+      <if test="COLLATION_CATALOG != null">
+        COLLATION_CATALOG,
+      </if>
+      <if test="COLLATION_SCHEMA != null">
+        COLLATION_SCHEMA,
+      </if>
+      <if test="COLLATION_NAME != null">
+        COLLATION_NAME,
+      </if>
+      <if test="CHARACTER_SET_CATALOG != null">
+        CHARACTER_SET_CATALOG,
+      </if>
+      <if test="CHARACTER_SET_SCHEMA != null">
+        CHARACTER_SET_SCHEMA,
+      </if>
+      <if test="CHARACTER_SET_NAME != null">
+        CHARACTER_SET_NAME,
+      </if>
+      <if test="NUMERIC_PRECISION != null">
+        NUMERIC_PRECISION,
+      </if>
+      <if test="NUMERIC_PRECISION_RADIX != null">
+        NUMERIC_PRECISION_RADIX,
+      </if>
+      <if test="NUMERIC_SCALE != null">
+        NUMERIC_SCALE,
+      </if>
+      <if test="DATETIME_PRECISION != null">
+        DATETIME_PRECISION,
+      </if>
+      <if test="INTERVAL_TYPE != null">
+        INTERVAL_TYPE,
+      </if>
+      <if test="INTERVAL_PRECISION != null">
+        INTERVAL_PRECISION,
+      </if>
+      <if test="USER_DEFINED_TYPE_CATALOG != null">
+        USER_DEFINED_TYPE_CATALOG,
+      </if>
+      <if test="USER_DEFINED_TYPE_SCHEMA != null">
+        USER_DEFINED_TYPE_SCHEMA,
+      </if>
+      <if test="USER_DEFINED_TYPE_NAME != null">
+        USER_DEFINED_TYPE_NAME,
+      </if>
+      <if test="SCOPE_CATALOG != null">
+        SCOPE_CATALOG,
+      </if>
+      <if test="SCOPE_SCHEMA != null">
+        SCOPE_SCHEMA,
+      </if>
+      <if test="SCOPE_NAME != null">
+        SCOPE_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="SPECIFIC_CATALOG != null">
+        #{SPECIFIC_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="SPECIFIC_SCHEMA != null">
+        #{SPECIFIC_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="SPECIFIC_NAME != null">
+        #{SPECIFIC_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ORDINAL_POSITION != null">
+        #{ORDINAL_POSITION,jdbcType=INTEGER},
+      </if>
+      <if test="PARAMETER_MODE != null">
+        #{PARAMETER_MODE,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_RESULT != null">
+        #{IS_RESULT,jdbcType=VARCHAR},
+      </if>
+      <if test="AS_LOCATOR != null">
+        #{AS_LOCATOR,jdbcType=VARCHAR},
+      </if>
+      <if test="PARAMETER_NAME != null">
+        #{PARAMETER_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="DATA_TYPE != null">
+        #{DATA_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_MAXIMUM_LENGTH != null">
+        #{CHARACTER_MAXIMUM_LENGTH,jdbcType=INTEGER},
+      </if>
+      <if test="CHARACTER_OCTET_LENGTH != null">
+        #{CHARACTER_OCTET_LENGTH,jdbcType=INTEGER},
+      </if>
+      <if test="COLLATION_CATALOG != null">
+        #{COLLATION_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLATION_SCHEMA != null">
+        #{COLLATION_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLATION_NAME != null">
+        #{COLLATION_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_CATALOG != null">
+        #{CHARACTER_SET_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_SCHEMA != null">
+        #{CHARACTER_SET_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="CHARACTER_SET_NAME != null">
+        #{CHARACTER_SET_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="NUMERIC_PRECISION != null">
+        #{NUMERIC_PRECISION,jdbcType=TINYINT},
+      </if>
+      <if test="NUMERIC_PRECISION_RADIX != null">
+        #{NUMERIC_PRECISION_RADIX,jdbcType=SMALLINT},
+      </if>
+      <if test="NUMERIC_SCALE != null">
+        #{NUMERIC_SCALE,jdbcType=INTEGER},
+      </if>
+      <if test="DATETIME_PRECISION != null">
+        #{DATETIME_PRECISION,jdbcType=SMALLINT},
+      </if>
+      <if test="INTERVAL_TYPE != null">
+        #{INTERVAL_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="INTERVAL_PRECISION != null">
+        #{INTERVAL_PRECISION,jdbcType=SMALLINT},
+      </if>
+      <if test="USER_DEFINED_TYPE_CATALOG != null">
+        #{USER_DEFINED_TYPE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_DEFINED_TYPE_SCHEMA != null">
+        #{USER_DEFINED_TYPE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_DEFINED_TYPE_NAME != null">
+        #{USER_DEFINED_TYPE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="SCOPE_CATALOG != null">
+        #{SCOPE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="SCOPE_SCHEMA != null">
+        #{SCOPE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="SCOPE_NAME != null">
+        #{SCOPE_NAME,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

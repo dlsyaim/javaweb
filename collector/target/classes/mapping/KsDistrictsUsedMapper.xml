@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDistrictsUsedMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDistrictsUsed">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="DistrictID" jdbcType="BIGINT" property="districtID" />
+    <result column="DistrictName" jdbcType="VARCHAR" property="districtName" />
+    <result column="CityID" jdbcType="BIGINT" property="cityID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, DistrictID, DistrictName, CityID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Districts_Used
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from KS_Districts_Used
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDistrictsUsed">
+    insert into KS_Districts_Used (ID, DistrictID, DistrictName, 
+      CityID)
+    values (#{ID,jdbcType=INTEGER}, #{districtID,jdbcType=BIGINT}, #{districtName,jdbcType=VARCHAR}, 
+      #{cityID,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDistrictsUsed">
+    insert into KS_Districts_Used
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="districtID != null">
+        DistrictID,
+      </if>
+      <if test="districtName != null">
+        DistrictName,
+      </if>
+      <if test="cityID != null">
+        CityID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="districtID != null">
+        #{districtID,jdbcType=BIGINT},
+      </if>
+      <if test="districtName != null">
+        #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityID != null">
+        #{cityID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDistrictsUsed">
+    update KS_Districts_Used
+    <set>
+      <if test="districtID != null">
+        DistrictID = #{districtID,jdbcType=BIGINT},
+      </if>
+      <if test="districtName != null">
+        DistrictName = #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityID != null">
+        CityID = #{cityID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDistrictsUsed">
+    update KS_Districts_Used
+    set DistrictID = #{districtID,jdbcType=BIGINT},
+      DistrictName = #{districtName,jdbcType=VARCHAR},
+      CityID = #{cityID,jdbcType=BIGINT}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

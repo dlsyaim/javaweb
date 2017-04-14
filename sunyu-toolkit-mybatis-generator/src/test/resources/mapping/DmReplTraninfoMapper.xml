@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmReplTraninfoMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmReplTraninfo">
+    <result column="fp2p_pub_exists" jdbcType="TINYINT" property="fp2p_pub_exists" />
+    <result column="db_ver" jdbcType="INTEGER" property="db_ver" />
+    <result column="begin_lsn" jdbcType="VARCHAR" property="begin_lsn" />
+    <result column="commit_lsn" jdbcType="VARCHAR" property="commit_lsn" />
+    <result column="dbid" jdbcType="SMALLINT" property="dbid" />
+    <result column="rows" jdbcType="INTEGER" property="rows" />
+    <result column="xdesid" jdbcType="VARCHAR" property="xdesid" />
+    <result column="server" jdbcType="VARCHAR" property="server" />
+    <result column="server_len_in_bytes" jdbcType="INTEGER" property="server_len_in_bytes" />
+    <result column="database" jdbcType="VARCHAR" property="database" />
+    <result column="db_len_in_bytes" jdbcType="INTEGER" property="db_len_in_bytes" />
+    <result column="originator" jdbcType="VARCHAR" property="originator" />
+    <result column="originator_len_in_bytes" jdbcType="INTEGER" property="originator_len_in_bytes" />
+    <result column="orig_db" jdbcType="VARCHAR" property="orig_db" />
+    <result column="orig_db_len_in_bytes" jdbcType="INTEGER" property="orig_db_len_in_bytes" />
+    <result column="cmds_in_tran" jdbcType="INTEGER" property="cmds_in_tran" />
+    <result column="is_boundedupdate_singleton" jdbcType="TINYINT" property="is_boundedupdate_singleton" />
+    <result column="begin_update_lsn" jdbcType="VARCHAR" property="begin_update_lsn" />
+    <result column="delete_lsn" jdbcType="VARCHAR" property="delete_lsn" />
+    <result column="last_end_lsn" jdbcType="VARCHAR" property="last_end_lsn" />
+    <result column="fcomplete" jdbcType="TINYINT" property="fcomplete" />
+    <result column="fcompensated" jdbcType="TINYINT" property="fcompensated" />
+    <result column="fprocessingtext" jdbcType="TINYINT" property="fprocessingtext" />
+    <result column="max_cmds_in_tran" jdbcType="INTEGER" property="max_cmds_in_tran" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="begin_time" />
+    <result column="commit_time" jdbcType="TIMESTAMP" property="commit_time" />
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="session_phase" jdbcType="VARCHAR" property="session_phase" />
+    <result column="is_known_cdc_tran" jdbcType="TINYINT" property="is_known_cdc_tran" />
+    <result column="error_count" jdbcType="INTEGER" property="error_count" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmReplTraninfoWithBLOBs">
+    <result column="comp_range_address" jdbcType="VARBINARY" property="comp_range_address" />
+    <result column="textinfo_address" jdbcType="VARBINARY" property="textinfo_address" />
+    <result column="fsinfo_address" jdbcType="VARBINARY" property="fsinfo_address" />
+    <result column="artcache_table_address" jdbcType="VARBINARY" property="artcache_table_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    comp_range_address, textinfo_address, fsinfo_address, artcache_table_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmReplTraninfoWithBLOBs">
+    insert into dm_repl_traninfo (fp2p_pub_exists, db_ver, begin_lsn, 
+      commit_lsn, dbid, rows, 
+      xdesid, server, server_len_in_bytes, 
+      database, db_len_in_bytes, originator, 
+      originator_len_in_bytes, orig_db, orig_db_len_in_bytes, 
+      cmds_in_tran, is_boundedupdate_singleton, 
+      begin_update_lsn, delete_lsn, last_end_lsn, 
+      fcomplete, fcompensated, fprocessingtext, 
+      max_cmds_in_tran, begin_time, commit_time, 
+      session_id, session_phase, is_known_cdc_tran, 
+      error_count, comp_range_address, textinfo_address, 
+      fsinfo_address, artcache_table_address
+      )
+    values (#{fp2p_pub_exists,jdbcType=TINYINT}, #{db_ver,jdbcType=INTEGER}, #{begin_lsn,jdbcType=VARCHAR}, 
+      #{commit_lsn,jdbcType=VARCHAR}, #{dbid,jdbcType=SMALLINT}, #{rows,jdbcType=INTEGER}, 
+      #{xdesid,jdbcType=VARCHAR}, #{server,jdbcType=VARCHAR}, #{server_len_in_bytes,jdbcType=INTEGER}, 
+      #{database,jdbcType=VARCHAR}, #{db_len_in_bytes,jdbcType=INTEGER}, #{originator,jdbcType=VARCHAR}, 
+      #{originator_len_in_bytes,jdbcType=INTEGER}, #{orig_db,jdbcType=VARCHAR}, #{orig_db_len_in_bytes,jdbcType=INTEGER}, 
+      #{cmds_in_tran,jdbcType=INTEGER}, #{is_boundedupdate_singleton,jdbcType=TINYINT}, 
+      #{begin_update_lsn,jdbcType=VARCHAR}, #{delete_lsn,jdbcType=VARCHAR}, #{last_end_lsn,jdbcType=VARCHAR}, 
+      #{fcomplete,jdbcType=TINYINT}, #{fcompensated,jdbcType=TINYINT}, #{fprocessingtext,jdbcType=TINYINT}, 
+      #{max_cmds_in_tran,jdbcType=INTEGER}, #{begin_time,jdbcType=TIMESTAMP}, #{commit_time,jdbcType=TIMESTAMP}, 
+      #{session_id,jdbcType=INTEGER}, #{session_phase,jdbcType=VARCHAR}, #{is_known_cdc_tran,jdbcType=TINYINT}, 
+      #{error_count,jdbcType=INTEGER}, #{comp_range_address,jdbcType=VARBINARY}, #{textinfo_address,jdbcType=VARBINARY}, 
+      #{fsinfo_address,jdbcType=VARBINARY}, #{artcache_table_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmReplTraninfoWithBLOBs">
+    insert into dm_repl_traninfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fp2p_pub_exists != null">
+        fp2p_pub_exists,
+      </if>
+      <if test="db_ver != null">
+        db_ver,
+      </if>
+      <if test="begin_lsn != null">
+        begin_lsn,
+      </if>
+      <if test="commit_lsn != null">
+        commit_lsn,
+      </if>
+      <if test="dbid != null">
+        dbid,
+      </if>
+      <if test="rows != null">
+        rows,
+      </if>
+      <if test="xdesid != null">
+        xdesid,
+      </if>
+      <if test="server != null">
+        server,
+      </if>
+      <if test="server_len_in_bytes != null">
+        server_len_in_bytes,
+      </if>
+      <if test="database != null">
+        database,
+      </if>
+      <if test="db_len_in_bytes != null">
+        db_len_in_bytes,
+      </if>
+      <if test="originator != null">
+        originator,
+      </if>
+      <if test="originator_len_in_bytes != null">
+        originator_len_in_bytes,
+      </if>
+      <if test="orig_db != null">
+        orig_db,
+      </if>
+      <if test="orig_db_len_in_bytes != null">
+        orig_db_len_in_bytes,
+      </if>
+      <if test="cmds_in_tran != null">
+        cmds_in_tran,
+      </if>
+      <if test="is_boundedupdate_singleton != null">
+        is_boundedupdate_singleton,
+      </if>
+      <if test="begin_update_lsn != null">
+        begin_update_lsn,
+      </if>
+      <if test="delete_lsn != null">
+        delete_lsn,
+      </if>
+      <if test="last_end_lsn != null">
+        last_end_lsn,
+      </if>
+      <if test="fcomplete != null">
+        fcomplete,
+      </if>
+      <if test="fcompensated != null">
+        fcompensated,
+      </if>
+      <if test="fprocessingtext != null">
+        fprocessingtext,
+      </if>
+      <if test="max_cmds_in_tran != null">
+        max_cmds_in_tran,
+      </if>
+      <if test="begin_time != null">
+        begin_time,
+      </if>
+      <if test="commit_time != null">
+        commit_time,
+      </if>
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="session_phase != null">
+        session_phase,
+      </if>
+      <if test="is_known_cdc_tran != null">
+        is_known_cdc_tran,
+      </if>
+      <if test="error_count != null">
+        error_count,
+      </if>
+      <if test="comp_range_address != null">
+        comp_range_address,
+      </if>
+      <if test="textinfo_address != null">
+        textinfo_address,
+      </if>
+      <if test="fsinfo_address != null">
+        fsinfo_address,
+      </if>
+      <if test="artcache_table_address != null">
+        artcache_table_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fp2p_pub_exists != null">
+        #{fp2p_pub_exists,jdbcType=TINYINT},
+      </if>
+      <if test="db_ver != null">
+        #{db_ver,jdbcType=INTEGER},
+      </if>
+      <if test="begin_lsn != null">
+        #{begin_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="commit_lsn != null">
+        #{commit_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="dbid != null">
+        #{dbid,jdbcType=SMALLINT},
+      </if>
+      <if test="rows != null">
+        #{rows,jdbcType=INTEGER},
+      </if>
+      <if test="xdesid != null">
+        #{xdesid,jdbcType=VARCHAR},
+      </if>
+      <if test="server != null">
+        #{server,jdbcType=VARCHAR},
+      </if>
+      <if test="server_len_in_bytes != null">
+        #{server_len_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="database != null">
+        #{database,jdbcType=VARCHAR},
+      </if>
+      <if test="db_len_in_bytes != null">
+        #{db_len_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="originator != null">
+        #{originator,jdbcType=VARCHAR},
+      </if>
+      <if test="originator_len_in_bytes != null">
+        #{originator_len_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="orig_db != null">
+        #{orig_db,jdbcType=VARCHAR},
+      </if>
+      <if test="orig_db_len_in_bytes != null">
+        #{orig_db_len_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="cmds_in_tran != null">
+        #{cmds_in_tran,jdbcType=INTEGER},
+      </if>
+      <if test="is_boundedupdate_singleton != null">
+        #{is_boundedupdate_singleton,jdbcType=TINYINT},
+      </if>
+      <if test="begin_update_lsn != null">
+        #{begin_update_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_lsn != null">
+        #{delete_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="last_end_lsn != null">
+        #{last_end_lsn,jdbcType=VARCHAR},
+      </if>
+      <if test="fcomplete != null">
+        #{fcomplete,jdbcType=TINYINT},
+      </if>
+      <if test="fcompensated != null">
+        #{fcompensated,jdbcType=TINYINT},
+      </if>
+      <if test="fprocessingtext != null">
+        #{fprocessingtext,jdbcType=TINYINT},
+      </if>
+      <if test="max_cmds_in_tran != null">
+        #{max_cmds_in_tran,jdbcType=INTEGER},
+      </if>
+      <if test="begin_time != null">
+        #{begin_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commit_time != null">
+        #{commit_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="session_phase != null">
+        #{session_phase,jdbcType=VARCHAR},
+      </if>
+      <if test="is_known_cdc_tran != null">
+        #{is_known_cdc_tran,jdbcType=TINYINT},
+      </if>
+      <if test="error_count != null">
+        #{error_count,jdbcType=INTEGER},
+      </if>
+      <if test="comp_range_address != null">
+        #{comp_range_address,jdbcType=VARBINARY},
+      </if>
+      <if test="textinfo_address != null">
+        #{textinfo_address,jdbcType=VARBINARY},
+      </if>
+      <if test="fsinfo_address != null">
+        #{fsinfo_address,jdbcType=VARBINARY},
+      </if>
+      <if test="artcache_table_address != null">
+        #{artcache_table_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

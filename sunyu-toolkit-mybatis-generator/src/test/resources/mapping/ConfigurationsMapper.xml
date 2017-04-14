@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ConfigurationsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Configurations">
+    <result column="configuration_id" jdbcType="INTEGER" property="configuration_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="minimum" jdbcType="VARCHAR" property="minimum" />
+    <result column="maximum" jdbcType="VARCHAR" property="maximum" />
+    <result column="value_in_use" jdbcType="VARCHAR" property="value_in_use" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="is_dynamic" jdbcType="BIT" property="is_dynamic" />
+    <result column="is_advanced" jdbcType="BIT" property="is_advanced" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Configurations">
+    insert into configurations (configuration_id, name, value, 
+      minimum, maximum, value_in_use, 
+      description, is_dynamic, is_advanced
+      )
+    values (#{configuration_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{minimum,jdbcType=VARCHAR}, #{maximum,jdbcType=VARCHAR}, #{value_in_use,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{is_dynamic,jdbcType=BIT}, #{is_advanced,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Configurations">
+    insert into configurations
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="configuration_id != null">
+        configuration_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="minimum != null">
+        minimum,
+      </if>
+      <if test="maximum != null">
+        maximum,
+      </if>
+      <if test="value_in_use != null">
+        value_in_use,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="is_dynamic != null">
+        is_dynamic,
+      </if>
+      <if test="is_advanced != null">
+        is_advanced,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="configuration_id != null">
+        #{configuration_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="minimum != null">
+        #{minimum,jdbcType=VARCHAR},
+      </if>
+      <if test="maximum != null">
+        #{maximum,jdbcType=VARCHAR},
+      </if>
+      <if test="value_in_use != null">
+        #{value_in_use,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="is_dynamic != null">
+        #{is_dynamic,jdbcType=BIT},
+      </if>
+      <if test="is_advanced != null">
+        #{is_advanced,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

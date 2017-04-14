@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KeyEncryptionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KeyEncryptions">
+    <result column="key_id" jdbcType="INTEGER" property="key_id" />
+    <result column="crypt_type" jdbcType="CHAR" property="crypt_type" />
+    <result column="crypt_type_desc" jdbcType="VARCHAR" property="crypt_type_desc" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.KeyEncryptionsWithBLOBs">
+    <result column="thumbprint" jdbcType="VARBINARY" property="thumbprint" />
+    <result column="crypt_property" jdbcType="BLOB" property="crypt_property" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    thumbprint, crypt_property
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KeyEncryptionsWithBLOBs">
+    insert into key_encryptions (key_id, crypt_type, crypt_type_desc, 
+      thumbprint, crypt_property)
+    values (#{key_id,jdbcType=INTEGER}, #{crypt_type,jdbcType=CHAR}, #{crypt_type_desc,jdbcType=VARCHAR}, 
+      #{thumbprint,jdbcType=VARBINARY}, #{crypt_property,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KeyEncryptionsWithBLOBs">
+    insert into key_encryptions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="key_id != null">
+        key_id,
+      </if>
+      <if test="crypt_type != null">
+        crypt_type,
+      </if>
+      <if test="crypt_type_desc != null">
+        crypt_type_desc,
+      </if>
+      <if test="thumbprint != null">
+        thumbprint,
+      </if>
+      <if test="crypt_property != null">
+        crypt_property,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="key_id != null">
+        #{key_id,jdbcType=INTEGER},
+      </if>
+      <if test="crypt_type != null">
+        #{crypt_type,jdbcType=CHAR},
+      </if>
+      <if test="crypt_type_desc != null">
+        #{crypt_type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbprint != null">
+        #{thumbprint,jdbcType=VARBINARY},
+      </if>
+      <if test="crypt_property != null">
+        #{crypt_property,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

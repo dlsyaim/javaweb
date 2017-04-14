@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.HisAlarmmainrecordMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.HisAlarmmainrecord">
+    <id column="ID" jdbcType="CHAR" property="ID" />
+    <result column="SensorID" jdbcType="INTEGER" property="sensorID" />
+    <result column="AlarmProjectID" jdbcType="INTEGER" property="alarmProjectID" />
+    <result column="AlarmDefinitionID" jdbcType="INTEGER" property="alarmDefinitionID" />
+    <result column="StartTime" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="LastTime" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="Recover_date" jdbcType="TIMESTAMP" property="recover_date" />
+    <result column="Recover_flag" jdbcType="BIT" property="recover_flag" />
+    <result column="SensorValue" jdbcType="DOUBLE" property="sensorValue" />
+    <result column="LimitValue" jdbcType="DOUBLE" property="limitValue" />
+    <result column="RepeatCount" jdbcType="INTEGER" property="repeatCount" />
+    <result column="TouchCount" jdbcType="INTEGER" property="touchCount" />
+    <result column="AlarmMsg" jdbcType="VARCHAR" property="alarmMsg" />
+    <result column="DESC" jdbcType="VARCHAR" property="DESC" />
+    <result column="Modified_date" jdbcType="TIMESTAMP" property="modified_date" />
+    <result column="Created_date" jdbcType="TIMESTAMP" property="created_date" />
+    <result column="IsSend" jdbcType="BIT" property="isSend" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.HisAlarmmainrecord">
+    <result column="rowversion" jdbcType="BINARY" property="rowversion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SensorID, AlarmProjectID, AlarmDefinitionID, StartTime, LastTime, Recover_date, 
+    Recover_flag, SensorValue, LimitValue, RepeatCount, TouchCount, AlarmMsg, DESC, Modified_date, 
+    Created_date, IsSend
+  </sql>
+  <sql id="Blob_Column_List">
+    rowversion
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from HIS_AlarmMainRecord
+    where ID = #{ID,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from HIS_AlarmMainRecord
+    where ID = #{ID,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.HisAlarmmainrecord">
+    insert into HIS_AlarmMainRecord (ID, SensorID, AlarmProjectID, 
+      AlarmDefinitionID, StartTime, LastTime, 
+      Recover_date, Recover_flag, SensorValue, 
+      LimitValue, RepeatCount, TouchCount, 
+      AlarmMsg, DESC, Modified_date, 
+      Created_date, IsSend, rowversion
+      )
+    values (#{ID,jdbcType=CHAR}, #{sensorID,jdbcType=INTEGER}, #{alarmProjectID,jdbcType=INTEGER}, 
+      #{alarmDefinitionID,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, #{lastTime,jdbcType=TIMESTAMP}, 
+      #{recover_date,jdbcType=TIMESTAMP}, #{recover_flag,jdbcType=BIT}, #{sensorValue,jdbcType=DOUBLE}, 
+      #{limitValue,jdbcType=DOUBLE}, #{repeatCount,jdbcType=INTEGER}, #{touchCount,jdbcType=INTEGER}, 
+      #{alarmMsg,jdbcType=VARCHAR}, #{DESC,jdbcType=VARCHAR}, #{modified_date,jdbcType=TIMESTAMP}, 
+      #{created_date,jdbcType=TIMESTAMP}, #{isSend,jdbcType=BIT}, #{rowversion,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.HisAlarmmainrecord">
+    insert into HIS_AlarmMainRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="sensorID != null">
+        SensorID,
+      </if>
+      <if test="alarmProjectID != null">
+        AlarmProjectID,
+      </if>
+      <if test="alarmDefinitionID != null">
+        AlarmDefinitionID,
+      </if>
+      <if test="startTime != null">
+        StartTime,
+      </if>
+      <if test="lastTime != null">
+        LastTime,
+      </if>
+      <if test="recover_date != null">
+        Recover_date,
+      </if>
+      <if test="recover_flag != null">
+        Recover_flag,
+      </if>
+      <if test="sensorValue != null">
+        SensorValue,
+      </if>
+      <if test="limitValue != null">
+        LimitValue,
+      </if>
+      <if test="repeatCount != null">
+        RepeatCount,
+      </if>
+      <if test="touchCount != null">
+        TouchCount,
+      </if>
+      <if test="alarmMsg != null">
+        AlarmMsg,
+      </if>
+      <if test="DESC != null">
+        DESC,
+      </if>
+      <if test="modified_date != null">
+        Modified_date,
+      </if>
+      <if test="created_date != null">
+        Created_date,
+      </if>
+      <if test="isSend != null">
+        IsSend,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=CHAR},
+      </if>
+      <if test="sensorID != null">
+        #{sensorID,jdbcType=INTEGER},
+      </if>
+      <if test="alarmProjectID != null">
+        #{alarmProjectID,jdbcType=INTEGER},
+      </if>
+      <if test="alarmDefinitionID != null">
+        #{alarmDefinitionID,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recover_date != null">
+        #{recover_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recover_flag != null">
+        #{recover_flag,jdbcType=BIT},
+      </if>
+      <if test="sensorValue != null">
+        #{sensorValue,jdbcType=DOUBLE},
+      </if>
+      <if test="limitValue != null">
+        #{limitValue,jdbcType=DOUBLE},
+      </if>
+      <if test="repeatCount != null">
+        #{repeatCount,jdbcType=INTEGER},
+      </if>
+      <if test="touchCount != null">
+        #{touchCount,jdbcType=INTEGER},
+      </if>
+      <if test="alarmMsg != null">
+        #{alarmMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="DESC != null">
+        #{DESC,jdbcType=VARCHAR},
+      </if>
+      <if test="modified_date != null">
+        #{modified_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created_date != null">
+        #{created_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isSend != null">
+        #{isSend,jdbcType=BIT},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.HisAlarmmainrecord">
+    update HIS_AlarmMainRecord
+    <set>
+      <if test="sensorID != null">
+        SensorID = #{sensorID,jdbcType=INTEGER},
+      </if>
+      <if test="alarmProjectID != null">
+        AlarmProjectID = #{alarmProjectID,jdbcType=INTEGER},
+      </if>
+      <if test="alarmDefinitionID != null">
+        AlarmDefinitionID = #{alarmDefinitionID,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        StartTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null">
+        LastTime = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recover_date != null">
+        Recover_date = #{recover_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recover_flag != null">
+        Recover_flag = #{recover_flag,jdbcType=BIT},
+      </if>
+      <if test="sensorValue != null">
+        SensorValue = #{sensorValue,jdbcType=DOUBLE},
+      </if>
+      <if test="limitValue != null">
+        LimitValue = #{limitValue,jdbcType=DOUBLE},
+      </if>
+      <if test="repeatCount != null">
+        RepeatCount = #{repeatCount,jdbcType=INTEGER},
+      </if>
+      <if test="touchCount != null">
+        TouchCount = #{touchCount,jdbcType=INTEGER},
+      </if>
+      <if test="alarmMsg != null">
+        AlarmMsg = #{alarmMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="DESC != null">
+        DESC = #{DESC,jdbcType=VARCHAR},
+      </if>
+      <if test="modified_date != null">
+        Modified_date = #{modified_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created_date != null">
+        Created_date = #{created_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isSend != null">
+        IsSend = #{isSend,jdbcType=BIT},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=BINARY},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ks.monitor.pojo.HisAlarmmainrecord">
+    update HIS_AlarmMainRecord
+    set SensorID = #{sensorID,jdbcType=INTEGER},
+      AlarmProjectID = #{alarmProjectID,jdbcType=INTEGER},
+      AlarmDefinitionID = #{alarmDefinitionID,jdbcType=INTEGER},
+      StartTime = #{startTime,jdbcType=TIMESTAMP},
+      LastTime = #{lastTime,jdbcType=TIMESTAMP},
+      Recover_date = #{recover_date,jdbcType=TIMESTAMP},
+      Recover_flag = #{recover_flag,jdbcType=BIT},
+      SensorValue = #{sensorValue,jdbcType=DOUBLE},
+      LimitValue = #{limitValue,jdbcType=DOUBLE},
+      RepeatCount = #{repeatCount,jdbcType=INTEGER},
+      TouchCount = #{touchCount,jdbcType=INTEGER},
+      AlarmMsg = #{alarmMsg,jdbcType=VARCHAR},
+      DESC = #{DESC,jdbcType=VARCHAR},
+      Modified_date = #{modified_date,jdbcType=TIMESTAMP},
+      Created_date = #{created_date,jdbcType=TIMESTAMP},
+      IsSend = #{isSend,jdbcType=BIT},
+      rowversion = #{rowversion,jdbcType=BINARY}
+    where ID = #{ID,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.HisAlarmmainrecord">
+    update HIS_AlarmMainRecord
+    set SensorID = #{sensorID,jdbcType=INTEGER},
+      AlarmProjectID = #{alarmProjectID,jdbcType=INTEGER},
+      AlarmDefinitionID = #{alarmDefinitionID,jdbcType=INTEGER},
+      StartTime = #{startTime,jdbcType=TIMESTAMP},
+      LastTime = #{lastTime,jdbcType=TIMESTAMP},
+      Recover_date = #{recover_date,jdbcType=TIMESTAMP},
+      Recover_flag = #{recover_flag,jdbcType=BIT},
+      SensorValue = #{sensorValue,jdbcType=DOUBLE},
+      LimitValue = #{limitValue,jdbcType=DOUBLE},
+      RepeatCount = #{repeatCount,jdbcType=INTEGER},
+      TouchCount = #{touchCount,jdbcType=INTEGER},
+      AlarmMsg = #{alarmMsg,jdbcType=VARCHAR},
+      DESC = #{DESC,jdbcType=VARCHAR},
+      Modified_date = #{modified_date,jdbcType=TIMESTAMP},
+      Created_date = #{created_date,jdbcType=TIMESTAMP},
+      IsSend = #{isSend,jdbcType=BIT}
+    where ID = #{ID,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsEquiprealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsEquipreal">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="EquipMentID" jdbcType="BIGINT" property="equipMentID" />
+    <result column="DPrcArrID" jdbcType="INTEGER" property="DPrcArrID" />
+    <result column="FieldValue" jdbcType="DOUBLE" property="fieldValue" />
+    <result column="ColTime" jdbcType="TIMESTAMP" property="colTime" />
+    <result column="FlagShow" jdbcType="BIT" property="flagShow" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, EquipMentID, DPrcArrID, FieldValue, ColTime, FlagShow
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_EquipReal
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from KS_EquipReal
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsEquipreal">
+    insert into KS_EquipReal (ID, EquipMentID, DPrcArrID, 
+      FieldValue, ColTime, FlagShow
+      )
+    values (#{ID,jdbcType=INTEGER}, #{equipMentID,jdbcType=BIGINT}, #{DPrcArrID,jdbcType=INTEGER}, 
+      #{fieldValue,jdbcType=DOUBLE}, #{colTime,jdbcType=TIMESTAMP}, #{flagShow,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsEquipreal">
+    insert into KS_EquipReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="equipMentID != null">
+        EquipMentID,
+      </if>
+      <if test="DPrcArrID != null">
+        DPrcArrID,
+      </if>
+      <if test="fieldValue != null">
+        FieldValue,
+      </if>
+      <if test="colTime != null">
+        ColTime,
+      </if>
+      <if test="flagShow != null">
+        FlagShow,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="equipMentID != null">
+        #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="DPrcArrID != null">
+        #{DPrcArrID,jdbcType=INTEGER},
+      </if>
+      <if test="fieldValue != null">
+        #{fieldValue,jdbcType=DOUBLE},
+      </if>
+      <if test="colTime != null">
+        #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagShow != null">
+        #{flagShow,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsEquipreal">
+    update KS_EquipReal
+    <set>
+      <if test="equipMentID != null">
+        EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      </if>
+      <if test="DPrcArrID != null">
+        DPrcArrID = #{DPrcArrID,jdbcType=INTEGER},
+      </if>
+      <if test="fieldValue != null">
+        FieldValue = #{fieldValue,jdbcType=DOUBLE},
+      </if>
+      <if test="colTime != null">
+        ColTime = #{colTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagShow != null">
+        FlagShow = #{flagShow,jdbcType=BIT},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsEquipreal">
+    update KS_EquipReal
+    set EquipMentID = #{equipMentID,jdbcType=BIGINT},
+      DPrcArrID = #{DPrcArrID,jdbcType=INTEGER},
+      FieldValue = #{fieldValue,jdbcType=DOUBLE},
+      ColTime = #{colTime,jdbcType=TIMESTAMP},
+      FlagShow = #{flagShow,jdbcType=BIT}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

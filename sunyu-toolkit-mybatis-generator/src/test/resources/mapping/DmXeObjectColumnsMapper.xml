@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmXeObjectColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmXeObjectColumns">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+    <result column="object_name" jdbcType="VARCHAR" property="object_name" />
+    <result column="object_package_guid" jdbcType="CHAR" property="object_package_guid" />
+    <result column="type_name" jdbcType="VARCHAR" property="type_name" />
+    <result column="type_package_guid" jdbcType="CHAR" property="type_package_guid" />
+    <result column="column_type" jdbcType="VARCHAR" property="column_type" />
+    <result column="column_value" jdbcType="VARCHAR" property="column_value" />
+    <result column="capabilities" jdbcType="INTEGER" property="capabilities" />
+    <result column="capabilities_desc" jdbcType="VARCHAR" property="capabilities_desc" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmXeObjectColumns">
+    insert into dm_xe_object_columns (name, column_id, object_name, 
+      object_package_guid, type_name, type_package_guid, 
+      column_type, column_value, capabilities, 
+      capabilities_desc, description)
+    values (#{name,jdbcType=VARCHAR}, #{column_id,jdbcType=INTEGER}, #{object_name,jdbcType=VARCHAR}, 
+      #{object_package_guid,jdbcType=CHAR}, #{type_name,jdbcType=VARCHAR}, #{type_package_guid,jdbcType=CHAR}, 
+      #{column_type,jdbcType=VARCHAR}, #{column_value,jdbcType=VARCHAR}, #{capabilities,jdbcType=INTEGER}, 
+      #{capabilities_desc,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmXeObjectColumns">
+    insert into dm_xe_object_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="column_id != null">
+        column_id,
+      </if>
+      <if test="object_name != null">
+        object_name,
+      </if>
+      <if test="object_package_guid != null">
+        object_package_guid,
+      </if>
+      <if test="type_name != null">
+        type_name,
+      </if>
+      <if test="type_package_guid != null">
+        type_package_guid,
+      </if>
+      <if test="column_type != null">
+        column_type,
+      </if>
+      <if test="column_value != null">
+        column_value,
+      </if>
+      <if test="capabilities != null">
+        capabilities,
+      </if>
+      <if test="capabilities_desc != null">
+        capabilities_desc,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+      <if test="object_name != null">
+        #{object_name,jdbcType=VARCHAR},
+      </if>
+      <if test="object_package_guid != null">
+        #{object_package_guid,jdbcType=CHAR},
+      </if>
+      <if test="type_name != null">
+        #{type_name,jdbcType=VARCHAR},
+      </if>
+      <if test="type_package_guid != null">
+        #{type_package_guid,jdbcType=CHAR},
+      </if>
+      <if test="column_type != null">
+        #{column_type,jdbcType=VARCHAR},
+      </if>
+      <if test="column_value != null">
+        #{column_value,jdbcType=VARCHAR},
+      </if>
+      <if test="capabilities != null">
+        #{capabilities,jdbcType=INTEGER},
+      </if>
+      <if test="capabilities_desc != null">
+        #{capabilities_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

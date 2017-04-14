@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ViewColumnUsageMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ViewColumnUsage">
+    <result column="VIEW_CATALOG" jdbcType="VARCHAR" property="VIEW_CATALOG" />
+    <result column="VIEW_SCHEMA" jdbcType="VARCHAR" property="VIEW_SCHEMA" />
+    <result column="VIEW_NAME" jdbcType="VARCHAR" property="VIEW_NAME" />
+    <result column="TABLE_CATALOG" jdbcType="VARCHAR" property="TABLE_CATALOG" />
+    <result column="TABLE_SCHEMA" jdbcType="VARCHAR" property="TABLE_SCHEMA" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="TABLE_NAME" />
+    <result column="COLUMN_NAME" jdbcType="VARCHAR" property="COLUMN_NAME" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ViewColumnUsage">
+    insert into VIEW_COLUMN_USAGE (VIEW_CATALOG, VIEW_SCHEMA, VIEW_NAME, 
+      TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, 
+      COLUMN_NAME)
+    values (#{VIEW_CATALOG,jdbcType=VARCHAR}, #{VIEW_SCHEMA,jdbcType=VARCHAR}, #{VIEW_NAME,jdbcType=VARCHAR}, 
+      #{TABLE_CATALOG,jdbcType=VARCHAR}, #{TABLE_SCHEMA,jdbcType=VARCHAR}, #{TABLE_NAME,jdbcType=VARCHAR}, 
+      #{COLUMN_NAME,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ViewColumnUsage">
+    insert into VIEW_COLUMN_USAGE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="VIEW_CATALOG != null">
+        VIEW_CATALOG,
+      </if>
+      <if test="VIEW_SCHEMA != null">
+        VIEW_SCHEMA,
+      </if>
+      <if test="VIEW_NAME != null">
+        VIEW_NAME,
+      </if>
+      <if test="TABLE_CATALOG != null">
+        TABLE_CATALOG,
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        TABLE_SCHEMA,
+      </if>
+      <if test="TABLE_NAME != null">
+        TABLE_NAME,
+      </if>
+      <if test="COLUMN_NAME != null">
+        COLUMN_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="VIEW_CATALOG != null">
+        #{VIEW_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="VIEW_SCHEMA != null">
+        #{VIEW_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="VIEW_NAME != null">
+        #{VIEW_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_CATALOG != null">
+        #{TABLE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        #{TABLE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_NAME != null">
+        #{TABLE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="COLUMN_NAME != null">
+        #{COLUMN_NAME,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

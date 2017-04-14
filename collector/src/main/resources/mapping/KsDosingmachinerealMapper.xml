@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsDosingmachinerealMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsDosingmachinereal">
+    <id column="DosingMachineRealId" jdbcType="BIGINT" property="dosingMachineRealId" />
+    <result column="EquipmentId" jdbcType="BIGINT" property="equipmentId" />
+    <result column="RealTime" jdbcType="TIMESTAMP" property="realTime" />
+    <result column="Manual" jdbcType="BIT" property="manual" />
+    <result column="Pump1RunSet" jdbcType="BIT" property="pump1RunSet" />
+    <result column="Pump2RunSet" jdbcType="BIT" property="pump2RunSet" />
+    <result column="SetConfirm" jdbcType="BIT" property="setConfirm" />
+    <result column="ManualQb" jdbcType="DOUBLE" property="manualQb" />
+    <result column="Pump1DosingState" jdbcType="BIT" property="pump1DosingState" />
+    <result column="Pump2DosingState" jdbcType="BIT" property="pump2DosingState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DosingMachineRealId, EquipmentId, RealTime, Manual, Pump1RunSet, Pump2RunSet, SetConfirm, 
+    ManualQb, Pump1DosingState, Pump2DosingState
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_DosingMachineReal
+    where DosingMachineRealId = #{dosingMachineRealId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_DosingMachineReal
+    where DosingMachineRealId = #{dosingMachineRealId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsDosingmachinereal">
+    insert into KS_DosingMachineReal (DosingMachineRealId, EquipmentId, RealTime, 
+      Manual, Pump1RunSet, Pump2RunSet, 
+      SetConfirm, ManualQb, Pump1DosingState, 
+      Pump2DosingState)
+    values (#{dosingMachineRealId,jdbcType=BIGINT}, #{equipmentId,jdbcType=BIGINT}, #{realTime,jdbcType=TIMESTAMP}, 
+      #{manual,jdbcType=BIT}, #{pump1RunSet,jdbcType=BIT}, #{pump2RunSet,jdbcType=BIT}, 
+      #{setConfirm,jdbcType=BIT}, #{manualQb,jdbcType=DOUBLE}, #{pump1DosingState,jdbcType=BIT}, 
+      #{pump2DosingState,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsDosingmachinereal">
+    insert into KS_DosingMachineReal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dosingMachineRealId != null">
+        DosingMachineRealId,
+      </if>
+      <if test="equipmentId != null">
+        EquipmentId,
+      </if>
+      <if test="realTime != null">
+        RealTime,
+      </if>
+      <if test="manual != null">
+        Manual,
+      </if>
+      <if test="pump1RunSet != null">
+        Pump1RunSet,
+      </if>
+      <if test="pump2RunSet != null">
+        Pump2RunSet,
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm,
+      </if>
+      <if test="manualQb != null">
+        ManualQb,
+      </if>
+      <if test="pump1DosingState != null">
+        Pump1DosingState,
+      </if>
+      <if test="pump2DosingState != null">
+        Pump2DosingState,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dosingMachineRealId != null">
+        #{dosingMachineRealId,jdbcType=BIGINT},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manual != null">
+        #{manual,jdbcType=BIT},
+      </if>
+      <if test="pump1RunSet != null">
+        #{pump1RunSet,jdbcType=BIT},
+      </if>
+      <if test="pump2RunSet != null">
+        #{pump2RunSet,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        #{setConfirm,jdbcType=BIT},
+      </if>
+      <if test="manualQb != null">
+        #{manualQb,jdbcType=DOUBLE},
+      </if>
+      <if test="pump1DosingState != null">
+        #{pump1DosingState,jdbcType=BIT},
+      </if>
+      <if test="pump2DosingState != null">
+        #{pump2DosingState,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsDosingmachinereal">
+    update KS_DosingMachineReal
+    <set>
+      <if test="equipmentId != null">
+        EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="realTime != null">
+        RealTime = #{realTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manual != null">
+        Manual = #{manual,jdbcType=BIT},
+      </if>
+      <if test="pump1RunSet != null">
+        Pump1RunSet = #{pump1RunSet,jdbcType=BIT},
+      </if>
+      <if test="pump2RunSet != null">
+        Pump2RunSet = #{pump2RunSet,jdbcType=BIT},
+      </if>
+      <if test="setConfirm != null">
+        SetConfirm = #{setConfirm,jdbcType=BIT},
+      </if>
+      <if test="manualQb != null">
+        ManualQb = #{manualQb,jdbcType=DOUBLE},
+      </if>
+      <if test="pump1DosingState != null">
+        Pump1DosingState = #{pump1DosingState,jdbcType=BIT},
+      </if>
+      <if test="pump2DosingState != null">
+        Pump2DosingState = #{pump2DosingState,jdbcType=BIT},
+      </if>
+    </set>
+    where DosingMachineRealId = #{dosingMachineRealId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsDosingmachinereal">
+    update KS_DosingMachineReal
+    set EquipmentId = #{equipmentId,jdbcType=BIGINT},
+      RealTime = #{realTime,jdbcType=TIMESTAMP},
+      Manual = #{manual,jdbcType=BIT},
+      Pump1RunSet = #{pump1RunSet,jdbcType=BIT},
+      Pump2RunSet = #{pump2RunSet,jdbcType=BIT},
+      SetConfirm = #{setConfirm,jdbcType=BIT},
+      ManualQb = #{manualQb,jdbcType=DOUBLE},
+      Pump1DosingState = #{pump1DosingState,jdbcType=BIT},
+      Pump2DosingState = #{pump2DosingState,jdbcType=BIT}
+    where DosingMachineRealId = #{dosingMachineRealId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnCheckObjectSignaturesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnCheckObjectSignatures">
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="entity_id" jdbcType="INTEGER" property="entity_id" />
+    <result column="is_signed" jdbcType="INTEGER" property="is_signed" />
+    <result column="is_signature_valid" jdbcType="INTEGER" property="is_signature_valid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnCheckObjectSignatures">
+    insert into fn_check_object_signatures (type, entity_id, is_signed, 
+      is_signature_valid)
+    values (#{type,jdbcType=VARCHAR}, #{entity_id,jdbcType=INTEGER}, #{is_signed,jdbcType=INTEGER}, 
+      #{is_signature_valid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnCheckObjectSignatures">
+    insert into fn_check_object_signatures
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type,
+      </if>
+      <if test="entity_id != null">
+        entity_id,
+      </if>
+      <if test="is_signed != null">
+        is_signed,
+      </if>
+      <if test="is_signature_valid != null">
+        is_signature_valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="entity_id != null">
+        #{entity_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_signed != null">
+        #{is_signed,jdbcType=INTEGER},
+      </if>
+      <if test="is_signature_valid != null">
+        #{is_signature_valid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecXmlHandlesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecXmlHandles">
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="document_id" jdbcType="INTEGER" property="document_id" />
+    <result column="namespace_document_id" jdbcType="INTEGER" property="namespace_document_id" />
+    <result column="statement_start_offset" jdbcType="INTEGER" property="statement_start_offset" />
+    <result column="statement_end_offset" jdbcType="INTEGER" property="statement_end_offset" />
+    <result column="creation_time" jdbcType="TIMESTAMP" property="creation_time" />
+    <result column="original_document_size_bytes" jdbcType="BIGINT" property="original_document_size_bytes" />
+    <result column="original_namespace_document_size_bytes" jdbcType="BIGINT" property="original_namespace_document_size_bytes" />
+    <result column="num_openxml_calls" jdbcType="BIGINT" property="num_openxml_calls" />
+    <result column="dormant_duration_ms" jdbcType="BIGINT" property="dormant_duration_ms" />
+    <result column="row_count" jdbcType="BIGINT" property="row_count" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecXmlHandles">
+    <result column="sql_handle" jdbcType="VARBINARY" property="sql_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sql_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecXmlHandles">
+    insert into dm_exec_xml_handles (session_id, document_id, namespace_document_id, 
+      statement_start_offset, statement_end_offset, 
+      creation_time, original_document_size_bytes, 
+      original_namespace_document_size_bytes, num_openxml_calls, 
+      dormant_duration_ms, row_count, sql_handle
+      )
+    values (#{session_id,jdbcType=INTEGER}, #{document_id,jdbcType=INTEGER}, #{namespace_document_id,jdbcType=INTEGER}, 
+      #{statement_start_offset,jdbcType=INTEGER}, #{statement_end_offset,jdbcType=INTEGER}, 
+      #{creation_time,jdbcType=TIMESTAMP}, #{original_document_size_bytes,jdbcType=BIGINT}, 
+      #{original_namespace_document_size_bytes,jdbcType=BIGINT}, #{num_openxml_calls,jdbcType=BIGINT}, 
+      #{dormant_duration_ms,jdbcType=BIGINT}, #{row_count,jdbcType=BIGINT}, #{sql_handle,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecXmlHandles">
+    insert into dm_exec_xml_handles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="document_id != null">
+        document_id,
+      </if>
+      <if test="namespace_document_id != null">
+        namespace_document_id,
+      </if>
+      <if test="statement_start_offset != null">
+        statement_start_offset,
+      </if>
+      <if test="statement_end_offset != null">
+        statement_end_offset,
+      </if>
+      <if test="creation_time != null">
+        creation_time,
+      </if>
+      <if test="original_document_size_bytes != null">
+        original_document_size_bytes,
+      </if>
+      <if test="original_namespace_document_size_bytes != null">
+        original_namespace_document_size_bytes,
+      </if>
+      <if test="num_openxml_calls != null">
+        num_openxml_calls,
+      </if>
+      <if test="dormant_duration_ms != null">
+        dormant_duration_ms,
+      </if>
+      <if test="row_count != null">
+        row_count,
+      </if>
+      <if test="sql_handle != null">
+        sql_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="document_id != null">
+        #{document_id,jdbcType=INTEGER},
+      </if>
+      <if test="namespace_document_id != null">
+        #{namespace_document_id,jdbcType=INTEGER},
+      </if>
+      <if test="statement_start_offset != null">
+        #{statement_start_offset,jdbcType=INTEGER},
+      </if>
+      <if test="statement_end_offset != null">
+        #{statement_end_offset,jdbcType=INTEGER},
+      </if>
+      <if test="creation_time != null">
+        #{creation_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="original_document_size_bytes != null">
+        #{original_document_size_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="original_namespace_document_size_bytes != null">
+        #{original_namespace_document_size_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="num_openxml_calls != null">
+        #{num_openxml_calls,jdbcType=BIGINT},
+      </if>
+      <if test="dormant_duration_ms != null">
+        #{dormant_duration_ms,jdbcType=BIGINT},
+      </if>
+      <if test="row_count != null">
+        #{row_count,jdbcType=BIGINT},
+      </if>
+      <if test="sql_handle != null">
+        #{sql_handle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

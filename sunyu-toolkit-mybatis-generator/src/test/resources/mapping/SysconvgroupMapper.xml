@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysconvgroupMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysconvgroup">
+    <result column="id" jdbcType="CHAR" property="id" />
+    <result column="service_id" jdbcType="INTEGER" property="service_id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="refcount" jdbcType="INTEGER" property="refcount" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysconvgroup">
+    insert into sysconvgroup (id, service_id, status, 
+      refcount)
+    values (#{id,jdbcType=CHAR}, #{service_id,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{refcount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysconvgroup">
+    insert into sysconvgroup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="service_id != null">
+        service_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="refcount != null">
+        refcount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="service_id != null">
+        #{service_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="refcount != null">
+        #{refcount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

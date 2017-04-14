@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysrowsetsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysrowsets">
+    <result column="rowsetid" jdbcType="BIGINT" property="rowsetid" />
+    <result column="ownertype" jdbcType="TINYINT" property="ownertype" />
+    <result column="idmajor" jdbcType="INTEGER" property="idmajor" />
+    <result column="idminor" jdbcType="INTEGER" property="idminor" />
+    <result column="numpart" jdbcType="INTEGER" property="numpart" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="fgidfs" jdbcType="SMALLINT" property="fgidfs" />
+    <result column="rcrows" jdbcType="BIGINT" property="rcrows" />
+    <result column="cmprlevel" jdbcType="TINYINT" property="cmprlevel" />
+    <result column="fillfact" jdbcType="TINYINT" property="fillfact" />
+    <result column="maxnullbit" jdbcType="SMALLINT" property="maxnullbit" />
+    <result column="maxleaf" jdbcType="INTEGER" property="maxleaf" />
+    <result column="maxint" jdbcType="SMALLINT" property="maxint" />
+    <result column="minleaf" jdbcType="SMALLINT" property="minleaf" />
+    <result column="minint" jdbcType="SMALLINT" property="minint" />
+    <result column="dbfragid" jdbcType="INTEGER" property="dbfragid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SysrowsetsWithBLOBs">
+    <result column="rsguid" jdbcType="VARBINARY" property="rsguid" />
+    <result column="lockres" jdbcType="VARBINARY" property="lockres" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    rsguid, lockres
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SysrowsetsWithBLOBs">
+    insert into sysrowsets (rowsetid, ownertype, idmajor, 
+      idminor, numpart, status, 
+      fgidfs, rcrows, cmprlevel, 
+      fillfact, maxnullbit, maxleaf, 
+      maxint, minleaf, minint, 
+      dbfragid, rsguid, lockres
+      )
+    values (#{rowsetid,jdbcType=BIGINT}, #{ownertype,jdbcType=TINYINT}, #{idmajor,jdbcType=INTEGER}, 
+      #{idminor,jdbcType=INTEGER}, #{numpart,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{fgidfs,jdbcType=SMALLINT}, #{rcrows,jdbcType=BIGINT}, #{cmprlevel,jdbcType=TINYINT}, 
+      #{fillfact,jdbcType=TINYINT}, #{maxnullbit,jdbcType=SMALLINT}, #{maxleaf,jdbcType=INTEGER}, 
+      #{maxint,jdbcType=SMALLINT}, #{minleaf,jdbcType=SMALLINT}, #{minint,jdbcType=SMALLINT}, 
+      #{dbfragid,jdbcType=INTEGER}, #{rsguid,jdbcType=VARBINARY}, #{lockres,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SysrowsetsWithBLOBs">
+    insert into sysrowsets
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rowsetid != null">
+        rowsetid,
+      </if>
+      <if test="ownertype != null">
+        ownertype,
+      </if>
+      <if test="idmajor != null">
+        idmajor,
+      </if>
+      <if test="idminor != null">
+        idminor,
+      </if>
+      <if test="numpart != null">
+        numpart,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="fgidfs != null">
+        fgidfs,
+      </if>
+      <if test="rcrows != null">
+        rcrows,
+      </if>
+      <if test="cmprlevel != null">
+        cmprlevel,
+      </if>
+      <if test="fillfact != null">
+        fillfact,
+      </if>
+      <if test="maxnullbit != null">
+        maxnullbit,
+      </if>
+      <if test="maxleaf != null">
+        maxleaf,
+      </if>
+      <if test="maxint != null">
+        maxint,
+      </if>
+      <if test="minleaf != null">
+        minleaf,
+      </if>
+      <if test="minint != null">
+        minint,
+      </if>
+      <if test="dbfragid != null">
+        dbfragid,
+      </if>
+      <if test="rsguid != null">
+        rsguid,
+      </if>
+      <if test="lockres != null">
+        lockres,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rowsetid != null">
+        #{rowsetid,jdbcType=BIGINT},
+      </if>
+      <if test="ownertype != null">
+        #{ownertype,jdbcType=TINYINT},
+      </if>
+      <if test="idmajor != null">
+        #{idmajor,jdbcType=INTEGER},
+      </if>
+      <if test="idminor != null">
+        #{idminor,jdbcType=INTEGER},
+      </if>
+      <if test="numpart != null">
+        #{numpart,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="fgidfs != null">
+        #{fgidfs,jdbcType=SMALLINT},
+      </if>
+      <if test="rcrows != null">
+        #{rcrows,jdbcType=BIGINT},
+      </if>
+      <if test="cmprlevel != null">
+        #{cmprlevel,jdbcType=TINYINT},
+      </if>
+      <if test="fillfact != null">
+        #{fillfact,jdbcType=TINYINT},
+      </if>
+      <if test="maxnullbit != null">
+        #{maxnullbit,jdbcType=SMALLINT},
+      </if>
+      <if test="maxleaf != null">
+        #{maxleaf,jdbcType=INTEGER},
+      </if>
+      <if test="maxint != null">
+        #{maxint,jdbcType=SMALLINT},
+      </if>
+      <if test="minleaf != null">
+        #{minleaf,jdbcType=SMALLINT},
+      </if>
+      <if test="minint != null">
+        #{minint,jdbcType=SMALLINT},
+      </if>
+      <if test="dbfragid != null">
+        #{dbfragid,jdbcType=INTEGER},
+      </if>
+      <if test="rsguid != null">
+        #{rsguid,jdbcType=VARBINARY},
+      </if>
+      <if test="lockres != null">
+        #{lockres,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

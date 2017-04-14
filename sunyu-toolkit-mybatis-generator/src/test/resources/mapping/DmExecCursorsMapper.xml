@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecCursorsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecCursors">
+    <result column="session_id" jdbcType="INTEGER" property="session_id" />
+    <result column="cursor_id" jdbcType="INTEGER" property="cursor_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="properties" jdbcType="VARCHAR" property="properties" />
+    <result column="statement_start_offset" jdbcType="INTEGER" property="statement_start_offset" />
+    <result column="statement_end_offset" jdbcType="INTEGER" property="statement_end_offset" />
+    <result column="plan_generation_num" jdbcType="BIGINT" property="plan_generation_num" />
+    <result column="creation_time" jdbcType="TIMESTAMP" property="creation_time" />
+    <result column="is_open" jdbcType="BIT" property="is_open" />
+    <result column="is_async_population" jdbcType="BIT" property="is_async_population" />
+    <result column="is_close_on_commit" jdbcType="BIT" property="is_close_on_commit" />
+    <result column="fetch_status" jdbcType="INTEGER" property="fetch_status" />
+    <result column="fetch_buffer_size" jdbcType="INTEGER" property="fetch_buffer_size" />
+    <result column="fetch_buffer_start" jdbcType="INTEGER" property="fetch_buffer_start" />
+    <result column="ansi_position" jdbcType="INTEGER" property="ansi_position" />
+    <result column="worker_time" jdbcType="BIGINT" property="worker_time" />
+    <result column="reads" jdbcType="BIGINT" property="reads" />
+    <result column="writes" jdbcType="BIGINT" property="writes" />
+    <result column="dormant_duration" jdbcType="BIGINT" property="dormant_duration" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecCursors">
+    <result column="sql_handle" jdbcType="VARBINARY" property="sql_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sql_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecCursors">
+    insert into dm_exec_cursors (session_id, cursor_id, name, 
+      properties, statement_start_offset, statement_end_offset, 
+      plan_generation_num, creation_time, is_open, 
+      is_async_population, is_close_on_commit, fetch_status, 
+      fetch_buffer_size, fetch_buffer_start, 
+      ansi_position, worker_time, reads, 
+      writes, dormant_duration, sql_handle
+      )
+    values (#{session_id,jdbcType=INTEGER}, #{cursor_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{properties,jdbcType=VARCHAR}, #{statement_start_offset,jdbcType=INTEGER}, #{statement_end_offset,jdbcType=INTEGER}, 
+      #{plan_generation_num,jdbcType=BIGINT}, #{creation_time,jdbcType=TIMESTAMP}, #{is_open,jdbcType=BIT}, 
+      #{is_async_population,jdbcType=BIT}, #{is_close_on_commit,jdbcType=BIT}, #{fetch_status,jdbcType=INTEGER}, 
+      #{fetch_buffer_size,jdbcType=INTEGER}, #{fetch_buffer_start,jdbcType=INTEGER}, 
+      #{ansi_position,jdbcType=INTEGER}, #{worker_time,jdbcType=BIGINT}, #{reads,jdbcType=BIGINT}, 
+      #{writes,jdbcType=BIGINT}, #{dormant_duration,jdbcType=BIGINT}, #{sql_handle,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecCursors">
+    insert into dm_exec_cursors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="cursor_id != null">
+        cursor_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="properties != null">
+        properties,
+      </if>
+      <if test="statement_start_offset != null">
+        statement_start_offset,
+      </if>
+      <if test="statement_end_offset != null">
+        statement_end_offset,
+      </if>
+      <if test="plan_generation_num != null">
+        plan_generation_num,
+      </if>
+      <if test="creation_time != null">
+        creation_time,
+      </if>
+      <if test="is_open != null">
+        is_open,
+      </if>
+      <if test="is_async_population != null">
+        is_async_population,
+      </if>
+      <if test="is_close_on_commit != null">
+        is_close_on_commit,
+      </if>
+      <if test="fetch_status != null">
+        fetch_status,
+      </if>
+      <if test="fetch_buffer_size != null">
+        fetch_buffer_size,
+      </if>
+      <if test="fetch_buffer_start != null">
+        fetch_buffer_start,
+      </if>
+      <if test="ansi_position != null">
+        ansi_position,
+      </if>
+      <if test="worker_time != null">
+        worker_time,
+      </if>
+      <if test="reads != null">
+        reads,
+      </if>
+      <if test="writes != null">
+        writes,
+      </if>
+      <if test="dormant_duration != null">
+        dormant_duration,
+      </if>
+      <if test="sql_handle != null">
+        sql_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="session_id != null">
+        #{session_id,jdbcType=INTEGER},
+      </if>
+      <if test="cursor_id != null">
+        #{cursor_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="properties != null">
+        #{properties,jdbcType=VARCHAR},
+      </if>
+      <if test="statement_start_offset != null">
+        #{statement_start_offset,jdbcType=INTEGER},
+      </if>
+      <if test="statement_end_offset != null">
+        #{statement_end_offset,jdbcType=INTEGER},
+      </if>
+      <if test="plan_generation_num != null">
+        #{plan_generation_num,jdbcType=BIGINT},
+      </if>
+      <if test="creation_time != null">
+        #{creation_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="is_open != null">
+        #{is_open,jdbcType=BIT},
+      </if>
+      <if test="is_async_population != null">
+        #{is_async_population,jdbcType=BIT},
+      </if>
+      <if test="is_close_on_commit != null">
+        #{is_close_on_commit,jdbcType=BIT},
+      </if>
+      <if test="fetch_status != null">
+        #{fetch_status,jdbcType=INTEGER},
+      </if>
+      <if test="fetch_buffer_size != null">
+        #{fetch_buffer_size,jdbcType=INTEGER},
+      </if>
+      <if test="fetch_buffer_start != null">
+        #{fetch_buffer_start,jdbcType=INTEGER},
+      </if>
+      <if test="ansi_position != null">
+        #{ansi_position,jdbcType=INTEGER},
+      </if>
+      <if test="worker_time != null">
+        #{worker_time,jdbcType=BIGINT},
+      </if>
+      <if test="reads != null">
+        #{reads,jdbcType=BIGINT},
+      </if>
+      <if test="writes != null">
+        #{writes,jdbcType=BIGINT},
+      </if>
+      <if test="dormant_duration != null">
+        #{dormant_duration,jdbcType=BIGINT},
+      </if>
+      <if test="sql_handle != null">
+        #{sql_handle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

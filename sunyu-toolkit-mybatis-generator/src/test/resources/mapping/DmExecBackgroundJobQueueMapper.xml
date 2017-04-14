@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecBackgroundJobQueueMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecBackgroundJobQueue">
+    <result column="time_queued" jdbcType="TIMESTAMP" property="time_queued" />
+    <result column="job_id" jdbcType="INTEGER" property="job_id" />
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="object_id1" jdbcType="INTEGER" property="object_id1" />
+    <result column="object_id2" jdbcType="INTEGER" property="object_id2" />
+    <result column="object_id3" jdbcType="INTEGER" property="object_id3" />
+    <result column="object_id4" jdbcType="INTEGER" property="object_id4" />
+    <result column="error_code" jdbcType="INTEGER" property="error_code" />
+    <result column="request_type" jdbcType="SMALLINT" property="request_type" />
+    <result column="retry_count" jdbcType="SMALLINT" property="retry_count" />
+    <result column="in_progress" jdbcType="SMALLINT" property="in_progress" />
+    <result column="session_id" jdbcType="SMALLINT" property="session_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecBackgroundJobQueue">
+    insert into dm_exec_background_job_queue (time_queued, job_id, database_id, 
+      object_id1, object_id2, object_id3, 
+      object_id4, error_code, request_type, 
+      retry_count, in_progress, session_id
+      )
+    values (#{time_queued,jdbcType=TIMESTAMP}, #{job_id,jdbcType=INTEGER}, #{database_id,jdbcType=INTEGER}, 
+      #{object_id1,jdbcType=INTEGER}, #{object_id2,jdbcType=INTEGER}, #{object_id3,jdbcType=INTEGER}, 
+      #{object_id4,jdbcType=INTEGER}, #{error_code,jdbcType=INTEGER}, #{request_type,jdbcType=SMALLINT}, 
+      #{retry_count,jdbcType=SMALLINT}, #{in_progress,jdbcType=SMALLINT}, #{session_id,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecBackgroundJobQueue">
+    insert into dm_exec_background_job_queue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="time_queued != null">
+        time_queued,
+      </if>
+      <if test="job_id != null">
+        job_id,
+      </if>
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="object_id1 != null">
+        object_id1,
+      </if>
+      <if test="object_id2 != null">
+        object_id2,
+      </if>
+      <if test="object_id3 != null">
+        object_id3,
+      </if>
+      <if test="object_id4 != null">
+        object_id4,
+      </if>
+      <if test="error_code != null">
+        error_code,
+      </if>
+      <if test="request_type != null">
+        request_type,
+      </if>
+      <if test="retry_count != null">
+        retry_count,
+      </if>
+      <if test="in_progress != null">
+        in_progress,
+      </if>
+      <if test="session_id != null">
+        session_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="time_queued != null">
+        #{time_queued,jdbcType=TIMESTAMP},
+      </if>
+      <if test="job_id != null">
+        #{job_id,jdbcType=INTEGER},
+      </if>
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="object_id1 != null">
+        #{object_id1,jdbcType=INTEGER},
+      </if>
+      <if test="object_id2 != null">
+        #{object_id2,jdbcType=INTEGER},
+      </if>
+      <if test="object_id3 != null">
+        #{object_id3,jdbcType=INTEGER},
+      </if>
+      <if test="object_id4 != null">
+        #{object_id4,jdbcType=INTEGER},
+      </if>
+      <if test="error_code != null">
+        #{error_code,jdbcType=INTEGER},
+      </if>
+      <if test="request_type != null">
+        #{request_type,jdbcType=SMALLINT},
+      </if>
+      <if test="retry_count != null">
+        #{retry_count,jdbcType=SMALLINT},
+      </if>
+      <if test="in_progress != null">
+        #{in_progress,jdbcType=SMALLINT},
+      </if>
+      <if test="session_id != null">
+        #{session_id,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

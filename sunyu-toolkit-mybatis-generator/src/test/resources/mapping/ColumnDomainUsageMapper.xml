@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ColumnDomainUsageMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ColumnDomainUsage">
+    <result column="DOMAIN_CATALOG" jdbcType="VARCHAR" property="DOMAIN_CATALOG" />
+    <result column="DOMAIN_SCHEMA" jdbcType="VARCHAR" property="DOMAIN_SCHEMA" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="DOMAIN_NAME" />
+    <result column="TABLE_CATALOG" jdbcType="VARCHAR" property="TABLE_CATALOG" />
+    <result column="TABLE_SCHEMA" jdbcType="VARCHAR" property="TABLE_SCHEMA" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="TABLE_NAME" />
+    <result column="COLUMN_NAME" jdbcType="VARCHAR" property="COLUMN_NAME" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ColumnDomainUsage">
+    insert into COLUMN_DOMAIN_USAGE (DOMAIN_CATALOG, DOMAIN_SCHEMA, DOMAIN_NAME, 
+      TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, 
+      COLUMN_NAME)
+    values (#{DOMAIN_CATALOG,jdbcType=VARCHAR}, #{DOMAIN_SCHEMA,jdbcType=VARCHAR}, #{DOMAIN_NAME,jdbcType=VARCHAR}, 
+      #{TABLE_CATALOG,jdbcType=VARCHAR}, #{TABLE_SCHEMA,jdbcType=VARCHAR}, #{TABLE_NAME,jdbcType=VARCHAR}, 
+      #{COLUMN_NAME,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ColumnDomainUsage">
+    insert into COLUMN_DOMAIN_USAGE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="DOMAIN_CATALOG != null">
+        DOMAIN_CATALOG,
+      </if>
+      <if test="DOMAIN_SCHEMA != null">
+        DOMAIN_SCHEMA,
+      </if>
+      <if test="DOMAIN_NAME != null">
+        DOMAIN_NAME,
+      </if>
+      <if test="TABLE_CATALOG != null">
+        TABLE_CATALOG,
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        TABLE_SCHEMA,
+      </if>
+      <if test="TABLE_NAME != null">
+        TABLE_NAME,
+      </if>
+      <if test="COLUMN_NAME != null">
+        COLUMN_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="DOMAIN_CATALOG != null">
+        #{DOMAIN_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="DOMAIN_SCHEMA != null">
+        #{DOMAIN_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="DOMAIN_NAME != null">
+        #{DOMAIN_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_CATALOG != null">
+        #{TABLE_CATALOG,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_SCHEMA != null">
+        #{TABLE_SCHEMA,jdbcType=VARCHAR},
+      </if>
+      <if test="TABLE_NAME != null">
+        #{TABLE_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="COLUMN_NAME != null">
+        #{COLUMN_NAME,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

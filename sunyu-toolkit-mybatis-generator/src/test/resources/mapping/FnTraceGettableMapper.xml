@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnTraceGettableMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnTraceGettable">
+    <result column="DatabaseID" jdbcType="INTEGER" property="databaseID" />
+    <result column="TransactionID" jdbcType="BIGINT" property="transactionID" />
+    <result column="LineNumber" jdbcType="INTEGER" property="lineNumber" />
+    <result column="NTUserName" jdbcType="VARCHAR" property="NTUserName" />
+    <result column="NTDomainName" jdbcType="VARCHAR" property="NTDomainName" />
+    <result column="HostName" jdbcType="VARCHAR" property="hostName" />
+    <result column="ClientProcessID" jdbcType="INTEGER" property="clientProcessID" />
+    <result column="ApplicationName" jdbcType="VARCHAR" property="applicationName" />
+    <result column="LoginName" jdbcType="VARCHAR" property="loginName" />
+    <result column="SPID" jdbcType="INTEGER" property="SPID" />
+    <result column="Duration" jdbcType="BIGINT" property="duration" />
+    <result column="StartTime" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="EndTime" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="Reads" jdbcType="BIGINT" property="reads" />
+    <result column="Writes" jdbcType="BIGINT" property="writes" />
+    <result column="CPU" jdbcType="INTEGER" property="CPU" />
+    <result column="Permissions" jdbcType="BIGINT" property="permissions" />
+    <result column="Severity" jdbcType="INTEGER" property="severity" />
+    <result column="EventSubClass" jdbcType="INTEGER" property="eventSubClass" />
+    <result column="ObjectID" jdbcType="INTEGER" property="objectID" />
+    <result column="Success" jdbcType="INTEGER" property="success" />
+    <result column="IndexID" jdbcType="INTEGER" property="indexID" />
+    <result column="IntegerData" jdbcType="INTEGER" property="integerData" />
+    <result column="ServerName" jdbcType="VARCHAR" property="serverName" />
+    <result column="EventClass" jdbcType="INTEGER" property="eventClass" />
+    <result column="ObjectType" jdbcType="INTEGER" property="objectType" />
+    <result column="NestLevel" jdbcType="INTEGER" property="nestLevel" />
+    <result column="State" jdbcType="INTEGER" property="state" />
+    <result column="Error" jdbcType="INTEGER" property="error" />
+    <result column="Mode" jdbcType="INTEGER" property="mode" />
+    <result column="Handle" jdbcType="INTEGER" property="handle" />
+    <result column="ObjectName" jdbcType="VARCHAR" property="objectName" />
+    <result column="DatabaseName" jdbcType="VARCHAR" property="databaseName" />
+    <result column="FileName" jdbcType="VARCHAR" property="fileName" />
+    <result column="OwnerName" jdbcType="VARCHAR" property="ownerName" />
+    <result column="RoleName" jdbcType="VARCHAR" property="roleName" />
+    <result column="TargetUserName" jdbcType="VARCHAR" property="targetUserName" />
+    <result column="DBUserName" jdbcType="VARCHAR" property="DBUserName" />
+    <result column="TargetLoginName" jdbcType="VARCHAR" property="targetLoginName" />
+    <result column="ColumnPermissions" jdbcType="INTEGER" property="columnPermissions" />
+    <result column="LinkedServerName" jdbcType="VARCHAR" property="linkedServerName" />
+    <result column="ProviderName" jdbcType="VARCHAR" property="providerName" />
+    <result column="MethodName" jdbcType="VARCHAR" property="methodName" />
+    <result column="RowCounts" jdbcType="BIGINT" property="rowCounts" />
+    <result column="RequestID" jdbcType="INTEGER" property="requestID" />
+    <result column="XactSequence" jdbcType="BIGINT" property="xactSequence" />
+    <result column="EventSequence" jdbcType="BIGINT" property="eventSequence" />
+    <result column="BigintData1" jdbcType="BIGINT" property="bigintData1" />
+    <result column="BigintData2" jdbcType="BIGINT" property="bigintData2" />
+    <result column="GUID" jdbcType="CHAR" property="GUID" />
+    <result column="IntegerData2" jdbcType="INTEGER" property="integerData2" />
+    <result column="ObjectID2" jdbcType="BIGINT" property="objectID2" />
+    <result column="Type" jdbcType="INTEGER" property="type" />
+    <result column="OwnerID" jdbcType="INTEGER" property="ownerID" />
+    <result column="ParentName" jdbcType="VARCHAR" property="parentName" />
+    <result column="IsSystem" jdbcType="INTEGER" property="isSystem" />
+    <result column="Offset" jdbcType="INTEGER" property="offset" />
+    <result column="SourceDatabaseID" jdbcType="INTEGER" property="sourceDatabaseID" />
+    <result column="SessionLoginName" jdbcType="VARCHAR" property="sessionLoginName" />
+    <result column="GroupID" jdbcType="INTEGER" property="groupID" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.FnTraceGettableWithBLOBs">
+    <result column="TextData" jdbcType="CLOB" property="textData" />
+    <result column="BinaryData" jdbcType="BLOB" property="binaryData" />
+    <result column="LoginSid" jdbcType="BLOB" property="loginSid" />
+    <result column="TargetLoginSid" jdbcType="BLOB" property="targetLoginSid" />
+    <result column="SqlHandle" jdbcType="BLOB" property="sqlHandle" />
+    <result column="PlanHandle" jdbcType="BLOB" property="planHandle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    TextData, BinaryData, LoginSid, TargetLoginSid, SqlHandle, PlanHandle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnTraceGettableWithBLOBs">
+    insert into fn_trace_gettable (DatabaseID, TransactionID, LineNumber, 
+      NTUserName, NTDomainName, HostName, 
+      ClientProcessID, ApplicationName, LoginName, 
+      SPID, Duration, StartTime, 
+      EndTime, Reads, Writes, 
+      CPU, Permissions, Severity, 
+      EventSubClass, ObjectID, Success, 
+      IndexID, IntegerData, ServerName, 
+      EventClass, ObjectType, NestLevel, 
+      State, Error, Mode, 
+      Handle, ObjectName, DatabaseName, 
+      FileName, OwnerName, RoleName, 
+      TargetUserName, DBUserName, TargetLoginName, 
+      ColumnPermissions, LinkedServerName, ProviderName, 
+      MethodName, RowCounts, RequestID, 
+      XactSequence, EventSequence, BigintData1, 
+      BigintData2, GUID, IntegerData2, 
+      ObjectID2, Type, OwnerID, 
+      ParentName, IsSystem, Offset, 
+      SourceDatabaseID, SessionLoginName, GroupID, 
+      TextData, BinaryData, LoginSid, 
+      TargetLoginSid, SqlHandle, PlanHandle
+      )
+    values (#{databaseID,jdbcType=INTEGER}, #{transactionID,jdbcType=BIGINT}, #{lineNumber,jdbcType=INTEGER}, 
+      #{NTUserName,jdbcType=VARCHAR}, #{NTDomainName,jdbcType=VARCHAR}, #{hostName,jdbcType=VARCHAR}, 
+      #{clientProcessID,jdbcType=INTEGER}, #{applicationName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{SPID,jdbcType=INTEGER}, #{duration,jdbcType=BIGINT}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{reads,jdbcType=BIGINT}, #{writes,jdbcType=BIGINT}, 
+      #{CPU,jdbcType=INTEGER}, #{permissions,jdbcType=BIGINT}, #{severity,jdbcType=INTEGER}, 
+      #{eventSubClass,jdbcType=INTEGER}, #{objectID,jdbcType=INTEGER}, #{success,jdbcType=INTEGER}, 
+      #{indexID,jdbcType=INTEGER}, #{integerData,jdbcType=INTEGER}, #{serverName,jdbcType=VARCHAR}, 
+      #{eventClass,jdbcType=INTEGER}, #{objectType,jdbcType=INTEGER}, #{nestLevel,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{error,jdbcType=INTEGER}, #{mode,jdbcType=INTEGER}, 
+      #{handle,jdbcType=INTEGER}, #{objectName,jdbcType=VARCHAR}, #{databaseName,jdbcType=VARCHAR}, 
+      #{fileName,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, 
+      #{targetUserName,jdbcType=VARCHAR}, #{DBUserName,jdbcType=VARCHAR}, #{targetLoginName,jdbcType=VARCHAR}, 
+      #{columnPermissions,jdbcType=INTEGER}, #{linkedServerName,jdbcType=VARCHAR}, #{providerName,jdbcType=VARCHAR}, 
+      #{methodName,jdbcType=VARCHAR}, #{rowCounts,jdbcType=BIGINT}, #{requestID,jdbcType=INTEGER}, 
+      #{xactSequence,jdbcType=BIGINT}, #{eventSequence,jdbcType=BIGINT}, #{bigintData1,jdbcType=BIGINT}, 
+      #{bigintData2,jdbcType=BIGINT}, #{GUID,jdbcType=CHAR}, #{integerData2,jdbcType=INTEGER}, 
+      #{objectID2,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{ownerID,jdbcType=INTEGER}, 
+      #{parentName,jdbcType=VARCHAR}, #{isSystem,jdbcType=INTEGER}, #{offset,jdbcType=INTEGER}, 
+      #{sourceDatabaseID,jdbcType=INTEGER}, #{sessionLoginName,jdbcType=VARCHAR}, #{groupID,jdbcType=INTEGER}, 
+      #{textData,jdbcType=CLOB}, #{binaryData,jdbcType=BLOB}, #{loginSid,jdbcType=BLOB}, 
+      #{targetLoginSid,jdbcType=BLOB}, #{sqlHandle,jdbcType=BLOB}, #{planHandle,jdbcType=BLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnTraceGettableWithBLOBs">
+    insert into fn_trace_gettable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="databaseID != null">
+        DatabaseID,
+      </if>
+      <if test="transactionID != null">
+        TransactionID,
+      </if>
+      <if test="lineNumber != null">
+        LineNumber,
+      </if>
+      <if test="NTUserName != null">
+        NTUserName,
+      </if>
+      <if test="NTDomainName != null">
+        NTDomainName,
+      </if>
+      <if test="hostName != null">
+        HostName,
+      </if>
+      <if test="clientProcessID != null">
+        ClientProcessID,
+      </if>
+      <if test="applicationName != null">
+        ApplicationName,
+      </if>
+      <if test="loginName != null">
+        LoginName,
+      </if>
+      <if test="SPID != null">
+        SPID,
+      </if>
+      <if test="duration != null">
+        Duration,
+      </if>
+      <if test="startTime != null">
+        StartTime,
+      </if>
+      <if test="endTime != null">
+        EndTime,
+      </if>
+      <if test="reads != null">
+        Reads,
+      </if>
+      <if test="writes != null">
+        Writes,
+      </if>
+      <if test="CPU != null">
+        CPU,
+      </if>
+      <if test="permissions != null">
+        Permissions,
+      </if>
+      <if test="severity != null">
+        Severity,
+      </if>
+      <if test="eventSubClass != null">
+        EventSubClass,
+      </if>
+      <if test="objectID != null">
+        ObjectID,
+      </if>
+      <if test="success != null">
+        Success,
+      </if>
+      <if test="indexID != null">
+        IndexID,
+      </if>
+      <if test="integerData != null">
+        IntegerData,
+      </if>
+      <if test="serverName != null">
+        ServerName,
+      </if>
+      <if test="eventClass != null">
+        EventClass,
+      </if>
+      <if test="objectType != null">
+        ObjectType,
+      </if>
+      <if test="nestLevel != null">
+        NestLevel,
+      </if>
+      <if test="state != null">
+        State,
+      </if>
+      <if test="error != null">
+        Error,
+      </if>
+      <if test="mode != null">
+        Mode,
+      </if>
+      <if test="handle != null">
+        Handle,
+      </if>
+      <if test="objectName != null">
+        ObjectName,
+      </if>
+      <if test="databaseName != null">
+        DatabaseName,
+      </if>
+      <if test="fileName != null">
+        FileName,
+      </if>
+      <if test="ownerName != null">
+        OwnerName,
+      </if>
+      <if test="roleName != null">
+        RoleName,
+      </if>
+      <if test="targetUserName != null">
+        TargetUserName,
+      </if>
+      <if test="DBUserName != null">
+        DBUserName,
+      </if>
+      <if test="targetLoginName != null">
+        TargetLoginName,
+      </if>
+      <if test="columnPermissions != null">
+        ColumnPermissions,
+      </if>
+      <if test="linkedServerName != null">
+        LinkedServerName,
+      </if>
+      <if test="providerName != null">
+        ProviderName,
+      </if>
+      <if test="methodName != null">
+        MethodName,
+      </if>
+      <if test="rowCounts != null">
+        RowCounts,
+      </if>
+      <if test="requestID != null">
+        RequestID,
+      </if>
+      <if test="xactSequence != null">
+        XactSequence,
+      </if>
+      <if test="eventSequence != null">
+        EventSequence,
+      </if>
+      <if test="bigintData1 != null">
+        BigintData1,
+      </if>
+      <if test="bigintData2 != null">
+        BigintData2,
+      </if>
+      <if test="GUID != null">
+        GUID,
+      </if>
+      <if test="integerData2 != null">
+        IntegerData2,
+      </if>
+      <if test="objectID2 != null">
+        ObjectID2,
+      </if>
+      <if test="type != null">
+        Type,
+      </if>
+      <if test="ownerID != null">
+        OwnerID,
+      </if>
+      <if test="parentName != null">
+        ParentName,
+      </if>
+      <if test="isSystem != null">
+        IsSystem,
+      </if>
+      <if test="offset != null">
+        Offset,
+      </if>
+      <if test="sourceDatabaseID != null">
+        SourceDatabaseID,
+      </if>
+      <if test="sessionLoginName != null">
+        SessionLoginName,
+      </if>
+      <if test="groupID != null">
+        GroupID,
+      </if>
+      <if test="textData != null">
+        TextData,
+      </if>
+      <if test="binaryData != null">
+        BinaryData,
+      </if>
+      <if test="loginSid != null">
+        LoginSid,
+      </if>
+      <if test="targetLoginSid != null">
+        TargetLoginSid,
+      </if>
+      <if test="sqlHandle != null">
+        SqlHandle,
+      </if>
+      <if test="planHandle != null">
+        PlanHandle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="databaseID != null">
+        #{databaseID,jdbcType=INTEGER},
+      </if>
+      <if test="transactionID != null">
+        #{transactionID,jdbcType=BIGINT},
+      </if>
+      <if test="lineNumber != null">
+        #{lineNumber,jdbcType=INTEGER},
+      </if>
+      <if test="NTUserName != null">
+        #{NTUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="NTDomainName != null">
+        #{NTDomainName,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientProcessID != null">
+        #{clientProcessID,jdbcType=INTEGER},
+      </if>
+      <if test="applicationName != null">
+        #{applicationName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="SPID != null">
+        #{SPID,jdbcType=INTEGER},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reads != null">
+        #{reads,jdbcType=BIGINT},
+      </if>
+      <if test="writes != null">
+        #{writes,jdbcType=BIGINT},
+      </if>
+      <if test="CPU != null">
+        #{CPU,jdbcType=INTEGER},
+      </if>
+      <if test="permissions != null">
+        #{permissions,jdbcType=BIGINT},
+      </if>
+      <if test="severity != null">
+        #{severity,jdbcType=INTEGER},
+      </if>
+      <if test="eventSubClass != null">
+        #{eventSubClass,jdbcType=INTEGER},
+      </if>
+      <if test="objectID != null">
+        #{objectID,jdbcType=INTEGER},
+      </if>
+      <if test="success != null">
+        #{success,jdbcType=INTEGER},
+      </if>
+      <if test="indexID != null">
+        #{indexID,jdbcType=INTEGER},
+      </if>
+      <if test="integerData != null">
+        #{integerData,jdbcType=INTEGER},
+      </if>
+      <if test="serverName != null">
+        #{serverName,jdbcType=VARCHAR},
+      </if>
+      <if test="eventClass != null">
+        #{eventClass,jdbcType=INTEGER},
+      </if>
+      <if test="objectType != null">
+        #{objectType,jdbcType=INTEGER},
+      </if>
+      <if test="nestLevel != null">
+        #{nestLevel,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="error != null">
+        #{error,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null">
+        #{mode,jdbcType=INTEGER},
+      </if>
+      <if test="handle != null">
+        #{handle,jdbcType=INTEGER},
+      </if>
+      <if test="objectName != null">
+        #{objectName,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseName != null">
+        #{databaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="targetUserName != null">
+        #{targetUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="DBUserName != null">
+        #{DBUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="targetLoginName != null">
+        #{targetLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnPermissions != null">
+        #{columnPermissions,jdbcType=INTEGER},
+      </if>
+      <if test="linkedServerName != null">
+        #{linkedServerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerName != null">
+        #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="rowCounts != null">
+        #{rowCounts,jdbcType=BIGINT},
+      </if>
+      <if test="requestID != null">
+        #{requestID,jdbcType=INTEGER},
+      </if>
+      <if test="xactSequence != null">
+        #{xactSequence,jdbcType=BIGINT},
+      </if>
+      <if test="eventSequence != null">
+        #{eventSequence,jdbcType=BIGINT},
+      </if>
+      <if test="bigintData1 != null">
+        #{bigintData1,jdbcType=BIGINT},
+      </if>
+      <if test="bigintData2 != null">
+        #{bigintData2,jdbcType=BIGINT},
+      </if>
+      <if test="GUID != null">
+        #{GUID,jdbcType=CHAR},
+      </if>
+      <if test="integerData2 != null">
+        #{integerData2,jdbcType=INTEGER},
+      </if>
+      <if test="objectID2 != null">
+        #{objectID2,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="ownerID != null">
+        #{ownerID,jdbcType=INTEGER},
+      </if>
+      <if test="parentName != null">
+        #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="isSystem != null">
+        #{isSystem,jdbcType=INTEGER},
+      </if>
+      <if test="offset != null">
+        #{offset,jdbcType=INTEGER},
+      </if>
+      <if test="sourceDatabaseID != null">
+        #{sourceDatabaseID,jdbcType=INTEGER},
+      </if>
+      <if test="sessionLoginName != null">
+        #{sessionLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupID != null">
+        #{groupID,jdbcType=INTEGER},
+      </if>
+      <if test="textData != null">
+        #{textData,jdbcType=CLOB},
+      </if>
+      <if test="binaryData != null">
+        #{binaryData,jdbcType=BLOB},
+      </if>
+      <if test="loginSid != null">
+        #{loginSid,jdbcType=BLOB},
+      </if>
+      <if test="targetLoginSid != null">
+        #{targetLoginSid,jdbcType=BLOB},
+      </if>
+      <if test="sqlHandle != null">
+        #{sqlHandle,jdbcType=BLOB},
+      </if>
+      <if test="planHandle != null">
+        #{planHandle,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

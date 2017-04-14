@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyslanguagesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syslanguages">
+    <result column="langid" jdbcType="SMALLINT" property="langid" />
+    <result column="dateformat" jdbcType="CHAR" property="dateformat" />
+    <result column="datefirst" jdbcType="TINYINT" property="datefirst" />
+    <result column="upgrade" jdbcType="INTEGER" property="upgrade" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="months" jdbcType="VARCHAR" property="months" />
+    <result column="shortmonths" jdbcType="VARCHAR" property="shortmonths" />
+    <result column="days" jdbcType="VARCHAR" property="days" />
+    <result column="lcid" jdbcType="INTEGER" property="lcid" />
+    <result column="msglangid" jdbcType="SMALLINT" property="msglangid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syslanguages">
+    insert into syslanguages (langid, dateformat, datefirst, 
+      upgrade, name, alias, 
+      months, shortmonths, days, 
+      lcid, msglangid)
+    values (#{langid,jdbcType=SMALLINT}, #{dateformat,jdbcType=CHAR}, #{datefirst,jdbcType=TINYINT}, 
+      #{upgrade,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{months,jdbcType=VARCHAR}, #{shortmonths,jdbcType=VARCHAR}, #{days,jdbcType=VARCHAR}, 
+      #{lcid,jdbcType=INTEGER}, #{msglangid,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syslanguages">
+    insert into syslanguages
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="langid != null">
+        langid,
+      </if>
+      <if test="dateformat != null">
+        dateformat,
+      </if>
+      <if test="datefirst != null">
+        datefirst,
+      </if>
+      <if test="upgrade != null">
+        upgrade,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="months != null">
+        months,
+      </if>
+      <if test="shortmonths != null">
+        shortmonths,
+      </if>
+      <if test="days != null">
+        days,
+      </if>
+      <if test="lcid != null">
+        lcid,
+      </if>
+      <if test="msglangid != null">
+        msglangid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="langid != null">
+        #{langid,jdbcType=SMALLINT},
+      </if>
+      <if test="dateformat != null">
+        #{dateformat,jdbcType=CHAR},
+      </if>
+      <if test="datefirst != null">
+        #{datefirst,jdbcType=TINYINT},
+      </if>
+      <if test="upgrade != null">
+        #{upgrade,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="months != null">
+        #{months,jdbcType=VARCHAR},
+      </if>
+      <if test="shortmonths != null">
+        #{shortmonths,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=VARCHAR},
+      </if>
+      <if test="lcid != null">
+        #{lcid,jdbcType=INTEGER},
+      </if>
+      <if test="msglangid != null">
+        #{msglangid,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

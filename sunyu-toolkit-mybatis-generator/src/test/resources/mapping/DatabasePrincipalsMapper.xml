@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DatabasePrincipalsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DatabasePrincipals">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="default_schema_name" jdbcType="VARCHAR" property="default_schema_name" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="owning_principal_id" jdbcType="INTEGER" property="owning_principal_id" />
+    <result column="is_fixed_role" jdbcType="BIT" property="is_fixed_role" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DatabasePrincipals">
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sid
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DatabasePrincipals">
+    insert into database_principals (name, principal_id, type, 
+      type_desc, default_schema_name, create_date, 
+      modify_date, owning_principal_id, is_fixed_role, 
+      sid)
+    values (#{name,jdbcType=VARCHAR}, #{principal_id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{type_desc,jdbcType=VARCHAR}, #{default_schema_name,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, 
+      #{modify_date,jdbcType=TIMESTAMP}, #{owning_principal_id,jdbcType=INTEGER}, #{is_fixed_role,jdbcType=BIT}, 
+      #{sid,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DatabasePrincipals">
+    insert into database_principals
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="default_schema_name != null">
+        default_schema_name,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="owning_principal_id != null">
+        owning_principal_id,
+      </if>
+      <if test="is_fixed_role != null">
+        is_fixed_role,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="default_schema_name != null">
+        #{default_schema_name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="owning_principal_id != null">
+        #{owning_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_fixed_role != null">
+        #{is_fixed_role,jdbcType=BIT},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

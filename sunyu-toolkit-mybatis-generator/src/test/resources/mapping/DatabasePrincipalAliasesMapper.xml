@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DatabasePrincipalAliasesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DatabasePrincipalAliases">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="is_windows_sid" jdbcType="BIT" property="is_windows_sid" />
+    <result column="alias_principal_id" jdbcType="INTEGER" property="alias_principal_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DatabasePrincipalAliases">
+    <result column="sid" jdbcType="VARBINARY" property="sid" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sid
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DatabasePrincipalAliases">
+    insert into database_principal_aliases (name, is_windows_sid, alias_principal_id, 
+      sid)
+    values (#{name,jdbcType=VARCHAR}, #{is_windows_sid,jdbcType=BIT}, #{alias_principal_id,jdbcType=INTEGER}, 
+      #{sid,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DatabasePrincipalAliases">
+    insert into database_principal_aliases
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="is_windows_sid != null">
+        is_windows_sid,
+      </if>
+      <if test="alias_principal_id != null">
+        alias_principal_id,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_windows_sid != null">
+        #{is_windows_sid,jdbcType=BIT},
+      </if>
+      <if test="alias_principal_id != null">
+        #{alias_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

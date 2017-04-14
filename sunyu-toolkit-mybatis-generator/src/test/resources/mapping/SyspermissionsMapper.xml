@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyspermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syspermissions">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="grantee" jdbcType="SMALLINT" property="grantee" />
+    <result column="grantor" jdbcType="SMALLINT" property="grantor" />
+    <result column="actadd" jdbcType="SMALLINT" property="actadd" />
+    <result column="actmod" jdbcType="SMALLINT" property="actmod" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SyspermissionsWithBLOBs">
+    <result column="seladd" jdbcType="VARBINARY" property="seladd" />
+    <result column="selmod" jdbcType="VARBINARY" property="selmod" />
+    <result column="updadd" jdbcType="VARBINARY" property="updadd" />
+    <result column="updmod" jdbcType="VARBINARY" property="updmod" />
+    <result column="refadd" jdbcType="VARBINARY" property="refadd" />
+    <result column="refmod" jdbcType="VARBINARY" property="refmod" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    seladd, selmod, updadd, updmod, refadd, refmod
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SyspermissionsWithBLOBs">
+    insert into syspermissions (id, grantee, grantor, 
+      actadd, actmod, seladd, 
+      selmod, updadd, updmod, 
+      refadd, refmod)
+    values (#{id,jdbcType=INTEGER}, #{grantee,jdbcType=SMALLINT}, #{grantor,jdbcType=SMALLINT}, 
+      #{actadd,jdbcType=SMALLINT}, #{actmod,jdbcType=SMALLINT}, #{seladd,jdbcType=VARBINARY}, 
+      #{selmod,jdbcType=VARBINARY}, #{updadd,jdbcType=VARBINARY}, #{updmod,jdbcType=VARBINARY}, 
+      #{refadd,jdbcType=VARBINARY}, #{refmod,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SyspermissionsWithBLOBs">
+    insert into syspermissions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="grantee != null">
+        grantee,
+      </if>
+      <if test="grantor != null">
+        grantor,
+      </if>
+      <if test="actadd != null">
+        actadd,
+      </if>
+      <if test="actmod != null">
+        actmod,
+      </if>
+      <if test="seladd != null">
+        seladd,
+      </if>
+      <if test="selmod != null">
+        selmod,
+      </if>
+      <if test="updadd != null">
+        updadd,
+      </if>
+      <if test="updmod != null">
+        updmod,
+      </if>
+      <if test="refadd != null">
+        refadd,
+      </if>
+      <if test="refmod != null">
+        refmod,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="grantee != null">
+        #{grantee,jdbcType=SMALLINT},
+      </if>
+      <if test="grantor != null">
+        #{grantor,jdbcType=SMALLINT},
+      </if>
+      <if test="actadd != null">
+        #{actadd,jdbcType=SMALLINT},
+      </if>
+      <if test="actmod != null">
+        #{actmod,jdbcType=SMALLINT},
+      </if>
+      <if test="seladd != null">
+        #{seladd,jdbcType=VARBINARY},
+      </if>
+      <if test="selmod != null">
+        #{selmod,jdbcType=VARBINARY},
+      </if>
+      <if test="updadd != null">
+        #{updadd,jdbcType=VARBINARY},
+      </if>
+      <if test="updmod != null">
+        #{updmod,jdbcType=VARBINARY},
+      </if>
+      <if test="refadd != null">
+        #{refadd,jdbcType=VARBINARY},
+      </if>
+      <if test="refmod != null">
+        #{refmod,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

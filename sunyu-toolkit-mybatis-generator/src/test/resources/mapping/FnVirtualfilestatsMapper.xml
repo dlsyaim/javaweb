@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnVirtualfilestatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnVirtualfilestats">
+    <result column="DbId" jdbcType="SMALLINT" property="dbId" />
+    <result column="FileId" jdbcType="SMALLINT" property="fileId" />
+    <result column="TimeStamp" jdbcType="INTEGER" property="timeStamp" />
+    <result column="NumberReads" jdbcType="BIGINT" property="numberReads" />
+    <result column="BytesRead" jdbcType="BIGINT" property="bytesRead" />
+    <result column="IoStallReadMS" jdbcType="BIGINT" property="ioStallReadMS" />
+    <result column="NumberWrites" jdbcType="BIGINT" property="numberWrites" />
+    <result column="BytesWritten" jdbcType="BIGINT" property="bytesWritten" />
+    <result column="IoStallWriteMS" jdbcType="BIGINT" property="ioStallWriteMS" />
+    <result column="IoStallMS" jdbcType="BIGINT" property="ioStallMS" />
+    <result column="BytesOnDisk" jdbcType="BIGINT" property="bytesOnDisk" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.FnVirtualfilestats">
+    <result column="FileHandle" jdbcType="VARBINARY" property="fileHandle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    FileHandle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnVirtualfilestats">
+    insert into fn_virtualfilestats (DbId, FileId, TimeStamp, 
+      NumberReads, BytesRead, IoStallReadMS, 
+      NumberWrites, BytesWritten, IoStallWriteMS, 
+      IoStallMS, BytesOnDisk, FileHandle
+      )
+    values (#{dbId,jdbcType=SMALLINT}, #{fileId,jdbcType=SMALLINT}, #{timeStamp,jdbcType=INTEGER}, 
+      #{numberReads,jdbcType=BIGINT}, #{bytesRead,jdbcType=BIGINT}, #{ioStallReadMS,jdbcType=BIGINT}, 
+      #{numberWrites,jdbcType=BIGINT}, #{bytesWritten,jdbcType=BIGINT}, #{ioStallWriteMS,jdbcType=BIGINT}, 
+      #{ioStallMS,jdbcType=BIGINT}, #{bytesOnDisk,jdbcType=BIGINT}, #{fileHandle,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnVirtualfilestats">
+    insert into fn_virtualfilestats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dbId != null">
+        DbId,
+      </if>
+      <if test="fileId != null">
+        FileId,
+      </if>
+      <if test="timeStamp != null">
+        TimeStamp,
+      </if>
+      <if test="numberReads != null">
+        NumberReads,
+      </if>
+      <if test="bytesRead != null">
+        BytesRead,
+      </if>
+      <if test="ioStallReadMS != null">
+        IoStallReadMS,
+      </if>
+      <if test="numberWrites != null">
+        NumberWrites,
+      </if>
+      <if test="bytesWritten != null">
+        BytesWritten,
+      </if>
+      <if test="ioStallWriteMS != null">
+        IoStallWriteMS,
+      </if>
+      <if test="ioStallMS != null">
+        IoStallMS,
+      </if>
+      <if test="bytesOnDisk != null">
+        BytesOnDisk,
+      </if>
+      <if test="fileHandle != null">
+        FileHandle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dbId != null">
+        #{dbId,jdbcType=SMALLINT},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=SMALLINT},
+      </if>
+      <if test="timeStamp != null">
+        #{timeStamp,jdbcType=INTEGER},
+      </if>
+      <if test="numberReads != null">
+        #{numberReads,jdbcType=BIGINT},
+      </if>
+      <if test="bytesRead != null">
+        #{bytesRead,jdbcType=BIGINT},
+      </if>
+      <if test="ioStallReadMS != null">
+        #{ioStallReadMS,jdbcType=BIGINT},
+      </if>
+      <if test="numberWrites != null">
+        #{numberWrites,jdbcType=BIGINT},
+      </if>
+      <if test="bytesWritten != null">
+        #{bytesWritten,jdbcType=BIGINT},
+      </if>
+      <if test="ioStallWriteMS != null">
+        #{ioStallWriteMS,jdbcType=BIGINT},
+      </if>
+      <if test="ioStallMS != null">
+        #{ioStallMS,jdbcType=BIGINT},
+      </if>
+      <if test="bytesOnDisk != null">
+        #{bytesOnDisk,jdbcType=BIGINT},
+      </if>
+      <if test="fileHandle != null">
+        #{fileHandle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

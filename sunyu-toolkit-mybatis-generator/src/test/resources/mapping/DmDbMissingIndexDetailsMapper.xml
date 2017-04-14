@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbMissingIndexDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbMissingIndexDetails">
+    <result column="index_handle" jdbcType="INTEGER" property="index_handle" />
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="equality_columns" jdbcType="VARCHAR" property="equality_columns" />
+    <result column="inequality_columns" jdbcType="VARCHAR" property="inequality_columns" />
+    <result column="included_columns" jdbcType="VARCHAR" property="included_columns" />
+    <result column="statement" jdbcType="VARCHAR" property="statement" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbMissingIndexDetails">
+    insert into dm_db_missing_index_details (index_handle, database_id, object_id, 
+      equality_columns, inequality_columns, included_columns, 
+      statement)
+    values (#{index_handle,jdbcType=INTEGER}, #{database_id,jdbcType=SMALLINT}, #{object_id,jdbcType=INTEGER}, 
+      #{equality_columns,jdbcType=VARCHAR}, #{inequality_columns,jdbcType=VARCHAR}, #{included_columns,jdbcType=VARCHAR}, 
+      #{statement,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbMissingIndexDetails">
+    insert into dm_db_missing_index_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="index_handle != null">
+        index_handle,
+      </if>
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="equality_columns != null">
+        equality_columns,
+      </if>
+      <if test="inequality_columns != null">
+        inequality_columns,
+      </if>
+      <if test="included_columns != null">
+        included_columns,
+      </if>
+      <if test="statement != null">
+        statement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="index_handle != null">
+        #{index_handle,jdbcType=INTEGER},
+      </if>
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="equality_columns != null">
+        #{equality_columns,jdbcType=VARCHAR},
+      </if>
+      <if test="inequality_columns != null">
+        #{inequality_columns,jdbcType=VARCHAR},
+      </if>
+      <if test="included_columns != null">
+        #{included_columns,jdbcType=VARCHAR},
+      </if>
+      <if test="statement != null">
+        #{statement,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

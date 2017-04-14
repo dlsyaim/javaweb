@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmTranCurrentTransactionMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmTranCurrentTransaction">
+    <result column="transaction_id" jdbcType="BIGINT" property="transaction_id" />
+    <result column="transaction_sequence_num" jdbcType="BIGINT" property="transaction_sequence_num" />
+    <result column="transaction_is_snapshot" jdbcType="BIT" property="transaction_is_snapshot" />
+    <result column="first_snapshot_sequence_num" jdbcType="BIGINT" property="first_snapshot_sequence_num" />
+    <result column="last_transaction_sequence_num" jdbcType="BIGINT" property="last_transaction_sequence_num" />
+    <result column="first_useful_sequence_num" jdbcType="BIGINT" property="first_useful_sequence_num" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmTranCurrentTransaction">
+    insert into dm_tran_current_transaction (transaction_id, transaction_sequence_num, 
+      transaction_is_snapshot, first_snapshot_sequence_num, 
+      last_transaction_sequence_num, first_useful_sequence_num
+      )
+    values (#{transaction_id,jdbcType=BIGINT}, #{transaction_sequence_num,jdbcType=BIGINT}, 
+      #{transaction_is_snapshot,jdbcType=BIT}, #{first_snapshot_sequence_num,jdbcType=BIGINT}, 
+      #{last_transaction_sequence_num,jdbcType=BIGINT}, #{first_useful_sequence_num,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmTranCurrentTransaction">
+    insert into dm_tran_current_transaction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        transaction_id,
+      </if>
+      <if test="transaction_sequence_num != null">
+        transaction_sequence_num,
+      </if>
+      <if test="transaction_is_snapshot != null">
+        transaction_is_snapshot,
+      </if>
+      <if test="first_snapshot_sequence_num != null">
+        first_snapshot_sequence_num,
+      </if>
+      <if test="last_transaction_sequence_num != null">
+        last_transaction_sequence_num,
+      </if>
+      <if test="first_useful_sequence_num != null">
+        first_useful_sequence_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transaction_id != null">
+        #{transaction_id,jdbcType=BIGINT},
+      </if>
+      <if test="transaction_sequence_num != null">
+        #{transaction_sequence_num,jdbcType=BIGINT},
+      </if>
+      <if test="transaction_is_snapshot != null">
+        #{transaction_is_snapshot,jdbcType=BIT},
+      </if>
+      <if test="first_snapshot_sequence_num != null">
+        #{first_snapshot_sequence_num,jdbcType=BIGINT},
+      </if>
+      <if test="last_transaction_sequence_num != null">
+        #{last_transaction_sequence_num,jdbcType=BIGINT},
+      </if>
+      <if test="first_useful_sequence_num != null">
+        #{first_useful_sequence_num,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

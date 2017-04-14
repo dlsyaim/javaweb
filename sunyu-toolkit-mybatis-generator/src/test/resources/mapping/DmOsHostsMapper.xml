@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsHostsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsHosts">
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="enqueued_tasks_count" jdbcType="INTEGER" property="enqueued_tasks_count" />
+    <result column="active_tasks_count" jdbcType="INTEGER" property="active_tasks_count" />
+    <result column="completed_ios_count" jdbcType="INTEGER" property="completed_ios_count" />
+    <result column="completed_ios_in_bytes" jdbcType="BIGINT" property="completed_ios_in_bytes" />
+    <result column="active_ios_count" jdbcType="INTEGER" property="active_ios_count" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsHostsWithBLOBs">
+    <result column="host_address" jdbcType="VARBINARY" property="host_address" />
+    <result column="default_memory_clerk_address" jdbcType="VARBINARY" property="default_memory_clerk_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    host_address, default_memory_clerk_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsHostsWithBLOBs">
+    insert into dm_os_hosts (type, name, enqueued_tasks_count, 
+      active_tasks_count, completed_ios_count, 
+      completed_ios_in_bytes, active_ios_count, 
+      host_address, default_memory_clerk_address
+      )
+    values (#{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{enqueued_tasks_count,jdbcType=INTEGER}, 
+      #{active_tasks_count,jdbcType=INTEGER}, #{completed_ios_count,jdbcType=INTEGER}, 
+      #{completed_ios_in_bytes,jdbcType=BIGINT}, #{active_ios_count,jdbcType=INTEGER}, 
+      #{host_address,jdbcType=VARBINARY}, #{default_memory_clerk_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsHostsWithBLOBs">
+    insert into dm_os_hosts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="enqueued_tasks_count != null">
+        enqueued_tasks_count,
+      </if>
+      <if test="active_tasks_count != null">
+        active_tasks_count,
+      </if>
+      <if test="completed_ios_count != null">
+        completed_ios_count,
+      </if>
+      <if test="completed_ios_in_bytes != null">
+        completed_ios_in_bytes,
+      </if>
+      <if test="active_ios_count != null">
+        active_ios_count,
+      </if>
+      <if test="host_address != null">
+        host_address,
+      </if>
+      <if test="default_memory_clerk_address != null">
+        default_memory_clerk_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enqueued_tasks_count != null">
+        #{enqueued_tasks_count,jdbcType=INTEGER},
+      </if>
+      <if test="active_tasks_count != null">
+        #{active_tasks_count,jdbcType=INTEGER},
+      </if>
+      <if test="completed_ios_count != null">
+        #{completed_ios_count,jdbcType=INTEGER},
+      </if>
+      <if test="completed_ios_in_bytes != null">
+        #{completed_ios_in_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="active_ios_count != null">
+        #{active_ios_count,jdbcType=INTEGER},
+      </if>
+      <if test="host_address != null">
+        #{host_address,jdbcType=VARBINARY},
+      </if>
+      <if test="default_memory_clerk_address != null">
+        #{default_memory_clerk_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

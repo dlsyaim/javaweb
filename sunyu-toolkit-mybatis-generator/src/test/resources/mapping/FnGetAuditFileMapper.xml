@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnGetAuditFileMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnGetAuditFile">
+    <result column="event_time" jdbcType="VARCHAR" property="event_time" />
+    <result column="sequence_number" jdbcType="INTEGER" property="sequence_number" />
+    <result column="action_id" jdbcType="VARCHAR" property="action_id" />
+    <result column="succeeded" jdbcType="BIT" property="succeeded" />
+    <result column="permission_bitmask" jdbcType="BIGINT" property="permission_bitmask" />
+    <result column="is_column_permission" jdbcType="BIT" property="is_column_permission" />
+    <result column="session_id" jdbcType="SMALLINT" property="session_id" />
+    <result column="server_principal_id" jdbcType="INTEGER" property="server_principal_id" />
+    <result column="database_principal_id" jdbcType="INTEGER" property="database_principal_id" />
+    <result column="target_server_principal_id" jdbcType="INTEGER" property="target_server_principal_id" />
+    <result column="target_database_principal_id" jdbcType="INTEGER" property="target_database_principal_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="class_type" jdbcType="VARCHAR" property="class_type" />
+    <result column="session_server_principal_name" jdbcType="VARCHAR" property="session_server_principal_name" />
+    <result column="server_principal_name" jdbcType="VARCHAR" property="server_principal_name" />
+    <result column="database_principal_name" jdbcType="VARCHAR" property="database_principal_name" />
+    <result column="target_server_principal_name" jdbcType="VARCHAR" property="target_server_principal_name" />
+    <result column="target_database_principal_name" jdbcType="VARCHAR" property="target_database_principal_name" />
+    <result column="server_instance_name" jdbcType="VARCHAR" property="server_instance_name" />
+    <result column="database_name" jdbcType="VARCHAR" property="database_name" />
+    <result column="schema_name" jdbcType="VARCHAR" property="schema_name" />
+    <result column="object_name" jdbcType="VARCHAR" property="object_name" />
+    <result column="statement" jdbcType="VARCHAR" property="statement" />
+    <result column="additional_information" jdbcType="VARCHAR" property="additional_information" />
+    <result column="file_name" jdbcType="VARCHAR" property="file_name" />
+    <result column="audit_file_offset" jdbcType="BIGINT" property="audit_file_offset" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.FnGetAuditFileWithBLOBs">
+    <result column="server_principal_sid" jdbcType="VARBINARY" property="server_principal_sid" />
+    <result column="target_server_principal_sid" jdbcType="VARBINARY" property="target_server_principal_sid" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    server_principal_sid, target_server_principal_sid
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnGetAuditFileWithBLOBs">
+    insert into fn_get_audit_file (event_time, sequence_number, action_id, 
+      succeeded, permission_bitmask, is_column_permission, 
+      session_id, server_principal_id, database_principal_id, 
+      target_server_principal_id, target_database_principal_id, 
+      object_id, class_type, session_server_principal_name, 
+      server_principal_name, database_principal_name, 
+      target_server_principal_name, target_database_principal_name, 
+      server_instance_name, database_name, schema_name, 
+      object_name, statement, additional_information, 
+      file_name, audit_file_offset, server_principal_sid, 
+      target_server_principal_sid)
+    values (#{event_time,jdbcType=VARCHAR}, #{sequence_number,jdbcType=INTEGER}, #{action_id,jdbcType=VARCHAR}, 
+      #{succeeded,jdbcType=BIT}, #{permission_bitmask,jdbcType=BIGINT}, #{is_column_permission,jdbcType=BIT}, 
+      #{session_id,jdbcType=SMALLINT}, #{server_principal_id,jdbcType=INTEGER}, #{database_principal_id,jdbcType=INTEGER}, 
+      #{target_server_principal_id,jdbcType=INTEGER}, #{target_database_principal_id,jdbcType=INTEGER}, 
+      #{object_id,jdbcType=INTEGER}, #{class_type,jdbcType=VARCHAR}, #{session_server_principal_name,jdbcType=VARCHAR}, 
+      #{server_principal_name,jdbcType=VARCHAR}, #{database_principal_name,jdbcType=VARCHAR}, 
+      #{target_server_principal_name,jdbcType=VARCHAR}, #{target_database_principal_name,jdbcType=VARCHAR}, 
+      #{server_instance_name,jdbcType=VARCHAR}, #{database_name,jdbcType=VARCHAR}, #{schema_name,jdbcType=VARCHAR}, 
+      #{object_name,jdbcType=VARCHAR}, #{statement,jdbcType=VARCHAR}, #{additional_information,jdbcType=VARCHAR}, 
+      #{file_name,jdbcType=VARCHAR}, #{audit_file_offset,jdbcType=BIGINT}, #{server_principal_sid,jdbcType=VARBINARY}, 
+      #{target_server_principal_sid,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnGetAuditFileWithBLOBs">
+    insert into fn_get_audit_file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="event_time != null">
+        event_time,
+      </if>
+      <if test="sequence_number != null">
+        sequence_number,
+      </if>
+      <if test="action_id != null">
+        action_id,
+      </if>
+      <if test="succeeded != null">
+        succeeded,
+      </if>
+      <if test="permission_bitmask != null">
+        permission_bitmask,
+      </if>
+      <if test="is_column_permission != null">
+        is_column_permission,
+      </if>
+      <if test="session_id != null">
+        session_id,
+      </if>
+      <if test="server_principal_id != null">
+        server_principal_id,
+      </if>
+      <if test="database_principal_id != null">
+        database_principal_id,
+      </if>
+      <if test="target_server_principal_id != null">
+        target_server_principal_id,
+      </if>
+      <if test="target_database_principal_id != null">
+        target_database_principal_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="class_type != null">
+        class_type,
+      </if>
+      <if test="session_server_principal_name != null">
+        session_server_principal_name,
+      </if>
+      <if test="server_principal_name != null">
+        server_principal_name,
+      </if>
+      <if test="database_principal_name != null">
+        database_principal_name,
+      </if>
+      <if test="target_server_principal_name != null">
+        target_server_principal_name,
+      </if>
+      <if test="target_database_principal_name != null">
+        target_database_principal_name,
+      </if>
+      <if test="server_instance_name != null">
+        server_instance_name,
+      </if>
+      <if test="database_name != null">
+        database_name,
+      </if>
+      <if test="schema_name != null">
+        schema_name,
+      </if>
+      <if test="object_name != null">
+        object_name,
+      </if>
+      <if test="statement != null">
+        statement,
+      </if>
+      <if test="additional_information != null">
+        additional_information,
+      </if>
+      <if test="file_name != null">
+        file_name,
+      </if>
+      <if test="audit_file_offset != null">
+        audit_file_offset,
+      </if>
+      <if test="server_principal_sid != null">
+        server_principal_sid,
+      </if>
+      <if test="target_server_principal_sid != null">
+        target_server_principal_sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="event_time != null">
+        #{event_time,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence_number != null">
+        #{sequence_number,jdbcType=INTEGER},
+      </if>
+      <if test="action_id != null">
+        #{action_id,jdbcType=VARCHAR},
+      </if>
+      <if test="succeeded != null">
+        #{succeeded,jdbcType=BIT},
+      </if>
+      <if test="permission_bitmask != null">
+        #{permission_bitmask,jdbcType=BIGINT},
+      </if>
+      <if test="is_column_permission != null">
+        #{is_column_permission,jdbcType=BIT},
+      </if>
+      <if test="session_id != null">
+        #{session_id,jdbcType=SMALLINT},
+      </if>
+      <if test="server_principal_id != null">
+        #{server_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="database_principal_id != null">
+        #{database_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="target_server_principal_id != null">
+        #{target_server_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="target_database_principal_id != null">
+        #{target_database_principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="class_type != null">
+        #{class_type,jdbcType=VARCHAR},
+      </if>
+      <if test="session_server_principal_name != null">
+        #{session_server_principal_name,jdbcType=VARCHAR},
+      </if>
+      <if test="server_principal_name != null">
+        #{server_principal_name,jdbcType=VARCHAR},
+      </if>
+      <if test="database_principal_name != null">
+        #{database_principal_name,jdbcType=VARCHAR},
+      </if>
+      <if test="target_server_principal_name != null">
+        #{target_server_principal_name,jdbcType=VARCHAR},
+      </if>
+      <if test="target_database_principal_name != null">
+        #{target_database_principal_name,jdbcType=VARCHAR},
+      </if>
+      <if test="server_instance_name != null">
+        #{server_instance_name,jdbcType=VARCHAR},
+      </if>
+      <if test="database_name != null">
+        #{database_name,jdbcType=VARCHAR},
+      </if>
+      <if test="schema_name != null">
+        #{schema_name,jdbcType=VARCHAR},
+      </if>
+      <if test="object_name != null">
+        #{object_name,jdbcType=VARCHAR},
+      </if>
+      <if test="statement != null">
+        #{statement,jdbcType=VARCHAR},
+      </if>
+      <if test="additional_information != null">
+        #{additional_information,jdbcType=VARCHAR},
+      </if>
+      <if test="file_name != null">
+        #{file_name,jdbcType=VARCHAR},
+      </if>
+      <if test="audit_file_offset != null">
+        #{audit_file_offset,jdbcType=BIGINT},
+      </if>
+      <if test="server_principal_sid != null">
+        #{server_principal_sid,jdbcType=VARBINARY},
+      </if>
+      <if test="target_server_principal_sid != null">
+        #{target_server_principal_sid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

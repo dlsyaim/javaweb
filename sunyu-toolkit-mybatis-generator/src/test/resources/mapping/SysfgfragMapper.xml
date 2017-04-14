@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysfgfragMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysfgfrag">
+    <result column="fgid" jdbcType="INTEGER" property="fgid" />
+    <result column="fgfragid" jdbcType="INTEGER" property="fgfragid" />
+    <result column="dbfragid" jdbcType="INTEGER" property="dbfragid" />
+    <result column="phfgid" jdbcType="INTEGER" property="phfgid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysfgfrag">
+    insert into sysfgfrag (fgid, fgfragid, dbfragid, 
+      phfgid, status)
+    values (#{fgid,jdbcType=INTEGER}, #{fgfragid,jdbcType=INTEGER}, #{dbfragid,jdbcType=INTEGER}, 
+      #{phfgid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysfgfrag">
+    insert into sysfgfrag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fgid != null">
+        fgid,
+      </if>
+      <if test="fgfragid != null">
+        fgfragid,
+      </if>
+      <if test="dbfragid != null">
+        dbfragid,
+      </if>
+      <if test="phfgid != null">
+        phfgid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fgid != null">
+        #{fgid,jdbcType=INTEGER},
+      </if>
+      <if test="fgfragid != null">
+        #{fgfragid,jdbcType=INTEGER},
+      </if>
+      <if test="dbfragid != null">
+        #{dbfragid,jdbcType=INTEGER},
+      </if>
+      <if test="phfgid != null">
+        #{phfgid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

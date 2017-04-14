@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.EventNotificationsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.EventNotifications">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="parent_class" jdbcType="TINYINT" property="parent_class" />
+    <result column="parent_class_desc" jdbcType="VARCHAR" property="parent_class_desc" />
+    <result column="parent_id" jdbcType="INTEGER" property="parent_id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="service_name" jdbcType="VARCHAR" property="service_name" />
+    <result column="broker_instance" jdbcType="VARCHAR" property="broker_instance" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.EventNotifications">
+    <result column="creator_sid" jdbcType="VARBINARY" property="creator_sid" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    creator_sid
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.EventNotifications">
+    insert into event_notifications (name, object_id, parent_class, 
+      parent_class_desc, parent_id, create_date, 
+      modify_date, service_name, broker_instance, 
+      principal_id, creator_sid)
+    values (#{name,jdbcType=VARCHAR}, #{object_id,jdbcType=INTEGER}, #{parent_class,jdbcType=TINYINT}, 
+      #{parent_class_desc,jdbcType=VARCHAR}, #{parent_id,jdbcType=INTEGER}, #{create_date,jdbcType=TIMESTAMP}, 
+      #{modify_date,jdbcType=TIMESTAMP}, #{service_name,jdbcType=VARCHAR}, #{broker_instance,jdbcType=VARCHAR}, 
+      #{principal_id,jdbcType=INTEGER}, #{creator_sid,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.EventNotifications">
+    insert into event_notifications
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="parent_class != null">
+        parent_class,
+      </if>
+      <if test="parent_class_desc != null">
+        parent_class_desc,
+      </if>
+      <if test="parent_id != null">
+        parent_id,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="service_name != null">
+        service_name,
+      </if>
+      <if test="broker_instance != null">
+        broker_instance,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="creator_sid != null">
+        creator_sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="parent_class != null">
+        #{parent_class,jdbcType=TINYINT},
+      </if>
+      <if test="parent_class_desc != null">
+        #{parent_class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_id != null">
+        #{parent_id,jdbcType=INTEGER},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="service_name != null">
+        #{service_name,jdbcType=VARCHAR},
+      </if>
+      <if test="broker_instance != null">
+        #{broker_instance,jdbcType=VARCHAR},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="creator_sid != null">
+        #{creator_sid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

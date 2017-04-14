@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnDumpDblogMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnDumpDblog">
+    <result column="Current LSN" jdbcType="VARCHAR" property="current LSN" />
+    <result column="Operation" jdbcType="VARCHAR" property="operation" />
+    <result column="Context" jdbcType="VARCHAR" property="context" />
+    <result column="Transaction ID" jdbcType="VARCHAR" property="transaction ID" />
+    <result column="LogBlockGeneration" jdbcType="BIGINT" property="logBlockGeneration" />
+    <result column="Log Record Fixed Length" jdbcType="SMALLINT" property="log Record Fixed Length" />
+    <result column="Log Record Length" jdbcType="SMALLINT" property="log Record Length" />
+    <result column="Previous LSN" jdbcType="VARCHAR" property="previous LSN" />
+    <result column="Log Reserve" jdbcType="INTEGER" property="log Reserve" />
+    <result column="AllocUnitId" jdbcType="BIGINT" property="allocUnitId" />
+    <result column="AllocUnitName" jdbcType="VARCHAR" property="allocUnitName" />
+    <result column="Page ID" jdbcType="VARCHAR" property="page ID" />
+    <result column="Slot ID" jdbcType="INTEGER" property="slot ID" />
+    <result column="Previous Page LSN" jdbcType="VARCHAR" property="previous Page LSN" />
+    <result column="PartitionId" jdbcType="BIGINT" property="partitionId" />
+    <result column="RowFlags" jdbcType="SMALLINT" property="rowFlags" />
+    <result column="Num Elements" jdbcType="SMALLINT" property="num Elements" />
+    <result column="Offset in Row" jdbcType="SMALLINT" property="offset in Row" />
+    <result column="Modify Size" jdbcType="SMALLINT" property="modify Size" />
+    <result column="Checkpoint Begin" jdbcType="VARCHAR" property="checkpoint Begin" />
+    <result column="CHKPT Begin DB Version" jdbcType="SMALLINT" property="CHKPT Begin DB Version" />
+    <result column="Max XDESID" jdbcType="VARCHAR" property="max XDESID" />
+    <result column="Num Transactions" jdbcType="SMALLINT" property="num Transactions" />
+    <result column="Checkpoint End" jdbcType="VARCHAR" property="checkpoint End" />
+    <result column="CHKPT End DB Version" jdbcType="SMALLINT" property="CHKPT End DB Version" />
+    <result column="Minimum LSN" jdbcType="VARCHAR" property="minimum LSN" />
+    <result column="Dirty Pages" jdbcType="INTEGER" property="dirty Pages" />
+    <result column="Oldest Replicated Begin LSN" jdbcType="VARCHAR" property="oldest Replicated Begin LSN" />
+    <result column="Next Replicated End LSN" jdbcType="VARCHAR" property="next Replicated End LSN" />
+    <result column="Last Distributed Backup End LSN" jdbcType="VARCHAR" property="last Distributed Backup End LSN" />
+    <result column="Last Distributed End LSN" jdbcType="VARCHAR" property="last Distributed End LSN" />
+    <result column="Server UID" jdbcType="INTEGER" property="server UID" />
+    <result column="SPID" jdbcType="INTEGER" property="SPID" />
+    <result column="Xact Type" jdbcType="INTEGER" property="xact Type" />
+    <result column="Begin Time" jdbcType="VARCHAR" property="begin Time" />
+    <result column="Transaction Name" jdbcType="VARCHAR" property="transaction Name" />
+    <result column="Xact ID" jdbcType="BIGINT" property="xact ID" />
+    <result column="Xact Node ID" jdbcType="INTEGER" property="xact Node ID" />
+    <result column="Xact Node Local ID" jdbcType="INTEGER" property="xact Node Local ID" />
+    <result column="End Time" jdbcType="VARCHAR" property="end Time" />
+    <result column="Transaction Begin" jdbcType="VARCHAR" property="transaction Begin" />
+    <result column="Replicated Records" jdbcType="INTEGER" property="replicated Records" />
+    <result column="Oldest Active LSN" jdbcType="VARCHAR" property="oldest Active LSN" />
+    <result column="Server Name" jdbcType="VARCHAR" property="server Name" />
+    <result column="Database Name" jdbcType="VARCHAR" property="database Name" />
+    <result column="Mark Name" jdbcType="VARCHAR" property="mark Name" />
+    <result column="Master XDESID" jdbcType="VARCHAR" property="master XDESID" />
+    <result column="Master DBID" jdbcType="INTEGER" property="master DBID" />
+    <result column="Preplog Begin LSN" jdbcType="VARCHAR" property="preplog Begin LSN" />
+    <result column="Prepare Time" jdbcType="VARCHAR" property="prepare Time" />
+    <result column="Virtual Clock" jdbcType="BIGINT" property="virtual Clock" />
+    <result column="Previous Savepoint" jdbcType="VARCHAR" property="previous Savepoint" />
+    <result column="Savepoint Name" jdbcType="VARCHAR" property="savepoint Name" />
+    <result column="Rowbits First Bit" jdbcType="SMALLINT" property="rowbits First Bit" />
+    <result column="Rowbits Bit Count" jdbcType="SMALLINT" property="rowbits Bit Count" />
+    <result column="Number of Locks" jdbcType="SMALLINT" property="number of Locks" />
+    <result column="Lock Information" jdbcType="VARCHAR" property="lock Information" />
+    <result column="LSN before writes" jdbcType="VARCHAR" property="LSN before writes" />
+    <result column="Pages Written" jdbcType="SMALLINT" property="pages Written" />
+    <result column="Data Pages Delta" jdbcType="INTEGER" property="data Pages Delta" />
+    <result column="Reserved Pages Delta" jdbcType="INTEGER" property="reserved Pages Delta" />
+    <result column="Used Pages Delta" jdbcType="INTEGER" property="used Pages Delta" />
+    <result column="Data Rows Delta" jdbcType="BIGINT" property="data Rows Delta" />
+    <result column="Command Type" jdbcType="INTEGER" property="command Type" />
+    <result column="Publication ID" jdbcType="INTEGER" property="publication ID" />
+    <result column="Article ID" jdbcType="INTEGER" property="article ID" />
+    <result column="Partial Status" jdbcType="INTEGER" property="partial Status" />
+    <result column="Command" jdbcType="VARCHAR" property="command" />
+    <result column="Byte Offset" jdbcType="SMALLINT" property="byte Offset" />
+    <result column="New Split Page" jdbcType="VARCHAR" property="new Split Page" />
+    <result column="Rows Deleted" jdbcType="SMALLINT" property="rows Deleted" />
+    <result column="Bytes Freed" jdbcType="SMALLINT" property="bytes Freed" />
+    <result column="CI Table Id" jdbcType="INTEGER" property="CI Table Id" />
+    <result column="CI Index Id" jdbcType="SMALLINT" property="CI Index Id" />
+    <result column="NewAllocUnitId" jdbcType="BIGINT" property="newAllocUnitId" />
+    <result column="FileGroup ID" jdbcType="SMALLINT" property="fileGroup ID" />
+    <result column="File ID" jdbcType="SMALLINT" property="file ID" />
+    <result column="Physical Name" jdbcType="VARCHAR" property="physical Name" />
+    <result column="Logical Name" jdbcType="VARCHAR" property="logical Name" />
+    <result column="Format LSN" jdbcType="VARCHAR" property="format LSN" />
+    <result column="RowsetId" jdbcType="BIGINT" property="rowsetId" />
+    <result column="Column Offset" jdbcType="INTEGER" property="column Offset" />
+    <result column="Flags" jdbcType="INTEGER" property="flags" />
+    <result column="Text Size" jdbcType="BIGINT" property="text Size" />
+    <result column="Offset" jdbcType="BIGINT" property="offset" />
+    <result column="Old Size" jdbcType="BIGINT" property="old Size" />
+    <result column="New Size" jdbcType="BIGINT" property="new Size" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+    <result column="Bulk allocated extent count" jdbcType="INTEGER" property="bulk allocated extent count" />
+    <result column="Bulk RowsetId" jdbcType="BIGINT" property="bulk RowsetId" />
+    <result column="Bulk AllocUnitId" jdbcType="BIGINT" property="bulk AllocUnitId" />
+    <result column="Bulk allocation first IAM Page ID" jdbcType="VARCHAR" property="bulk allocation first IAM Page ID" />
+    <result column="Bulk allocated extent ids" jdbcType="VARCHAR" property="bulk allocated extent ids" />
+    <result column="Compression Log Type" jdbcType="SMALLINT" property="compression Log Type" />
+    <result column="PageFormat PageType" jdbcType="SMALLINT" property="pageFormat PageType" />
+    <result column="PageFormat PageFlags" jdbcType="SMALLINT" property="pageFormat PageFlags" />
+    <result column="PageFormat PageLevel" jdbcType="SMALLINT" property="pageFormat PageLevel" />
+    <result column="PageFormat PageStat" jdbcType="SMALLINT" property="pageFormat PageStat" />
+    <result column="PageFormat FormatOption" jdbcType="SMALLINT" property="pageFormat FormatOption" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.FnDumpDblogWithBLOBs">
+    <result column="Tag Bits" jdbcType="BINARY" property="tag Bits" />
+    <result column="Flag Bits" jdbcType="BINARY" property="flag Bits" />
+    <result column="Beginlog Status" jdbcType="BINARY" property="beginlog Status" />
+    <result column="Transaction SID" jdbcType="VARBINARY" property="transaction SID" />
+    <result column="Rowbits Bit Value" jdbcType="BINARY" property="rowbits Bit Value" />
+    <result column="New Value" jdbcType="BINARY" property="new Value" />
+    <result column="Old Value" jdbcType="BINARY" property="old Value" />
+    <result column="Meta Status" jdbcType="BINARY" property="meta Status" />
+    <result column="File Status" jdbcType="BINARY" property="file Status" />
+    <result column="TextPtr" jdbcType="BINARY" property="textPtr" />
+    <result column="RowLog Contents 0" jdbcType="VARBINARY" property="rowLog Contents 0" />
+    <result column="RowLog Contents 1" jdbcType="VARBINARY" property="rowLog Contents 1" />
+    <result column="RowLog Contents 2" jdbcType="VARBINARY" property="rowLog Contents 2" />
+    <result column="RowLog Contents 3" jdbcType="VARBINARY" property="rowLog Contents 3" />
+    <result column="RowLog Contents 4" jdbcType="VARBINARY" property="rowLog Contents 4" />
+    <result column="Compression Info" jdbcType="VARBINARY" property="compression Info" />
+    <result column="Log Record" jdbcType="VARBINARY" property="log Record" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    "Tag Bits", "Flag Bits", "Beginlog Status", "Transaction SID", "Rowbits Bit Value", 
+    "New Value", "Old Value", "Meta Status", "File Status", TextPtr, "RowLog Contents 0", 
+    "RowLog Contents 1", "RowLog Contents 2", "RowLog Contents 3", "RowLog Contents 4", 
+    "Compression Info", "Log Record"
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnDumpDblogWithBLOBs">
+    insert into fn_dump_dblog ("Current LSN", Operation, Context, 
+      "Transaction ID", LogBlockGeneration, "Log Record Fixed Length", 
+      "Log Record Length", "Previous LSN", "Log Reserve", 
+      AllocUnitId, AllocUnitName, "Page ID", 
+      "Slot ID", "Previous Page LSN", PartitionId, 
+      RowFlags, "Num Elements", "Offset in Row", 
+      "Modify Size", "Checkpoint Begin", "CHKPT Begin DB Version", 
+      "Max XDESID", "Num Transactions", "Checkpoint End", 
+      "CHKPT End DB Version", "Minimum LSN", "Dirty Pages", 
+      "Oldest Replicated Begin LSN", "Next Replicated End LSN", 
+      "Last Distributed Backup End LSN", "Last Distributed End LSN", 
+      "Server UID", SPID, "Xact Type", 
+      "Begin Time", "Transaction Name", "Xact ID", 
+      "Xact Node ID", "Xact Node Local ID", "End Time", 
+      "Transaction Begin", "Replicated Records", 
+      "Oldest Active LSN", "Server Name", "Database Name", 
+      "Mark Name", "Master XDESID", "Master DBID", 
+      "Preplog Begin LSN", "Prepare Time", "Virtual Clock", 
+      "Previous Savepoint", "Savepoint Name", "Rowbits First Bit", 
+      "Rowbits Bit Count", "Number of Locks", "Lock Information", 
+      "LSN before writes", "Pages Written", "Data Pages Delta", 
+      "Reserved Pages Delta", "Used Pages Delta", 
+      "Data Rows Delta", "Command Type", "Publication ID", 
+      "Article ID", "Partial Status", Command, 
+      "Byte Offset", "New Split Page", "Rows Deleted", 
+      "Bytes Freed", "CI Table Id", "CI Index Id", 
+      NewAllocUnitId, "FileGroup ID", "File ID", 
+      "Physical Name", "Logical Name", "Format LSN", 
+      RowsetId, "Column Offset", Flags, 
+      "Text Size", Offset, "Old Size", 
+      "New Size", Description, "Bulk allocated extent count", 
+      "Bulk RowsetId", "Bulk AllocUnitId", "Bulk allocation first IAM Page ID", 
+      "Bulk allocated extent ids", "Compression Log Type", 
+      "PageFormat PageType", "PageFormat PageFlags", 
+      "PageFormat PageLevel", "PageFormat PageStat", 
+      "PageFormat FormatOption", "Tag Bits", "Flag Bits", 
+      "Beginlog Status", "Transaction SID", "Rowbits Bit Value", 
+      "New Value", "Old Value", "Meta Status", 
+      "File Status", TextPtr, "RowLog Contents 0", 
+      "RowLog Contents 1", "RowLog Contents 2", 
+      "RowLog Contents 3", "RowLog Contents 4", 
+      "Compression Info", "Log Record")
+    values (#{current LSN,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, 
+      #{transaction ID,jdbcType=VARCHAR}, #{logBlockGeneration,jdbcType=BIGINT}, #{log Record Fixed Length,jdbcType=SMALLINT}, 
+      #{log Record Length,jdbcType=SMALLINT}, #{previous LSN,jdbcType=VARCHAR}, #{log Reserve,jdbcType=INTEGER}, 
+      #{allocUnitId,jdbcType=BIGINT}, #{allocUnitName,jdbcType=VARCHAR}, #{page ID,jdbcType=VARCHAR}, 
+      #{slot ID,jdbcType=INTEGER}, #{previous Page LSN,jdbcType=VARCHAR}, #{partitionId,jdbcType=BIGINT}, 
+      #{rowFlags,jdbcType=SMALLINT}, #{num Elements,jdbcType=SMALLINT}, #{offset in Row,jdbcType=SMALLINT}, 
+      #{modify Size,jdbcType=SMALLINT}, #{checkpoint Begin,jdbcType=VARCHAR}, #{CHKPT Begin DB Version,jdbcType=SMALLINT}, 
+      #{max XDESID,jdbcType=VARCHAR}, #{num Transactions,jdbcType=SMALLINT}, #{checkpoint End,jdbcType=VARCHAR}, 
+      #{CHKPT End DB Version,jdbcType=SMALLINT}, #{minimum LSN,jdbcType=VARCHAR}, #{dirty Pages,jdbcType=INTEGER}, 
+      #{oldest Replicated Begin LSN,jdbcType=VARCHAR}, #{next Replicated End LSN,jdbcType=VARCHAR}, 
+      #{last Distributed Backup End LSN,jdbcType=VARCHAR}, #{last Distributed End LSN,jdbcType=VARCHAR}, 
+      #{server UID,jdbcType=INTEGER}, #{SPID,jdbcType=INTEGER}, #{xact Type,jdbcType=INTEGER}, 
+      #{begin Time,jdbcType=VARCHAR}, #{transaction Name,jdbcType=VARCHAR}, #{xact ID,jdbcType=BIGINT}, 
+      #{xact Node ID,jdbcType=INTEGER}, #{xact Node Local ID,jdbcType=INTEGER}, #{end Time,jdbcType=VARCHAR}, 
+      #{transaction Begin,jdbcType=VARCHAR}, #{replicated Records,jdbcType=INTEGER}, 
+      #{oldest Active LSN,jdbcType=VARCHAR}, #{server Name,jdbcType=VARCHAR}, #{database Name,jdbcType=VARCHAR}, 
+      #{mark Name,jdbcType=VARCHAR}, #{master XDESID,jdbcType=VARCHAR}, #{master DBID,jdbcType=INTEGER}, 
+      #{preplog Begin LSN,jdbcType=VARCHAR}, #{prepare Time,jdbcType=VARCHAR}, #{virtual Clock,jdbcType=BIGINT}, 
+      #{previous Savepoint,jdbcType=VARCHAR}, #{savepoint Name,jdbcType=VARCHAR}, #{rowbits First Bit,jdbcType=SMALLINT}, 
+      #{rowbits Bit Count,jdbcType=SMALLINT}, #{number of Locks,jdbcType=SMALLINT}, #{lock Information,jdbcType=VARCHAR}, 
+      #{LSN before writes,jdbcType=VARCHAR}, #{pages Written,jdbcType=SMALLINT}, #{data Pages Delta,jdbcType=INTEGER}, 
+      #{reserved Pages Delta,jdbcType=INTEGER}, #{used Pages Delta,jdbcType=INTEGER}, 
+      #{data Rows Delta,jdbcType=BIGINT}, #{command Type,jdbcType=INTEGER}, #{publication ID,jdbcType=INTEGER}, 
+      #{article ID,jdbcType=INTEGER}, #{partial Status,jdbcType=INTEGER}, #{command,jdbcType=VARCHAR}, 
+      #{byte Offset,jdbcType=SMALLINT}, #{new Split Page,jdbcType=VARCHAR}, #{rows Deleted,jdbcType=SMALLINT}, 
+      #{bytes Freed,jdbcType=SMALLINT}, #{CI Table Id,jdbcType=INTEGER}, #{CI Index Id,jdbcType=SMALLINT}, 
+      #{newAllocUnitId,jdbcType=BIGINT}, #{fileGroup ID,jdbcType=SMALLINT}, #{file ID,jdbcType=SMALLINT}, 
+      #{physical Name,jdbcType=VARCHAR}, #{logical Name,jdbcType=VARCHAR}, #{format LSN,jdbcType=VARCHAR}, 
+      #{rowsetId,jdbcType=BIGINT}, #{column Offset,jdbcType=INTEGER}, #{flags,jdbcType=INTEGER}, 
+      #{text Size,jdbcType=BIGINT}, #{offset,jdbcType=BIGINT}, #{old Size,jdbcType=BIGINT}, 
+      #{new Size,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{bulk allocated extent count,jdbcType=INTEGER}, 
+      #{bulk RowsetId,jdbcType=BIGINT}, #{bulk AllocUnitId,jdbcType=BIGINT}, #{bulk allocation first IAM Page ID,jdbcType=VARCHAR}, 
+      #{bulk allocated extent ids,jdbcType=VARCHAR}, #{compression Log Type,jdbcType=SMALLINT}, 
+      #{pageFormat PageType,jdbcType=SMALLINT}, #{pageFormat PageFlags,jdbcType=SMALLINT}, 
+      #{pageFormat PageLevel,jdbcType=SMALLINT}, #{pageFormat PageStat,jdbcType=SMALLINT}, 
+      #{pageFormat FormatOption,jdbcType=SMALLINT}, #{tag Bits,jdbcType=BINARY}, #{flag Bits,jdbcType=BINARY}, 
+      #{beginlog Status,jdbcType=BINARY}, #{transaction SID,jdbcType=VARBINARY}, #{rowbits Bit Value,jdbcType=BINARY}, 
+      #{new Value,jdbcType=BINARY}, #{old Value,jdbcType=BINARY}, #{meta Status,jdbcType=BINARY}, 
+      #{file Status,jdbcType=BINARY}, #{textPtr,jdbcType=BINARY}, #{rowLog Contents 0,jdbcType=VARBINARY}, 
+      #{rowLog Contents 1,jdbcType=VARBINARY}, #{rowLog Contents 2,jdbcType=VARBINARY}, 
+      #{rowLog Contents 3,jdbcType=VARBINARY}, #{rowLog Contents 4,jdbcType=VARBINARY}, 
+      #{compression Info,jdbcType=VARBINARY}, #{log Record,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnDumpDblogWithBLOBs">
+    insert into fn_dump_dblog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="current LSN != null">
+        "Current LSN",
+      </if>
+      <if test="operation != null">
+        Operation,
+      </if>
+      <if test="context != null">
+        Context,
+      </if>
+      <if test="transaction ID != null">
+        "Transaction ID",
+      </if>
+      <if test="logBlockGeneration != null">
+        LogBlockGeneration,
+      </if>
+      <if test="log Record Fixed Length != null">
+        "Log Record Fixed Length",
+      </if>
+      <if test="log Record Length != null">
+        "Log Record Length",
+      </if>
+      <if test="previous LSN != null">
+        "Previous LSN",
+      </if>
+      <if test="log Reserve != null">
+        "Log Reserve",
+      </if>
+      <if test="allocUnitId != null">
+        AllocUnitId,
+      </if>
+      <if test="allocUnitName != null">
+        AllocUnitName,
+      </if>
+      <if test="page ID != null">
+        "Page ID",
+      </if>
+      <if test="slot ID != null">
+        "Slot ID",
+      </if>
+      <if test="previous Page LSN != null">
+        "Previous Page LSN",
+      </if>
+      <if test="partitionId != null">
+        PartitionId,
+      </if>
+      <if test="rowFlags != null">
+        RowFlags,
+      </if>
+      <if test="num Elements != null">
+        "Num Elements",
+      </if>
+      <if test="offset in Row != null">
+        "Offset in Row",
+      </if>
+      <if test="modify Size != null">
+        "Modify Size",
+      </if>
+      <if test="checkpoint Begin != null">
+        "Checkpoint Begin",
+      </if>
+      <if test="CHKPT Begin DB Version != null">
+        "CHKPT Begin DB Version",
+      </if>
+      <if test="max XDESID != null">
+        "Max XDESID",
+      </if>
+      <if test="num Transactions != null">
+        "Num Transactions",
+      </if>
+      <if test="checkpoint End != null">
+        "Checkpoint End",
+      </if>
+      <if test="CHKPT End DB Version != null">
+        "CHKPT End DB Version",
+      </if>
+      <if test="minimum LSN != null">
+        "Minimum LSN",
+      </if>
+      <if test="dirty Pages != null">
+        "Dirty Pages",
+      </if>
+      <if test="oldest Replicated Begin LSN != null">
+        "Oldest Replicated Begin LSN",
+      </if>
+      <if test="next Replicated End LSN != null">
+        "Next Replicated End LSN",
+      </if>
+      <if test="last Distributed Backup End LSN != null">
+        "Last Distributed Backup End LSN",
+      </if>
+      <if test="last Distributed End LSN != null">
+        "Last Distributed End LSN",
+      </if>
+      <if test="server UID != null">
+        "Server UID",
+      </if>
+      <if test="SPID != null">
+        SPID,
+      </if>
+      <if test="xact Type != null">
+        "Xact Type",
+      </if>
+      <if test="begin Time != null">
+        "Begin Time",
+      </if>
+      <if test="transaction Name != null">
+        "Transaction Name",
+      </if>
+      <if test="xact ID != null">
+        "Xact ID",
+      </if>
+      <if test="xact Node ID != null">
+        "Xact Node ID",
+      </if>
+      <if test="xact Node Local ID != null">
+        "Xact Node Local ID",
+      </if>
+      <if test="end Time != null">
+        "End Time",
+      </if>
+      <if test="transaction Begin != null">
+        "Transaction Begin",
+      </if>
+      <if test="replicated Records != null">
+        "Replicated Records",
+      </if>
+      <if test="oldest Active LSN != null">
+        "Oldest Active LSN",
+      </if>
+      <if test="server Name != null">
+        "Server Name",
+      </if>
+      <if test="database Name != null">
+        "Database Name",
+      </if>
+      <if test="mark Name != null">
+        "Mark Name",
+      </if>
+      <if test="master XDESID != null">
+        "Master XDESID",
+      </if>
+      <if test="master DBID != null">
+        "Master DBID",
+      </if>
+      <if test="preplog Begin LSN != null">
+        "Preplog Begin LSN",
+      </if>
+      <if test="prepare Time != null">
+        "Prepare Time",
+      </if>
+      <if test="virtual Clock != null">
+        "Virtual Clock",
+      </if>
+      <if test="previous Savepoint != null">
+        "Previous Savepoint",
+      </if>
+      <if test="savepoint Name != null">
+        "Savepoint Name",
+      </if>
+      <if test="rowbits First Bit != null">
+        "Rowbits First Bit",
+      </if>
+      <if test="rowbits Bit Count != null">
+        "Rowbits Bit Count",
+      </if>
+      <if test="number of Locks != null">
+        "Number of Locks",
+      </if>
+      <if test="lock Information != null">
+        "Lock Information",
+      </if>
+      <if test="LSN before writes != null">
+        "LSN before writes",
+      </if>
+      <if test="pages Written != null">
+        "Pages Written",
+      </if>
+      <if test="data Pages Delta != null">
+        "Data Pages Delta",
+      </if>
+      <if test="reserved Pages Delta != null">
+        "Reserved Pages Delta",
+      </if>
+      <if test="used Pages Delta != null">
+        "Used Pages Delta",
+      </if>
+      <if test="data Rows Delta != null">
+        "Data Rows Delta",
+      </if>
+      <if test="command Type != null">
+        "Command Type",
+      </if>
+      <if test="publication ID != null">
+        "Publication ID",
+      </if>
+      <if test="article ID != null">
+        "Article ID",
+      </if>
+      <if test="partial Status != null">
+        "Partial Status",
+      </if>
+      <if test="command != null">
+        Command,
+      </if>
+      <if test="byte Offset != null">
+        "Byte Offset",
+      </if>
+      <if test="new Split Page != null">
+        "New Split Page",
+      </if>
+      <if test="rows Deleted != null">
+        "Rows Deleted",
+      </if>
+      <if test="bytes Freed != null">
+        "Bytes Freed",
+      </if>
+      <if test="CI Table Id != null">
+        "CI Table Id",
+      </if>
+      <if test="CI Index Id != null">
+        "CI Index Id",
+      </if>
+      <if test="newAllocUnitId != null">
+        NewAllocUnitId,
+      </if>
+      <if test="fileGroup ID != null">
+        "FileGroup ID",
+      </if>
+      <if test="file ID != null">
+        "File ID",
+      </if>
+      <if test="physical Name != null">
+        "Physical Name",
+      </if>
+      <if test="logical Name != null">
+        "Logical Name",
+      </if>
+      <if test="format LSN != null">
+        "Format LSN",
+      </if>
+      <if test="rowsetId != null">
+        RowsetId,
+      </if>
+      <if test="column Offset != null">
+        "Column Offset",
+      </if>
+      <if test="flags != null">
+        Flags,
+      </if>
+      <if test="text Size != null">
+        "Text Size",
+      </if>
+      <if test="offset != null">
+        Offset,
+      </if>
+      <if test="old Size != null">
+        "Old Size",
+      </if>
+      <if test="new Size != null">
+        "New Size",
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+      <if test="bulk allocated extent count != null">
+        "Bulk allocated extent count",
+      </if>
+      <if test="bulk RowsetId != null">
+        "Bulk RowsetId",
+      </if>
+      <if test="bulk AllocUnitId != null">
+        "Bulk AllocUnitId",
+      </if>
+      <if test="bulk allocation first IAM Page ID != null">
+        "Bulk allocation first IAM Page ID",
+      </if>
+      <if test="bulk allocated extent ids != null">
+        "Bulk allocated extent ids",
+      </if>
+      <if test="compression Log Type != null">
+        "Compression Log Type",
+      </if>
+      <if test="pageFormat PageType != null">
+        "PageFormat PageType",
+      </if>
+      <if test="pageFormat PageFlags != null">
+        "PageFormat PageFlags",
+      </if>
+      <if test="pageFormat PageLevel != null">
+        "PageFormat PageLevel",
+      </if>
+      <if test="pageFormat PageStat != null">
+        "PageFormat PageStat",
+      </if>
+      <if test="pageFormat FormatOption != null">
+        "PageFormat FormatOption",
+      </if>
+      <if test="tag Bits != null">
+        "Tag Bits",
+      </if>
+      <if test="flag Bits != null">
+        "Flag Bits",
+      </if>
+      <if test="beginlog Status != null">
+        "Beginlog Status",
+      </if>
+      <if test="transaction SID != null">
+        "Transaction SID",
+      </if>
+      <if test="rowbits Bit Value != null">
+        "Rowbits Bit Value",
+      </if>
+      <if test="new Value != null">
+        "New Value",
+      </if>
+      <if test="old Value != null">
+        "Old Value",
+      </if>
+      <if test="meta Status != null">
+        "Meta Status",
+      </if>
+      <if test="file Status != null">
+        "File Status",
+      </if>
+      <if test="textPtr != null">
+        TextPtr,
+      </if>
+      <if test="rowLog Contents 0 != null">
+        "RowLog Contents 0",
+      </if>
+      <if test="rowLog Contents 1 != null">
+        "RowLog Contents 1",
+      </if>
+      <if test="rowLog Contents 2 != null">
+        "RowLog Contents 2",
+      </if>
+      <if test="rowLog Contents 3 != null">
+        "RowLog Contents 3",
+      </if>
+      <if test="rowLog Contents 4 != null">
+        "RowLog Contents 4",
+      </if>
+      <if test="compression Info != null">
+        "Compression Info",
+      </if>
+      <if test="log Record != null">
+        "Log Record",
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="current LSN != null">
+        #{current LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null">
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="transaction ID != null">
+        #{transaction ID,jdbcType=VARCHAR},
+      </if>
+      <if test="logBlockGeneration != null">
+        #{logBlockGeneration,jdbcType=BIGINT},
+      </if>
+      <if test="log Record Fixed Length != null">
+        #{log Record Fixed Length,jdbcType=SMALLINT},
+      </if>
+      <if test="log Record Length != null">
+        #{log Record Length,jdbcType=SMALLINT},
+      </if>
+      <if test="previous LSN != null">
+        #{previous LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="log Reserve != null">
+        #{log Reserve,jdbcType=INTEGER},
+      </if>
+      <if test="allocUnitId != null">
+        #{allocUnitId,jdbcType=BIGINT},
+      </if>
+      <if test="allocUnitName != null">
+        #{allocUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="page ID != null">
+        #{page ID,jdbcType=VARCHAR},
+      </if>
+      <if test="slot ID != null">
+        #{slot ID,jdbcType=INTEGER},
+      </if>
+      <if test="previous Page LSN != null">
+        #{previous Page LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="partitionId != null">
+        #{partitionId,jdbcType=BIGINT},
+      </if>
+      <if test="rowFlags != null">
+        #{rowFlags,jdbcType=SMALLINT},
+      </if>
+      <if test="num Elements != null">
+        #{num Elements,jdbcType=SMALLINT},
+      </if>
+      <if test="offset in Row != null">
+        #{offset in Row,jdbcType=SMALLINT},
+      </if>
+      <if test="modify Size != null">
+        #{modify Size,jdbcType=SMALLINT},
+      </if>
+      <if test="checkpoint Begin != null">
+        #{checkpoint Begin,jdbcType=VARCHAR},
+      </if>
+      <if test="CHKPT Begin DB Version != null">
+        #{CHKPT Begin DB Version,jdbcType=SMALLINT},
+      </if>
+      <if test="max XDESID != null">
+        #{max XDESID,jdbcType=VARCHAR},
+      </if>
+      <if test="num Transactions != null">
+        #{num Transactions,jdbcType=SMALLINT},
+      </if>
+      <if test="checkpoint End != null">
+        #{checkpoint End,jdbcType=VARCHAR},
+      </if>
+      <if test="CHKPT End DB Version != null">
+        #{CHKPT End DB Version,jdbcType=SMALLINT},
+      </if>
+      <if test="minimum LSN != null">
+        #{minimum LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="dirty Pages != null">
+        #{dirty Pages,jdbcType=INTEGER},
+      </if>
+      <if test="oldest Replicated Begin LSN != null">
+        #{oldest Replicated Begin LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="next Replicated End LSN != null">
+        #{next Replicated End LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="last Distributed Backup End LSN != null">
+        #{last Distributed Backup End LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="last Distributed End LSN != null">
+        #{last Distributed End LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="server UID != null">
+        #{server UID,jdbcType=INTEGER},
+      </if>
+      <if test="SPID != null">
+        #{SPID,jdbcType=INTEGER},
+      </if>
+      <if test="xact Type != null">
+        #{xact Type,jdbcType=INTEGER},
+      </if>
+      <if test="begin Time != null">
+        #{begin Time,jdbcType=VARCHAR},
+      </if>
+      <if test="transaction Name != null">
+        #{transaction Name,jdbcType=VARCHAR},
+      </if>
+      <if test="xact ID != null">
+        #{xact ID,jdbcType=BIGINT},
+      </if>
+      <if test="xact Node ID != null">
+        #{xact Node ID,jdbcType=INTEGER},
+      </if>
+      <if test="xact Node Local ID != null">
+        #{xact Node Local ID,jdbcType=INTEGER},
+      </if>
+      <if test="end Time != null">
+        #{end Time,jdbcType=VARCHAR},
+      </if>
+      <if test="transaction Begin != null">
+        #{transaction Begin,jdbcType=VARCHAR},
+      </if>
+      <if test="replicated Records != null">
+        #{replicated Records,jdbcType=INTEGER},
+      </if>
+      <if test="oldest Active LSN != null">
+        #{oldest Active LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="server Name != null">
+        #{server Name,jdbcType=VARCHAR},
+      </if>
+      <if test="database Name != null">
+        #{database Name,jdbcType=VARCHAR},
+      </if>
+      <if test="mark Name != null">
+        #{mark Name,jdbcType=VARCHAR},
+      </if>
+      <if test="master XDESID != null">
+        #{master XDESID,jdbcType=VARCHAR},
+      </if>
+      <if test="master DBID != null">
+        #{master DBID,jdbcType=INTEGER},
+      </if>
+      <if test="preplog Begin LSN != null">
+        #{preplog Begin LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="prepare Time != null">
+        #{prepare Time,jdbcType=VARCHAR},
+      </if>
+      <if test="virtual Clock != null">
+        #{virtual Clock,jdbcType=BIGINT},
+      </if>
+      <if test="previous Savepoint != null">
+        #{previous Savepoint,jdbcType=VARCHAR},
+      </if>
+      <if test="savepoint Name != null">
+        #{savepoint Name,jdbcType=VARCHAR},
+      </if>
+      <if test="rowbits First Bit != null">
+        #{rowbits First Bit,jdbcType=SMALLINT},
+      </if>
+      <if test="rowbits Bit Count != null">
+        #{rowbits Bit Count,jdbcType=SMALLINT},
+      </if>
+      <if test="number of Locks != null">
+        #{number of Locks,jdbcType=SMALLINT},
+      </if>
+      <if test="lock Information != null">
+        #{lock Information,jdbcType=VARCHAR},
+      </if>
+      <if test="LSN before writes != null">
+        #{LSN before writes,jdbcType=VARCHAR},
+      </if>
+      <if test="pages Written != null">
+        #{pages Written,jdbcType=SMALLINT},
+      </if>
+      <if test="data Pages Delta != null">
+        #{data Pages Delta,jdbcType=INTEGER},
+      </if>
+      <if test="reserved Pages Delta != null">
+        #{reserved Pages Delta,jdbcType=INTEGER},
+      </if>
+      <if test="used Pages Delta != null">
+        #{used Pages Delta,jdbcType=INTEGER},
+      </if>
+      <if test="data Rows Delta != null">
+        #{data Rows Delta,jdbcType=BIGINT},
+      </if>
+      <if test="command Type != null">
+        #{command Type,jdbcType=INTEGER},
+      </if>
+      <if test="publication ID != null">
+        #{publication ID,jdbcType=INTEGER},
+      </if>
+      <if test="article ID != null">
+        #{article ID,jdbcType=INTEGER},
+      </if>
+      <if test="partial Status != null">
+        #{partial Status,jdbcType=INTEGER},
+      </if>
+      <if test="command != null">
+        #{command,jdbcType=VARCHAR},
+      </if>
+      <if test="byte Offset != null">
+        #{byte Offset,jdbcType=SMALLINT},
+      </if>
+      <if test="new Split Page != null">
+        #{new Split Page,jdbcType=VARCHAR},
+      </if>
+      <if test="rows Deleted != null">
+        #{rows Deleted,jdbcType=SMALLINT},
+      </if>
+      <if test="bytes Freed != null">
+        #{bytes Freed,jdbcType=SMALLINT},
+      </if>
+      <if test="CI Table Id != null">
+        #{CI Table Id,jdbcType=INTEGER},
+      </if>
+      <if test="CI Index Id != null">
+        #{CI Index Id,jdbcType=SMALLINT},
+      </if>
+      <if test="newAllocUnitId != null">
+        #{newAllocUnitId,jdbcType=BIGINT},
+      </if>
+      <if test="fileGroup ID != null">
+        #{fileGroup ID,jdbcType=SMALLINT},
+      </if>
+      <if test="file ID != null">
+        #{file ID,jdbcType=SMALLINT},
+      </if>
+      <if test="physical Name != null">
+        #{physical Name,jdbcType=VARCHAR},
+      </if>
+      <if test="logical Name != null">
+        #{logical Name,jdbcType=VARCHAR},
+      </if>
+      <if test="format LSN != null">
+        #{format LSN,jdbcType=VARCHAR},
+      </if>
+      <if test="rowsetId != null">
+        #{rowsetId,jdbcType=BIGINT},
+      </if>
+      <if test="column Offset != null">
+        #{column Offset,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="text Size != null">
+        #{text Size,jdbcType=BIGINT},
+      </if>
+      <if test="offset != null">
+        #{offset,jdbcType=BIGINT},
+      </if>
+      <if test="old Size != null">
+        #{old Size,jdbcType=BIGINT},
+      </if>
+      <if test="new Size != null">
+        #{new Size,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="bulk allocated extent count != null">
+        #{bulk allocated extent count,jdbcType=INTEGER},
+      </if>
+      <if test="bulk RowsetId != null">
+        #{bulk RowsetId,jdbcType=BIGINT},
+      </if>
+      <if test="bulk AllocUnitId != null">
+        #{bulk AllocUnitId,jdbcType=BIGINT},
+      </if>
+      <if test="bulk allocation first IAM Page ID != null">
+        #{bulk allocation first IAM Page ID,jdbcType=VARCHAR},
+      </if>
+      <if test="bulk allocated extent ids != null">
+        #{bulk allocated extent ids,jdbcType=VARCHAR},
+      </if>
+      <if test="compression Log Type != null">
+        #{compression Log Type,jdbcType=SMALLINT},
+      </if>
+      <if test="pageFormat PageType != null">
+        #{pageFormat PageType,jdbcType=SMALLINT},
+      </if>
+      <if test="pageFormat PageFlags != null">
+        #{pageFormat PageFlags,jdbcType=SMALLINT},
+      </if>
+      <if test="pageFormat PageLevel != null">
+        #{pageFormat PageLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="pageFormat PageStat != null">
+        #{pageFormat PageStat,jdbcType=SMALLINT},
+      </if>
+      <if test="pageFormat FormatOption != null">
+        #{pageFormat FormatOption,jdbcType=SMALLINT},
+      </if>
+      <if test="tag Bits != null">
+        #{tag Bits,jdbcType=BINARY},
+      </if>
+      <if test="flag Bits != null">
+        #{flag Bits,jdbcType=BINARY},
+      </if>
+      <if test="beginlog Status != null">
+        #{beginlog Status,jdbcType=BINARY},
+      </if>
+      <if test="transaction SID != null">
+        #{transaction SID,jdbcType=VARBINARY},
+      </if>
+      <if test="rowbits Bit Value != null">
+        #{rowbits Bit Value,jdbcType=BINARY},
+      </if>
+      <if test="new Value != null">
+        #{new Value,jdbcType=BINARY},
+      </if>
+      <if test="old Value != null">
+        #{old Value,jdbcType=BINARY},
+      </if>
+      <if test="meta Status != null">
+        #{meta Status,jdbcType=BINARY},
+      </if>
+      <if test="file Status != null">
+        #{file Status,jdbcType=BINARY},
+      </if>
+      <if test="textPtr != null">
+        #{textPtr,jdbcType=BINARY},
+      </if>
+      <if test="rowLog Contents 0 != null">
+        #{rowLog Contents 0,jdbcType=VARBINARY},
+      </if>
+      <if test="rowLog Contents 1 != null">
+        #{rowLog Contents 1,jdbcType=VARBINARY},
+      </if>
+      <if test="rowLog Contents 2 != null">
+        #{rowLog Contents 2,jdbcType=VARBINARY},
+      </if>
+      <if test="rowLog Contents 3 != null">
+        #{rowLog Contents 3,jdbcType=VARBINARY},
+      </if>
+      <if test="rowLog Contents 4 != null">
+        #{rowLog Contents 4,jdbcType=VARBINARY},
+      </if>
+      <if test="compression Info != null">
+        #{compression Info,jdbcType=VARBINARY},
+      </if>
+      <if test="log Record != null">
+        #{log Record,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

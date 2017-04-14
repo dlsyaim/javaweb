@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbIndexOperationalStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbIndexOperationalStats">
+    <result column="database_id" jdbcType="SMALLINT" property="database_id" />
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="index_id" jdbcType="INTEGER" property="index_id" />
+    <result column="partition_number" jdbcType="INTEGER" property="partition_number" />
+    <result column="leaf_insert_count" jdbcType="BIGINT" property="leaf_insert_count" />
+    <result column="leaf_delete_count" jdbcType="BIGINT" property="leaf_delete_count" />
+    <result column="leaf_update_count" jdbcType="BIGINT" property="leaf_update_count" />
+    <result column="leaf_ghost_count" jdbcType="BIGINT" property="leaf_ghost_count" />
+    <result column="nonleaf_insert_count" jdbcType="BIGINT" property="nonleaf_insert_count" />
+    <result column="nonleaf_delete_count" jdbcType="BIGINT" property="nonleaf_delete_count" />
+    <result column="nonleaf_update_count" jdbcType="BIGINT" property="nonleaf_update_count" />
+    <result column="leaf_allocation_count" jdbcType="BIGINT" property="leaf_allocation_count" />
+    <result column="nonleaf_allocation_count" jdbcType="BIGINT" property="nonleaf_allocation_count" />
+    <result column="leaf_page_merge_count" jdbcType="BIGINT" property="leaf_page_merge_count" />
+    <result column="nonleaf_page_merge_count" jdbcType="BIGINT" property="nonleaf_page_merge_count" />
+    <result column="range_scan_count" jdbcType="BIGINT" property="range_scan_count" />
+    <result column="singleton_lookup_count" jdbcType="BIGINT" property="singleton_lookup_count" />
+    <result column="forwarded_fetch_count" jdbcType="BIGINT" property="forwarded_fetch_count" />
+    <result column="lob_fetch_in_pages" jdbcType="BIGINT" property="lob_fetch_in_pages" />
+    <result column="lob_fetch_in_bytes" jdbcType="BIGINT" property="lob_fetch_in_bytes" />
+    <result column="lob_orphan_create_count" jdbcType="BIGINT" property="lob_orphan_create_count" />
+    <result column="lob_orphan_insert_count" jdbcType="BIGINT" property="lob_orphan_insert_count" />
+    <result column="row_overflow_fetch_in_pages" jdbcType="BIGINT" property="row_overflow_fetch_in_pages" />
+    <result column="row_overflow_fetch_in_bytes" jdbcType="BIGINT" property="row_overflow_fetch_in_bytes" />
+    <result column="column_value_push_off_row_count" jdbcType="BIGINT" property="column_value_push_off_row_count" />
+    <result column="column_value_pull_in_row_count" jdbcType="BIGINT" property="column_value_pull_in_row_count" />
+    <result column="row_lock_count" jdbcType="BIGINT" property="row_lock_count" />
+    <result column="row_lock_wait_count" jdbcType="BIGINT" property="row_lock_wait_count" />
+    <result column="row_lock_wait_in_ms" jdbcType="BIGINT" property="row_lock_wait_in_ms" />
+    <result column="page_lock_count" jdbcType="BIGINT" property="page_lock_count" />
+    <result column="page_lock_wait_count" jdbcType="BIGINT" property="page_lock_wait_count" />
+    <result column="page_lock_wait_in_ms" jdbcType="BIGINT" property="page_lock_wait_in_ms" />
+    <result column="index_lock_promotion_attempt_count" jdbcType="BIGINT" property="index_lock_promotion_attempt_count" />
+    <result column="index_lock_promotion_count" jdbcType="BIGINT" property="index_lock_promotion_count" />
+    <result column="page_latch_wait_count" jdbcType="BIGINT" property="page_latch_wait_count" />
+    <result column="page_latch_wait_in_ms" jdbcType="BIGINT" property="page_latch_wait_in_ms" />
+    <result column="page_io_latch_wait_count" jdbcType="BIGINT" property="page_io_latch_wait_count" />
+    <result column="page_io_latch_wait_in_ms" jdbcType="BIGINT" property="page_io_latch_wait_in_ms" />
+    <result column="tree_page_latch_wait_count" jdbcType="BIGINT" property="tree_page_latch_wait_count" />
+    <result column="tree_page_latch_wait_in_ms" jdbcType="BIGINT" property="tree_page_latch_wait_in_ms" />
+    <result column="tree_page_io_latch_wait_count" jdbcType="BIGINT" property="tree_page_io_latch_wait_count" />
+    <result column="tree_page_io_latch_wait_in_ms" jdbcType="BIGINT" property="tree_page_io_latch_wait_in_ms" />
+    <result column="page_compression_attempt_count" jdbcType="BIGINT" property="page_compression_attempt_count" />
+    <result column="page_compression_success_count" jdbcType="BIGINT" property="page_compression_success_count" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbIndexOperationalStats">
+    insert into dm_db_index_operational_stats (database_id, object_id, index_id, 
+      partition_number, leaf_insert_count, leaf_delete_count, 
+      leaf_update_count, leaf_ghost_count, nonleaf_insert_count, 
+      nonleaf_delete_count, nonleaf_update_count, 
+      leaf_allocation_count, nonleaf_allocation_count, 
+      leaf_page_merge_count, nonleaf_page_merge_count, 
+      range_scan_count, singleton_lookup_count, 
+      forwarded_fetch_count, lob_fetch_in_pages, 
+      lob_fetch_in_bytes, lob_orphan_create_count, 
+      lob_orphan_insert_count, row_overflow_fetch_in_pages, 
+      row_overflow_fetch_in_bytes, column_value_push_off_row_count, 
+      column_value_pull_in_row_count, row_lock_count, 
+      row_lock_wait_count, row_lock_wait_in_ms, 
+      page_lock_count, page_lock_wait_count, page_lock_wait_in_ms, 
+      index_lock_promotion_attempt_count, index_lock_promotion_count, 
+      page_latch_wait_count, page_latch_wait_in_ms, 
+      page_io_latch_wait_count, page_io_latch_wait_in_ms, 
+      tree_page_latch_wait_count, tree_page_latch_wait_in_ms, 
+      tree_page_io_latch_wait_count, tree_page_io_latch_wait_in_ms, 
+      page_compression_attempt_count, page_compression_success_count
+      )
+    values (#{database_id,jdbcType=SMALLINT}, #{object_id,jdbcType=INTEGER}, #{index_id,jdbcType=INTEGER}, 
+      #{partition_number,jdbcType=INTEGER}, #{leaf_insert_count,jdbcType=BIGINT}, #{leaf_delete_count,jdbcType=BIGINT}, 
+      #{leaf_update_count,jdbcType=BIGINT}, #{leaf_ghost_count,jdbcType=BIGINT}, #{nonleaf_insert_count,jdbcType=BIGINT}, 
+      #{nonleaf_delete_count,jdbcType=BIGINT}, #{nonleaf_update_count,jdbcType=BIGINT}, 
+      #{leaf_allocation_count,jdbcType=BIGINT}, #{nonleaf_allocation_count,jdbcType=BIGINT}, 
+      #{leaf_page_merge_count,jdbcType=BIGINT}, #{nonleaf_page_merge_count,jdbcType=BIGINT}, 
+      #{range_scan_count,jdbcType=BIGINT}, #{singleton_lookup_count,jdbcType=BIGINT}, 
+      #{forwarded_fetch_count,jdbcType=BIGINT}, #{lob_fetch_in_pages,jdbcType=BIGINT}, 
+      #{lob_fetch_in_bytes,jdbcType=BIGINT}, #{lob_orphan_create_count,jdbcType=BIGINT}, 
+      #{lob_orphan_insert_count,jdbcType=BIGINT}, #{row_overflow_fetch_in_pages,jdbcType=BIGINT}, 
+      #{row_overflow_fetch_in_bytes,jdbcType=BIGINT}, #{column_value_push_off_row_count,jdbcType=BIGINT}, 
+      #{column_value_pull_in_row_count,jdbcType=BIGINT}, #{row_lock_count,jdbcType=BIGINT}, 
+      #{row_lock_wait_count,jdbcType=BIGINT}, #{row_lock_wait_in_ms,jdbcType=BIGINT}, 
+      #{page_lock_count,jdbcType=BIGINT}, #{page_lock_wait_count,jdbcType=BIGINT}, #{page_lock_wait_in_ms,jdbcType=BIGINT}, 
+      #{index_lock_promotion_attempt_count,jdbcType=BIGINT}, #{index_lock_promotion_count,jdbcType=BIGINT}, 
+      #{page_latch_wait_count,jdbcType=BIGINT}, #{page_latch_wait_in_ms,jdbcType=BIGINT}, 
+      #{page_io_latch_wait_count,jdbcType=BIGINT}, #{page_io_latch_wait_in_ms,jdbcType=BIGINT}, 
+      #{tree_page_latch_wait_count,jdbcType=BIGINT}, #{tree_page_latch_wait_in_ms,jdbcType=BIGINT}, 
+      #{tree_page_io_latch_wait_count,jdbcType=BIGINT}, #{tree_page_io_latch_wait_in_ms,jdbcType=BIGINT}, 
+      #{page_compression_attempt_count,jdbcType=BIGINT}, #{page_compression_success_count,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbIndexOperationalStats">
+    insert into dm_db_index_operational_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="index_id != null">
+        index_id,
+      </if>
+      <if test="partition_number != null">
+        partition_number,
+      </if>
+      <if test="leaf_insert_count != null">
+        leaf_insert_count,
+      </if>
+      <if test="leaf_delete_count != null">
+        leaf_delete_count,
+      </if>
+      <if test="leaf_update_count != null">
+        leaf_update_count,
+      </if>
+      <if test="leaf_ghost_count != null">
+        leaf_ghost_count,
+      </if>
+      <if test="nonleaf_insert_count != null">
+        nonleaf_insert_count,
+      </if>
+      <if test="nonleaf_delete_count != null">
+        nonleaf_delete_count,
+      </if>
+      <if test="nonleaf_update_count != null">
+        nonleaf_update_count,
+      </if>
+      <if test="leaf_allocation_count != null">
+        leaf_allocation_count,
+      </if>
+      <if test="nonleaf_allocation_count != null">
+        nonleaf_allocation_count,
+      </if>
+      <if test="leaf_page_merge_count != null">
+        leaf_page_merge_count,
+      </if>
+      <if test="nonleaf_page_merge_count != null">
+        nonleaf_page_merge_count,
+      </if>
+      <if test="range_scan_count != null">
+        range_scan_count,
+      </if>
+      <if test="singleton_lookup_count != null">
+        singleton_lookup_count,
+      </if>
+      <if test="forwarded_fetch_count != null">
+        forwarded_fetch_count,
+      </if>
+      <if test="lob_fetch_in_pages != null">
+        lob_fetch_in_pages,
+      </if>
+      <if test="lob_fetch_in_bytes != null">
+        lob_fetch_in_bytes,
+      </if>
+      <if test="lob_orphan_create_count != null">
+        lob_orphan_create_count,
+      </if>
+      <if test="lob_orphan_insert_count != null">
+        lob_orphan_insert_count,
+      </if>
+      <if test="row_overflow_fetch_in_pages != null">
+        row_overflow_fetch_in_pages,
+      </if>
+      <if test="row_overflow_fetch_in_bytes != null">
+        row_overflow_fetch_in_bytes,
+      </if>
+      <if test="column_value_push_off_row_count != null">
+        column_value_push_off_row_count,
+      </if>
+      <if test="column_value_pull_in_row_count != null">
+        column_value_pull_in_row_count,
+      </if>
+      <if test="row_lock_count != null">
+        row_lock_count,
+      </if>
+      <if test="row_lock_wait_count != null">
+        row_lock_wait_count,
+      </if>
+      <if test="row_lock_wait_in_ms != null">
+        row_lock_wait_in_ms,
+      </if>
+      <if test="page_lock_count != null">
+        page_lock_count,
+      </if>
+      <if test="page_lock_wait_count != null">
+        page_lock_wait_count,
+      </if>
+      <if test="page_lock_wait_in_ms != null">
+        page_lock_wait_in_ms,
+      </if>
+      <if test="index_lock_promotion_attempt_count != null">
+        index_lock_promotion_attempt_count,
+      </if>
+      <if test="index_lock_promotion_count != null">
+        index_lock_promotion_count,
+      </if>
+      <if test="page_latch_wait_count != null">
+        page_latch_wait_count,
+      </if>
+      <if test="page_latch_wait_in_ms != null">
+        page_latch_wait_in_ms,
+      </if>
+      <if test="page_io_latch_wait_count != null">
+        page_io_latch_wait_count,
+      </if>
+      <if test="page_io_latch_wait_in_ms != null">
+        page_io_latch_wait_in_ms,
+      </if>
+      <if test="tree_page_latch_wait_count != null">
+        tree_page_latch_wait_count,
+      </if>
+      <if test="tree_page_latch_wait_in_ms != null">
+        tree_page_latch_wait_in_ms,
+      </if>
+      <if test="tree_page_io_latch_wait_count != null">
+        tree_page_io_latch_wait_count,
+      </if>
+      <if test="tree_page_io_latch_wait_in_ms != null">
+        tree_page_io_latch_wait_in_ms,
+      </if>
+      <if test="page_compression_attempt_count != null">
+        page_compression_attempt_count,
+      </if>
+      <if test="page_compression_success_count != null">
+        page_compression_success_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=SMALLINT},
+      </if>
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_id != null">
+        #{index_id,jdbcType=INTEGER},
+      </if>
+      <if test="partition_number != null">
+        #{partition_number,jdbcType=INTEGER},
+      </if>
+      <if test="leaf_insert_count != null">
+        #{leaf_insert_count,jdbcType=BIGINT},
+      </if>
+      <if test="leaf_delete_count != null">
+        #{leaf_delete_count,jdbcType=BIGINT},
+      </if>
+      <if test="leaf_update_count != null">
+        #{leaf_update_count,jdbcType=BIGINT},
+      </if>
+      <if test="leaf_ghost_count != null">
+        #{leaf_ghost_count,jdbcType=BIGINT},
+      </if>
+      <if test="nonleaf_insert_count != null">
+        #{nonleaf_insert_count,jdbcType=BIGINT},
+      </if>
+      <if test="nonleaf_delete_count != null">
+        #{nonleaf_delete_count,jdbcType=BIGINT},
+      </if>
+      <if test="nonleaf_update_count != null">
+        #{nonleaf_update_count,jdbcType=BIGINT},
+      </if>
+      <if test="leaf_allocation_count != null">
+        #{leaf_allocation_count,jdbcType=BIGINT},
+      </if>
+      <if test="nonleaf_allocation_count != null">
+        #{nonleaf_allocation_count,jdbcType=BIGINT},
+      </if>
+      <if test="leaf_page_merge_count != null">
+        #{leaf_page_merge_count,jdbcType=BIGINT},
+      </if>
+      <if test="nonleaf_page_merge_count != null">
+        #{nonleaf_page_merge_count,jdbcType=BIGINT},
+      </if>
+      <if test="range_scan_count != null">
+        #{range_scan_count,jdbcType=BIGINT},
+      </if>
+      <if test="singleton_lookup_count != null">
+        #{singleton_lookup_count,jdbcType=BIGINT},
+      </if>
+      <if test="forwarded_fetch_count != null">
+        #{forwarded_fetch_count,jdbcType=BIGINT},
+      </if>
+      <if test="lob_fetch_in_pages != null">
+        #{lob_fetch_in_pages,jdbcType=BIGINT},
+      </if>
+      <if test="lob_fetch_in_bytes != null">
+        #{lob_fetch_in_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="lob_orphan_create_count != null">
+        #{lob_orphan_create_count,jdbcType=BIGINT},
+      </if>
+      <if test="lob_orphan_insert_count != null">
+        #{lob_orphan_insert_count,jdbcType=BIGINT},
+      </if>
+      <if test="row_overflow_fetch_in_pages != null">
+        #{row_overflow_fetch_in_pages,jdbcType=BIGINT},
+      </if>
+      <if test="row_overflow_fetch_in_bytes != null">
+        #{row_overflow_fetch_in_bytes,jdbcType=BIGINT},
+      </if>
+      <if test="column_value_push_off_row_count != null">
+        #{column_value_push_off_row_count,jdbcType=BIGINT},
+      </if>
+      <if test="column_value_pull_in_row_count != null">
+        #{column_value_pull_in_row_count,jdbcType=BIGINT},
+      </if>
+      <if test="row_lock_count != null">
+        #{row_lock_count,jdbcType=BIGINT},
+      </if>
+      <if test="row_lock_wait_count != null">
+        #{row_lock_wait_count,jdbcType=BIGINT},
+      </if>
+      <if test="row_lock_wait_in_ms != null">
+        #{row_lock_wait_in_ms,jdbcType=BIGINT},
+      </if>
+      <if test="page_lock_count != null">
+        #{page_lock_count,jdbcType=BIGINT},
+      </if>
+      <if test="page_lock_wait_count != null">
+        #{page_lock_wait_count,jdbcType=BIGINT},
+      </if>
+      <if test="page_lock_wait_in_ms != null">
+        #{page_lock_wait_in_ms,jdbcType=BIGINT},
+      </if>
+      <if test="index_lock_promotion_attempt_count != null">
+        #{index_lock_promotion_attempt_count,jdbcType=BIGINT},
+      </if>
+      <if test="index_lock_promotion_count != null">
+        #{index_lock_promotion_count,jdbcType=BIGINT},
+      </if>
+      <if test="page_latch_wait_count != null">
+        #{page_latch_wait_count,jdbcType=BIGINT},
+      </if>
+      <if test="page_latch_wait_in_ms != null">
+        #{page_latch_wait_in_ms,jdbcType=BIGINT},
+      </if>
+      <if test="page_io_latch_wait_count != null">
+        #{page_io_latch_wait_count,jdbcType=BIGINT},
+      </if>
+      <if test="page_io_latch_wait_in_ms != null">
+        #{page_io_latch_wait_in_ms,jdbcType=BIGINT},
+      </if>
+      <if test="tree_page_latch_wait_count != null">
+        #{tree_page_latch_wait_count,jdbcType=BIGINT},
+      </if>
+      <if test="tree_page_latch_wait_in_ms != null">
+        #{tree_page_latch_wait_in_ms,jdbcType=BIGINT},
+      </if>
+      <if test="tree_page_io_latch_wait_count != null">
+        #{tree_page_io_latch_wait_count,jdbcType=BIGINT},
+      </if>
+      <if test="tree_page_io_latch_wait_in_ms != null">
+        #{tree_page_io_latch_wait_in_ms,jdbcType=BIGINT},
+      </if>
+      <if test="page_compression_attempt_count != null">
+        #{page_compression_attempt_count,jdbcType=BIGINT},
+      </if>
+      <if test="page_compression_success_count != null">
+        #{page_compression_success_count,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

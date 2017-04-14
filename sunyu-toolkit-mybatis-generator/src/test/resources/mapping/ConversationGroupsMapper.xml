@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ConversationGroupsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ConversationGroups">
+    <result column="conversation_group_id" jdbcType="CHAR" property="conversation_group_id" />
+    <result column="service_id" jdbcType="INTEGER" property="service_id" />
+    <result column="is_system" jdbcType="BIT" property="is_system" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ConversationGroups">
+    insert into conversation_groups (conversation_group_id, service_id, is_system
+      )
+    values (#{conversation_group_id,jdbcType=CHAR}, #{service_id,jdbcType=INTEGER}, #{is_system,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ConversationGroups">
+    insert into conversation_groups
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conversation_group_id != null">
+        conversation_group_id,
+      </if>
+      <if test="service_id != null">
+        service_id,
+      </if>
+      <if test="is_system != null">
+        is_system,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conversation_group_id != null">
+        #{conversation_group_id,jdbcType=CHAR},
+      </if>
+      <if test="service_id != null">
+        #{service_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_system != null">
+        #{is_system,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

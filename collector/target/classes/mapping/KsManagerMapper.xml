@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsManagerMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsManager">
+    <id column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="ManagerName" jdbcType="VARCHAR" property="managerName" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="MobilePhone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="QQ" jdbcType="VARCHAR" property="QQ" />
+    <result column="UserEmail" jdbcType="VARCHAR" property="userEmail" />
+    <result column="Idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="RealName" jdbcType="VARCHAR" property="realName" />
+    <result column="LoginIP" jdbcType="VARCHAR" property="loginIP" />
+    <result column="LoginTime" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="LoginNum" jdbcType="BIGINT" property="loginNum" />
+    <result column="RoleID" jdbcType="BIGINT" property="roleID" />
+    <result column="WebSiteID" jdbcType="BIGINT" property="webSiteID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="AddUser" jdbcType="VARCHAR" property="addUser" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ManagerID, ManagerName, Password, MobilePhone, QQ, UserEmail, Idcard, RealName, LoginIP, 
+    LoginTime, LoginNum, RoleID, WebSiteID, AddTime, AddUser, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Manager
+    where ManagerID = #{managerID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_Manager
+    where ManagerID = #{managerID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsManager">
+    insert into KS_Manager (ManagerID, ManagerName, Password, 
+      MobilePhone, QQ, UserEmail, 
+      Idcard, RealName, LoginIP, 
+      LoginTime, LoginNum, RoleID, 
+      WebSiteID, AddTime, AddUser, 
+      Status)
+    values (#{managerID,jdbcType=BIGINT}, #{managerName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{QQ,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{loginIP,jdbcType=VARCHAR}, 
+      #{loginTime,jdbcType=TIMESTAMP}, #{loginNum,jdbcType=BIGINT}, #{roleID,jdbcType=BIGINT}, 
+      #{webSiteID,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, #{addUser,jdbcType=VARCHAR}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsManager">
+    insert into KS_Manager
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="managerName != null">
+        ManagerName,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="mobilePhone != null">
+        MobilePhone,
+      </if>
+      <if test="QQ != null">
+        QQ,
+      </if>
+      <if test="userEmail != null">
+        UserEmail,
+      </if>
+      <if test="idcard != null">
+        Idcard,
+      </if>
+      <if test="realName != null">
+        RealName,
+      </if>
+      <if test="loginIP != null">
+        LoginIP,
+      </if>
+      <if test="loginTime != null">
+        LoginTime,
+      </if>
+      <if test="loginNum != null">
+        LoginNum,
+      </if>
+      <if test="roleID != null">
+        RoleID,
+      </if>
+      <if test="webSiteID != null">
+        WebSiteID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="addUser != null">
+        AddUser,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="managerName != null">
+        #{managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="QQ != null">
+        #{QQ,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIP != null">
+        #{loginIP,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginNum != null">
+        #{loginNum,jdbcType=BIGINT},
+      </if>
+      <if test="roleID != null">
+        #{roleID,jdbcType=BIGINT},
+      </if>
+      <if test="webSiteID != null">
+        #{webSiteID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUser != null">
+        #{addUser,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsManager">
+    update KS_Manager
+    <set>
+      <if test="managerName != null">
+        ManagerName = #{managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        MobilePhone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="QQ != null">
+        QQ = #{QQ,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        UserEmail = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        Idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        RealName = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIP != null">
+        LoginIP = #{loginIP,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        LoginTime = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginNum != null">
+        LoginNum = #{loginNum,jdbcType=BIGINT},
+      </if>
+      <if test="roleID != null">
+        RoleID = #{roleID,jdbcType=BIGINT},
+      </if>
+      <if test="webSiteID != null">
+        WebSiteID = #{webSiteID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUser != null">
+        AddUser = #{addUser,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where ManagerID = #{managerID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsManager">
+    update KS_Manager
+    set ManagerName = #{managerName,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      MobilePhone = #{mobilePhone,jdbcType=VARCHAR},
+      QQ = #{QQ,jdbcType=VARCHAR},
+      UserEmail = #{userEmail,jdbcType=VARCHAR},
+      Idcard = #{idcard,jdbcType=VARCHAR},
+      RealName = #{realName,jdbcType=VARCHAR},
+      LoginIP = #{loginIP,jdbcType=VARCHAR},
+      LoginTime = #{loginTime,jdbcType=TIMESTAMP},
+      LoginNum = #{loginNum,jdbcType=BIGINT},
+      RoleID = #{roleID,jdbcType=BIGINT},
+      WebSiteID = #{webSiteID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      AddUser = #{addUser,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=SMALLINT}
+    where ManagerID = #{managerID,jdbcType=BIGINT}
+  </update>
+</mapper>

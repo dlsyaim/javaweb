@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyssqlguidesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syssqlguides">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="scopetype" jdbcType="TINYINT" property="scopetype" />
+    <result column="scopeid" jdbcType="INTEGER" property="scopeid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.SyssqlguidesWithBLOBs">
+    <result column="hash" jdbcType="VARBINARY" property="hash" />
+    <result column="batchtext" jdbcType="CLOB" property="batchtext" />
+    <result column="paramorhinttext" jdbcType="CLOB" property="paramorhinttext" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    hash, batchtext, paramorhinttext
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SyssqlguidesWithBLOBs">
+    insert into syssqlguides (id, name, scopetype, 
+      scopeid, status, created, 
+      modified, hash, batchtext, 
+      paramorhinttext)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{scopetype,jdbcType=TINYINT}, 
+      #{scopeid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+      #{modified,jdbcType=TIMESTAMP}, #{hash,jdbcType=VARBINARY}, #{batchtext,jdbcType=CLOB}, 
+      #{paramorhinttext,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SyssqlguidesWithBLOBs">
+    insert into syssqlguides
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="scopetype != null">
+        scopetype,
+      </if>
+      <if test="scopeid != null">
+        scopeid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="hash != null">
+        hash,
+      </if>
+      <if test="batchtext != null">
+        batchtext,
+      </if>
+      <if test="paramorhinttext != null">
+        paramorhinttext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="scopetype != null">
+        #{scopetype,jdbcType=TINYINT},
+      </if>
+      <if test="scopeid != null">
+        #{scopeid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hash != null">
+        #{hash,jdbcType=VARBINARY},
+      </if>
+      <if test="batchtext != null">
+        #{batchtext,jdbcType=CLOB},
+      </if>
+      <if test="paramorhinttext != null">
+        #{paramorhinttext,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

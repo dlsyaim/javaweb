@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmResourceGovernorWorkloadGroupsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmResourceGovernorWorkloadGroups">
+    <result column="group_id" jdbcType="INTEGER" property="group_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+    <result column="statistics_start_time" jdbcType="TIMESTAMP" property="statistics_start_time" />
+    <result column="total_request_count" jdbcType="BIGINT" property="total_request_count" />
+    <result column="total_queued_request_count" jdbcType="BIGINT" property="total_queued_request_count" />
+    <result column="active_request_count" jdbcType="INTEGER" property="active_request_count" />
+    <result column="queued_request_count" jdbcType="INTEGER" property="queued_request_count" />
+    <result column="total_cpu_limit_violation_count" jdbcType="BIGINT" property="total_cpu_limit_violation_count" />
+    <result column="total_cpu_usage_ms" jdbcType="BIGINT" property="total_cpu_usage_ms" />
+    <result column="max_request_cpu_time_ms" jdbcType="BIGINT" property="max_request_cpu_time_ms" />
+    <result column="blocked_task_count" jdbcType="INTEGER" property="blocked_task_count" />
+    <result column="total_lock_wait_count" jdbcType="BIGINT" property="total_lock_wait_count" />
+    <result column="total_lock_wait_time_ms" jdbcType="BIGINT" property="total_lock_wait_time_ms" />
+    <result column="total_query_optimization_count" jdbcType="BIGINT" property="total_query_optimization_count" />
+    <result column="total_suboptimal_plan_generation_count" jdbcType="BIGINT" property="total_suboptimal_plan_generation_count" />
+    <result column="total_reduced_memgrant_count" jdbcType="BIGINT" property="total_reduced_memgrant_count" />
+    <result column="max_request_grant_memory_kb" jdbcType="BIGINT" property="max_request_grant_memory_kb" />
+    <result column="active_parallel_thread_count" jdbcType="BIGINT" property="active_parallel_thread_count" />
+    <result column="importance" jdbcType="VARCHAR" property="importance" />
+    <result column="request_max_memory_grant_percent" jdbcType="INTEGER" property="request_max_memory_grant_percent" />
+    <result column="request_max_cpu_time_sec" jdbcType="INTEGER" property="request_max_cpu_time_sec" />
+    <result column="request_memory_grant_timeout_sec" jdbcType="INTEGER" property="request_memory_grant_timeout_sec" />
+    <result column="group_max_requests" jdbcType="INTEGER" property="group_max_requests" />
+    <result column="max_dop" jdbcType="INTEGER" property="max_dop" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmResourceGovernorWorkloadGroups">
+    insert into dm_resource_governor_workload_groups (group_id, name, pool_id, 
+      statistics_start_time, total_request_count, 
+      total_queued_request_count, active_request_count, 
+      queued_request_count, total_cpu_limit_violation_count, 
+      total_cpu_usage_ms, max_request_cpu_time_ms, 
+      blocked_task_count, total_lock_wait_count, 
+      total_lock_wait_time_ms, total_query_optimization_count, 
+      total_suboptimal_plan_generation_count, total_reduced_memgrant_count, 
+      max_request_grant_memory_kb, active_parallel_thread_count, 
+      importance, request_max_memory_grant_percent, 
+      request_max_cpu_time_sec, request_memory_grant_timeout_sec, 
+      group_max_requests, max_dop)
+    values (#{group_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pool_id,jdbcType=INTEGER}, 
+      #{statistics_start_time,jdbcType=TIMESTAMP}, #{total_request_count,jdbcType=BIGINT}, 
+      #{total_queued_request_count,jdbcType=BIGINT}, #{active_request_count,jdbcType=INTEGER}, 
+      #{queued_request_count,jdbcType=INTEGER}, #{total_cpu_limit_violation_count,jdbcType=BIGINT}, 
+      #{total_cpu_usage_ms,jdbcType=BIGINT}, #{max_request_cpu_time_ms,jdbcType=BIGINT}, 
+      #{blocked_task_count,jdbcType=INTEGER}, #{total_lock_wait_count,jdbcType=BIGINT}, 
+      #{total_lock_wait_time_ms,jdbcType=BIGINT}, #{total_query_optimization_count,jdbcType=BIGINT}, 
+      #{total_suboptimal_plan_generation_count,jdbcType=BIGINT}, #{total_reduced_memgrant_count,jdbcType=BIGINT}, 
+      #{max_request_grant_memory_kb,jdbcType=BIGINT}, #{active_parallel_thread_count,jdbcType=BIGINT}, 
+      #{importance,jdbcType=VARCHAR}, #{request_max_memory_grant_percent,jdbcType=INTEGER}, 
+      #{request_max_cpu_time_sec,jdbcType=INTEGER}, #{request_memory_grant_timeout_sec,jdbcType=INTEGER}, 
+      #{group_max_requests,jdbcType=INTEGER}, #{max_dop,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmResourceGovernorWorkloadGroups">
+    insert into dm_resource_governor_workload_groups
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+      <if test="statistics_start_time != null">
+        statistics_start_time,
+      </if>
+      <if test="total_request_count != null">
+        total_request_count,
+      </if>
+      <if test="total_queued_request_count != null">
+        total_queued_request_count,
+      </if>
+      <if test="active_request_count != null">
+        active_request_count,
+      </if>
+      <if test="queued_request_count != null">
+        queued_request_count,
+      </if>
+      <if test="total_cpu_limit_violation_count != null">
+        total_cpu_limit_violation_count,
+      </if>
+      <if test="total_cpu_usage_ms != null">
+        total_cpu_usage_ms,
+      </if>
+      <if test="max_request_cpu_time_ms != null">
+        max_request_cpu_time_ms,
+      </if>
+      <if test="blocked_task_count != null">
+        blocked_task_count,
+      </if>
+      <if test="total_lock_wait_count != null">
+        total_lock_wait_count,
+      </if>
+      <if test="total_lock_wait_time_ms != null">
+        total_lock_wait_time_ms,
+      </if>
+      <if test="total_query_optimization_count != null">
+        total_query_optimization_count,
+      </if>
+      <if test="total_suboptimal_plan_generation_count != null">
+        total_suboptimal_plan_generation_count,
+      </if>
+      <if test="total_reduced_memgrant_count != null">
+        total_reduced_memgrant_count,
+      </if>
+      <if test="max_request_grant_memory_kb != null">
+        max_request_grant_memory_kb,
+      </if>
+      <if test="active_parallel_thread_count != null">
+        active_parallel_thread_count,
+      </if>
+      <if test="importance != null">
+        importance,
+      </if>
+      <if test="request_max_memory_grant_percent != null">
+        request_max_memory_grant_percent,
+      </if>
+      <if test="request_max_cpu_time_sec != null">
+        request_max_cpu_time_sec,
+      </if>
+      <if test="request_memory_grant_timeout_sec != null">
+        request_memory_grant_timeout_sec,
+      </if>
+      <if test="group_max_requests != null">
+        group_max_requests,
+      </if>
+      <if test="max_dop != null">
+        max_dop,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+      <if test="statistics_start_time != null">
+        #{statistics_start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="total_request_count != null">
+        #{total_request_count,jdbcType=BIGINT},
+      </if>
+      <if test="total_queued_request_count != null">
+        #{total_queued_request_count,jdbcType=BIGINT},
+      </if>
+      <if test="active_request_count != null">
+        #{active_request_count,jdbcType=INTEGER},
+      </if>
+      <if test="queued_request_count != null">
+        #{queued_request_count,jdbcType=INTEGER},
+      </if>
+      <if test="total_cpu_limit_violation_count != null">
+        #{total_cpu_limit_violation_count,jdbcType=BIGINT},
+      </if>
+      <if test="total_cpu_usage_ms != null">
+        #{total_cpu_usage_ms,jdbcType=BIGINT},
+      </if>
+      <if test="max_request_cpu_time_ms != null">
+        #{max_request_cpu_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="blocked_task_count != null">
+        #{blocked_task_count,jdbcType=INTEGER},
+      </if>
+      <if test="total_lock_wait_count != null">
+        #{total_lock_wait_count,jdbcType=BIGINT},
+      </if>
+      <if test="total_lock_wait_time_ms != null">
+        #{total_lock_wait_time_ms,jdbcType=BIGINT},
+      </if>
+      <if test="total_query_optimization_count != null">
+        #{total_query_optimization_count,jdbcType=BIGINT},
+      </if>
+      <if test="total_suboptimal_plan_generation_count != null">
+        #{total_suboptimal_plan_generation_count,jdbcType=BIGINT},
+      </if>
+      <if test="total_reduced_memgrant_count != null">
+        #{total_reduced_memgrant_count,jdbcType=BIGINT},
+      </if>
+      <if test="max_request_grant_memory_kb != null">
+        #{max_request_grant_memory_kb,jdbcType=BIGINT},
+      </if>
+      <if test="active_parallel_thread_count != null">
+        #{active_parallel_thread_count,jdbcType=BIGINT},
+      </if>
+      <if test="importance != null">
+        #{importance,jdbcType=VARCHAR},
+      </if>
+      <if test="request_max_memory_grant_percent != null">
+        #{request_max_memory_grant_percent,jdbcType=INTEGER},
+      </if>
+      <if test="request_max_cpu_time_sec != null">
+        #{request_max_cpu_time_sec,jdbcType=INTEGER},
+      </if>
+      <if test="request_memory_grant_timeout_sec != null">
+        #{request_memory_grant_timeout_sec,jdbcType=INTEGER},
+      </if>
+      <if test="group_max_requests != null">
+        #{group_max_requests,jdbcType=INTEGER},
+      </if>
+      <if test="max_dop != null">
+        #{max_dop,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

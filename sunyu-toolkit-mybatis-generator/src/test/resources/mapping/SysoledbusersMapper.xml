@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysoledbusersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysoledbusers">
+    <result column="rmtsrvid" jdbcType="SMALLINT" property="rmtsrvid" />
+    <result column="rmtloginame" jdbcType="VARCHAR" property="rmtloginame" />
+    <result column="rmtpassword" jdbcType="VARCHAR" property="rmtpassword" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="changedate" jdbcType="TIMESTAMP" property="changedate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.Sysoledbusers">
+    <result column="loginsid" jdbcType="VARBINARY" property="loginsid" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    loginsid
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysoledbusers">
+    insert into sysoledbusers (rmtsrvid, rmtloginame, rmtpassword, 
+      status, changedate, loginsid
+      )
+    values (#{rmtsrvid,jdbcType=SMALLINT}, #{rmtloginame,jdbcType=VARCHAR}, #{rmtpassword,jdbcType=VARCHAR}, 
+      #{status,jdbcType=SMALLINT}, #{changedate,jdbcType=TIMESTAMP}, #{loginsid,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysoledbusers">
+    insert into sysoledbusers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rmtsrvid != null">
+        rmtsrvid,
+      </if>
+      <if test="rmtloginame != null">
+        rmtloginame,
+      </if>
+      <if test="rmtpassword != null">
+        rmtpassword,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="changedate != null">
+        changedate,
+      </if>
+      <if test="loginsid != null">
+        loginsid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rmtsrvid != null">
+        #{rmtsrvid,jdbcType=SMALLINT},
+      </if>
+      <if test="rmtloginame != null">
+        #{rmtloginame,jdbcType=VARCHAR},
+      </if>
+      <if test="rmtpassword != null">
+        #{rmtpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="changedate != null">
+        #{changedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginsid != null">
+        #{loginsid,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

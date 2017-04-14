@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmFtsMemoryBuffersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmFtsMemoryBuffers">
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="is_free" jdbcType="BIT" property="is_free" />
+    <result column="row_count" jdbcType="INTEGER" property="row_count" />
+    <result column="bytes_used" jdbcType="INTEGER" property="bytes_used" />
+    <result column="percent_used" jdbcType="INTEGER" property="percent_used" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmFtsMemoryBuffers">
+    <result column="memory_address" jdbcType="VARBINARY" property="memory_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmFtsMemoryBuffers">
+    insert into dm_fts_memory_buffers (pool_id, name, is_free, 
+      row_count, bytes_used, percent_used, 
+      memory_address)
+    values (#{pool_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{is_free,jdbcType=BIT}, 
+      #{row_count,jdbcType=INTEGER}, #{bytes_used,jdbcType=INTEGER}, #{percent_used,jdbcType=INTEGER}, 
+      #{memory_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmFtsMemoryBuffers">
+    insert into dm_fts_memory_buffers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="is_free != null">
+        is_free,
+      </if>
+      <if test="row_count != null">
+        row_count,
+      </if>
+      <if test="bytes_used != null">
+        bytes_used,
+      </if>
+      <if test="percent_used != null">
+        percent_used,
+      </if>
+      <if test="memory_address != null">
+        memory_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="is_free != null">
+        #{is_free,jdbcType=BIT},
+      </if>
+      <if test="row_count != null">
+        #{row_count,jdbcType=INTEGER},
+      </if>
+      <if test="bytes_used != null">
+        #{bytes_used,jdbcType=INTEGER},
+      </if>
+      <if test="percent_used != null">
+        #{percent_used,jdbcType=INTEGER},
+      </if>
+      <if test="memory_address != null">
+        #{memory_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

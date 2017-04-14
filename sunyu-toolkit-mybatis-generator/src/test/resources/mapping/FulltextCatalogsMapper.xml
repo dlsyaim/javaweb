@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FulltextCatalogsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FulltextCatalogs">
+    <result column="fulltext_catalog_id" jdbcType="INTEGER" property="fulltext_catalog_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="is_default" jdbcType="BIT" property="is_default" />
+    <result column="is_accent_sensitivity_on" jdbcType="BIT" property="is_accent_sensitivity_on" />
+    <result column="data_space_id" jdbcType="INTEGER" property="data_space_id" />
+    <result column="file_id" jdbcType="INTEGER" property="file_id" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+    <result column="is_importing" jdbcType="BIT" property="is_importing" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FulltextCatalogs">
+    insert into fulltext_catalogs (fulltext_catalog_id, name, path, 
+      is_default, is_accent_sensitivity_on, data_space_id, 
+      file_id, principal_id, is_importing
+      )
+    values (#{fulltext_catalog_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{is_default,jdbcType=BIT}, #{is_accent_sensitivity_on,jdbcType=BIT}, #{data_space_id,jdbcType=INTEGER}, 
+      #{file_id,jdbcType=INTEGER}, #{principal_id,jdbcType=INTEGER}, #{is_importing,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FulltextCatalogs">
+    insert into fulltext_catalogs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fulltext_catalog_id != null">
+        fulltext_catalog_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="is_default != null">
+        is_default,
+      </if>
+      <if test="is_accent_sensitivity_on != null">
+        is_accent_sensitivity_on,
+      </if>
+      <if test="data_space_id != null">
+        data_space_id,
+      </if>
+      <if test="file_id != null">
+        file_id,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+      <if test="is_importing != null">
+        is_importing,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fulltext_catalog_id != null">
+        #{fulltext_catalog_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="is_default != null">
+        #{is_default,jdbcType=BIT},
+      </if>
+      <if test="is_accent_sensitivity_on != null">
+        #{is_accent_sensitivity_on,jdbcType=BIT},
+      </if>
+      <if test="data_space_id != null">
+        #{data_space_id,jdbcType=INTEGER},
+      </if>
+      <if test="file_id != null">
+        #{file_id,jdbcType=INTEGER},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_importing != null">
+        #{is_importing,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

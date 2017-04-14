@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FulltextIndexFragmentsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FulltextIndexFragments">
+    <result column="table_id" jdbcType="INTEGER" property="table_id" />
+    <result column="fragment_id" jdbcType="INTEGER" property="fragment_id" />
+    <result column="fragment_object_id" jdbcType="INTEGER" property="fragment_object_id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="data_size" jdbcType="BIGINT" property="data_size" />
+    <result column="row_count" jdbcType="BIGINT" property="row_count" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.FulltextIndexFragments">
+    <result column="timestamp" jdbcType="BINARY" property="timestamp" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    timestamp
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FulltextIndexFragments">
+    insert into fulltext_index_fragments (table_id, fragment_id, fragment_object_id, 
+      status, data_size, row_count, 
+      timestamp)
+    values (#{table_id,jdbcType=INTEGER}, #{fragment_id,jdbcType=INTEGER}, #{fragment_object_id,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{data_size,jdbcType=BIGINT}, #{row_count,jdbcType=BIGINT}, 
+      #{timestamp,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FulltextIndexFragments">
+    insert into fulltext_index_fragments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="table_id != null">
+        table_id,
+      </if>
+      <if test="fragment_id != null">
+        fragment_id,
+      </if>
+      <if test="fragment_object_id != null">
+        fragment_object_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="data_size != null">
+        data_size,
+      </if>
+      <if test="row_count != null">
+        row_count,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="table_id != null">
+        #{table_id,jdbcType=INTEGER},
+      </if>
+      <if test="fragment_id != null">
+        #{fragment_id,jdbcType=INTEGER},
+      </if>
+      <if test="fragment_object_id != null">
+        #{fragment_object_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="data_size != null">
+        #{data_size,jdbcType=BIGINT},
+      </if>
+      <if test="row_count != null">
+        #{row_count,jdbcType=BIGINT},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

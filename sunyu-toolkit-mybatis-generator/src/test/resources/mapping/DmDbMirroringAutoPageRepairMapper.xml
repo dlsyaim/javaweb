@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmDbMirroringAutoPageRepairMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmDbMirroringAutoPageRepair">
+    <result column="database_id" jdbcType="INTEGER" property="database_id" />
+    <result column="file_id" jdbcType="INTEGER" property="file_id" />
+    <result column="page_id" jdbcType="BIGINT" property="page_id" />
+    <result column="error_type" jdbcType="SMALLINT" property="error_type" />
+    <result column="page_status" jdbcType="TINYINT" property="page_status" />
+    <result column="modification_time" jdbcType="TIMESTAMP" property="modification_time" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmDbMirroringAutoPageRepair">
+    insert into dm_db_mirroring_auto_page_repair (database_id, file_id, page_id, 
+      error_type, page_status, modification_time
+      )
+    values (#{database_id,jdbcType=INTEGER}, #{file_id,jdbcType=INTEGER}, #{page_id,jdbcType=BIGINT}, 
+      #{error_type,jdbcType=SMALLINT}, #{page_status,jdbcType=TINYINT}, #{modification_time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmDbMirroringAutoPageRepair">
+    insert into dm_db_mirroring_auto_page_repair
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        database_id,
+      </if>
+      <if test="file_id != null">
+        file_id,
+      </if>
+      <if test="page_id != null">
+        page_id,
+      </if>
+      <if test="error_type != null">
+        error_type,
+      </if>
+      <if test="page_status != null">
+        page_status,
+      </if>
+      <if test="modification_time != null">
+        modification_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="database_id != null">
+        #{database_id,jdbcType=INTEGER},
+      </if>
+      <if test="file_id != null">
+        #{file_id,jdbcType=INTEGER},
+      </if>
+      <if test="page_id != null">
+        #{page_id,jdbcType=BIGINT},
+      </if>
+      <if test="error_type != null">
+        #{error_type,jdbcType=SMALLINT},
+      </if>
+      <if test="page_status != null">
+        #{page_status,jdbcType=TINYINT},
+      </if>
+      <if test="modification_time != null">
+        #{modification_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

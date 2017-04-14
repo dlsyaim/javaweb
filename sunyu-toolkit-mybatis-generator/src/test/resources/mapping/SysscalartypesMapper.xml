@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SysscalartypesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Sysscalartypes">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="schid" jdbcType="INTEGER" property="schid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="xtype" jdbcType="TINYINT" property="xtype" />
+    <result column="length" jdbcType="SMALLINT" property="length" />
+    <result column="prec" jdbcType="TINYINT" property="prec" />
+    <result column="scale" jdbcType="TINYINT" property="scale" />
+    <result column="collationid" jdbcType="INTEGER" property="collationid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="dflt" jdbcType="INTEGER" property="dflt" />
+    <result column="chk" jdbcType="INTEGER" property="chk" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Sysscalartypes">
+    insert into sysscalartypes (id, schid, name, 
+      xtype, length, prec, 
+      scale, collationid, status, 
+      created, modified, dflt, 
+      chk)
+    values (#{id,jdbcType=INTEGER}, #{schid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{xtype,jdbcType=TINYINT}, #{length,jdbcType=SMALLINT}, #{prec,jdbcType=TINYINT}, 
+      #{scale,jdbcType=TINYINT}, #{collationid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, #{dflt,jdbcType=INTEGER}, 
+      #{chk,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Sysscalartypes">
+    insert into sysscalartypes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="schid != null">
+        schid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="xtype != null">
+        xtype,
+      </if>
+      <if test="length != null">
+        length,
+      </if>
+      <if test="prec != null">
+        prec,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="collationid != null">
+        collationid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="dflt != null">
+        dflt,
+      </if>
+      <if test="chk != null">
+        chk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="schid != null">
+        #{schid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xtype != null">
+        #{xtype,jdbcType=TINYINT},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=SMALLINT},
+      </if>
+      <if test="prec != null">
+        #{prec,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=TINYINT},
+      </if>
+      <if test="collationid != null">
+        #{collationid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dflt != null">
+        #{dflt,jdbcType=INTEGER},
+      </if>
+      <if test="chk != null">
+        #{chk,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

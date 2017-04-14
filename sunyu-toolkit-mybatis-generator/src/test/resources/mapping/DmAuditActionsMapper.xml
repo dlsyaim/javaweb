@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmAuditActionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmAuditActions">
+    <result column="action_id" jdbcType="VARCHAR" property="action_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="class_desc" jdbcType="VARCHAR" property="class_desc" />
+    <result column="covering_action_name" jdbcType="VARCHAR" property="covering_action_name" />
+    <result column="parent_class_desc" jdbcType="VARCHAR" property="parent_class_desc" />
+    <result column="covering_parent_action_name" jdbcType="VARCHAR" property="covering_parent_action_name" />
+    <result column="configuration_level" jdbcType="VARCHAR" property="configuration_level" />
+    <result column="containing_group_name" jdbcType="VARCHAR" property="containing_group_name" />
+    <result column="action_in_log" jdbcType="BIT" property="action_in_log" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmAuditActions">
+    insert into dm_audit_actions (action_id, name, class_desc, 
+      covering_action_name, parent_class_desc, 
+      covering_parent_action_name, configuration_level, 
+      containing_group_name, action_in_log)
+    values (#{action_id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{class_desc,jdbcType=VARCHAR}, 
+      #{covering_action_name,jdbcType=VARCHAR}, #{parent_class_desc,jdbcType=VARCHAR}, 
+      #{covering_parent_action_name,jdbcType=VARCHAR}, #{configuration_level,jdbcType=VARCHAR}, 
+      #{containing_group_name,jdbcType=VARCHAR}, #{action_in_log,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmAuditActions">
+    insert into dm_audit_actions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="action_id != null">
+        action_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="class_desc != null">
+        class_desc,
+      </if>
+      <if test="covering_action_name != null">
+        covering_action_name,
+      </if>
+      <if test="parent_class_desc != null">
+        parent_class_desc,
+      </if>
+      <if test="covering_parent_action_name != null">
+        covering_parent_action_name,
+      </if>
+      <if test="configuration_level != null">
+        configuration_level,
+      </if>
+      <if test="containing_group_name != null">
+        containing_group_name,
+      </if>
+      <if test="action_in_log != null">
+        action_in_log,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="action_id != null">
+        #{action_id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="class_desc != null">
+        #{class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="covering_action_name != null">
+        #{covering_action_name,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_class_desc != null">
+        #{parent_class_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="covering_parent_action_name != null">
+        #{covering_parent_action_name,jdbcType=VARCHAR},
+      </if>
+      <if test="configuration_level != null">
+        #{configuration_level,jdbcType=VARCHAR},
+      </if>
+      <if test="containing_group_name != null">
+        #{containing_group_name,jdbcType=VARCHAR},
+      </if>
+      <if test="action_in_log != null">
+        #{action_in_log,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

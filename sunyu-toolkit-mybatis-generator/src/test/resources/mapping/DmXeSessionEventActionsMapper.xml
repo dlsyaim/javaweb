@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmXeSessionEventActionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmXeSessionEventActions">
+    <result column="action_name" jdbcType="VARCHAR" property="action_name" />
+    <result column="action_package_guid" jdbcType="CHAR" property="action_package_guid" />
+    <result column="event_name" jdbcType="VARCHAR" property="event_name" />
+    <result column="event_package_guid" jdbcType="CHAR" property="event_package_guid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmXeSessionEventActions">
+    <result column="event_session_address" jdbcType="VARBINARY" property="event_session_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    event_session_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmXeSessionEventActions">
+    insert into dm_xe_session_event_actions (action_name, action_package_guid, event_name, 
+      event_package_guid, event_session_address
+      )
+    values (#{action_name,jdbcType=VARCHAR}, #{action_package_guid,jdbcType=CHAR}, #{event_name,jdbcType=VARCHAR}, 
+      #{event_package_guid,jdbcType=CHAR}, #{event_session_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmXeSessionEventActions">
+    insert into dm_xe_session_event_actions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="action_name != null">
+        action_name,
+      </if>
+      <if test="action_package_guid != null">
+        action_package_guid,
+      </if>
+      <if test="event_name != null">
+        event_name,
+      </if>
+      <if test="event_package_guid != null">
+        event_package_guid,
+      </if>
+      <if test="event_session_address != null">
+        event_session_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="action_name != null">
+        #{action_name,jdbcType=VARCHAR},
+      </if>
+      <if test="action_package_guid != null">
+        #{action_package_guid,jdbcType=CHAR},
+      </if>
+      <if test="event_name != null">
+        #{event_name,jdbcType=VARCHAR},
+      </if>
+      <if test="event_package_guid != null">
+        #{event_package_guid,jdbcType=CHAR},
+      </if>
+      <if test="event_session_address != null">
+        #{event_session_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsProductMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsProduct">
+    <id column="ProductID" jdbcType="BIGINT" property="productID" />
+    <result column="BrandID" jdbcType="BIGINT" property="brandID" />
+    <result column="ClassID" jdbcType="BIGINT" property="classID" />
+    <result column="PModel" jdbcType="VARCHAR" property="PModel" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+    <result column="ProductLogo" jdbcType="VARCHAR" property="productLogo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ProductID, BrandID, ClassID, PModel, ManagerID, AddTime, Status, ProductLogo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_Product
+    where ProductID = #{productID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_Product
+    where ProductID = #{productID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsProduct">
+    insert into KS_Product (ProductID, BrandID, ClassID, 
+      PModel, ManagerID, AddTime, 
+      Status, ProductLogo)
+    values (#{productID,jdbcType=BIGINT}, #{brandID,jdbcType=BIGINT}, #{classID,jdbcType=BIGINT}, 
+      #{PModel,jdbcType=VARCHAR}, #{managerID,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT}, #{productLogo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsProduct">
+    insert into KS_Product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productID != null">
+        ProductID,
+      </if>
+      <if test="brandID != null">
+        BrandID,
+      </if>
+      <if test="classID != null">
+        ClassID,
+      </if>
+      <if test="PModel != null">
+        PModel,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="productLogo != null">
+        ProductLogo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productID != null">
+        #{productID,jdbcType=BIGINT},
+      </if>
+      <if test="brandID != null">
+        #{brandID,jdbcType=BIGINT},
+      </if>
+      <if test="classID != null">
+        #{classID,jdbcType=BIGINT},
+      </if>
+      <if test="PModel != null">
+        #{PModel,jdbcType=VARCHAR},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="productLogo != null">
+        #{productLogo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsProduct">
+    update KS_Product
+    <set>
+      <if test="brandID != null">
+        BrandID = #{brandID,jdbcType=BIGINT},
+      </if>
+      <if test="classID != null">
+        ClassID = #{classID,jdbcType=BIGINT},
+      </if>
+      <if test="PModel != null">
+        PModel = #{PModel,jdbcType=VARCHAR},
+      </if>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="productLogo != null">
+        ProductLogo = #{productLogo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProductID = #{productID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsProduct">
+    update KS_Product
+    set BrandID = #{brandID,jdbcType=BIGINT},
+      ClassID = #{classID,jdbcType=BIGINT},
+      PModel = #{PModel,jdbcType=VARCHAR},
+      ManagerID = #{managerID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT},
+      ProductLogo = #{productLogo,jdbcType=VARCHAR}
+    where ProductID = #{productID,jdbcType=BIGINT}
+  </update>
+</mapper>

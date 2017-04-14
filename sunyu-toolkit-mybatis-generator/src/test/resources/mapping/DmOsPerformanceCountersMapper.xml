@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsPerformanceCountersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsPerformanceCounters">
+    <result column="object_name" jdbcType="CHAR" property="object_name" />
+    <result column="counter_name" jdbcType="CHAR" property="counter_name" />
+    <result column="instance_name" jdbcType="CHAR" property="instance_name" />
+    <result column="cntr_value" jdbcType="BIGINT" property="cntr_value" />
+    <result column="cntr_type" jdbcType="INTEGER" property="cntr_type" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsPerformanceCounters">
+    insert into dm_os_performance_counters (object_name, counter_name, instance_name, 
+      cntr_value, cntr_type)
+    values (#{object_name,jdbcType=CHAR}, #{counter_name,jdbcType=CHAR}, #{instance_name,jdbcType=CHAR}, 
+      #{cntr_value,jdbcType=BIGINT}, #{cntr_type,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsPerformanceCounters">
+    insert into dm_os_performance_counters
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_name != null">
+        object_name,
+      </if>
+      <if test="counter_name != null">
+        counter_name,
+      </if>
+      <if test="instance_name != null">
+        instance_name,
+      </if>
+      <if test="cntr_value != null">
+        cntr_value,
+      </if>
+      <if test="cntr_type != null">
+        cntr_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_name != null">
+        #{object_name,jdbcType=CHAR},
+      </if>
+      <if test="counter_name != null">
+        #{counter_name,jdbcType=CHAR},
+      </if>
+      <if test="instance_name != null">
+        #{instance_name,jdbcType=CHAR},
+      </if>
+      <if test="cntr_value != null">
+        #{cntr_value,jdbcType=BIGINT},
+      </if>
+      <if test="cntr_type != null">
+        #{cntr_type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

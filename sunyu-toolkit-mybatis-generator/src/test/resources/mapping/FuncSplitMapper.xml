@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FuncSplitMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FuncSplit">
+    <result column="col" jdbcType="VARCHAR" property="col" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FuncSplit">
+    insert into func_split (col)
+    values (#{col,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FuncSplit">
+    insert into func_split
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="col != null">
+        col,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="col != null">
+        #{col,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

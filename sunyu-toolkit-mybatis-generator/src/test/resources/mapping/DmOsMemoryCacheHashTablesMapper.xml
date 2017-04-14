@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryCacheHashTablesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryCacheHashTables">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="table_level" jdbcType="INTEGER" property="table_level" />
+    <result column="buckets_count" jdbcType="INTEGER" property="buckets_count" />
+    <result column="buckets_in_use_count" jdbcType="INTEGER" property="buckets_in_use_count" />
+    <result column="buckets_min_length" jdbcType="INTEGER" property="buckets_min_length" />
+    <result column="buckets_max_length" jdbcType="INTEGER" property="buckets_max_length" />
+    <result column="buckets_avg_length" jdbcType="INTEGER" property="buckets_avg_length" />
+    <result column="buckets_max_length_ever" jdbcType="INTEGER" property="buckets_max_length_ever" />
+    <result column="hits_count" jdbcType="BIGINT" property="hits_count" />
+    <result column="misses_count" jdbcType="BIGINT" property="misses_count" />
+    <result column="buckets_avg_scan_hit_length" jdbcType="INTEGER" property="buckets_avg_scan_hit_length" />
+    <result column="buckets_avg_scan_miss_length" jdbcType="INTEGER" property="buckets_avg_scan_miss_length" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsMemoryCacheHashTables">
+    <result column="cache_address" jdbcType="VARBINARY" property="cache_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    cache_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheHashTables">
+    insert into dm_os_memory_cache_hash_tables (name, type, table_level, 
+      buckets_count, buckets_in_use_count, buckets_min_length, 
+      buckets_max_length, buckets_avg_length, 
+      buckets_max_length_ever, hits_count, misses_count, 
+      buckets_avg_scan_hit_length, buckets_avg_scan_miss_length, 
+      cache_address)
+    values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{table_level,jdbcType=INTEGER}, 
+      #{buckets_count,jdbcType=INTEGER}, #{buckets_in_use_count,jdbcType=INTEGER}, #{buckets_min_length,jdbcType=INTEGER}, 
+      #{buckets_max_length,jdbcType=INTEGER}, #{buckets_avg_length,jdbcType=INTEGER}, 
+      #{buckets_max_length_ever,jdbcType=INTEGER}, #{hits_count,jdbcType=BIGINT}, #{misses_count,jdbcType=BIGINT}, 
+      #{buckets_avg_scan_hit_length,jdbcType=INTEGER}, #{buckets_avg_scan_miss_length,jdbcType=INTEGER}, 
+      #{cache_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryCacheHashTables">
+    insert into dm_os_memory_cache_hash_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="table_level != null">
+        table_level,
+      </if>
+      <if test="buckets_count != null">
+        buckets_count,
+      </if>
+      <if test="buckets_in_use_count != null">
+        buckets_in_use_count,
+      </if>
+      <if test="buckets_min_length != null">
+        buckets_min_length,
+      </if>
+      <if test="buckets_max_length != null">
+        buckets_max_length,
+      </if>
+      <if test="buckets_avg_length != null">
+        buckets_avg_length,
+      </if>
+      <if test="buckets_max_length_ever != null">
+        buckets_max_length_ever,
+      </if>
+      <if test="hits_count != null">
+        hits_count,
+      </if>
+      <if test="misses_count != null">
+        misses_count,
+      </if>
+      <if test="buckets_avg_scan_hit_length != null">
+        buckets_avg_scan_hit_length,
+      </if>
+      <if test="buckets_avg_scan_miss_length != null">
+        buckets_avg_scan_miss_length,
+      </if>
+      <if test="cache_address != null">
+        cache_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="table_level != null">
+        #{table_level,jdbcType=INTEGER},
+      </if>
+      <if test="buckets_count != null">
+        #{buckets_count,jdbcType=INTEGER},
+      </if>
+      <if test="buckets_in_use_count != null">
+        #{buckets_in_use_count,jdbcType=INTEGER},
+      </if>
+      <if test="buckets_min_length != null">
+        #{buckets_min_length,jdbcType=INTEGER},
+      </if>
+      <if test="buckets_max_length != null">
+        #{buckets_max_length,jdbcType=INTEGER},
+      </if>
+      <if test="buckets_avg_length != null">
+        #{buckets_avg_length,jdbcType=INTEGER},
+      </if>
+      <if test="buckets_max_length_ever != null">
+        #{buckets_max_length_ever,jdbcType=INTEGER},
+      </if>
+      <if test="hits_count != null">
+        #{hits_count,jdbcType=BIGINT},
+      </if>
+      <if test="misses_count != null">
+        #{misses_count,jdbcType=BIGINT},
+      </if>
+      <if test="buckets_avg_scan_hit_length != null">
+        #{buckets_avg_scan_hit_length,jdbcType=INTEGER},
+      </if>
+      <if test="buckets_avg_scan_miss_length != null">
+        #{buckets_avg_scan_miss_length,jdbcType=INTEGER},
+      </if>
+      <if test="cache_address != null">
+        #{cache_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

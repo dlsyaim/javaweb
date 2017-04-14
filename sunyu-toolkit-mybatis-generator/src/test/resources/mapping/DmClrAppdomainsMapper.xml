@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmClrAppdomainsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmClrAppdomains">
+    <result column="appdomain_id" jdbcType="INTEGER" property="appdomain_id" />
+    <result column="appdomain_name" jdbcType="VARCHAR" property="appdomain_name" />
+    <result column="creation_time" jdbcType="TIMESTAMP" property="creation_time" />
+    <result column="db_id" jdbcType="INTEGER" property="db_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="strong_refcount" jdbcType="INTEGER" property="strong_refcount" />
+    <result column="weak_refcount" jdbcType="INTEGER" property="weak_refcount" />
+    <result column="cost" jdbcType="INTEGER" property="cost" />
+    <result column="value" jdbcType="INTEGER" property="value" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmClrAppdomains">
+    <result column="appdomain_address" jdbcType="VARBINARY" property="appdomain_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    appdomain_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmClrAppdomains">
+    insert into dm_clr_appdomains (appdomain_id, appdomain_name, creation_time, 
+      db_id, user_id, state, 
+      strong_refcount, weak_refcount, cost, 
+      value, appdomain_address)
+    values (#{appdomain_id,jdbcType=INTEGER}, #{appdomain_name,jdbcType=VARCHAR}, #{creation_time,jdbcType=TIMESTAMP}, 
+      #{db_id,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, 
+      #{strong_refcount,jdbcType=INTEGER}, #{weak_refcount,jdbcType=INTEGER}, #{cost,jdbcType=INTEGER}, 
+      #{value,jdbcType=INTEGER}, #{appdomain_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmClrAppdomains">
+    insert into dm_clr_appdomains
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appdomain_id != null">
+        appdomain_id,
+      </if>
+      <if test="appdomain_name != null">
+        appdomain_name,
+      </if>
+      <if test="creation_time != null">
+        creation_time,
+      </if>
+      <if test="db_id != null">
+        db_id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="strong_refcount != null">
+        strong_refcount,
+      </if>
+      <if test="weak_refcount != null">
+        weak_refcount,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="appdomain_address != null">
+        appdomain_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appdomain_id != null">
+        #{appdomain_id,jdbcType=INTEGER},
+      </if>
+      <if test="appdomain_name != null">
+        #{appdomain_name,jdbcType=VARCHAR},
+      </if>
+      <if test="creation_time != null">
+        #{creation_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="db_id != null">
+        #{db_id,jdbcType=INTEGER},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="strong_refcount != null">
+        #{strong_refcount,jdbcType=INTEGER},
+      </if>
+      <if test="weak_refcount != null">
+        #{weak_refcount,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=INTEGER},
+      </if>
+      <if test="appdomain_address != null">
+        #{appdomain_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

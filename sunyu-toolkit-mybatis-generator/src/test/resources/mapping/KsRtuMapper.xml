@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.KsRtuMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.KsRtu">
+    <id column="RtuID" jdbcType="BIGINT" property="rtuID" />
+    <result column="RtuName" jdbcType="VARCHAR" property="rtuName" />
+    <result column="RtuSite" jdbcType="INTEGER" property="rtuSite" />
+    <result column="ManagerID" jdbcType="BIGINT" property="managerID" />
+    <result column="AddTime" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="Status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RtuID, RtuName, RtuSite, ManagerID, AddTime, Status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from KS_RTU
+    where RtuID = #{rtuID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from KS_RTU
+    where RtuID = #{rtuID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.KsRtu">
+    insert into KS_RTU (RtuID, RtuName, RtuSite, 
+      ManagerID, AddTime, Status
+      )
+    values (#{rtuID,jdbcType=BIGINT}, #{rtuName,jdbcType=VARCHAR}, #{rtuSite,jdbcType=INTEGER}, 
+      #{managerID,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.KsRtu">
+    insert into KS_RTU
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rtuID != null">
+        RtuID,
+      </if>
+      <if test="rtuName != null">
+        RtuName,
+      </if>
+      <if test="rtuSite != null">
+        RtuSite,
+      </if>
+      <if test="managerID != null">
+        ManagerID,
+      </if>
+      <if test="addTime != null">
+        AddTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rtuID != null">
+        #{rtuID,jdbcType=BIGINT},
+      </if>
+      <if test="rtuName != null">
+        #{rtuName,jdbcType=VARCHAR},
+      </if>
+      <if test="rtuSite != null">
+        #{rtuSite,jdbcType=INTEGER},
+      </if>
+      <if test="managerID != null">
+        #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.KsRtu">
+    update KS_RTU
+    <set>
+      <if test="rtuName != null">
+        RtuName = #{rtuName,jdbcType=VARCHAR},
+      </if>
+      <if test="rtuSite != null">
+        RtuSite = #{rtuSite,jdbcType=INTEGER},
+      </if>
+      <if test="managerID != null">
+        ManagerID = #{managerID,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null">
+        AddTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where RtuID = #{rtuID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.KsRtu">
+    update KS_RTU
+    set RtuName = #{rtuName,jdbcType=VARCHAR},
+      RtuSite = #{rtuSite,jdbcType=INTEGER},
+      ManagerID = #{managerID,jdbcType=BIGINT},
+      AddTime = #{addTime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=SMALLINT}
+    where RtuID = #{rtuID,jdbcType=BIGINT}
+  </update>
+</mapper>

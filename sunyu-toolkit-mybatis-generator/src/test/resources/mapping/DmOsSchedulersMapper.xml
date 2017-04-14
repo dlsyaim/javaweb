@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsSchedulersMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsSchedulers">
+    <result column="parent_node_id" jdbcType="INTEGER" property="parent_node_id" />
+    <result column="scheduler_id" jdbcType="INTEGER" property="scheduler_id" />
+    <result column="cpu_id" jdbcType="INTEGER" property="cpu_id" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="is_online" jdbcType="BIT" property="is_online" />
+    <result column="is_idle" jdbcType="BIT" property="is_idle" />
+    <result column="preemptive_switches_count" jdbcType="INTEGER" property="preemptive_switches_count" />
+    <result column="context_switches_count" jdbcType="INTEGER" property="context_switches_count" />
+    <result column="idle_switches_count" jdbcType="INTEGER" property="idle_switches_count" />
+    <result column="current_tasks_count" jdbcType="INTEGER" property="current_tasks_count" />
+    <result column="runnable_tasks_count" jdbcType="INTEGER" property="runnable_tasks_count" />
+    <result column="current_workers_count" jdbcType="INTEGER" property="current_workers_count" />
+    <result column="active_workers_count" jdbcType="INTEGER" property="active_workers_count" />
+    <result column="work_queue_count" jdbcType="BIGINT" property="work_queue_count" />
+    <result column="pending_disk_io_count" jdbcType="INTEGER" property="pending_disk_io_count" />
+    <result column="load_factor" jdbcType="INTEGER" property="load_factor" />
+    <result column="yield_count" jdbcType="INTEGER" property="yield_count" />
+    <result column="last_timer_activity" jdbcType="BIGINT" property="last_timer_activity" />
+    <result column="failed_to_create_worker" jdbcType="BIT" property="failed_to_create_worker" />
+    <result column="quantum_length_us" jdbcType="BIGINT" property="quantum_length_us" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsSchedulersWithBLOBs">
+    <result column="scheduler_address" jdbcType="VARBINARY" property="scheduler_address" />
+    <result column="active_worker_address" jdbcType="VARBINARY" property="active_worker_address" />
+    <result column="memory_object_address" jdbcType="VARBINARY" property="memory_object_address" />
+    <result column="task_memory_object_address" jdbcType="VARBINARY" property="task_memory_object_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    scheduler_address, active_worker_address, memory_object_address, task_memory_object_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsSchedulersWithBLOBs">
+    insert into dm_os_schedulers (parent_node_id, scheduler_id, cpu_id, 
+      status, is_online, is_idle, 
+      preemptive_switches_count, context_switches_count, 
+      idle_switches_count, current_tasks_count, 
+      runnable_tasks_count, current_workers_count, 
+      active_workers_count, work_queue_count, 
+      pending_disk_io_count, load_factor, yield_count, 
+      last_timer_activity, failed_to_create_worker, 
+      quantum_length_us, scheduler_address, 
+      active_worker_address, memory_object_address, 
+      task_memory_object_address)
+    values (#{parent_node_id,jdbcType=INTEGER}, #{scheduler_id,jdbcType=INTEGER}, #{cpu_id,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{is_online,jdbcType=BIT}, #{is_idle,jdbcType=BIT}, 
+      #{preemptive_switches_count,jdbcType=INTEGER}, #{context_switches_count,jdbcType=INTEGER}, 
+      #{idle_switches_count,jdbcType=INTEGER}, #{current_tasks_count,jdbcType=INTEGER}, 
+      #{runnable_tasks_count,jdbcType=INTEGER}, #{current_workers_count,jdbcType=INTEGER}, 
+      #{active_workers_count,jdbcType=INTEGER}, #{work_queue_count,jdbcType=BIGINT}, 
+      #{pending_disk_io_count,jdbcType=INTEGER}, #{load_factor,jdbcType=INTEGER}, #{yield_count,jdbcType=INTEGER}, 
+      #{last_timer_activity,jdbcType=BIGINT}, #{failed_to_create_worker,jdbcType=BIT}, 
+      #{quantum_length_us,jdbcType=BIGINT}, #{scheduler_address,jdbcType=VARBINARY}, 
+      #{active_worker_address,jdbcType=VARBINARY}, #{memory_object_address,jdbcType=VARBINARY}, 
+      #{task_memory_object_address,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsSchedulersWithBLOBs">
+    insert into dm_os_schedulers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parent_node_id != null">
+        parent_node_id,
+      </if>
+      <if test="scheduler_id != null">
+        scheduler_id,
+      </if>
+      <if test="cpu_id != null">
+        cpu_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="is_online != null">
+        is_online,
+      </if>
+      <if test="is_idle != null">
+        is_idle,
+      </if>
+      <if test="preemptive_switches_count != null">
+        preemptive_switches_count,
+      </if>
+      <if test="context_switches_count != null">
+        context_switches_count,
+      </if>
+      <if test="idle_switches_count != null">
+        idle_switches_count,
+      </if>
+      <if test="current_tasks_count != null">
+        current_tasks_count,
+      </if>
+      <if test="runnable_tasks_count != null">
+        runnable_tasks_count,
+      </if>
+      <if test="current_workers_count != null">
+        current_workers_count,
+      </if>
+      <if test="active_workers_count != null">
+        active_workers_count,
+      </if>
+      <if test="work_queue_count != null">
+        work_queue_count,
+      </if>
+      <if test="pending_disk_io_count != null">
+        pending_disk_io_count,
+      </if>
+      <if test="load_factor != null">
+        load_factor,
+      </if>
+      <if test="yield_count != null">
+        yield_count,
+      </if>
+      <if test="last_timer_activity != null">
+        last_timer_activity,
+      </if>
+      <if test="failed_to_create_worker != null">
+        failed_to_create_worker,
+      </if>
+      <if test="quantum_length_us != null">
+        quantum_length_us,
+      </if>
+      <if test="scheduler_address != null">
+        scheduler_address,
+      </if>
+      <if test="active_worker_address != null">
+        active_worker_address,
+      </if>
+      <if test="memory_object_address != null">
+        memory_object_address,
+      </if>
+      <if test="task_memory_object_address != null">
+        task_memory_object_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parent_node_id != null">
+        #{parent_node_id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduler_id != null">
+        #{scheduler_id,jdbcType=INTEGER},
+      </if>
+      <if test="cpu_id != null">
+        #{cpu_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="is_online != null">
+        #{is_online,jdbcType=BIT},
+      </if>
+      <if test="is_idle != null">
+        #{is_idle,jdbcType=BIT},
+      </if>
+      <if test="preemptive_switches_count != null">
+        #{preemptive_switches_count,jdbcType=INTEGER},
+      </if>
+      <if test="context_switches_count != null">
+        #{context_switches_count,jdbcType=INTEGER},
+      </if>
+      <if test="idle_switches_count != null">
+        #{idle_switches_count,jdbcType=INTEGER},
+      </if>
+      <if test="current_tasks_count != null">
+        #{current_tasks_count,jdbcType=INTEGER},
+      </if>
+      <if test="runnable_tasks_count != null">
+        #{runnable_tasks_count,jdbcType=INTEGER},
+      </if>
+      <if test="current_workers_count != null">
+        #{current_workers_count,jdbcType=INTEGER},
+      </if>
+      <if test="active_workers_count != null">
+        #{active_workers_count,jdbcType=INTEGER},
+      </if>
+      <if test="work_queue_count != null">
+        #{work_queue_count,jdbcType=BIGINT},
+      </if>
+      <if test="pending_disk_io_count != null">
+        #{pending_disk_io_count,jdbcType=INTEGER},
+      </if>
+      <if test="load_factor != null">
+        #{load_factor,jdbcType=INTEGER},
+      </if>
+      <if test="yield_count != null">
+        #{yield_count,jdbcType=INTEGER},
+      </if>
+      <if test="last_timer_activity != null">
+        #{last_timer_activity,jdbcType=BIGINT},
+      </if>
+      <if test="failed_to_create_worker != null">
+        #{failed_to_create_worker,jdbcType=BIT},
+      </if>
+      <if test="quantum_length_us != null">
+        #{quantum_length_us,jdbcType=BIGINT},
+      </if>
+      <if test="scheduler_address != null">
+        #{scheduler_address,jdbcType=VARBINARY},
+      </if>
+      <if test="active_worker_address != null">
+        #{active_worker_address,jdbcType=VARBINARY},
+      </if>
+      <if test="memory_object_address != null">
+        #{memory_object_address,jdbcType=VARBINARY},
+      </if>
+      <if test="task_memory_object_address != null">
+        #{task_memory_object_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

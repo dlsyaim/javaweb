@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SyscursorsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Syscursors">
+    <result column="cursor_handle" jdbcType="INTEGER" property="cursor_handle" />
+    <result column="cursor_name" jdbcType="VARCHAR" property="cursor_name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="model" jdbcType="TINYINT" property="model" />
+    <result column="concurrency" jdbcType="TINYINT" property="concurrency" />
+    <result column="scrollable" jdbcType="TINYINT" property="scrollable" />
+    <result column="open_status" jdbcType="TINYINT" property="open_status" />
+    <result column="cursor_rows" jdbcType="NUMERIC" property="cursor_rows" />
+    <result column="fetch_status" jdbcType="SMALLINT" property="fetch_status" />
+    <result column="column_count" jdbcType="SMALLINT" property="column_count" />
+    <result column="row_count" jdbcType="NUMERIC" property="row_count" />
+    <result column="last_operation" jdbcType="TINYINT" property="last_operation" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Syscursors">
+    insert into syscursors (cursor_handle, cursor_name, status, 
+      model, concurrency, scrollable, 
+      open_status, cursor_rows, fetch_status, 
+      column_count, row_count, last_operation
+      )
+    values (#{cursor_handle,jdbcType=INTEGER}, #{cursor_name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{model,jdbcType=TINYINT}, #{concurrency,jdbcType=TINYINT}, #{scrollable,jdbcType=TINYINT}, 
+      #{open_status,jdbcType=TINYINT}, #{cursor_rows,jdbcType=NUMERIC}, #{fetch_status,jdbcType=SMALLINT}, 
+      #{column_count,jdbcType=SMALLINT}, #{row_count,jdbcType=NUMERIC}, #{last_operation,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Syscursors">
+    insert into syscursors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cursor_handle != null">
+        cursor_handle,
+      </if>
+      <if test="cursor_name != null">
+        cursor_name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="concurrency != null">
+        concurrency,
+      </if>
+      <if test="scrollable != null">
+        scrollable,
+      </if>
+      <if test="open_status != null">
+        open_status,
+      </if>
+      <if test="cursor_rows != null">
+        cursor_rows,
+      </if>
+      <if test="fetch_status != null">
+        fetch_status,
+      </if>
+      <if test="column_count != null">
+        column_count,
+      </if>
+      <if test="row_count != null">
+        row_count,
+      </if>
+      <if test="last_operation != null">
+        last_operation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cursor_handle != null">
+        #{cursor_handle,jdbcType=INTEGER},
+      </if>
+      <if test="cursor_name != null">
+        #{cursor_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=TINYINT},
+      </if>
+      <if test="concurrency != null">
+        #{concurrency,jdbcType=TINYINT},
+      </if>
+      <if test="scrollable != null">
+        #{scrollable,jdbcType=TINYINT},
+      </if>
+      <if test="open_status != null">
+        #{open_status,jdbcType=TINYINT},
+      </if>
+      <if test="cursor_rows != null">
+        #{cursor_rows,jdbcType=NUMERIC},
+      </if>
+      <if test="fetch_status != null">
+        #{fetch_status,jdbcType=SMALLINT},
+      </if>
+      <if test="column_count != null">
+        #{column_count,jdbcType=SMALLINT},
+      </if>
+      <if test="row_count != null">
+        #{row_count,jdbcType=NUMERIC},
+      </if>
+      <if test="last_operation != null">
+        #{last_operation,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

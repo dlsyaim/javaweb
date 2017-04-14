@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecQueryStatsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecQueryStats">
+    <result column="statement_start_offset" jdbcType="INTEGER" property="statement_start_offset" />
+    <result column="statement_end_offset" jdbcType="INTEGER" property="statement_end_offset" />
+    <result column="plan_generation_num" jdbcType="BIGINT" property="plan_generation_num" />
+    <result column="creation_time" jdbcType="TIMESTAMP" property="creation_time" />
+    <result column="last_execution_time" jdbcType="TIMESTAMP" property="last_execution_time" />
+    <result column="execution_count" jdbcType="BIGINT" property="execution_count" />
+    <result column="total_worker_time" jdbcType="BIGINT" property="total_worker_time" />
+    <result column="last_worker_time" jdbcType="BIGINT" property="last_worker_time" />
+    <result column="min_worker_time" jdbcType="BIGINT" property="min_worker_time" />
+    <result column="max_worker_time" jdbcType="BIGINT" property="max_worker_time" />
+    <result column="total_physical_reads" jdbcType="BIGINT" property="total_physical_reads" />
+    <result column="last_physical_reads" jdbcType="BIGINT" property="last_physical_reads" />
+    <result column="min_physical_reads" jdbcType="BIGINT" property="min_physical_reads" />
+    <result column="max_physical_reads" jdbcType="BIGINT" property="max_physical_reads" />
+    <result column="total_logical_writes" jdbcType="BIGINT" property="total_logical_writes" />
+    <result column="last_logical_writes" jdbcType="BIGINT" property="last_logical_writes" />
+    <result column="min_logical_writes" jdbcType="BIGINT" property="min_logical_writes" />
+    <result column="max_logical_writes" jdbcType="BIGINT" property="max_logical_writes" />
+    <result column="total_logical_reads" jdbcType="BIGINT" property="total_logical_reads" />
+    <result column="last_logical_reads" jdbcType="BIGINT" property="last_logical_reads" />
+    <result column="min_logical_reads" jdbcType="BIGINT" property="min_logical_reads" />
+    <result column="max_logical_reads" jdbcType="BIGINT" property="max_logical_reads" />
+    <result column="total_clr_time" jdbcType="BIGINT" property="total_clr_time" />
+    <result column="last_clr_time" jdbcType="BIGINT" property="last_clr_time" />
+    <result column="min_clr_time" jdbcType="BIGINT" property="min_clr_time" />
+    <result column="max_clr_time" jdbcType="BIGINT" property="max_clr_time" />
+    <result column="total_elapsed_time" jdbcType="BIGINT" property="total_elapsed_time" />
+    <result column="last_elapsed_time" jdbcType="BIGINT" property="last_elapsed_time" />
+    <result column="min_elapsed_time" jdbcType="BIGINT" property="min_elapsed_time" />
+    <result column="max_elapsed_time" jdbcType="BIGINT" property="max_elapsed_time" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecQueryStatsWithBLOBs">
+    <result column="sql_handle" jdbcType="VARBINARY" property="sql_handle" />
+    <result column="plan_handle" jdbcType="VARBINARY" property="plan_handle" />
+    <result column="query_hash" jdbcType="BINARY" property="query_hash" />
+    <result column="query_plan_hash" jdbcType="BINARY" property="query_plan_hash" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    sql_handle, plan_handle, query_hash, query_plan_hash
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecQueryStatsWithBLOBs">
+    insert into dm_exec_query_stats (statement_start_offset, statement_end_offset, 
+      plan_generation_num, creation_time, last_execution_time, 
+      execution_count, total_worker_time, last_worker_time, 
+      min_worker_time, max_worker_time, total_physical_reads, 
+      last_physical_reads, min_physical_reads, 
+      max_physical_reads, total_logical_writes, 
+      last_logical_writes, min_logical_writes, 
+      max_logical_writes, total_logical_reads, 
+      last_logical_reads, min_logical_reads, max_logical_reads, 
+      total_clr_time, last_clr_time, min_clr_time, 
+      max_clr_time, total_elapsed_time, last_elapsed_time, 
+      min_elapsed_time, max_elapsed_time, sql_handle, 
+      plan_handle, query_hash, query_plan_hash
+      )
+    values (#{statement_start_offset,jdbcType=INTEGER}, #{statement_end_offset,jdbcType=INTEGER}, 
+      #{plan_generation_num,jdbcType=BIGINT}, #{creation_time,jdbcType=TIMESTAMP}, #{last_execution_time,jdbcType=TIMESTAMP}, 
+      #{execution_count,jdbcType=BIGINT}, #{total_worker_time,jdbcType=BIGINT}, #{last_worker_time,jdbcType=BIGINT}, 
+      #{min_worker_time,jdbcType=BIGINT}, #{max_worker_time,jdbcType=BIGINT}, #{total_physical_reads,jdbcType=BIGINT}, 
+      #{last_physical_reads,jdbcType=BIGINT}, #{min_physical_reads,jdbcType=BIGINT}, 
+      #{max_physical_reads,jdbcType=BIGINT}, #{total_logical_writes,jdbcType=BIGINT}, 
+      #{last_logical_writes,jdbcType=BIGINT}, #{min_logical_writes,jdbcType=BIGINT}, 
+      #{max_logical_writes,jdbcType=BIGINT}, #{total_logical_reads,jdbcType=BIGINT}, 
+      #{last_logical_reads,jdbcType=BIGINT}, #{min_logical_reads,jdbcType=BIGINT}, #{max_logical_reads,jdbcType=BIGINT}, 
+      #{total_clr_time,jdbcType=BIGINT}, #{last_clr_time,jdbcType=BIGINT}, #{min_clr_time,jdbcType=BIGINT}, 
+      #{max_clr_time,jdbcType=BIGINT}, #{total_elapsed_time,jdbcType=BIGINT}, #{last_elapsed_time,jdbcType=BIGINT}, 
+      #{min_elapsed_time,jdbcType=BIGINT}, #{max_elapsed_time,jdbcType=BIGINT}, #{sql_handle,jdbcType=VARBINARY}, 
+      #{plan_handle,jdbcType=VARBINARY}, #{query_hash,jdbcType=BINARY}, #{query_plan_hash,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecQueryStatsWithBLOBs">
+    insert into dm_exec_query_stats
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="statement_start_offset != null">
+        statement_start_offset,
+      </if>
+      <if test="statement_end_offset != null">
+        statement_end_offset,
+      </if>
+      <if test="plan_generation_num != null">
+        plan_generation_num,
+      </if>
+      <if test="creation_time != null">
+        creation_time,
+      </if>
+      <if test="last_execution_time != null">
+        last_execution_time,
+      </if>
+      <if test="execution_count != null">
+        execution_count,
+      </if>
+      <if test="total_worker_time != null">
+        total_worker_time,
+      </if>
+      <if test="last_worker_time != null">
+        last_worker_time,
+      </if>
+      <if test="min_worker_time != null">
+        min_worker_time,
+      </if>
+      <if test="max_worker_time != null">
+        max_worker_time,
+      </if>
+      <if test="total_physical_reads != null">
+        total_physical_reads,
+      </if>
+      <if test="last_physical_reads != null">
+        last_physical_reads,
+      </if>
+      <if test="min_physical_reads != null">
+        min_physical_reads,
+      </if>
+      <if test="max_physical_reads != null">
+        max_physical_reads,
+      </if>
+      <if test="total_logical_writes != null">
+        total_logical_writes,
+      </if>
+      <if test="last_logical_writes != null">
+        last_logical_writes,
+      </if>
+      <if test="min_logical_writes != null">
+        min_logical_writes,
+      </if>
+      <if test="max_logical_writes != null">
+        max_logical_writes,
+      </if>
+      <if test="total_logical_reads != null">
+        total_logical_reads,
+      </if>
+      <if test="last_logical_reads != null">
+        last_logical_reads,
+      </if>
+      <if test="min_logical_reads != null">
+        min_logical_reads,
+      </if>
+      <if test="max_logical_reads != null">
+        max_logical_reads,
+      </if>
+      <if test="total_clr_time != null">
+        total_clr_time,
+      </if>
+      <if test="last_clr_time != null">
+        last_clr_time,
+      </if>
+      <if test="min_clr_time != null">
+        min_clr_time,
+      </if>
+      <if test="max_clr_time != null">
+        max_clr_time,
+      </if>
+      <if test="total_elapsed_time != null">
+        total_elapsed_time,
+      </if>
+      <if test="last_elapsed_time != null">
+        last_elapsed_time,
+      </if>
+      <if test="min_elapsed_time != null">
+        min_elapsed_time,
+      </if>
+      <if test="max_elapsed_time != null">
+        max_elapsed_time,
+      </if>
+      <if test="sql_handle != null">
+        sql_handle,
+      </if>
+      <if test="plan_handle != null">
+        plan_handle,
+      </if>
+      <if test="query_hash != null">
+        query_hash,
+      </if>
+      <if test="query_plan_hash != null">
+        query_plan_hash,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="statement_start_offset != null">
+        #{statement_start_offset,jdbcType=INTEGER},
+      </if>
+      <if test="statement_end_offset != null">
+        #{statement_end_offset,jdbcType=INTEGER},
+      </if>
+      <if test="plan_generation_num != null">
+        #{plan_generation_num,jdbcType=BIGINT},
+      </if>
+      <if test="creation_time != null">
+        #{creation_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_execution_time != null">
+        #{last_execution_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="execution_count != null">
+        #{execution_count,jdbcType=BIGINT},
+      </if>
+      <if test="total_worker_time != null">
+        #{total_worker_time,jdbcType=BIGINT},
+      </if>
+      <if test="last_worker_time != null">
+        #{last_worker_time,jdbcType=BIGINT},
+      </if>
+      <if test="min_worker_time != null">
+        #{min_worker_time,jdbcType=BIGINT},
+      </if>
+      <if test="max_worker_time != null">
+        #{max_worker_time,jdbcType=BIGINT},
+      </if>
+      <if test="total_physical_reads != null">
+        #{total_physical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="last_physical_reads != null">
+        #{last_physical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="min_physical_reads != null">
+        #{min_physical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="max_physical_reads != null">
+        #{max_physical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="total_logical_writes != null">
+        #{total_logical_writes,jdbcType=BIGINT},
+      </if>
+      <if test="last_logical_writes != null">
+        #{last_logical_writes,jdbcType=BIGINT},
+      </if>
+      <if test="min_logical_writes != null">
+        #{min_logical_writes,jdbcType=BIGINT},
+      </if>
+      <if test="max_logical_writes != null">
+        #{max_logical_writes,jdbcType=BIGINT},
+      </if>
+      <if test="total_logical_reads != null">
+        #{total_logical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="last_logical_reads != null">
+        #{last_logical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="min_logical_reads != null">
+        #{min_logical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="max_logical_reads != null">
+        #{max_logical_reads,jdbcType=BIGINT},
+      </if>
+      <if test="total_clr_time != null">
+        #{total_clr_time,jdbcType=BIGINT},
+      </if>
+      <if test="last_clr_time != null">
+        #{last_clr_time,jdbcType=BIGINT},
+      </if>
+      <if test="min_clr_time != null">
+        #{min_clr_time,jdbcType=BIGINT},
+      </if>
+      <if test="max_clr_time != null">
+        #{max_clr_time,jdbcType=BIGINT},
+      </if>
+      <if test="total_elapsed_time != null">
+        #{total_elapsed_time,jdbcType=BIGINT},
+      </if>
+      <if test="last_elapsed_time != null">
+        #{last_elapsed_time,jdbcType=BIGINT},
+      </if>
+      <if test="min_elapsed_time != null">
+        #{min_elapsed_time,jdbcType=BIGINT},
+      </if>
+      <if test="max_elapsed_time != null">
+        #{max_elapsed_time,jdbcType=BIGINT},
+      </if>
+      <if test="sql_handle != null">
+        #{sql_handle,jdbcType=VARBINARY},
+      </if>
+      <if test="plan_handle != null">
+        #{plan_handle,jdbcType=VARBINARY},
+      </if>
+      <if test="query_hash != null">
+        #{query_hash,jdbcType=BINARY},
+      </if>
+      <if test="query_plan_hash != null">
+        #{query_plan_hash,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

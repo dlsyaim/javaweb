@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.SpatialReferenceSystemsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.SpatialReferenceSystems">
+    <result column="spatial_reference_id" jdbcType="INTEGER" property="spatial_reference_id" />
+    <result column="authority_name" jdbcType="VARCHAR" property="authority_name" />
+    <result column="authorized_spatial_reference_id" jdbcType="INTEGER" property="authorized_spatial_reference_id" />
+    <result column="well_known_text" jdbcType="VARCHAR" property="well_known_text" />
+    <result column="unit_of_measure" jdbcType="VARCHAR" property="unit_of_measure" />
+    <result column="unit_conversion_factor" jdbcType="DOUBLE" property="unit_conversion_factor" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.SpatialReferenceSystems">
+    insert into spatial_reference_systems (spatial_reference_id, authority_name, 
+      authorized_spatial_reference_id, well_known_text, 
+      unit_of_measure, unit_conversion_factor)
+    values (#{spatial_reference_id,jdbcType=INTEGER}, #{authority_name,jdbcType=VARCHAR}, 
+      #{authorized_spatial_reference_id,jdbcType=INTEGER}, #{well_known_text,jdbcType=VARCHAR}, 
+      #{unit_of_measure,jdbcType=VARCHAR}, #{unit_conversion_factor,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.SpatialReferenceSystems">
+    insert into spatial_reference_systems
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="spatial_reference_id != null">
+        spatial_reference_id,
+      </if>
+      <if test="authority_name != null">
+        authority_name,
+      </if>
+      <if test="authorized_spatial_reference_id != null">
+        authorized_spatial_reference_id,
+      </if>
+      <if test="well_known_text != null">
+        well_known_text,
+      </if>
+      <if test="unit_of_measure != null">
+        unit_of_measure,
+      </if>
+      <if test="unit_conversion_factor != null">
+        unit_conversion_factor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="spatial_reference_id != null">
+        #{spatial_reference_id,jdbcType=INTEGER},
+      </if>
+      <if test="authority_name != null">
+        #{authority_name,jdbcType=VARCHAR},
+      </if>
+      <if test="authorized_spatial_reference_id != null">
+        #{authorized_spatial_reference_id,jdbcType=INTEGER},
+      </if>
+      <if test="well_known_text != null">
+        #{well_known_text,jdbcType=VARCHAR},
+      </if>
+      <if test="unit_of_measure != null">
+        #{unit_of_measure,jdbcType=VARCHAR},
+      </if>
+      <if test="unit_conversion_factor != null">
+        #{unit_conversion_factor,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

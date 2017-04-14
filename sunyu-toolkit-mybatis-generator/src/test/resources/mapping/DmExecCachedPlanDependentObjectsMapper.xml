@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecCachedPlanDependentObjectsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecCachedPlanDependentObjects">
+    <result column="usecounts" jdbcType="INTEGER" property="usecounts" />
+    <result column="cacheobjtype" jdbcType="VARCHAR" property="cacheobjtype" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecCachedPlanDependentObjects">
+    <result column="memory_object_address" jdbcType="VARBINARY" property="memory_object_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_object_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecCachedPlanDependentObjects">
+    insert into dm_exec_cached_plan_dependent_objects (usecounts, cacheobjtype, memory_object_address
+      )
+    values (#{usecounts,jdbcType=INTEGER}, #{cacheobjtype,jdbcType=VARCHAR}, #{memory_object_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecCachedPlanDependentObjects">
+    insert into dm_exec_cached_plan_dependent_objects
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usecounts != null">
+        usecounts,
+      </if>
+      <if test="cacheobjtype != null">
+        cacheobjtype,
+      </if>
+      <if test="memory_object_address != null">
+        memory_object_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usecounts != null">
+        #{usecounts,jdbcType=INTEGER},
+      </if>
+      <if test="cacheobjtype != null">
+        #{cacheobjtype,jdbcType=VARCHAR},
+      </if>
+      <if test="memory_object_address != null">
+        #{memory_object_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

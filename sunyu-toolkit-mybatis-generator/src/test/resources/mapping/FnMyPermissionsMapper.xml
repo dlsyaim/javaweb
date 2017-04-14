@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnMyPermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnMyPermissions">
+    <result column="entity_name" jdbcType="VARCHAR" property="entity_name" />
+    <result column="subentity_name" jdbcType="VARCHAR" property="subentity_name" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permission_name" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnMyPermissions">
+    insert into fn_my_permissions (entity_name, subentity_name, permission_name
+      )
+    values (#{entity_name,jdbcType=VARCHAR}, #{subentity_name,jdbcType=VARCHAR}, #{permission_name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnMyPermissions">
+    insert into fn_my_permissions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="entity_name != null">
+        entity_name,
+      </if>
+      <if test="subentity_name != null">
+        subentity_name,
+      </if>
+      <if test="permission_name != null">
+        permission_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="entity_name != null">
+        #{entity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="subentity_name != null">
+        #{subentity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="permission_name != null">
+        #{permission_name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

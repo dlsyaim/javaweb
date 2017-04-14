@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryObjectsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryObjects">
+    <result column="pages_allocated_count" jdbcType="INTEGER" property="pages_allocated_count" />
+    <result column="creation_options" jdbcType="INTEGER" property="creation_options" />
+    <result column="bytes_used" jdbcType="BIGINT" property="bytes_used" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="memory_node_id" jdbcType="SMALLINT" property="memory_node_id" />
+    <result column="creation_time" jdbcType="TIMESTAMP" property="creation_time" />
+    <result column="page_size_in_bytes" jdbcType="INTEGER" property="page_size_in_bytes" />
+    <result column="max_pages_allocated_count" jdbcType="INTEGER" property="max_pages_allocated_count" />
+    <result column="sequence_num" jdbcType="INTEGER" property="sequence_num" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmOsMemoryObjectsWithBLOBs">
+    <result column="memory_object_address" jdbcType="VARBINARY" property="memory_object_address" />
+    <result column="parent_address" jdbcType="VARBINARY" property="parent_address" />
+    <result column="page_allocator_address" jdbcType="VARBINARY" property="page_allocator_address" />
+    <result column="creation_stack_address" jdbcType="VARBINARY" property="creation_stack_address" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_object_address, parent_address, page_allocator_address, creation_stack_address
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryObjectsWithBLOBs">
+    insert into dm_os_memory_objects (pages_allocated_count, creation_options, 
+      bytes_used, type, name, 
+      memory_node_id, creation_time, page_size_in_bytes, 
+      max_pages_allocated_count, sequence_num, 
+      memory_object_address, parent_address, 
+      page_allocator_address, creation_stack_address
+      )
+    values (#{pages_allocated_count,jdbcType=INTEGER}, #{creation_options,jdbcType=INTEGER}, 
+      #{bytes_used,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{memory_node_id,jdbcType=SMALLINT}, #{creation_time,jdbcType=TIMESTAMP}, #{page_size_in_bytes,jdbcType=INTEGER}, 
+      #{max_pages_allocated_count,jdbcType=INTEGER}, #{sequence_num,jdbcType=INTEGER}, 
+      #{memory_object_address,jdbcType=VARBINARY}, #{parent_address,jdbcType=VARBINARY}, 
+      #{page_allocator_address,jdbcType=VARBINARY}, #{creation_stack_address,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryObjectsWithBLOBs">
+    insert into dm_os_memory_objects
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pages_allocated_count != null">
+        pages_allocated_count,
+      </if>
+      <if test="creation_options != null">
+        creation_options,
+      </if>
+      <if test="bytes_used != null">
+        bytes_used,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="memory_node_id != null">
+        memory_node_id,
+      </if>
+      <if test="creation_time != null">
+        creation_time,
+      </if>
+      <if test="page_size_in_bytes != null">
+        page_size_in_bytes,
+      </if>
+      <if test="max_pages_allocated_count != null">
+        max_pages_allocated_count,
+      </if>
+      <if test="sequence_num != null">
+        sequence_num,
+      </if>
+      <if test="memory_object_address != null">
+        memory_object_address,
+      </if>
+      <if test="parent_address != null">
+        parent_address,
+      </if>
+      <if test="page_allocator_address != null">
+        page_allocator_address,
+      </if>
+      <if test="creation_stack_address != null">
+        creation_stack_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pages_allocated_count != null">
+        #{pages_allocated_count,jdbcType=INTEGER},
+      </if>
+      <if test="creation_options != null">
+        #{creation_options,jdbcType=INTEGER},
+      </if>
+      <if test="bytes_used != null">
+        #{bytes_used,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="memory_node_id != null">
+        #{memory_node_id,jdbcType=SMALLINT},
+      </if>
+      <if test="creation_time != null">
+        #{creation_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="page_size_in_bytes != null">
+        #{page_size_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="max_pages_allocated_count != null">
+        #{max_pages_allocated_count,jdbcType=INTEGER},
+      </if>
+      <if test="sequence_num != null">
+        #{sequence_num,jdbcType=INTEGER},
+      </if>
+      <if test="memory_object_address != null">
+        #{memory_object_address,jdbcType=VARBINARY},
+      </if>
+      <if test="parent_address != null">
+        #{parent_address,jdbcType=VARBINARY},
+      </if>
+      <if test="page_allocator_address != null">
+        #{page_allocator_address,jdbcType=VARBINARY},
+      </if>
+      <if test="creation_stack_address != null">
+        #{creation_stack_address,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

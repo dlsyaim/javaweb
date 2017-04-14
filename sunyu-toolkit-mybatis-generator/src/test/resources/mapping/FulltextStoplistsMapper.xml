@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FulltextStoplistsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FulltextStoplists">
+    <result column="stoplist_id" jdbcType="INTEGER" property="stoplist_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modify_date" />
+    <result column="principal_id" jdbcType="INTEGER" property="principal_id" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FulltextStoplists">
+    insert into fulltext_stoplists (stoplist_id, name, create_date, 
+      modify_date, principal_id)
+    values (#{stoplist_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, 
+      #{modify_date,jdbcType=TIMESTAMP}, #{principal_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FulltextStoplists">
+    insert into fulltext_stoplists
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stoplist_id != null">
+        stoplist_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="modify_date != null">
+        modify_date,
+      </if>
+      <if test="principal_id != null">
+        principal_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stoplist_id != null">
+        #{stoplist_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_date != null">
+        #{modify_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="principal_id != null">
+        #{principal_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

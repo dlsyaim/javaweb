@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.IndexColumnsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.IndexColumns">
+    <result column="object_id" jdbcType="INTEGER" property="object_id" />
+    <result column="index_id" jdbcType="INTEGER" property="index_id" />
+    <result column="index_column_id" jdbcType="INTEGER" property="index_column_id" />
+    <result column="column_id" jdbcType="INTEGER" property="column_id" />
+    <result column="key_ordinal" jdbcType="TINYINT" property="key_ordinal" />
+    <result column="partition_ordinal" jdbcType="TINYINT" property="partition_ordinal" />
+    <result column="is_descending_key" jdbcType="BIT" property="is_descending_key" />
+    <result column="is_included_column" jdbcType="BIT" property="is_included_column" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.IndexColumns">
+    insert into index_columns (object_id, index_id, index_column_id, 
+      column_id, key_ordinal, partition_ordinal, 
+      is_descending_key, is_included_column)
+    values (#{object_id,jdbcType=INTEGER}, #{index_id,jdbcType=INTEGER}, #{index_column_id,jdbcType=INTEGER}, 
+      #{column_id,jdbcType=INTEGER}, #{key_ordinal,jdbcType=TINYINT}, #{partition_ordinal,jdbcType=TINYINT}, 
+      #{is_descending_key,jdbcType=BIT}, #{is_included_column,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.IndexColumns">
+    insert into index_columns
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        object_id,
+      </if>
+      <if test="index_id != null">
+        index_id,
+      </if>
+      <if test="index_column_id != null">
+        index_column_id,
+      </if>
+      <if test="column_id != null">
+        column_id,
+      </if>
+      <if test="key_ordinal != null">
+        key_ordinal,
+      </if>
+      <if test="partition_ordinal != null">
+        partition_ordinal,
+      </if>
+      <if test="is_descending_key != null">
+        is_descending_key,
+      </if>
+      <if test="is_included_column != null">
+        is_included_column,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="object_id != null">
+        #{object_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_id != null">
+        #{index_id,jdbcType=INTEGER},
+      </if>
+      <if test="index_column_id != null">
+        #{index_column_id,jdbcType=INTEGER},
+      </if>
+      <if test="column_id != null">
+        #{column_id,jdbcType=INTEGER},
+      </if>
+      <if test="key_ordinal != null">
+        #{key_ordinal,jdbcType=TINYINT},
+      </if>
+      <if test="partition_ordinal != null">
+        #{partition_ordinal,jdbcType=TINYINT},
+      </if>
+      <if test="is_descending_key != null">
+        #{is_descending_key,jdbcType=BIT},
+      </if>
+      <if test="is_included_column != null">
+        #{is_included_column,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

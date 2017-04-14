@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ServerEventSessionEventsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ServerEventSessionEvents">
+    <result column="event_session_id" jdbcType="INTEGER" property="event_session_id" />
+    <result column="event_id" jdbcType="INTEGER" property="event_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="package" jdbcType="VARCHAR" property="package" />
+    <result column="module" jdbcType="VARCHAR" property="module" />
+    <result column="predicate" jdbcType="VARCHAR" property="predicate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ServerEventSessionEvents">
+    insert into server_event_session_events (event_session_id, event_id, name, 
+      package, module, predicate
+      )
+    values (#{event_session_id,jdbcType=INTEGER}, #{event_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{package,jdbcType=VARCHAR}, #{module,jdbcType=VARCHAR}, #{predicate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ServerEventSessionEvents">
+    insert into server_event_session_events
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="event_session_id != null">
+        event_session_id,
+      </if>
+      <if test="event_id != null">
+        event_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="package != null">
+        package,
+      </if>
+      <if test="module != null">
+        module,
+      </if>
+      <if test="predicate != null">
+        predicate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="event_session_id != null">
+        #{event_session_id,jdbcType=INTEGER},
+      </if>
+      <if test="event_id != null">
+        #{event_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="package != null">
+        #{package,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null">
+        #{module,jdbcType=VARCHAR},
+      </if>
+      <if test="predicate != null">
+        #{predicate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

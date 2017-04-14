@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmExecCachedPlansMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmExecCachedPlans">
+    <result column="bucketid" jdbcType="INTEGER" property="bucketid" />
+    <result column="refcounts" jdbcType="INTEGER" property="refcounts" />
+    <result column="usecounts" jdbcType="INTEGER" property="usecounts" />
+    <result column="size_in_bytes" jdbcType="INTEGER" property="size_in_bytes" />
+    <result column="cacheobjtype" jdbcType="VARCHAR" property="cacheobjtype" />
+    <result column="objtype" jdbcType="VARCHAR" property="objtype" />
+    <result column="pool_id" jdbcType="INTEGER" property="pool_id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.DmExecCachedPlansWithBLOBs">
+    <result column="memory_object_address" jdbcType="VARBINARY" property="memory_object_address" />
+    <result column="plan_handle" jdbcType="VARBINARY" property="plan_handle" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memory_object_address, plan_handle
+  </sql>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmExecCachedPlansWithBLOBs">
+    insert into dm_exec_cached_plans (bucketid, refcounts, usecounts, 
+      size_in_bytes, cacheobjtype, objtype, 
+      pool_id, memory_object_address, plan_handle
+      )
+    values (#{bucketid,jdbcType=INTEGER}, #{refcounts,jdbcType=INTEGER}, #{usecounts,jdbcType=INTEGER}, 
+      #{size_in_bytes,jdbcType=INTEGER}, #{cacheobjtype,jdbcType=VARCHAR}, #{objtype,jdbcType=VARCHAR}, 
+      #{pool_id,jdbcType=INTEGER}, #{memory_object_address,jdbcType=VARBINARY}, #{plan_handle,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmExecCachedPlansWithBLOBs">
+    insert into dm_exec_cached_plans
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bucketid != null">
+        bucketid,
+      </if>
+      <if test="refcounts != null">
+        refcounts,
+      </if>
+      <if test="usecounts != null">
+        usecounts,
+      </if>
+      <if test="size_in_bytes != null">
+        size_in_bytes,
+      </if>
+      <if test="cacheobjtype != null">
+        cacheobjtype,
+      </if>
+      <if test="objtype != null">
+        objtype,
+      </if>
+      <if test="pool_id != null">
+        pool_id,
+      </if>
+      <if test="memory_object_address != null">
+        memory_object_address,
+      </if>
+      <if test="plan_handle != null">
+        plan_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bucketid != null">
+        #{bucketid,jdbcType=INTEGER},
+      </if>
+      <if test="refcounts != null">
+        #{refcounts,jdbcType=INTEGER},
+      </if>
+      <if test="usecounts != null">
+        #{usecounts,jdbcType=INTEGER},
+      </if>
+      <if test="size_in_bytes != null">
+        #{size_in_bytes,jdbcType=INTEGER},
+      </if>
+      <if test="cacheobjtype != null">
+        #{cacheobjtype,jdbcType=VARCHAR},
+      </if>
+      <if test="objtype != null">
+        #{objtype,jdbcType=VARCHAR},
+      </if>
+      <if test="pool_id != null">
+        #{pool_id,jdbcType=INTEGER},
+      </if>
+      <if test="memory_object_address != null">
+        #{memory_object_address,jdbcType=VARBINARY},
+      </if>
+      <if test="plan_handle != null">
+        #{plan_handle,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

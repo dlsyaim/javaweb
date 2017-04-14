@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.HisLogicalstationMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.HisLogicalstation">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="RTUID" jdbcType="INTEGER" property="RTUID" />
+    <result column="EStationID" jdbcType="INTEGER" property="EStationID" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="OrderID" jdbcType="INTEGER" property="orderID" />
+    <result column="PY" jdbcType="VARCHAR" property="PY" />
+    <result column="ImportantLevel" jdbcType="INTEGER" property="importantLevel" />
+    <result column="StationNo" jdbcType="VARCHAR" property="stationNo" />
+    <result column="ProtocolID" jdbcType="INTEGER" property="protocolID" />
+    <result column="InstallAddress" jdbcType="VARCHAR" property="installAddress" />
+    <result column="InstallDate" jdbcType="TIMESTAMP" property="installDate" />
+    <result column="SIMNO" jdbcType="CHAR" property="SIMNO" />
+    <result column="GISLongitude" jdbcType="DOUBLE" property="GISLongitude" />
+    <result column="GISLatitude" jdbcType="DOUBLE" property="GISLatitude" />
+    <result column="DeviceState" jdbcType="INTEGER" property="deviceState" />
+    <result column="SendTime" jdbcType="INTEGER" property="sendTime" />
+    <result column="OverTimeMinute" jdbcType="INTEGER" property="overTimeMinute" />
+    <result column="IsDelete" jdbcType="BIT" property="isDelete" />
+    <result column="DeviceType" jdbcType="VARCHAR" property="deviceType" />
+    <result column="AddressId" jdbcType="INTEGER" property="addressId" />
+    <result column="ConnectMobile" jdbcType="VARCHAR" property="connectMobile" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ks.monitor.pojo.HisLogicalstation">
+    <result column="Remark" jdbcType="CLOB" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, RTUID, EStationID, Name, OrderID, PY, ImportantLevel, StationNo, ProtocolID, 
+    InstallAddress, InstallDate, SIMNO, GISLongitude, GISLatitude, DeviceState, SendTime, 
+    OverTimeMinute, IsDelete, DeviceType, AddressId, ConnectMobile
+  </sql>
+  <sql id="Blob_Column_List">
+    Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from HIS_LogicalStation
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HIS_LogicalStation
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.HisLogicalstation">
+    insert into HIS_LogicalStation (ID, RTUID, EStationID, 
+      Name, OrderID, PY, 
+      ImportantLevel, StationNo, ProtocolID, 
+      InstallAddress, InstallDate, SIMNO, 
+      GISLongitude, GISLatitude, DeviceState, 
+      SendTime, OverTimeMinute, IsDelete, 
+      DeviceType, AddressId, ConnectMobile, 
+      Remark)
+    values (#{ID,jdbcType=INTEGER}, #{RTUID,jdbcType=INTEGER}, #{EStationID,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{orderID,jdbcType=INTEGER}, #{PY,jdbcType=VARCHAR}, 
+      #{importantLevel,jdbcType=INTEGER}, #{stationNo,jdbcType=VARCHAR}, #{protocolID,jdbcType=INTEGER}, 
+      #{installAddress,jdbcType=VARCHAR}, #{installDate,jdbcType=TIMESTAMP}, #{SIMNO,jdbcType=CHAR}, 
+      #{GISLongitude,jdbcType=DOUBLE}, #{GISLatitude,jdbcType=DOUBLE}, #{deviceState,jdbcType=INTEGER}, 
+      #{sendTime,jdbcType=INTEGER}, #{overTimeMinute,jdbcType=INTEGER}, #{isDelete,jdbcType=BIT}, 
+      #{deviceType,jdbcType=VARCHAR}, #{addressId,jdbcType=INTEGER}, #{connectMobile,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.HisLogicalstation">
+    insert into HIS_LogicalStation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="RTUID != null">
+        RTUID,
+      </if>
+      <if test="EStationID != null">
+        EStationID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="orderID != null">
+        OrderID,
+      </if>
+      <if test="PY != null">
+        PY,
+      </if>
+      <if test="importantLevel != null">
+        ImportantLevel,
+      </if>
+      <if test="stationNo != null">
+        StationNo,
+      </if>
+      <if test="protocolID != null">
+        ProtocolID,
+      </if>
+      <if test="installAddress != null">
+        InstallAddress,
+      </if>
+      <if test="installDate != null">
+        InstallDate,
+      </if>
+      <if test="SIMNO != null">
+        SIMNO,
+      </if>
+      <if test="GISLongitude != null">
+        GISLongitude,
+      </if>
+      <if test="GISLatitude != null">
+        GISLatitude,
+      </if>
+      <if test="deviceState != null">
+        DeviceState,
+      </if>
+      <if test="sendTime != null">
+        SendTime,
+      </if>
+      <if test="overTimeMinute != null">
+        OverTimeMinute,
+      </if>
+      <if test="isDelete != null">
+        IsDelete,
+      </if>
+      <if test="deviceType != null">
+        DeviceType,
+      </if>
+      <if test="addressId != null">
+        AddressId,
+      </if>
+      <if test="connectMobile != null">
+        ConnectMobile,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="RTUID != null">
+        #{RTUID,jdbcType=INTEGER},
+      </if>
+      <if test="EStationID != null">
+        #{EStationID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderID != null">
+        #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="PY != null">
+        #{PY,jdbcType=VARCHAR},
+      </if>
+      <if test="importantLevel != null">
+        #{importantLevel,jdbcType=INTEGER},
+      </if>
+      <if test="stationNo != null">
+        #{stationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolID != null">
+        #{protocolID,jdbcType=INTEGER},
+      </if>
+      <if test="installAddress != null">
+        #{installAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="installDate != null">
+        #{installDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="SIMNO != null">
+        #{SIMNO,jdbcType=CHAR},
+      </if>
+      <if test="GISLongitude != null">
+        #{GISLongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="GISLatitude != null">
+        #{GISLatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="deviceState != null">
+        #{deviceState,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=INTEGER},
+      </if>
+      <if test="overTimeMinute != null">
+        #{overTimeMinute,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="deviceType != null">
+        #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null">
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="connectMobile != null">
+        #{connectMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.HisLogicalstation">
+    update HIS_LogicalStation
+    <set>
+      <if test="RTUID != null">
+        RTUID = #{RTUID,jdbcType=INTEGER},
+      </if>
+      <if test="EStationID != null">
+        EStationID = #{EStationID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderID != null">
+        OrderID = #{orderID,jdbcType=INTEGER},
+      </if>
+      <if test="PY != null">
+        PY = #{PY,jdbcType=VARCHAR},
+      </if>
+      <if test="importantLevel != null">
+        ImportantLevel = #{importantLevel,jdbcType=INTEGER},
+      </if>
+      <if test="stationNo != null">
+        StationNo = #{stationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolID != null">
+        ProtocolID = #{protocolID,jdbcType=INTEGER},
+      </if>
+      <if test="installAddress != null">
+        InstallAddress = #{installAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="installDate != null">
+        InstallDate = #{installDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="SIMNO != null">
+        SIMNO = #{SIMNO,jdbcType=CHAR},
+      </if>
+      <if test="GISLongitude != null">
+        GISLongitude = #{GISLongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="GISLatitude != null">
+        GISLatitude = #{GISLatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="deviceState != null">
+        DeviceState = #{deviceState,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null">
+        SendTime = #{sendTime,jdbcType=INTEGER},
+      </if>
+      <if test="overTimeMinute != null">
+        OverTimeMinute = #{overTimeMinute,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        IsDelete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="deviceType != null">
+        DeviceType = #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null">
+        AddressId = #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="connectMobile != null">
+        ConnectMobile = #{connectMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ks.monitor.pojo.HisLogicalstation">
+    update HIS_LogicalStation
+    set RTUID = #{RTUID,jdbcType=INTEGER},
+      EStationID = #{EStationID,jdbcType=INTEGER},
+      Name = #{name,jdbcType=VARCHAR},
+      OrderID = #{orderID,jdbcType=INTEGER},
+      PY = #{PY,jdbcType=VARCHAR},
+      ImportantLevel = #{importantLevel,jdbcType=INTEGER},
+      StationNo = #{stationNo,jdbcType=VARCHAR},
+      ProtocolID = #{protocolID,jdbcType=INTEGER},
+      InstallAddress = #{installAddress,jdbcType=VARCHAR},
+      InstallDate = #{installDate,jdbcType=TIMESTAMP},
+      SIMNO = #{SIMNO,jdbcType=CHAR},
+      GISLongitude = #{GISLongitude,jdbcType=DOUBLE},
+      GISLatitude = #{GISLatitude,jdbcType=DOUBLE},
+      DeviceState = #{deviceState,jdbcType=INTEGER},
+      SendTime = #{sendTime,jdbcType=INTEGER},
+      OverTimeMinute = #{overTimeMinute,jdbcType=INTEGER},
+      IsDelete = #{isDelete,jdbcType=BIT},
+      DeviceType = #{deviceType,jdbcType=VARCHAR},
+      AddressId = #{addressId,jdbcType=INTEGER},
+      ConnectMobile = #{connectMobile,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=CLOB}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.HisLogicalstation">
+    update HIS_LogicalStation
+    set RTUID = #{RTUID,jdbcType=INTEGER},
+      EStationID = #{EStationID,jdbcType=INTEGER},
+      Name = #{name,jdbcType=VARCHAR},
+      OrderID = #{orderID,jdbcType=INTEGER},
+      PY = #{PY,jdbcType=VARCHAR},
+      ImportantLevel = #{importantLevel,jdbcType=INTEGER},
+      StationNo = #{stationNo,jdbcType=VARCHAR},
+      ProtocolID = #{protocolID,jdbcType=INTEGER},
+      InstallAddress = #{installAddress,jdbcType=VARCHAR},
+      InstallDate = #{installDate,jdbcType=TIMESTAMP},
+      SIMNO = #{SIMNO,jdbcType=CHAR},
+      GISLongitude = #{GISLongitude,jdbcType=DOUBLE},
+      GISLatitude = #{GISLatitude,jdbcType=DOUBLE},
+      DeviceState = #{deviceState,jdbcType=INTEGER},
+      SendTime = #{sendTime,jdbcType=INTEGER},
+      OverTimeMinute = #{overTimeMinute,jdbcType=INTEGER},
+      IsDelete = #{isDelete,jdbcType=BIT},
+      DeviceType = #{deviceType,jdbcType=VARCHAR},
+      AddressId = #{addressId,jdbcType=INTEGER},
+      ConnectMobile = #{connectMobile,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.ViewAreauserMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.ViewAreauser">
+    <result column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="Tel" jdbcType="VARCHAR" property="tel" />
+    <result column="DistrictID" jdbcType="INTEGER" property="districtID" />
+    <result column="DistrictName" jdbcType="VARCHAR" property="districtName" />
+    <result column="CityName" jdbcType="VARCHAR" property="cityName" />
+    <result column="ProvinceName" jdbcType="VARCHAR" property="provinceName" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.ViewAreauser">
+    insert into View_AreaUser (ID, Name, Address, 
+      Tel, DistrictID, DistrictName, 
+      CityName, ProvinceName)
+    values (#{ID,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{districtID,jdbcType=INTEGER}, #{districtName,jdbcType=VARCHAR}, 
+      #{cityName,jdbcType=VARCHAR}, #{provinceName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.ViewAreauser">
+    insert into View_AreaUser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+      <if test="tel != null">
+        Tel,
+      </if>
+      <if test="districtID != null">
+        DistrictID,
+      </if>
+      <if test="districtName != null">
+        DistrictName,
+      </if>
+      <if test="cityName != null">
+        CityName,
+      </if>
+      <if test="provinceName != null">
+        ProvinceName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="districtID != null">
+        #{districtID,jdbcType=INTEGER},
+      </if>
+      <if test="districtName != null">
+        #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

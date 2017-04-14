@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FnTraceGeteventinfoMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.FnTraceGeteventinfo">
+    <result column="eventid" jdbcType="INTEGER" property="eventid" />
+    <result column="columnid" jdbcType="INTEGER" property="columnid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.FnTraceGeteventinfo">
+    insert into fn_trace_geteventinfo (eventid, columnid)
+    values (#{eventid,jdbcType=INTEGER}, #{columnid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.FnTraceGeteventinfo">
+    insert into fn_trace_geteventinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eventid != null">
+        eventid,
+      </if>
+      <if test="columnid != null">
+        columnid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eventid != null">
+        #{eventid,jdbcType=INTEGER},
+      </if>
+      <if test="columnid != null">
+        #{columnid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

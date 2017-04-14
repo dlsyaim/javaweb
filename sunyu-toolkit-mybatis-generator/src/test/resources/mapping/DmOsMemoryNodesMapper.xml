@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.DmOsMemoryNodesMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.DmOsMemoryNodes">
+    <result column="memory_node_id" jdbcType="SMALLINT" property="memory_node_id" />
+    <result column="virtual_address_space_reserved_kb" jdbcType="BIGINT" property="virtual_address_space_reserved_kb" />
+    <result column="virtual_address_space_committed_kb" jdbcType="BIGINT" property="virtual_address_space_committed_kb" />
+    <result column="locked_page_allocations_kb" jdbcType="BIGINT" property="locked_page_allocations_kb" />
+    <result column="single_pages_kb" jdbcType="BIGINT" property="single_pages_kb" />
+    <result column="multi_pages_kb" jdbcType="BIGINT" property="multi_pages_kb" />
+    <result column="shared_memory_reserved_kb" jdbcType="BIGINT" property="shared_memory_reserved_kb" />
+    <result column="shared_memory_committed_kb" jdbcType="BIGINT" property="shared_memory_committed_kb" />
+    <result column="cpu_affinity_mask" jdbcType="BIGINT" property="cpu_affinity_mask" />
+    <result column="online_scheduler_mask" jdbcType="BIGINT" property="online_scheduler_mask" />
+    <result column="processor_group" jdbcType="SMALLINT" property="processor_group" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.DmOsMemoryNodes">
+    insert into dm_os_memory_nodes (memory_node_id, virtual_address_space_reserved_kb, 
+      virtual_address_space_committed_kb, locked_page_allocations_kb, 
+      single_pages_kb, multi_pages_kb, shared_memory_reserved_kb, 
+      shared_memory_committed_kb, cpu_affinity_mask, 
+      online_scheduler_mask, processor_group)
+    values (#{memory_node_id,jdbcType=SMALLINT}, #{virtual_address_space_reserved_kb,jdbcType=BIGINT}, 
+      #{virtual_address_space_committed_kb,jdbcType=BIGINT}, #{locked_page_allocations_kb,jdbcType=BIGINT}, 
+      #{single_pages_kb,jdbcType=BIGINT}, #{multi_pages_kb,jdbcType=BIGINT}, #{shared_memory_reserved_kb,jdbcType=BIGINT}, 
+      #{shared_memory_committed_kb,jdbcType=BIGINT}, #{cpu_affinity_mask,jdbcType=BIGINT}, 
+      #{online_scheduler_mask,jdbcType=BIGINT}, #{processor_group,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.DmOsMemoryNodes">
+    insert into dm_os_memory_nodes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="memory_node_id != null">
+        memory_node_id,
+      </if>
+      <if test="virtual_address_space_reserved_kb != null">
+        virtual_address_space_reserved_kb,
+      </if>
+      <if test="virtual_address_space_committed_kb != null">
+        virtual_address_space_committed_kb,
+      </if>
+      <if test="locked_page_allocations_kb != null">
+        locked_page_allocations_kb,
+      </if>
+      <if test="single_pages_kb != null">
+        single_pages_kb,
+      </if>
+      <if test="multi_pages_kb != null">
+        multi_pages_kb,
+      </if>
+      <if test="shared_memory_reserved_kb != null">
+        shared_memory_reserved_kb,
+      </if>
+      <if test="shared_memory_committed_kb != null">
+        shared_memory_committed_kb,
+      </if>
+      <if test="cpu_affinity_mask != null">
+        cpu_affinity_mask,
+      </if>
+      <if test="online_scheduler_mask != null">
+        online_scheduler_mask,
+      </if>
+      <if test="processor_group != null">
+        processor_group,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="memory_node_id != null">
+        #{memory_node_id,jdbcType=SMALLINT},
+      </if>
+      <if test="virtual_address_space_reserved_kb != null">
+        #{virtual_address_space_reserved_kb,jdbcType=BIGINT},
+      </if>
+      <if test="virtual_address_space_committed_kb != null">
+        #{virtual_address_space_committed_kb,jdbcType=BIGINT},
+      </if>
+      <if test="locked_page_allocations_kb != null">
+        #{locked_page_allocations_kb,jdbcType=BIGINT},
+      </if>
+      <if test="single_pages_kb != null">
+        #{single_pages_kb,jdbcType=BIGINT},
+      </if>
+      <if test="multi_pages_kb != null">
+        #{multi_pages_kb,jdbcType=BIGINT},
+      </if>
+      <if test="shared_memory_reserved_kb != null">
+        #{shared_memory_reserved_kb,jdbcType=BIGINT},
+      </if>
+      <if test="shared_memory_committed_kb != null">
+        #{shared_memory_committed_kb,jdbcType=BIGINT},
+      </if>
+      <if test="cpu_affinity_mask != null">
+        #{cpu_affinity_mask,jdbcType=BIGINT},
+      </if>
+      <if test="online_scheduler_mask != null">
+        #{online_scheduler_mask,jdbcType=BIGINT},
+      </if>
+      <if test="processor_group != null">
+        #{processor_group,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

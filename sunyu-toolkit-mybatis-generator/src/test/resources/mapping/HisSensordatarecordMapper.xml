@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.HisSensordatarecordMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.HisSensordatarecord">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="LogicalStationID" jdbcType="INTEGER" property="logicalStationID" />
+    <result column="Gas" jdbcType="DOUBLE" property="gas" />
+    <result column="Sensor" jdbcType="DOUBLE" property="sensor" />
+    <result column="WaterLevel" jdbcType="DOUBLE" property="waterLevel" />
+    <result column="Battery" jdbcType="DOUBLE" property="battery" />
+    <result column="DLastTime" jdbcType="TIMESTAMP" property="DLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LogicalStationID, Gas, Sensor, WaterLevel, Battery, DLastTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HIS_SensorDataRecord
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HIS_SensorDataRecord
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.HisSensordatarecord">
+    insert into HIS_SensorDataRecord (ID, LogicalStationID, Gas, 
+      Sensor, WaterLevel, Battery, 
+      DLastTime)
+    values (#{ID,jdbcType=INTEGER}, #{logicalStationID,jdbcType=INTEGER}, #{gas,jdbcType=DOUBLE}, 
+      #{sensor,jdbcType=DOUBLE}, #{waterLevel,jdbcType=DOUBLE}, #{battery,jdbcType=DOUBLE}, 
+      #{DLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.HisSensordatarecord">
+    insert into HIS_SensorDataRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="logicalStationID != null">
+        LogicalStationID,
+      </if>
+      <if test="gas != null">
+        Gas,
+      </if>
+      <if test="sensor != null">
+        Sensor,
+      </if>
+      <if test="waterLevel != null">
+        WaterLevel,
+      </if>
+      <if test="battery != null">
+        Battery,
+      </if>
+      <if test="DLastTime != null">
+        DLastTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="logicalStationID != null">
+        #{logicalStationID,jdbcType=INTEGER},
+      </if>
+      <if test="gas != null">
+        #{gas,jdbcType=DOUBLE},
+      </if>
+      <if test="sensor != null">
+        #{sensor,jdbcType=DOUBLE},
+      </if>
+      <if test="waterLevel != null">
+        #{waterLevel,jdbcType=DOUBLE},
+      </if>
+      <if test="battery != null">
+        #{battery,jdbcType=DOUBLE},
+      </if>
+      <if test="DLastTime != null">
+        #{DLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.monitor.pojo.HisSensordatarecord">
+    update HIS_SensorDataRecord
+    <set>
+      <if test="logicalStationID != null">
+        LogicalStationID = #{logicalStationID,jdbcType=INTEGER},
+      </if>
+      <if test="gas != null">
+        Gas = #{gas,jdbcType=DOUBLE},
+      </if>
+      <if test="sensor != null">
+        Sensor = #{sensor,jdbcType=DOUBLE},
+      </if>
+      <if test="waterLevel != null">
+        WaterLevel = #{waterLevel,jdbcType=DOUBLE},
+      </if>
+      <if test="battery != null">
+        Battery = #{battery,jdbcType=DOUBLE},
+      </if>
+      <if test="DLastTime != null">
+        DLastTime = #{DLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.monitor.pojo.HisSensordatarecord">
+    update HIS_SensorDataRecord
+    set LogicalStationID = #{logicalStationID,jdbcType=INTEGER},
+      Gas = #{gas,jdbcType=DOUBLE},
+      Sensor = #{sensor,jdbcType=DOUBLE},
+      WaterLevel = #{waterLevel,jdbcType=DOUBLE},
+      Battery = #{battery,jdbcType=DOUBLE},
+      DLastTime = #{DLastTime,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

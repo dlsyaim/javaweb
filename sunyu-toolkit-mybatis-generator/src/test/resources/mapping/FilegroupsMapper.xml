@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.monitor.mapper.FilegroupsMapper">
+  <resultMap id="BaseResultMap" type="com.ks.monitor.pojo.Filegroups">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="data_space_id" jdbcType="INTEGER" property="data_space_id" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="type_desc" jdbcType="VARCHAR" property="type_desc" />
+    <result column="is_default" jdbcType="BIT" property="is_default" />
+    <result column="filegroup_guid" jdbcType="CHAR" property="filegroup_guid" />
+    <result column="log_filegroup_id" jdbcType="INTEGER" property="log_filegroup_id" />
+    <result column="is_read_only" jdbcType="BIT" property="is_read_only" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ks.monitor.pojo.Filegroups">
+    insert into filegroups (name, data_space_id, type, 
+      type_desc, is_default, filegroup_guid, 
+      log_filegroup_id, is_read_only)
+    values (#{name,jdbcType=VARCHAR}, #{data_space_id,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{type_desc,jdbcType=VARCHAR}, #{is_default,jdbcType=BIT}, #{filegroup_guid,jdbcType=CHAR}, 
+      #{log_filegroup_id,jdbcType=INTEGER}, #{is_read_only,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.monitor.pojo.Filegroups">
+    insert into filegroups
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="data_space_id != null">
+        data_space_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="type_desc != null">
+        type_desc,
+      </if>
+      <if test="is_default != null">
+        is_default,
+      </if>
+      <if test="filegroup_guid != null">
+        filegroup_guid,
+      </if>
+      <if test="log_filegroup_id != null">
+        log_filegroup_id,
+      </if>
+      <if test="is_read_only != null">
+        is_read_only,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="data_space_id != null">
+        #{data_space_id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="type_desc != null">
+        #{type_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="is_default != null">
+        #{is_default,jdbcType=BIT},
+      </if>
+      <if test="filegroup_guid != null">
+        #{filegroup_guid,jdbcType=CHAR},
+      </if>
+      <if test="log_filegroup_id != null">
+        #{log_filegroup_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_read_only != null">
+        #{is_read_only,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
